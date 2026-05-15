@@ -36,6 +36,7 @@ Join a community that believes your progress belongs to you, powered by open-sou
 ## Download 
 
 [<img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Get it on GitHub" height="80">](https://github.com/resurrectdev1/Grove/releases/latest)
+[<img src="https://raw.githubusercontent.com/ImranR98/Obtainium/main/assets/graphics/badge_obtainium.png" alt="Get it on Obtainium" height="80">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/resurrectdev1/Grove)
 
 ## Support The App
 **Grove** is free forever — no subscriptions, no ads, no data harvesting. Just you and your trees. If Grove has helped you stay clean or build better habits, consider supporting its continued development so it can keep growing too.
