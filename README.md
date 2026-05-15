@@ -12,7 +12,7 @@ Join a community that believes your progress belongs to you, powered by open-sou
 <img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_1.png">
 <img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_2.png">
 <img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_3.png">
-<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_4.png>
+<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_4.png">
 </p>
 
 ### Features
