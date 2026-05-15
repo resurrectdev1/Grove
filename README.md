@@ -42,5 +42,8 @@ Join a community that believes your progress belongs to you, powered by open-sou
 
 [<img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" width="auto" height="100" alt="Buy me a Coffee">](https://buymeacoffee.com/resurrect)
 
+## Development
+**Grove** is built using Flutter. [Install Flutter](https://docs.flutter.dev/get-started/install), clone the repository, enter the project directory, and run `flutter pub get`.
+
 ## License
 This software is free software licensed under the GNU General Public License 3.0.
