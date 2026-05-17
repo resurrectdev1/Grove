@@ -36,7 +36,7 @@ Join a community that believes your progress belongs to you, powered by open-sou
 ## Download 
 
 [<img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Get it on GitHub" height="80">](https://github.com/resurrectdev1/Grove/releases/latest)
-[<img src="https://github.com/ImranR98/Obtainium/blob/main/assets/graphics/badge_obtainium.png" height="40">](https://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/resurrectdev1/Grove)
+[<img src="https://github.com/ImranR98/Obtainium/blob/main/assets/graphics/badge_obtainium.png" height="50">](https://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/resurrectdev1/Grove)
 [<img src="https://f-droid.org/badge/get-it-on.png" height="80">]()
 [<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" height="80">]()
 
