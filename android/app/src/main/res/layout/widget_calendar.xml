@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/cal_root"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/widget_bg"
+              android:padding="10dp">
+
+    <!-- ── Header bar ── -->
+    <RelativeLayout
+        android:id="@+id/cal_header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="#CC111A13"
+        android:padding="4dp">
+
+        <!-- Prev arrow -->
+        <TextView
+            android:id="@+id/cal_btn_prev"
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:text="‹"
+            android:textColor="#FFE0EBE0"
+            android:textSize="22sp" />
+
+        <!-- Month label (centre) -->
+        <TextView
+            android:id="@+id/cal_month_label"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="May 2026"
+            android:textColor="#FFE0EBE0"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <!-- Next arrow -->
+        <TextView
+            android:id="@+id/cal_btn_next"
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:text="›"
+            android:textColor="#FFE0EBE0"
+            android:textSize="22sp" />
+        </RelativeLayout>
+
+        <!-- Habit selector (tap to cycle) -->
+        <TextView
+            android:id="@+id/cal_habit_name"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:text="Tap to pick habit"
+            android:textColor="#FF8AA88C"
+            android:textSize="10sp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp" />
+
+        <!-- ── Day-of-week headers ── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:orientation="horizontal">
+            <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
+            <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="M" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
+            <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="T" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
+            <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="W" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
+            <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="T" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
+            <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="F" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
+            <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
+        </LinearLayout>
+
+        <!-- ── Week rows (6 rows × 7 cells = 42 ids) ── -->
+        <!-- Row 0 -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <TextView android:id="@+id/d00" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d01" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d02" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d03" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d04" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d05" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d06" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+        </LinearLayout>
+        <!-- Row 1 -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <TextView android:id="@+id/d10" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d11" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d12" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d13" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d14" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d15" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d16" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+        </LinearLayout>
+        <!-- Row 2 -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <TextView android:id="@+id/d20" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d21" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d22" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d23" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d24" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d25" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d26" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+        </LinearLayout>
+        <!-- Row 3 -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <TextView android:id="@+id/d30" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d31" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d32" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d33" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d34" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d35" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d36" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+        </LinearLayout>
+        <!-- Row 4 -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <TextView android:id="@+id/d40" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d41" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d42" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d43" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d44" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d45" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d46" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+        </LinearLayout>
+        <!-- Row 5 -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <TextView android:id="@+id/d50" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d51" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d52" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d53" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d54" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d55" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+            <TextView android:id="@+id/d56" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="9sp" android:textColor="#FFE0EBE0" android:background="@drawable/cal_cell_empty" android:layout_margin="1dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
