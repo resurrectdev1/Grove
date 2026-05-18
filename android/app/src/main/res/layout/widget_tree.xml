@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/tree_root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/widget_bg"
+                android:padding="12dp">
+
+    <!-- Habit name (tap to cycle) -->
+    <TextView
+        android:id="@+id/tree_habit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="Tap to pick habit"
+        android:textColor="#FF8AA88C"
+        android:textSize="11sp"
+        android:ellipsize="end"
+        android:singleLine="true" />
+
+    <!-- Tree image (canvas bitmap) -->
+    <ImageView
+        android:id="@+id/tree_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tree_habit_name"
+        android:layout_marginTop="4dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="Habit tree" />
+
+    <!-- Days count -->
+    <TextView
+        android:id="@+id/tree_days_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tree_image"
+        android:layout_centerHorizontal="true"
+        android:text="0"
+        android:textColor="#FFE0EBE0"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp"/>
+
+    <!-- "days" label -->
+    <TextView
+        android:id="@+id/tree_days_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tree_days_count"
+        android:layout_centerHorizontal="true"
+        android:text="days"
+        android:textColor="#FF8AA88C"
+        android:textSize="10sp" />
+
+    <!-- Stage label -->
+    <TextView
+        android:id="@+id/tree_stage_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tree_days_label"
+        android:layout_centerHorizontal="true"
+        android:text="Seed"
+        android:textColor="#FFE0EBE0"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp"/>
+
+    <!-- Tagline -->
+    <TextView
+        android:id="@+id/tree_tagline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tree_stage_label"
+        android:gravity="center"
+        android:text="Every great forest starts here."
+        android:textColor="#FF4A5E4C"
+        android:textSize="8sp"
+        android:layout_marginTop="2dp"/>
+
+    <!-- Progress bar -->
+    <ProgressBar
+        android:id="@+id/tree_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="2dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="#FF4E8B5F"
+        android:progressBackgroundTint="#33FFFFFF" />
+
+    </RelativeLayout>
