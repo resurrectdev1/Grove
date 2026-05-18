@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Grove</string>
+  <string name="calendar_widget_description">Grove monthly calendar; tap a habit to see its clean/relapse days</string>
+  <string name="tree_widget_description">Grove habit tree; watch your tree grow with your streak</string>
+</resources>
