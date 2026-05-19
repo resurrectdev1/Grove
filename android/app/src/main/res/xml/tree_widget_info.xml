@@ -9,4 +9,6 @@
     android:initialLayout="@layout/widget_tree"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
+    android:configure="com.resurrect.grove.HabitPickerActivity"
+    android:widgetFeatures="reconfigurable"
     android:description="@string/tree_widget_description" />
