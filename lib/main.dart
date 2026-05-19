@@ -26,7 +26,6 @@ import 'widget_bridge.dart';
 // §0 SERVICES — Notifications & Biometrics
 // ══════════════════════════════════════════════════════════════════════
 
-/// Singleton that owns the FlutterLocalNotificationsPlugin instance.
 class GroveNotifications {
   GroveNotifications._();
   static final GroveNotifications instance = GroveNotifications._();
@@ -38,8 +37,6 @@ class GroveNotifications {
 
   Future<void> init() async {
     tz_data.initializeTimeZones();
-    // Use the local timezone offset to approximate the device zone.
-    // This avoids needing flutter_timezone (which has a broken V1 plugin).
     final offsetSeconds = DateTime.now().timeZoneOffset.inSeconds;
     final sign   = offsetSeconds >= 0 ? '+' : '-';
     final abs    = offsetSeconds.abs();
