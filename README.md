@@ -35,7 +35,7 @@ Grow the life you want. **Grove** helps you nurture your bad habits, track your 
 <img src="https://user-images.githubusercontent.com/69304392/148696068-0cfea65d-b18f-4685-82b5-329a330b1c0d.png"
 alt="Get it on GitHub" align="center" height="80" /></a>
 
-<a href="https://github.com/breezy-weather/breezy-weather/blob/main/INSTALL.md#obtainium](https://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/resurrectdev1/Grove/releases/latest">
+<a href="https://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/resurrectdev1/Grove/releases/latest">
 <img src="https://github.com/ImranR98/Obtainium/blob/main/assets/graphics/badge_obtainium.png"
 alt="Get it on Obtainium" align="center" height="54" />
 </a>
