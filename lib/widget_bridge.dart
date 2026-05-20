@@ -1,3 +1,7 @@
+import 'package:grove/main.dart';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class GroveWidgetBridge {
@@ -6,12 +10,65 @@ class GroveWidgetBridge {
 
   static const _channel = MethodChannel('com.grove.app/widgets');
 
+  Future<void> renderAndUpdate(List<HabitTree> habits) async {
+    try {
+      final filesDir = await _channel.invokeMethod<String>('getFilesDir');
+      if (filesDir == null) return;
+
+      for (final habit in habits) {
+        final bytes = await _renderHabit(habit);
+        if (bytes == null) continue;
+
+        await _channel.invokeMethod<void>('saveTreeImage', {
+          'habitId': habit.id,
+          'bytes':   bytes,
+        });
+      }
+
+      await _channel.invokeMethod<void>('updateWidgets');
+    } on MissingPluginException {
+    } catch (e) {
+      debugPrint('GroveWidgetBridge.renderAndUpdate error: $e');
+    }
+  }
+
   Future<void> requestUpdate() async {
     try {
       await _channel.invokeMethod<void>('updateWidgets');
     } on MissingPluginException {
-      
     } catch (e) {
+      debugPrint('GroveWidgetBridge.requestUpdate error: $e');
+    }
+  }
+
+  // ── Private helpers ────────────────────────────────────────────────
+
+  Future<Uint8List?> _renderHabit(HabitTree habit) async {
+    try {
+      const size = Size(400, 400);
+
+      final recorder = ui.PictureRecorder();
+      final canvas   = Canvas(recorder, Offset.zero & size);
+
+      final painter = FractalTreePainter(
+        stage:       habit.stage,
+        baseColor:   habit.color,
+        progress:    habit.stageProgress,
+        windPhase:   0,
+        daysElapsed: habit.daysElapsed,
+        geneticSeed: habit.geneticSeed,
+        shadowStage: habit.shadowStage,
+      );
+
+      painter.paint(canvas, size);
+
+      final picture = recorder.endRecording();
+      final image   = await picture.toImage(size.width.toInt(), size.height.toInt());
+      final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+      return byteData?.buffer.asUint8List();
+    } catch (e) {
+      debugPrint('GroveWidgetBridge._renderHabit(${habit.id}) error: $e');
+      return null;
     }
   }
 }
