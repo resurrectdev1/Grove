@@ -83,14 +83,6 @@ class HabitTree {
   ? daysElapsed
   : math.max(daysElapsed, _relapses.map((e) => e.peakDays).reduce(math.max));
 
-  GrowthStage? get shadowStage {
-    if (_relapses.isEmpty) return null;
-    if (daysElapsed < 8)   return null;
-    final peak = _relapses.first.peakDays;
-    if (peak <= daysElapsed) return null;
-    return stageFromDays(peak);
-  }
-
   double get stageProgress {
     final d = daysElapsed;
     if (d <= 1)  return (d / 1).clamp(0.0, 1.0);
