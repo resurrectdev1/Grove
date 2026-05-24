@@ -26,8 +26,12 @@ class GroveModel extends ChangeNotifier {
     _habits = ids.map((id) {
       final json = _prefs!.getString(id);
       if (json == null) return null;
-      try { return HabitTree.fromJson(json); }
-      catch (e) { debugPrint('Failed to parse habit $id: $e'); return null; }
+      try {
+        return HabitTree.fromJson(json);
+      } catch (e) {
+        debugPrint('Failed to parse habit $id: $e');
+        return null;
+      }
     }).whereType<HabitTree>().toList();
     notifyListeners();
   }
@@ -36,9 +40,13 @@ class GroveModel extends ChangeNotifier {
     if (_prefs == null) return;
     try {
       await _prefs!.setStringList(_idsKey, _habits.map((h) => h.id).toList());
-      for (final h in _habits) { await _prefs!.setString(h.id, h.toJson()); }
+      for (final h in _habits) {
+        await _prefs!.setString(h.id, h.toJson());
+      }
       await GroveWidgetBridge.instance.renderAndUpdate(_habits);
-    } catch (e) { debugPrint('Persist error: $e'); }
+    } catch (e) {
+      debugPrint('Persist error: $e');
+    }
   }
 
   void addHabit({required String name, required Color color}) {
@@ -57,18 +65,26 @@ class GroveModel extends ChangeNotifier {
   void recordCustomRelapse(String habitId, String reason, DateTime customDate) {
     final i = _habits.indexWhere((h) => h.id == habitId);
     if (i == -1) return;
-    final target = _habits[i];
-    target.relapses.removeWhere((r) =>
+
+    final original = _habits[i];
+    final updatedRelapses = List<RelapseEvent>.of(original.relapses)
+    ..removeWhere((r) =>
     r.timestamp.year  == customDate.year  &&
     r.timestamp.month == customDate.month &&
-    r.timestamp.day   == customDate.day);
-    target.relapses.add(RelapseEvent(timestamp: customDate, reason: reason));
-    target.relapses.sort((a, b) => b.timestamp.compareTo(a.timestamp));
-    target.lastReset = target.relapses.isNotEmpty
-    ? target.relapses.first.timestamp
-    : target.startDate;
-    if (target.lastReset.isAfter(DateTime.now())) target.lastReset = DateTime.now();
-    _sweepPeaks(target);
+    r.timestamp.day   == customDate.day)
+    ..add(RelapseEvent(timestamp: customDate, reason: reason))
+    ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
+
+    DateTime newLastReset = updatedRelapses.isNotEmpty
+    ? updatedRelapses.first.timestamp
+    : original.startDate;
+    if (newLastReset.isAfter(DateTime.now())) newLastReset = DateTime.now();
+
+    final updated = original.copyWith(
+      relapses:  updatedRelapses,
+      lastReset: newLastReset,
+    );
+    _habits[i] = _sweepPeaks(updated);
     _persist();
     notifyListeners();
   }
@@ -76,17 +92,25 @@ class GroveModel extends ChangeNotifier {
   void removeRelapseOnDate(String habitId, DateTime date) {
     final i = _habits.indexWhere((h) => h.id == habitId);
     if (i == -1) return;
-    final target = _habits[i];
-    target.relapses.removeWhere((r) =>
+
+    final original = _habits[i];
+    final updatedRelapses = List<RelapseEvent>.of(original.relapses)
+    ..removeWhere((r) =>
     r.timestamp.year  == date.year  &&
     r.timestamp.month == date.month &&
-    r.timestamp.day   == date.day);
-    target.relapses.sort((a, b) => b.timestamp.compareTo(a.timestamp));
-    target.lastReset = target.relapses.isNotEmpty
-    ? target.relapses.first.timestamp
-    : target.startDate;
-    if (target.lastReset.isAfter(DateTime.now())) target.lastReset = DateTime.now();
-    _sweepPeaks(target);
+    r.timestamp.day   == date.day)
+    ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
+
+    DateTime newLastReset = updatedRelapses.isNotEmpty
+    ? updatedRelapses.first.timestamp
+    : original.startDate;
+    if (newLastReset.isAfter(DateTime.now())) newLastReset = DateTime.now();
+
+    final updated = original.copyWith(
+      relapses:  updatedRelapses,
+      lastReset: newLastReset,
+    );
+    _habits[i] = _sweepPeaks(updated);
     _persist();
     notifyListeners();
   }
@@ -96,25 +120,20 @@ class GroveModel extends ChangeNotifier {
     if (i == -1) return;
     final target = _habits[i];
     if (newStart.isAfter(target.startDate)) return;
-    _habits[i] = HabitTree(
-      id:          target.id,
-      name:        target.name,
-      color:       target.color,
-      startDate:   newStart,
-      lastReset:   target.lastReset,
-      relapses:    target.relapses,
-      geneticSeed: target.geneticSeed,
-    );
-    _sweepPeaks(_habits[i]);
+
+    final updated = target.copyWith(startDate: newStart);
+    _habits[i] = _sweepPeaks(updated);
     _persist();
     notifyListeners();
   }
 
-  void _sweepPeaks(HabitTree target) {
+  HabitTree _sweepPeaks(HabitTree target) {
     int absolutePeak    = 0;
     DateTime sweepPivot = target.startDate;
+
     final chronological = target.relapses.reversed.toList();
     final sweptRelapses = <RelapseEvent>[];
+
     for (final event in chronological) {
       final validSpan = event.timestamp.difference(sweepPivot).inDays;
       if (validSpan > absolutePeak) absolutePeak = validSpan;
@@ -125,12 +144,20 @@ class GroveModel extends ChangeNotifier {
       ));
       sweepPivot = event.timestamp;
     }
-    target.relapses..clear()..addAll(sweptRelapses);
+
+    return target.copyWith(relapses: sweptRelapses);
   }
 
   void deleteHabit(String habitId) {
     _habits.removeWhere((h) => h.id == habitId);
     _prefs?.remove(habitId);
+    _persist();
+    notifyListeners();
+  }
+
+  void restoreHabit(HabitTree habit) {
+    if (_habits.any((h) => h.id == habit.id)) return;
+    _habits.add(habit);
     _persist();
     notifyListeners();
   }
@@ -157,7 +184,9 @@ class GroveModel extends ChangeNotifier {
         entries = decoded['trees'] as List<dynamic>;
       } else if (decoded is List) {
         entries = decoded;
-      } else { return false; }
+      } else {
+        return false;
+      }
       final imported = <HabitTree>[];
       for (final entry in entries) {
         if (entry is Map<String, dynamic>) imported.add(HabitTree.fromMap(entry));
