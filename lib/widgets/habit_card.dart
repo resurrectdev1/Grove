@@ -40,7 +40,22 @@ class _HabitCardState extends State<HabitCard> {
         onLongPressStart:      (_) => setState(() => _isPruning = true),
         onLongPressMoveUpdate: _isPruning ? (d) => setState(() => _dragOffset = d.offsetFromOrigin.dx) : null,
         onLongPressEnd: (_) {
-          if (_dragOffset.abs() > 200) { model.deleteHabit(widget.habit.id); HapticFeedback.heavyImpact(); }
+          if (_dragOffset.abs() > 200) {
+            final deleted = widget.habit;
+            model.deleteHabit(widget.habit.id);
+            HapticFeedback.heavyImpact();
+            ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(SnackBar(
+              content:         Text('"${deleted.name}" removed'),
+              behavior:        SnackBarBehavior.floating,
+              duration:        const Duration(seconds: 4),
+              action: SnackBarAction(
+                label:    'Undo',
+                onPressed: () => model.restoreHabit(deleted),
+              ),
+            ));
+          }
           setState(() { _isPruning = false; _dragOffset = 0; });
         },
         child: Opacity(
@@ -92,7 +107,22 @@ class _HabitCardState extends State<HabitCard> {
       onLongPressStart:      (_) => setState(() => _isPruning = true),
       onLongPressMoveUpdate: _isPruning ? (d) => setState(() => _dragOffset = d.offsetFromOrigin.dx) : null,
       onLongPressEnd: (_) {
-        if (_dragOffset.abs() > 200) { model.deleteHabit(widget.habit.id); HapticFeedback.heavyImpact(); }
+        if (_dragOffset.abs() > 200) {
+          final deleted = widget.habit;
+          model.deleteHabit(widget.habit.id);
+          HapticFeedback.heavyImpact();
+          ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(SnackBar(
+            content:  Text('"${deleted.name}" removed'),
+            behavior: SnackBarBehavior.floating,
+            duration: const Duration(seconds: 4),
+            action: SnackBarAction(
+              label:    'Undo',
+              onPressed: () => model.restoreHabit(deleted),
+            ),
+          ));
+        }
         setState(() { _isPruning = false; _dragOffset = 0; });
       },
       child: Opacity(
