@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/data/latest_all.dart' as tz_data;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -15,16 +16,10 @@ class GroveNotifications {
   Future<void> init() async {
     tz_data.initializeTimeZones();
 
-    final offsetSeconds = DateTime.now().timeZoneOffset.inSeconds;
-    final offsetHours   = offsetSeconds ~/ 3600;
-    final etcHours      = -offsetHours;
-    final tzName        = etcHours == 0
-    ? 'UTC'
-    : 'Etc/GMT${etcHours > 0 ? '+' : ''}$etcHours';
-
-    debugPrint('Grove: device UTC offset ${offsetHours >= 0 ? '+' : ''}$offsetHours h → $tzName');
     try {
-      tz.setLocalLocation(tz.getLocation(tzName));
+      final tzInfo = await FlutterTimezone.getLocalTimezone();
+      debugPrint('Grove: device timezone → ${tzInfo.identifier}');
+      tz.setLocalLocation(tz.getLocation(tzInfo.identifier));
     } catch (e) {
       debugPrint('Grove: timezone lookup failed ($e), falling back to UTC');
       tz.setLocalLocation(tz.UTC);
