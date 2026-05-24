@@ -31,6 +31,15 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
   void initState() {
     super.initState();
     _calendarPageController = PageController(initialPage: _initialPageIndex);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final habit = context.read<GroveModel>().habitById(widget.habitId);
+      if (habit != null) {
+        setState(() {
+          _timeSinceRelapse = DateTime.now().difference(habit.lastReset);
+        });
+      }
+    });
     _startTicker();
   }
 
@@ -67,7 +76,6 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
       });
         return Scaffold(backgroundColor: theme.bg);
     }
-    _timeSinceRelapse = DateTime.now().difference(habit.lastReset);
 
     return Scaffold(
       backgroundColor: theme.bg,
@@ -111,16 +119,16 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
         child: Column(children: [
           Text(label, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600,
                                        color: theme.textSecondary, letterSpacing: 0.8)),
-                                       const SizedBox(height: 12),
-                                       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                                         TimeUnit(value: days,    label: 'DAYS', color: habit.color),
-                                         TimeDivider(color: theme.textMuted),
-                                         TimeUnit(value: hours,   label: 'HRS',  color: habit.color),
-                                         TimeDivider(color: theme.textMuted),
-                                         TimeUnit(value: minutes, label: 'MIN',  color: habit.color),
-                                         TimeDivider(color: theme.textMuted),
-                                         TimeUnit(value: seconds, label: 'SEC',  color: habit.color),
-                                       ]),
+                      const SizedBox(height: 12),
+                      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                        TimeUnit(value: days,    label: 'DAYS', color: habit.color),
+                        TimeDivider(color: theme.textMuted),
+                        TimeUnit(value: hours,   label: 'HRS',  color: habit.color),
+                        TimeDivider(color: theme.textMuted),
+                        TimeUnit(value: minutes, label: 'MIN',  color: habit.color),
+                        TimeDivider(color: theme.textMuted),
+                        TimeUnit(value: seconds, label: 'SEC',  color: habit.color),
+                      ]),
         ]),
       ),
     );
@@ -319,7 +327,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                                           final ts = DateTime(selectedDate.year, selectedDate.month, selectedDate.day, selectedTime.hour, selectedTime.minute);
                                           model.updateStartDate(habit.id, ts);
                                           model.recordCustomRelapse(habit.id, reasonCtrl.text.trim(), ts);
-                                          HapticFeedback.mediumImpact(); reasonCtrl.dispose(); Navigator.pop(sheetCtx);
+                                          HapticFeedback.mediumImpact(); Navigator.pop(sheetCtx);
                                         },
                                         icon: const Icon(Icons.refresh_rounded, size: 16),
                                         label: const Text('Log as Relapse on This Date', style: TextStyle(fontWeight: FontWeight.w600)),
@@ -331,7 +339,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                               onPressed: () {
                                 final ts = DateTime(selectedDate.year, selectedDate.month, selectedDate.day, selectedTime.hour, selectedTime.minute);
                                 model.updateStartDate(habit.id, ts);
-                                HapticFeedback.lightImpact(); reasonCtrl.dispose(); Navigator.pop(sheetCtx);
+                                HapticFeedback.lightImpact(); Navigator.pop(sheetCtx);
                               },
                               icon: const Icon(Icons.expand_less_rounded, size: 16),
                               label: const Text('Only Extend Start Date (No Relapse)'),
