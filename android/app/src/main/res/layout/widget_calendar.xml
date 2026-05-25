@@ -70,12 +70,12 @@
             android:layout_width="match_parent"
             android:layout_height="16dp"
             android:orientation="horizontal">
-            <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
             <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="M" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
             <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="T" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
             <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="W" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
             <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="T" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
             <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="F" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
+            <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
             <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="#FF4A5E4C" android:textSize="9sp"/>
         </LinearLayout>
 
