@@ -157,7 +157,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                       fontSize: 24, fontWeight: FontWeight.w800,
                       color: theme.textPrimary, letterSpacing: 1,
                     )),
-                    Text('v0.5.8 • Open Source',
+                    Text('v0.5.9 • Open Source',
                          style: TextStyle(fontSize: 12, color: theme.textSecondary)),
                   ],
                 ),
@@ -195,7 +195,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
             ),
             const SizedBox(height: 24),
             Text(
-              'Made with 🌿 — all data stays on your device.',
+              'Made with 🌿 • all data stays on your device.',
               style:     TextStyle(fontSize: 10, color: theme.textMuted),
               textAlign: TextAlign.center,
             ),
