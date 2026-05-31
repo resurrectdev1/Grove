@@ -1,6 +1,5 @@
 import 'package:grove/models/grove_models.dart';
 import 'package:grove/painters/fractal_tree_painter.dart';
-import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,6 +27,7 @@ class GroveWidgetBridge {
 
       await _channel.invokeMethod<void>('updateWidgets');
     } on MissingPluginException {
+
     } catch (e) {
       debugPrint('GroveWidgetBridge.renderAndUpdate error: $e');
     }
@@ -37,6 +37,7 @@ class GroveWidgetBridge {
     try {
       await _channel.invokeMethod<void>('updateWidgets');
     } on MissingPluginException {
+
     } catch (e) {
       debugPrint('GroveWidgetBridge.requestUpdate error: $e');
     }
