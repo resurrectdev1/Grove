@@ -7,10 +7,10 @@
 Whether you're maintaining sobriety, breaking harmful habits, or building positive routines, **Grove** helps you stay focused on consistent progress. Watch your streaks grow, track meaningful milestones, and cultivate a forest of procedurally generated fractal trees that evolve alongside your journey. Every day of progress helps something beautiful take root.
 
 <p align="center">
-<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_1.png">
-<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_2.png">
-<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_3.png">
-<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_4.png">
+<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_1v1.png">
+<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_2v1.png">
+<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_3v1.png">
+<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_4v1.png">
 <img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_5.png">
 <img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_6.png">
 </p>
