@@ -104,7 +104,7 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
                     color:       step.treeColor,
                     startDate:   DateTime.now().subtract(Duration(days: _treeDaysForStage(step.treeStage))),
                     lastReset:   DateTime.now().subtract(Duration(days: _treeDaysForStage(step.treeStage))),
-                    geneticSeed: _page * 137,
+                    geneticSeed: _page == 4 ? 2 * 137 : _page == 5 ? 4 * 137 : _page * 137,
                   ),
                 ),
               ),
