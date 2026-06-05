@@ -1,7 +1,7 @@
 name: grove
 description: "Visualize your growth."
 publish_to: 'none'
-version: 0.6.0+34
+version: 0.6.0+4
 
 environment:
   sdk: ">=3.11.0 <4.0.0"
