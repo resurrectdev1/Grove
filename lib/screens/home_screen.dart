@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:grove/models/grove_models.dart';
 import 'package:grove/painters/fractal_tree_painter.dart';
@@ -24,17 +25,21 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
   final _scrollCtrl = FixedExtentScrollController();
   late PageController _carouselCtrl;
   int _selectedIdx = 0;
+  String _appVersion = '';
 
   @override
   void initState() {
     super.initState();
     _carouselCtrl = PageController(viewportFraction: 0.82);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final settings = context.read<GroveSettings>();
-      if (!settings.onboardingDone) {
-        _showOnboarding();
-      }
+    PackageInfo.fromPlatform().then((info) {
+      if (mounted) setState(() => _appVersion = info.version);
     });
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final settings = context.read<GroveSettings>();
+        if (!settings.onboardingDone) {
+          _showOnboarding();
+        }
+      });
   }
 
   @override
@@ -155,7 +160,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                       fontSize: 24, fontWeight: FontWeight.w800,
                       color: theme.textPrimary, letterSpacing: 1,
                     )),
-                    Text('v0.6.0 • Open Source',
+                    Text('v${_appVersion.isEmpty ? '...' : _appVersion} • Open Source',
                          style: TextStyle(fontSize: 12, color: theme.textSecondary)),
                   ],
                 ),
