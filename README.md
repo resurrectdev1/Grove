@@ -29,7 +29,7 @@ Simply open Grove and click the "Plant a Tree" button to start customizing your 
 
 📈 **Analytics:** Beyond simple streaks, the app uses a "Peak Sweep" algorithm to track your history, relapse reasons, and consistency across an interactive monthly calendar.
 
-🔔 **Reminders:** Schedule a quiet moment of reflection to check in on your forest’s growth and stay consistent.
+🔔 **Reminders:** Get reminded when your tree hits a certain growth milestone; helping motivate you, and stay clean longer. 
 
 🔒 **Privacy Focused:** Keep your journey private with biometric, Face ID, or PIN authentication to shelter your data.
 
