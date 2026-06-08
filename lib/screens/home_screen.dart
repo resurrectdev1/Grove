@@ -310,6 +310,97 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     ),
   );
 
+  void _showReorderSheet(BuildContext ctx) {
+    final model     = ctx.read<GroveModel>();
+    final settings  = ctx.read<GroveSettings>();
+    final theme     = settings.theme;
+    final bottomPad = MediaQuery.of(ctx).padding.bottom;
+
+    showModalBottomSheet(
+      context:            ctx,
+      backgroundColor:    theme.surfaceHigh,
+      isScrollControlled: true,
+      useSafeArea:        true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      ),
+      builder: (sheetCtx) => StatefulBuilder(
+        builder: (_, setSheet) {
+          final habits = model.habits.toList();
+          return SizedBox(
+            height: MediaQuery.of(sheetCtx).size.height * 0.75,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
+                  child: Column(children: [
+                    Container(
+                      width: 36, height: 4,
+                      decoration: BoxDecoration(
+                        color:        theme.textMuted.withValues(alpha: 0.4),
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Row(children: [
+                      Text('Reorder Grove',
+                           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: theme.textPrimary)),
+                           const Spacer(),
+                           Text('Hold & drag ≡ to reorder',
+                                style: TextStyle(fontSize: 11, color: theme.textMuted, fontStyle: FontStyle.italic)),
+                    ]),
+                    const SizedBox(height: 16),
+                  ]),
+                ),
+                Expanded(
+                  child: ReorderableListView.builder(
+                    padding:     EdgeInsets.fromLTRB(16, 0, 16, 24 + bottomPad),
+                    itemCount:   habits.length,
+                    onReorder:   (oldIndex, newIndex) {
+                      if (newIndex > oldIndex) newIndex--;
+                      model.reorderHabits(oldIndex, newIndex);
+                      HapticFeedback.selectionClick();
+                      setSheet(() {});
+                    },
+                    itemBuilder: (_, i) {
+                      final h = habits[i];
+                      return Container(
+                        key:    ValueKey(h.id),
+                        margin: const EdgeInsets.symmetric(vertical: 5),
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        decoration: BoxDecoration(
+                          color:        theme.surface,
+                          borderRadius: BorderRadius.circular(16),
+                          border:       Border.all(color: h.color.withValues(alpha: 0.3)),
+                        ),
+                        child: Row(children: [
+                          Container(
+                            width: 10, height: 10,
+                            decoration: BoxDecoration(color: h.color, shape: BoxShape.circle,
+                                                      boxShadow: [BoxShadow(color: h.color.withValues(alpha: 0.5), blurRadius: 4)]),
+                          ),
+                          const SizedBox(width: 14),
+                          Expanded(
+                            child: Text(h.name,
+                                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: theme.textPrimary)),
+                          ),
+                          Text('Day ${h.daysElapsed}',
+                               style: TextStyle(fontSize: 12, color: theme.textSecondary)),
+                               const SizedBox(width: 12),
+                               Icon(Icons.drag_handle_rounded, color: theme.textMuted, size: 22),
+                        ]),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   void _showSettingsHub(BuildContext ctx) {
     final settings  = ctx.read<GroveSettings>();
     final model     = ctx.read<GroveModel>();
@@ -380,6 +471,17 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                     onTap: () { settings.setLayoutMode(LayoutMode.compactList); HapticFeedback.selectionClick(); Navigator.pop(ctx); },
                   ),
                 ],
+              ),
+              const SizedBox(height: 12),
+              OutlinedButton.icon(
+                onPressed: () { Navigator.pop(ctx); _showReorderSheet(ctx); },
+                icon:  Icon(Icons.swap_vert_rounded, size: 16, color: settings.theme.textSecondary),
+                label: Text('Reorder Grove', style: TextStyle(color: settings.theme.textPrimary)),
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  side:    BorderSide(color: settings.theme.textMuted.withValues(alpha: 0.4)),
+                  shape:   RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                ),
               ),
               const SizedBox(height: 28),
               Text('RENDER THEMES', style: TextStyle(
