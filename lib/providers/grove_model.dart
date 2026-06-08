@@ -148,6 +148,22 @@ class GroveModel extends ChangeNotifier {
     return target.copyWith(relapses: sweptRelapses);
   }
 
+  void renameHabit(String habitId, String newName) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1) return;
+    _habits[i] = _habits[i].copyWith(name: newName);
+    _persist();
+    notifyListeners();
+  }
+
+  void reorderHabits(int oldIndex, int newIndex) {
+    if (oldIndex == newIndex) return;
+    final item = _habits.removeAt(oldIndex);
+    _habits.insert(newIndex, item);
+    _persist();
+    notifyListeners();
+  }
+
   void deleteHabit(String habitId) {
     _habits.removeWhere((h) => h.id == habitId);
     _prefs?.remove(habitId);
