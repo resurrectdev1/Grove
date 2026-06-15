@@ -25,7 +25,7 @@ Simply open Grove and click the "Plant a Tree" button to start customizing your 
 
 🌀 **Dynamic Layouts:** Experience your forest your way. Switch between a 3D vertical drum roll, a smooth horizontal carousel, a compact grid, or a streamlined list.
 
-🎨 **Material You Integration:** A cool, nature-inspired theme engine that supports Android 12+ dynamic coloring, adjusting your app's palette to match your wallpaper (Material You support).
+🎨 **Customizability:** A tree hex color picker, aswell as a custom made theme engine suppourting Android 12+ Material You, allowing you to adjust your app's palette to match your wallpaper.
 
 📈 **Analytics:** Beyond simple streaks, Grove tracks your peak record, total relapses, and time you've spent clean since your last relapse as well as the reasons why logged across an interactive monthly calendar.
 
