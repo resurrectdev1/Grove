@@ -18,6 +18,7 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
   final _hexCtrl  = TextEditingController();
   Color _color    = GroveTheme.treePalette[0];
   bool  _validHex = true;
+  HabitMode _mode = HabitMode.abstain;
 
   @override
   void initState() { super.initState(); _hexCtrl.text = _colorToHex(_color); }
@@ -53,6 +54,62 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
                                labelText: 'Habit Name', hintText: 'e.g. Alcohol, Smoking, Social media',
                                prefixIcon: Icon(Icons.edit_outlined, size: 18, color: theme.textMuted)),
                            ),
+                      const SizedBox(height: 20),
+                      Text('TRACKING MODE', style: TextStyle(fontSize: 11, color: theme.textSecondary, letterSpacing: 1.0)),
+                      const SizedBox(height: 12),
+                      Row(children: [
+                        Expanded(child: GestureDetector(
+                          onTap: () => setState(() => _mode = HabitMode.abstain),
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+                            decoration: BoxDecoration(
+                              color: _mode == HabitMode.abstain ? theme.primary.withValues(alpha: 0.12) : theme.surface,
+                              borderRadius: BorderRadius.circular(14),
+                              border: Border.all(
+                                color: _mode == HabitMode.abstain ? theme.primary : theme.textMuted.withValues(alpha: 0.3),
+                                width: _mode == HabitMode.abstain ? 2 : 1,
+                              ),
+                            ),
+                            child: Column(children: [
+                              Icon(Icons.shield_outlined, size: 22, color: _mode == HabitMode.abstain ? theme.primary : theme.textMuted),
+                              const SizedBox(height: 6),
+                              Text('Abstain', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700,
+                                color: _mode == HabitMode.abstain ? theme.primary : theme.textSecondary)),
+                              const SizedBox(height: 2),
+                              Text('Auto-grows daily', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                              const SizedBox(height: 2),
+                              Text('Tap on relapse', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                            ]),
+                          ),
+                        )),
+                        const SizedBox(width: 8),
+                        Expanded(child: GestureDetector(
+                          onTap: () => setState(() => _mode = HabitMode.checkIn),
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+                            decoration: BoxDecoration(
+                              color: _mode == HabitMode.checkIn ? theme.primary.withValues(alpha: 0.12) : theme.surface,
+                              borderRadius: BorderRadius.circular(14),
+                              border: Border.all(
+                                color: _mode == HabitMode.checkIn ? theme.primary : theme.textMuted.withValues(alpha: 0.3),
+                                width: _mode == HabitMode.checkIn ? 2 : 1,
+                              ),
+                            ),
+                            child: Column(children: [
+                              Icon(Icons.check_circle_outline, size: 22, color: _mode == HabitMode.checkIn ? theme.primary : theme.textMuted),
+                              const SizedBox(height: 6),
+                              Text('Check-In', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700,
+                                color: _mode == HabitMode.checkIn ? theme.primary : theme.textSecondary)),
+                              const SizedBox(height: 2),
+                              Text('Tap daily to grow', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                              const SizedBox(height: 2),
+                              Text('Streak on check-ins', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                            ]),
+                          ),
+                        )),
+                      ]),
                       const SizedBox(height: 20),
                       Text('PRESET COLORS', style: TextStyle(fontSize: 11, color: theme.textSecondary, letterSpacing: 1.0)),
                       const SizedBox(height: 12),
@@ -131,7 +188,7 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Give your habit a name.')));
       return;
     }
-    context.read<GroveModel>().addHabit(name: name, color: _color);
+    context.read<GroveModel>().addHabit(name: name, color: _color, mode: _mode);
     HapticFeedback.lightImpact();
     Navigator.pop(context);
   }

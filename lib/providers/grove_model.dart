@@ -54,7 +54,7 @@ class GroveModel extends ChangeNotifier {
     }
   }
 
-  void addHabit({required String name, required Color color}) {
+  void addHabit({required String name, required Color color, HabitMode mode = HabitMode.abstain}) {
     final now = DateTime.now();
     _habits.add(HabitTree(
       id:        'habit_${now.millisecondsSinceEpoch}',
@@ -62,7 +62,42 @@ class GroveModel extends ChangeNotifier {
       color:     color,
       startDate: now,
       lastReset: now,
+      mode:      mode,
     ));
+    _persist();
+    notifyListeners();
+  }
+
+  void toggleCheckIn(String habitId, {DateTime? date}) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1 || _habits[i].mode != HabitMode.checkIn) return;
+
+    final now   = date ?? DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final original = _habits[i];
+    final updatedDays = Set<DateTime>.of(original.checkInDays);
+
+    if (updatedDays.contains(today)) {
+      updatedDays.remove(today);
+    } else {
+      updatedDays.add(today);
+    }
+
+    _habits[i] = original.copyWith(checkInDays: updatedDays);
+    _persist();
+    notifyListeners();
+  }
+
+  void removeCheckInOnDate(String habitId, DateTime date) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1 || _habits[i].mode != HabitMode.checkIn) return;
+
+    final target = _habits[i];
+    final cleanedDate = DateTime(date.year, date.month, date.day);
+    if (!target.checkInDays.contains(cleanedDate)) return;
+
+    final updatedDays = Set<DateTime>.of(target.checkInDays)..remove(cleanedDate);
+    _habits[i] = target.copyWith(checkInDays: updatedDays);
     _persist();
     notifyListeners();
   }

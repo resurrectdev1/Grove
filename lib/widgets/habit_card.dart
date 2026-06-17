@@ -24,11 +24,14 @@ class _HabitCardState extends State<HabitCard> {
     final model        = context.read<GroveModel>();
     final settings     = context.watch<GroveSettings>();
     final theme        = settings.theme;
-    final days         = widget.habit.daysElapsed;
-    final stage        = widget.habit.stage;
-    final relapseCount = widget.habit.relapses.length;
+    final habit        = widget.habit;
+    final days         = habit.daysElapsed;
+    final stage        = habit.stage;
+    final relapseCount = habit.relapses.length;
     final isCompact    = widget.layoutMode == LayoutMode.compactGrid;
     final isList       = widget.layoutMode == LayoutMode.compactList;
+    final isCheckIn    = habit.mode == HabitMode.checkIn;
+    final isCheckedIn  = isCheckIn && habit.checkedInToday;
 
     if (isList) {
       return GestureDetector(
@@ -37,25 +40,25 @@ class _HabitCardState extends State<HabitCard> {
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: theme.cardBg, borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: widget.habit.color.withValues(alpha: 0.3)),
+            border: Border.all(color: habit.color.withValues(alpha: 0.3)),
           ),
           child: Row(children: [
             GestureDetector(
               onTap: () => _goDetail(context),
-              child: SizedBox(width: 60, height: 60, child: AnimatedTreeWidget(habit: widget.habit)),
+              child: SizedBox(width: 60, height: 60, child: AnimatedTreeWidget(habit: habit)),
             ),
             const SizedBox(width: 12),
             Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(widget.habit.name, maxLines: 1, overflow: TextOverflow.ellipsis,
+              Text(habit.name, maxLines: 1, overflow: TextOverflow.ellipsis,
                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: theme.textPrimary)),
                    const SizedBox(height: 4),
                    Row(children: [
                      Container(
                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                        decoration: BoxDecoration(
-                         color: widget.habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(12)),
-                         child: Text(stageLabel(stage),
-                         style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: widget.habit.color)),
+                         color: habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(12)),
+                         child: Text(isCheckIn ? '$days-day streak' : stageLabel(stage),
+                         style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: habit.color)),
                      ),
                      const SizedBox(width: 6),
                      Text('Day $days', style: TextStyle(fontSize: 12, color: theme.textSecondary)),
@@ -63,8 +66,18 @@ class _HabitCardState extends State<HabitCard> {
             ])),
             const SizedBox(width: 8),
             GestureDetector(
-              onTap: () => _showRelapseDialog(context, model),
-              child: const Icon(Icons.refresh_rounded, size: 20, color: GroveTheme.clayRed),
+              onTap: () => isCheckIn
+                ? _handleCheckIn(context, model, habit)
+                : _showRelapseDialog(context, model),
+              child: Icon(
+                isCheckIn
+                  ? (isCheckedIn ? Icons.check_circle : Icons.check_circle_outline)
+                  : Icons.refresh_rounded,
+                size: 20,
+                color: isCheckIn
+                  ? (isCheckedIn ? habit.color : theme.textMuted)
+                  : GroveTheme.clayRed,
+              ),
             ),
           ]),
         ),
@@ -80,11 +93,11 @@ class _HabitCardState extends State<HabitCard> {
           color:        theme.cardBg,
           borderRadius: BorderRadius.circular(isCompact ? 22 : 28),
           border: Border.all(
-            color: widget.isSelected ? widget.habit.color.withValues(alpha: 0.45) : theme.surfaceHigh,
+            color: widget.isSelected ? habit.color.withValues(alpha: 0.45) : theme.surfaceHigh,
             width: widget.isSelected ? 1.5 : 1.0,
           ),
           boxShadow: widget.isSelected && !isCompact
-          ? [BoxShadow(color: widget.habit.color.withValues(alpha: 0.18), blurRadius: 32, spreadRadius: 2)]
+          ? [BoxShadow(color: habit.color.withValues(alpha: 0.18), blurRadius: 32, spreadRadius: 2)]
           : [],
         ),
         child: Column(
@@ -93,19 +106,19 @@ class _HabitCardState extends State<HabitCard> {
             GestureDetector(
               onTap: () => _goDetail(context),
               child: Hero(
-                tag: 'tree_${widget.habit.id}',
+                tag: 'tree_${habit.id}',
                 child: Material(
                   color: Colors.transparent,
                   child: SizedBox(
                     width:  isCompact ? 100 : 175,
                     height: isCompact ? 100 : 175,
-                    child:  AnimatedTreeWidget(habit: widget.habit),
+                    child:  AnimatedTreeWidget(habit: habit),
                   ),
                 ),
               ),
             ),
             SizedBox(height: isCompact ? 8 : 10),
-            Text(widget.habit.name, maxLines: 1, overflow: TextOverflow.ellipsis,
+            Text(habit.name, maxLines: 1, overflow: TextOverflow.ellipsis,
                  style: TextStyle(fontSize: isCompact ? 15 : 22, fontWeight: FontWeight.w700,
                                   color: theme.textPrimary, letterSpacing: 0.3)),
                       SizedBox(height: isCompact ? 4 : 6),
@@ -116,9 +129,9 @@ class _HabitCardState extends State<HabitCard> {
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                               decoration: BoxDecoration(
-                                color: widget.habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(20)),
-                                child: Text(stageLabel(stage), style: TextStyle(
-                                  fontSize: 11, fontWeight: FontWeight.w600, color: widget.habit.color, letterSpacing: 0.8)),
+                                color: habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(20)),
+                                child: Text(isCheckIn ? '$days-day streak' : stageLabel(stage), style: TextStyle(
+                                  fontSize: 11, fontWeight: FontWeight.w600, color: habit.color, letterSpacing: 0.8)),
                             ),
                             const SizedBox(width: 8),
                           ],
@@ -130,7 +143,9 @@ class _HabitCardState extends State<HabitCard> {
                       ),
                       if (!isCompact) ...[
                         const SizedBox(height: 4),
-                        Text(stageTagline(stage),
+                        Text(isCheckIn
+                          ? isCheckedIn ? 'Already checked in today ✓' : 'Tap below to check in'
+                          : stageTagline(stage),
                         style: TextStyle(fontSize: 11, color: theme.textMuted, fontStyle: FontStyle.italic),
                         textAlign: TextAlign.center),
                       const SizedBox(height: 16),
@@ -138,10 +153,20 @@ class _HabitCardState extends State<HabitCard> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           _OutlineAction(icon: Icons.calendar_month_outlined,
-                                         label: 'History${relapseCount > 0 ? ' ($relapseCount)' : ''}',
+                                         label: isCheckIn
+                                           ? 'History (${habit.checkInDays.length})'
+                                           : 'History${relapseCount > 0 ? ' ($relapseCount)' : ''}',
                                          color: theme.textSecondary, onTap: () => _goDetail(context)),
                                          const SizedBox(width: 10),
-                                         _OutlineAction(icon: Icons.refresh_rounded, label: 'Relapse',
+                                         if (isCheckIn)
+                                           _OutlineAction(
+                                             icon: isCheckedIn ? Icons.check_circle : Icons.check_circle_outline,
+                                             label: isCheckedIn ? 'Checked In' : 'Check In',
+                                             color: isCheckedIn ? habit.color : habit.color,
+                                             onTap: () => _handleCheckIn(context, model, habit),
+                                           )
+                                         else
+                                           _OutlineAction(icon: Icons.refresh_rounded, label: 'Relapse',
                                                         color: GroveTheme.clayRed, onTap: () => _showRelapseDialog(context, model)),
                         ],
                       ),
@@ -150,14 +175,28 @@ class _HabitCardState extends State<HabitCard> {
                         Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                           IconButton(icon: Icon(Icons.calendar_month_outlined, size: 16, color: theme.textSecondary),
                           onPressed: () => _goDetail(context), padding: EdgeInsets.zero, constraints: const BoxConstraints()),
-                          IconButton(icon: const Icon(Icons.refresh_rounded, size: 16, color: GroveTheme.clayRed),
-                          onPressed: () => _showRelapseDialog(context, model), padding: EdgeInsets.zero, constraints: const BoxConstraints()),
+                          if (isCheckIn)
+                            IconButton(
+                              icon: Icon(
+                                isCheckedIn ? Icons.check_circle : Icons.check_circle_outline,
+                                size: 16,
+                                color: isCheckedIn ? habit.color : theme.textMuted),
+                              onPressed: () => _handleCheckIn(context, model, habit),
+                              padding: EdgeInsets.zero, constraints: const BoxConstraints())
+                          else
+                            IconButton(icon: const Icon(Icons.refresh_rounded, size: 16, color: GroveTheme.clayRed),
+                            onPressed: () => _showRelapseDialog(context, model), padding: EdgeInsets.zero, constraints: const BoxConstraints()),
                         ]),
                       ],
           ],
         ),
       ),
     );
+  }
+
+  void _handleCheckIn(BuildContext ctx, GroveModel model, HabitTree habit) {
+    HapticFeedback.mediumImpact();
+    model.toggleCheckIn(habit.id);
   }
 
   void _goDetail(BuildContext ctx) => Navigator.push(ctx,

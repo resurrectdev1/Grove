@@ -70,6 +70,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     }
     final habit = context.watch<GroveModel>().habitById(widget.habitId);
     final theme = context.watch<GroveSettings>().theme;
+    final isCheckIn = habit?.mode == HabitMode.checkIn;
     if (habit == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted && !_isDeleting) Navigator.of(context).pop();
@@ -84,16 +85,50 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
           _appBar(context, habit, theme),
           SliverToBoxAdapter(child: _treeHero(habit)),
           SliverToBoxAdapter(child: _stats(habit, theme)),
-          SliverToBoxAdapter(child: _timeSinceRelapseCard(habit, theme)),
+          isCheckIn
+            ? SliverToBoxAdapter(child: _checkInStreakCard(habit, theme))
+            : SliverToBoxAdapter(child: _timeSinceRelapseCard(habit, theme)),
           SliverToBoxAdapter(child: _calendarSection(habit, theme)),
-          SliverToBoxAdapter(child: _historyHeader(habit, theme)),
-          habit.relapses.isEmpty
-          ? SliverToBoxAdapter(child: _noHistory(theme))
-          : SliverList(delegate: SliverChildBuilderDelegate(
-            (_, i) => RelapseEventTile(event: habit.relapses[i], index: i),
-            childCount: habit.relapses.length)),
-            SliverToBoxAdapter(child: _deleteSection(context, habit, theme)),
-            const SliverToBoxAdapter(child: SizedBox(height: 80)),
+          if (!isCheckIn) ...[
+            SliverToBoxAdapter(child: _historyHeader(habit, theme)),
+            habit.relapses.isEmpty
+              ? SliverToBoxAdapter(child: _noHistory(theme))
+              : SliverList(delegate: SliverChildBuilderDelegate(
+                (_, i) => RelapseEventTile(event: habit.relapses[i], index: i),
+                childCount: habit.relapses.length)),
+          ] else ...[
+            SliverToBoxAdapter(child: _checkInHistoryHeader(habit, theme)),
+            if (habit.checkInDays.isEmpty)
+              SliverToBoxAdapter(child: _noHistory(theme, checkIn: true))
+            else
+              SliverList(delegate: SliverChildBuilderDelegate(
+                (_, i) {
+                  final sorted = habit.checkInDays.toList()..sort((a, b) => b.compareTo(a));
+                  final date = sorted[i];
+                  return Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    padding: const EdgeInsets.all(14),
+                    decoration: BoxDecoration(color: theme.surface, borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: theme.surfaceHigh)),
+                    child: Row(children: [
+                      Container(width: 28, height: 28,
+                        decoration: BoxDecoration(color: habit.color.withValues(alpha: 0.12), shape: BoxShape.circle),
+                        alignment: Alignment.center,
+                        child: Icon(Icons.check, size: 14, color: habit.color)),
+                      const SizedBox(width: 12),
+                      Expanded(child: Text(
+                        DateFormat('EEEE, MMMM d, yyyy').format(date),
+                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: theme.textPrimary),
+                      )),
+                      Text(DateFormat('h:mm a').format(date), style: TextStyle(fontSize: 11, color: theme.textMuted)),
+                    ]),
+                  );
+                },
+                childCount: habit.checkInDays.length,
+              )),
+          ],
+          SliverToBoxAdapter(child: _deleteSection(context, habit, theme)),
+          const SliverToBoxAdapter(child: SizedBox(height: 80)),
         ],
       ),
     );
@@ -132,6 +167,71 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
         ]),
       ),
     );
+  }
+
+  Widget _checkInStreakCard(HabitTree habit, GroveTheme theme) {
+    final checkedIn = habit.checkedInToday;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 18),
+        decoration: BoxDecoration(
+          color:        habit.color.withValues(alpha: 0.07),
+          borderRadius: BorderRadius.circular(20),
+          border:       Border.all(color: habit.color.withValues(alpha: 0.22)),
+        ),
+        child: Column(children: [
+          Text(checkedIn ? 'Today is checked in' : 'Today is not yet checked in',
+               style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600,
+                                color: theme.textSecondary, letterSpacing: 0.8)),
+                      const SizedBox(height: 12),
+                      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                        _streakUnit(value: habit.checkInStreak, label: 'STREAK', color: habit.color),
+                        _streakUnit(value: habit.checkInDays.length, label: 'TOTAL', color: GroveTheme.streakGold),
+                        _streakUnit(value: habit.totalDays, label: 'DAYS', color: theme.textSecondary),
+                      ]),
+                      const SizedBox(height: 14),
+                      GestureDetector(
+                        onTap: () {
+                          HapticFeedback.mediumImpact();
+                          context.read<GroveModel>().toggleCheckIn(habit.id);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+                          decoration: BoxDecoration(
+                            color: checkedIn ? theme.surfaceHigh : habit.color,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Row(mainAxisSize: MainAxisSize.min, children: [
+                            Icon(
+                              checkedIn ? Icons.check_circle : Icons.check_circle_outline,
+                              size: 18,
+                              color: checkedIn ? habit.color : Colors.white,
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              checkedIn ? 'Already Checked In' : 'Check In Today',
+                              style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w600,
+                                color: checkedIn ? habit.color : Colors.white,
+                              ),
+                            ),
+                          ]),
+                        ),
+                      ),
+        ]),
+      ),
+    );
+  }
+
+  Widget _streakUnit({required int value, required String label, required Color color}) {
+    return Column(mainAxisSize: MainAxisSize.min, children: [
+      Text(value.toString(),
+        style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, color: color,
+                         fontFeatures: const [FontFeature.tabularFigures()])),
+      const SizedBox(height: 2),
+      Text(label, style: TextStyle(fontSize: 9, color: GroveTheme.slateGrey, fontWeight: FontWeight.w600, letterSpacing: 0.5)),
+    ]);
   }
 
   Widget _appBar(BuildContext ctx, HabitTree habit, GroveTheme theme) =>
@@ -257,7 +357,11 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
       const SizedBox(width: 10),
       StatChip(label: 'Peak Record',    value: '${habit.peakDays}d',    color: GroveTheme.streakGold),
       const SizedBox(width: 10),
-      StatChip(label: 'Relapses',       value: '${habit.relapses.length}', color: GroveTheme.clayRed),
+      StatChip(
+        label: habit.mode == HabitMode.checkIn ? 'Check-ins' : 'Relapses',
+        value: habit.mode == HabitMode.checkIn ? '${habit.checkInDays.length}' : '${habit.relapses.length}',
+        color: habit.mode == HabitMode.checkIn ? habit.color : GroveTheme.clayRed,
+      ),
     ]),
   );
 
@@ -435,10 +539,26 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     ]),
   );
 
-  Widget _noHistory(GroveTheme theme) => Padding(
+  Widget _noHistory(GroveTheme theme, {bool checkIn = false}) => Padding(
     padding: const EdgeInsets.symmetric(vertical: 32),
-    child: Center(child: Text('No relapses recorded. Keep growing.',
-                              style: TextStyle(color: theme.textMuted, fontStyle: FontStyle.italic, fontSize: 13))),
+    child: Center(child: Text(
+      checkIn ? 'No check-ins yet. Start today!'
+              : 'No relapses recorded. Keep growing.',
+      style: TextStyle(color: theme.textMuted, fontStyle: FontStyle.italic, fontSize: 13))),
+  );
+
+  Widget _checkInHistoryHeader(HabitTree habit, GroveTheme theme) => Padding(
+    padding: const EdgeInsets.fromLTRB(20, 24, 20, 12),
+    child: Row(children: [
+      Text('Check-In History',
+           style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: theme.textSecondary, letterSpacing: 1.0)),
+           const Spacer(),
+           Container(
+             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+             decoration: BoxDecoration(color: habit.color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(12)),
+             child: Text('${habit.checkInDays.length} total',
+                         style: TextStyle(fontSize: 11, color: habit.color, fontWeight: FontWeight.w500))),
+    ]),
   );
 
   Widget _deleteSection(BuildContext ctx, HabitTree habit, GroveTheme theme) => Padding(
