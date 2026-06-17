@@ -69,29 +69,34 @@ class MonthlyCalendar extends StatelessWidget {
                                        final today      = DateTime(now.year, now.month, now.day);
                                        final isToday    = cellDate == today;
                                        final isFuture   = cellDate.isAfter(today);
+                                       final isCheckIn  = habit.mode == HabitMode.checkIn;
                                        final hasRelapse = habit.relapseDays.contains(cellDate);
+                                       final hasCheckIn = isCheckIn && habit.checkInDays.contains(cellDate);
+                                       final hasMark    = isCheckIn ? hasCheckIn : hasRelapse;
 
                                        final cellColor = isFuture
                                        ? theme.surfaceHigh.withValues(alpha: 0.3)
-                                       : hasRelapse ? GroveTheme.clayRed.withValues(alpha: 0.7) : theme.surfaceHigh;
+                                       : hasMark
+                                         ? (isCheckIn ? habit.color.withValues(alpha: 0.7) : GroveTheme.clayRed.withValues(alpha: 0.7))
+                                         : theme.surfaceHigh;
 
                                        return Expanded(
                                          child: GestureDetector(
-                                           onTap: isFuture ? null : () {
-                                             HapticFeedback.selectionClick();
-                                             _showCellManager(context, cellDate, hasRelapse, model, theme);
-                                           },
-                                           child: Container(
-                                             margin: const EdgeInsets.all(2),
-                                             decoration: BoxDecoration(color: cellColor, borderRadius: BorderRadius.circular(8),
-                                             border: isToday ? Border.all(color: habit.color, width: 2) : null),
-                                             alignment: Alignment.center,
-                                             child: Text('$day', style: TextStyle(
-                                               fontSize: 11, fontWeight: isToday ? FontWeight.w700 : FontWeight.w500,
-                                               color: hasRelapse ? GroveTheme.dewWhite : isFuture
-                                               ? theme.textMuted.withValues(alpha: 0.5) : theme.textSecondary)),
-                                           ),
-                                         ),
+                                               onTap: isFuture ? null : () {
+                                                 HapticFeedback.selectionClick();
+                                                 _showCellManager(context, cellDate, hasMark, model, theme);
+                                               },
+                                               child: Container(
+                                                 margin: const EdgeInsets.all(2),
+                                                 decoration: BoxDecoration(color: cellColor, borderRadius: BorderRadius.circular(8),
+                                                 border: isToday ? Border.all(color: habit.color, width: 2) : null),
+                                                 alignment: Alignment.center,
+                                                 child: Text('$day', style: TextStyle(
+                                                   fontSize: 11, fontWeight: isToday ? FontWeight.w700 : FontWeight.w500,
+                                                   color: hasMark ? GroveTheme.dewWhite : isFuture
+                                                   ? theme.textMuted.withValues(alpha: 0.5) : theme.textSecondary)),
+                                               ),
+                                             ),
                                        );
                                      })),
                                    ))),
@@ -101,14 +106,15 @@ class MonthlyCalendar extends StatelessWidget {
                       _legendDot(theme.surfaceHigh), const SizedBox(width: 5),
                       Text('Clean', style: TextStyle(fontSize: 9, color: theme.textMuted)),
                       const SizedBox(width: 14),
-                      _legendDot(GroveTheme.clayRed.withValues(alpha: 0.7)), const SizedBox(width: 5),
-                      Text('Relapse', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                      _legendDot(isCheckIn ? habit.color.withValues(alpha: 0.7) : GroveTheme.clayRed.withValues(alpha: 0.7)),
+                      const SizedBox(width: 5),
+                      Text(isCheckIn ? 'Check-in' : 'Relapse', style: TextStyle(fontSize: 9, color: theme.textMuted)),
                     ]),
       ]),
     );
   }
 
-  void _showCellManager(BuildContext ctx, DateTime targetDate, bool hasRelapse,
+  void _showCellManager(BuildContext ctx, DateTime targetDate, bool hasMark,
                         GroveModel model, GroveTheme theme) {
     showModalBottomSheet(
       context: ctx, backgroundColor: theme.surfaceHigh,
@@ -118,7 +124,7 @@ class MonthlyCalendar extends StatelessWidget {
         builder: (_) => _CellManagerSheet(
           habit:      habit,
           targetDate: targetDate,
-          hasRelapse: hasRelapse,
+          hasRelapse: hasMark,
           model:      model,
           theme:      theme,
         ),
@@ -152,21 +158,25 @@ class _CellManagerSheet extends StatefulWidget {
 class _CellManagerSheetState extends State<_CellManagerSheet> {
   late final TextEditingController _reasonCtrl;
   late TimeOfDay _selectedTime;
+  late bool _isCheckIn;
 
   @override
   void initState() {
     super.initState();
     _reasonCtrl   = TextEditingController();
     _selectedTime = TimeOfDay.now();
+    _isCheckIn    = widget.habit.mode == HabitMode.checkIn;
 
-    final matches = widget.habit.relapses.where((r) =>
-    r.timestamp.year  == widget.targetDate.year  &&
-    r.timestamp.month == widget.targetDate.month &&
-    r.timestamp.day   == widget.targetDate.day).toList();
+    if (!_isCheckIn) {
+      final matches = widget.habit.relapses.where((r) =>
+      r.timestamp.year  == widget.targetDate.year  &&
+      r.timestamp.month == widget.targetDate.month &&
+      r.timestamp.day   == widget.targetDate.day).toList();
 
-    if (matches.isNotEmpty) {
-      _reasonCtrl.text = matches.first.reason;
-      _selectedTime    = TimeOfDay.fromDateTime(matches.first.timestamp);
+      if (matches.isNotEmpty) {
+        _reasonCtrl.text = matches.first.reason;
+        _selectedTime    = TimeOfDay.fromDateTime(matches.first.timestamp);
+      }
     }
   }
 
@@ -183,6 +193,11 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
       MediaQuery.of(context).viewInsets.bottom,
       MediaQuery.of(context).padding.bottom);
 
+    final dateStr = DateFormat('EEEE, MMMM d, yyyy').format(widget.targetDate);
+    final hasMark = _isCheckIn
+      ? widget.habit.checkInDays.contains(DateTime(widget.targetDate.year, widget.targetDate.month, widget.targetDate.day))
+      : widget.hasRelapse;
+
     return Padding(
       padding: EdgeInsets.fromLTRB(24, 24, 24, 24 + bottomPad),
       child: SingleChildScrollView(
@@ -196,15 +211,20 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                 color:        theme.textMuted.withValues(alpha: 0.4),
                 borderRadius: BorderRadius.circular(2)))),
                 const SizedBox(height: 20),
-                Text(DateFormat('EEEE, MMMM d, yyyy').format(widget.targetDate),
+                Text(dateStr,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: theme.textPrimary)),
                 const SizedBox(height: 6),
-                Text(widget.hasRelapse ? '⚠️ Relapse logged on this day.' : '🌿 Clean record.',
-                     style: TextStyle(
-                       fontSize:   12,
-                       color:      widget.hasRelapse ? GroveTheme.clayRed : theme.textSecondary,
-                       fontWeight: FontWeight.w600)),
-                      const SizedBox(height: 20),
+                Text(hasMark
+                  ? (_isCheckIn ? '✅ Checked in on this day.' : '⚠️ Relapse logged on this day.')
+                  : '🌿 Clean record.',
+                  style: TextStyle(
+                    fontSize:   12,
+                    color:      hasMark
+                      ? (_isCheckIn ? widget.habit.color : GroveTheme.clayRed)
+                      : theme.textSecondary,
+                    fontWeight: FontWeight.w600)),
+                    const SizedBox(height: 20),
+                    if (!_isCheckIn) ...[
                       Text('TIME OVERRIDE',
                            style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
                            const SizedBox(height: 8),
@@ -220,7 +240,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                                  padding:         const EdgeInsets.symmetric(vertical: 12)),
                            ),
                       const SizedBox(height: 16),
-                      Text(widget.hasRelapse ? 'EDIT REASON' : 'REASON (optional)',
+                      Text(hasMark ? 'EDIT REASON' : 'REASON (optional)',
                       style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
                       const SizedBox(height: 8),
                       TextField(
@@ -231,24 +251,55 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                           hintText:       'Stress, Anxiety, Burnout, Peer pressure, Trigger? etc...',
                           contentPadding: EdgeInsets.all(12))),
                           const SizedBox(height: 24),
-                          if (widget.hasRelapse) ...[
-                            FilledButton.icon(
-                              onPressed: () {
-                                final ts = DateTime(
-                                  widget.targetDate.year, widget.targetDate.month, widget.targetDate.day,
-                                  _selectedTime.hour, _selectedTime.minute);
-                                widget.model.recordCustomRelapse(widget.habit.id, _reasonCtrl.text.trim(), ts);
-                                HapticFeedback.lightImpact();
-                                Navigator.pop(context);
-                              },
-                              icon:  const Icon(Icons.check, size: 16),
-                              label: const Text('Update Log'),
-                              style: FilledButton.styleFrom(
-                                backgroundColor: widget.habit.color,
-                                foregroundColor: Colors.white,
-                                  minimumSize:     const Size.fromHeight(48),
-                                  shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                    ],
+                    if (_isCheckIn) ...[
+                      const SizedBox(height: 12),
+                      FilledButton.icon(
+                        onPressed: () {
+                           if (hasMark) {
+                             widget.model.removeCheckInOnDate(widget.habit.id, widget.targetDate);
+                           } else {
+                             widget.model.toggleCheckIn(widget.habit.id, date: widget.targetDate);
+                           }
+                           HapticFeedback.lightImpact();
+                           Navigator.pop(context);
+                         },
+                        icon: Icon(
+                          hasMark ? Icons.clear : Icons.check_circle_outline,
+                          size: 16,
+                          color: hasMark ? theme.textPrimary : Colors.white,
+                        ),
+                        label: Text(hasMark ? 'Remove Check-in' : 'Check In This Day',
+                          style: TextStyle(
+                            color: hasMark ? theme.textPrimary : Colors.white,
+                          )),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: hasMark ? theme.surfaceHigh : widget.habit.color,
+                            minimumSize:     const Size.fromHeight(48),
+                            shape:           RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              side: hasMark ? BorderSide(color: theme.textMuted.withValues(alpha: 0.3)) : BorderSide.none,
                             ),
+                        ),
+                      ),
+                    ] else if (hasMark) ...[
+                      FilledButton.icon(
+                        onPressed: () {
+                          final ts = DateTime(
+                            widget.targetDate.year, widget.targetDate.month, widget.targetDate.day,
+                            _selectedTime.hour, _selectedTime.minute);
+                          widget.model.recordCustomRelapse(widget.habit.id, _reasonCtrl.text.trim(), ts);
+                          HapticFeedback.lightImpact();
+                          Navigator.pop(context);
+                        },
+                        icon:  const Icon(Icons.check, size: 16),
+                        label: const Text('Update Log'),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: widget.habit.color,
+                          foregroundColor: Colors.white,
+                            minimumSize:     const Size.fromHeight(48),
+                            shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                      ),
                       const SizedBox(height: 10),
                       OutlinedButton.icon(
                         onPressed: () {
@@ -264,25 +315,25 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                             minimumSize:     const Size.fromHeight(48),
                             shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
                       ),
-                          ] else ...[
-                            FilledButton.icon(
-                              onPressed: () {
-                                final ts = DateTime(
-                                  widget.targetDate.year, widget.targetDate.month, widget.targetDate.day,
-                                  _selectedTime.hour, _selectedTime.minute);
-                                widget.model.recordCustomRelapse(widget.habit.id, _reasonCtrl.text.trim(), ts);
-                                HapticFeedback.lightImpact();
-                                Navigator.pop(context);
-                              },
-                              icon:  const Icon(Icons.add, size: 16),
-                              label: const Text('Add Relapse Here'),
-                              style: FilledButton.styleFrom(
-                                backgroundColor: GroveTheme.clayRed,
-                                foregroundColor: Colors.white,
-                                  minimumSize:     const Size.fromHeight(48),
-                                  shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
-                            ),
-                          ],
+                    ] else ...[
+                      FilledButton.icon(
+                        onPressed: () {
+                          final ts = DateTime(
+                            widget.targetDate.year, widget.targetDate.month, widget.targetDate.day,
+                            _selectedTime.hour, _selectedTime.minute);
+                          widget.model.recordCustomRelapse(widget.habit.id, _reasonCtrl.text.trim(), ts);
+                          HapticFeedback.lightImpact();
+                          Navigator.pop(context);
+                        },
+                        icon:  const Icon(Icons.add, size: 16),
+                        label: const Text('Add Relapse Here'),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: GroveTheme.clayRed,
+                          foregroundColor: Colors.white,
+                            minimumSize:     const Size.fromHeight(48),
+                            shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                      ),
+                    ],
           ],
         ),
       ),
