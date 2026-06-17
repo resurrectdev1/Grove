@@ -56,13 +56,16 @@ class TreeWidgetProvider : AppWidgetProvider() {
 
         val views = RemoteViews(ctx.packageName, R.layout.widget_tree)
 
-        val habitName   = habit?.optString("name", "No habit") ?: "Tap to pick habit"
-        val daysElapsed = habit?.let { computeDays(it) } ?: 0
-        val stage       = stageFromDays(daysElapsed)
+        val habitName    = habit?.optString("name", "No habit") ?: "Tap to pick habit"
+        val daysElapsed  = habit?.let { computeDays(it) } ?: 0
+        val stage        = stageFromDays(daysElapsed)
+        val isCheckIn    = (habit?.optInt("mode", 0) ?: 0) == 1
 
         views.setTextViewText(R.id.tree_habit_name,  habitName)
         views.setTextViewText(R.id.tree_days_count,  "$daysElapsed")
-        views.setTextViewText(R.id.tree_days_label,  if (daysElapsed == 1) "day" else "days")
+        views.setTextViewText(R.id.tree_days_label,
+                              if (isCheckIn) (if (daysElapsed == 1) "day streak" else "day streak")
+                                  else           (if (daysElapsed == 1) "day" else "days"))
         views.setTextViewText(R.id.tree_stage_label, stageName(stage))
         views.setTextViewText(R.id.tree_tagline,     stageTagline(stage))
 
@@ -94,15 +97,46 @@ class TreeWidgetProvider : AppWidgetProvider() {
         mgr.updateAppWidget(widgetId, views)
     }
 
-    // ── Stage helpers (kept — still used for text labels) ─────────────
 
     private fun computeDays(habit: JSONObject): Int {
+        val mode = habit.optInt("mode", 0)
+        return if (mode == 1) computeCheckInStreak(habit) else computeAbstainDays(habit)
+    }
+
+    private fun computeAbstainDays(habit: JSONObject): Int {
         val resetStr = habit.optString("lastReset", "").ifEmpty { habit.optString("startDate", "") }
         return try {
             val sdf  = java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", java.util.Locale.US)
             val date = sdf.parse(resetStr.take(19)) ?: return 0
             ((System.currentTimeMillis() - date.time) / 86_400_000L).toInt()
         } catch (_: Exception) { 0 }
+    }
+
+
+    private fun computeCheckInStreak(habit: JSONObject): Int {
+        val arr = habit.optJSONArray("checkInDays") ?: return 0
+        if (arr.length() == 0) return 0
+
+            val days = mutableSetOf<String>()
+            for (i in 0 until arr.length()) {
+                val iso = arr.optString(i, "")
+                if (iso.length >= 10) days.add(iso.substring(0, 10))
+            }
+
+            val cal   = java.util.Calendar.getInstance()
+            var streak = 0
+            val sdf   = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US)
+
+            while (true) {
+                val key = sdf.format(cal.time)
+                if (days.contains(key)) {
+                    streak++
+                    cal.add(java.util.Calendar.DAY_OF_YEAR, -1)
+                } else {
+                    break
+                }
+            }
+            return streak
     }
 
     private fun stageFromDays(d: Int) = when {
@@ -127,7 +161,6 @@ class TreeWidgetProvider : AppWidgetProvider() {
                 else    -> 1f
             }.coerceIn(0f, 1f)
 
-            // ── Data helpers ──────────────────────────────────────────────────
 
             private fun loadHabitIds(prefs: android.content.SharedPreferences): List<String> {
                 try {
