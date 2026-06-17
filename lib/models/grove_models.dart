@@ -28,6 +28,8 @@ class RelapseEvent {
 
 enum GrowthStage { seed, sprout, sapling, youngTree, groveTree }
 
+enum HabitMode { abstain, checkIn }
+
 GrowthStage stageFromDays(int days) {
   if (days <= 1)  return GrowthStage.seed;
   if (days <= 7)  return GrowthStage.sprout;
@@ -59,8 +61,11 @@ class HabitTree {
   final DateTime           startDate;
   DateTime                 lastReset;
   final List<RelapseEvent> _relapses;
+  final HabitMode          mode;
+  final Set<DateTime>      _checkInDays;
 
-  List<RelapseEvent> get relapses => _relapses;
+  List<RelapseEvent> get relapses     => _relapses;
+  Set<DateTime>      get checkInDays  => _checkInDays;
 
   final int geneticSeed;
 
@@ -72,16 +77,49 @@ class HabitTree {
     required this.lastReset,
     List<RelapseEvent>? relapses,
     int? geneticSeed,
-  })  : _relapses   = relapses != null ? List<RelapseEvent>.of(relapses) : [],
-  geneticSeed = geneticSeed ?? id.hashCode;
+    this.mode = HabitMode.abstain,
+    Set<DateTime>? checkInDays,
+  })  : _relapses    = relapses != null ? List<RelapseEvent>.of(relapses) : [],
+        _checkInDays = checkInDays != null ? Set<DateTime>.of(checkInDays) : <DateTime>{},
+        geneticSeed  = geneticSeed ?? id.hashCode;
 
-  int         get daysElapsed => DateTime.now().difference(lastReset).inDays;
+  int get checkInStreak {
+    if (_checkInDays.isEmpty) return 0;
+    final now     = DateTime.now();
+    final today   = DateTime(now.year, now.month, now.day);
+    int streak = 0;
+    for (int i = 0; ; i++) {
+      final d = today.subtract(Duration(days: i));
+      if (_checkInDays.contains(d)) {
+        streak++;
+      } else {
+        break;
+      }
+    }
+    return streak;
+  }
+
+  bool get checkedInToday {
+    final now  = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    return _checkInDays.contains(today);
+  }
+
+  int get daysElapsed => mode == HabitMode.abstain
+    ? DateTime.now().difference(lastReset).inDays
+    : checkInStreak;
+
   int         get totalDays   => DateTime.now().difference(startDate).inDays;
   GrowthStage get stage       => stageFromDays(daysElapsed);
 
-  int get peakDays => _relapses.isEmpty
-  ? daysElapsed
-  : math.max(daysElapsed, _relapses.map((e) => e.peakDays).reduce(math.max));
+  int get peakDays {
+    if (mode == HabitMode.checkIn) {
+      return _checkInDays.isEmpty ? 0 : checkInStreak;
+    }
+    return _relapses.isEmpty
+      ? daysElapsed
+      : math.max(daysElapsed, _relapses.map((e) => e.peakDays).reduce(math.max));
+  }
 
   double get stageProgress {
     final d = daysElapsed;
@@ -93,8 +131,8 @@ class HabitTree {
   }
 
   Set<DateTime> get relapseDays => _relapses
-  .map((e) => DateTime(e.timestamp.year, e.timestamp.month, e.timestamp.day))
-  .toSet();
+    .map((e) => DateTime(e.timestamp.year, e.timestamp.month, e.timestamp.day))
+    .toSet();
 
   Map<String, dynamic> toMap() => {
     'id':          id,
@@ -104,6 +142,8 @@ class HabitTree {
     'lastReset':   lastReset.toIso8601String(),
     'relapses':    _relapses.map((r) => r.toMap()).toList(),
     'geneticSeed': geneticSeed,
+    'mode':        mode.index,
+    'checkInDays': _checkInDays.map((d) => d.toIso8601String()).toList(),
   };
 
   String toJson() => jsonEncode(toMap());
@@ -115,13 +155,17 @@ class HabitTree {
     startDate:   DateTime.parse(m['startDate'] as String),
     lastReset:   DateTime.parse(m['lastReset'] as String),
     relapses: (m['relapses'] as List<dynamic>? ?? [])
-    .map((r) => RelapseEvent.fromMap(r as Map<String, dynamic>))
-    .toList(),
+      .map((r) => RelapseEvent.fromMap(r as Map<String, dynamic>))
+      .toList(),
     geneticSeed: m['geneticSeed'] as int?,
+    mode:        m['mode'] != null ? HabitMode.values[m['mode'] as int] : HabitMode.abstain,
+    checkInDays: (m['checkInDays'] as List<dynamic>?)
+      ?.map((d) => DateTime.parse(d as String))
+      .toSet(),
   );
 
   factory HabitTree.fromJson(String s) =>
-  HabitTree.fromMap(jsonDecode(s) as Map<String, dynamic>);
+    HabitTree.fromMap(jsonDecode(s) as Map<String, dynamic>);
 
   HabitTree copyWith({
     String?             id,
@@ -131,14 +175,18 @@ class HabitTree {
     DateTime?           lastReset,
     List<RelapseEvent>? relapses,
     int?                geneticSeed,
+    HabitMode?          mode,
+    Set<DateTime>?      checkInDays,
   }) =>
-  HabitTree(
-    id:          id          ?? this.id,
-    name:        name        ?? this.name,
-    color:       color       ?? this.color,
-    startDate:   startDate   ?? this.startDate,
-    lastReset:   lastReset   ?? this.lastReset,
-    relapses:    relapses    ?? List<RelapseEvent>.of(_relapses),
-    geneticSeed: geneticSeed ?? this.geneticSeed,
-  );
+    HabitTree(
+      id:          id          ?? this.id,
+      name:        name        ?? this.name,
+      color:       color       ?? this.color,
+      startDate:   startDate   ?? this.startDate,
+      lastReset:   lastReset   ?? this.lastReset,
+      relapses:    relapses    ?? List<RelapseEvent>.of(_relapses),
+      geneticSeed: geneticSeed ?? this.geneticSeed,
+      mode:        mode        ?? this.mode,
+      checkInDays: checkInDays ?? Set<DateTime>.of(_checkInDays),
+    );
 }
