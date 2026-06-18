@@ -85,11 +85,11 @@ class HabitTree {
 
   int get checkInStreak {
     if (_checkInDays.isEmpty) return 0;
-    final now     = DateTime.now();
-    final today   = DateTime(now.year, now.month, now.day);
+    final sorted = _checkInDays.toList()..sort((a, b) => b.compareTo(a));
+    final latest = sorted.first;
     int streak = 0;
     for (int i = 0; ; i++) {
-      final d = today.subtract(Duration(days: i));
+      final d = latest.subtract(Duration(days: i));
       if (_checkInDays.contains(d)) {
         streak++;
       } else {
@@ -114,7 +114,19 @@ class HabitTree {
 
   int get peakDays {
     if (mode == HabitMode.checkIn) {
-      return _checkInDays.isEmpty ? 0 : checkInStreak;
+      if (_checkInDays.isEmpty) return 0;
+      final sorted = _checkInDays.toList()..sort();
+      int maxRun = 1;
+      int current = 1;
+      for (int i = 1; i < sorted.length; i++) {
+        if (sorted[i].difference(sorted[i - 1]).inDays == 1) {
+          current++;
+          if (current > maxRun) maxRun = current;
+        } else {
+          current = 1;
+        }
+      }
+      return maxRun;
     }
     return _relapses.isEmpty
       ? daysElapsed
