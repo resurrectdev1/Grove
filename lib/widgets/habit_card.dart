@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:grove/l10n/app_localizations.dart';
 import 'package:grove/models/grove_models.dart';
 import 'package:grove/providers/grove_model.dart';
 import 'package:grove/providers/grove_settings.dart';
@@ -24,6 +25,7 @@ class _HabitCardState extends State<HabitCard> {
     final model        = context.read<GroveModel>();
     final settings     = context.watch<GroveSettings>();
     final theme        = settings.theme;
+    final l10n         = AppLocalizations.of(context)!;
     final habit        = widget.habit;
     final days         = habit.daysElapsed;
     final stage        = habit.stage;
@@ -32,6 +34,22 @@ class _HabitCardState extends State<HabitCard> {
     final isList       = widget.layoutMode == LayoutMode.compactList;
     final isCheckIn    = habit.mode == HabitMode.checkIn;
     final isCheckedIn  = isCheckIn && habit.checkedInToday;
+
+    String stageLabelLocalized(GrowthStage s) => switch (s) {
+      GrowthStage.seed      => l10n.stageSeed,
+      GrowthStage.sprout    => l10n.stageSprout,
+      GrowthStage.sapling   => l10n.stageSapling,
+      GrowthStage.youngTree => l10n.stageYoungTree,
+      GrowthStage.groveTree => l10n.stageGroveTree,
+    };
+
+    String stageTaglineLocalized(GrowthStage s) => switch (s) {
+      GrowthStage.seed      => l10n.taglineSeed,
+      GrowthStage.sprout    => l10n.taglineSprout,
+      GrowthStage.sapling   => l10n.taglineSapling,
+      GrowthStage.youngTree => l10n.taglineYoungTree,
+      GrowthStage.groveTree => l10n.taglineGroveTree,
+    };
 
     if (isList) {
       return GestureDetector(
@@ -57,26 +75,26 @@ class _HabitCardState extends State<HabitCard> {
                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                        decoration: BoxDecoration(
                          color: habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(12)),
-                         child: Text(isCheckIn ? '$days-day streak' : stageLabel(stage),
+                         child: Text(isCheckIn ? l10n.dayStreak(days) : stageLabelLocalized(stage),
                          style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: habit.color)),
                      ),
                      const SizedBox(width: 6),
-                     Text('Day $days', style: TextStyle(fontSize: 12, color: theme.textSecondary)),
+                     Text(l10n.dayCount(days), style: TextStyle(fontSize: 12, color: theme.textSecondary)),
                    ]),
             ])),
             const SizedBox(width: 8),
             GestureDetector(
               onTap: () => isCheckIn
-                ? _handleCheckIn(context, model, habit)
-                : _showRelapseDialog(context, model),
+              ? _handleCheckIn(context, model, habit)
+              : _showRelapseDialog(context, model),
               child: Icon(
                 isCheckIn
-                  ? (isCheckedIn ? Icons.check_circle : Icons.check_circle_outline)
-                  : Icons.refresh_rounded,
+                ? (isCheckedIn ? Icons.check_circle : Icons.check_circle_outline)
+                : Icons.refresh_rounded,
                 size: 20,
                 color: isCheckIn
-                  ? (isCheckedIn ? habit.color : theme.textMuted)
-                  : GroveTheme.clayRed,
+                ? (isCheckedIn ? habit.color : theme.textMuted)
+                : GroveTheme.clayRed,
               ),
             ),
           ]),
@@ -121,73 +139,73 @@ class _HabitCardState extends State<HabitCard> {
             Text(habit.name, maxLines: 1, overflow: TextOverflow.ellipsis,
                  style: TextStyle(fontSize: isCompact ? 15 : 22, fontWeight: FontWeight.w700,
                                   color: theme.textPrimary, letterSpacing: 0.3)),
-                      SizedBox(height: isCompact ? 4 : 6),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          if (!isCompact) ...[
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                              decoration: BoxDecoration(
-                                color: habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(20)),
-                                child: Text(isCheckIn ? '$days-day streak' : stageLabel(stage), style: TextStyle(
-                                  fontSize: 11, fontWeight: FontWeight.w600, color: habit.color, letterSpacing: 0.8)),
-                            ),
-                            const SizedBox(width: 8),
-                          ],
-                          Text('Day $days', style: TextStyle(
-                            fontSize:   isCompact ? 11 : 13,
-                            fontWeight: isCompact ? FontWeight.w600 : FontWeight.normal,
-                            color:      theme.textSecondary)),
-                        ],
-                      ),
-                      if (!isCompact) ...[
-                        const SizedBox(height: 4),
-                        Text(isCheckIn
-                          ? isCheckedIn ? 'Already checked in today ✓' : 'Tap below to check in'
-                          : stageTagline(stage),
-                        style: TextStyle(fontSize: 11, color: theme.textMuted, fontStyle: FontStyle.italic),
-                        textAlign: TextAlign.center),
-                      const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          _OutlineAction(icon: Icons.calendar_month_outlined,
-                                         label: isCheckIn
-                                           ? 'History (${habit.checkInDays.length})'
-                                           : 'History${relapseCount > 0 ? ' ($relapseCount)' : ''}',
-                                         color: theme.textSecondary, onTap: () => _goDetail(context)),
-                                         const SizedBox(width: 10),
-                                         if (isCheckIn)
-                                           _OutlineAction(
-                                             icon: isCheckedIn ? Icons.check_circle : Icons.check_circle_outline,
-                                             label: isCheckedIn ? 'Checked In' : 'Check In',
-                                             color: isCheckedIn ? habit.color : habit.color,
-                                             onTap: () => _handleCheckIn(context, model, habit),
-                                           )
-                                         else
-                                           _OutlineAction(icon: Icons.refresh_rounded, label: 'Relapse',
-                                                        color: GroveTheme.clayRed, onTap: () => _showRelapseDialog(context, model)),
-                        ],
-                      ),
-                      ] else ...[
-                        const SizedBox(height: 12),
-                        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                          IconButton(icon: Icon(Icons.calendar_month_outlined, size: 16, color: theme.textSecondary),
-                          onPressed: () => _goDetail(context), padding: EdgeInsets.zero, constraints: const BoxConstraints()),
-                          if (isCheckIn)
-                            IconButton(
-                              icon: Icon(
-                                isCheckedIn ? Icons.check_circle : Icons.check_circle_outline,
-                                size: 16,
-                                color: isCheckedIn ? habit.color : theme.textMuted),
-                              onPressed: () => _handleCheckIn(context, model, habit),
-                              padding: EdgeInsets.zero, constraints: const BoxConstraints())
-                          else
-                            IconButton(icon: const Icon(Icons.refresh_rounded, size: 16, color: GroveTheme.clayRed),
-                            onPressed: () => _showRelapseDialog(context, model), padding: EdgeInsets.zero, constraints: const BoxConstraints()),
-                        ]),
-                      ],
+                                  SizedBox(height: isCompact ? 4 : 6),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      if (!isCompact) ...[
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                                          decoration: BoxDecoration(
+                                            color: habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(20)),
+                                            child: Text(isCheckIn ? l10n.dayStreak(days) : stageLabelLocalized(stage), style: TextStyle(
+                                              fontSize: 11, fontWeight: FontWeight.w600, color: habit.color, letterSpacing: 0.8)),
+                                        ),
+                                        const SizedBox(width: 8),
+                                      ],
+                                      Text(l10n.dayCount(days), style: TextStyle(
+                                        fontSize:   isCompact ? 11 : 13,
+                                        fontWeight: isCompact ? FontWeight.w600 : FontWeight.normal,
+                                        color:      theme.textSecondary)),
+                                    ],
+                                  ),
+                                  if (!isCompact) ...[
+                                    const SizedBox(height: 4),
+                                    Text(isCheckIn
+                                    ? isCheckedIn ? l10n.alreadyCheckedInToday : l10n.tapBelowToCheckIn
+                                    : stageTaglineLocalized(stage),
+                                    style: TextStyle(fontSize: 11, color: theme.textMuted, fontStyle: FontStyle.italic),
+                                    textAlign: TextAlign.center),
+                                    const SizedBox(height: 16),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        _OutlineAction(icon: Icons.calendar_month_outlined,
+                                                       label: isCheckIn
+                                                       ? l10n.historyCount(habit.checkInDays.length)
+                                                       : (relapseCount > 0 ? l10n.historyCount(relapseCount) : l10n.history),
+                                                       color: theme.textSecondary, onTap: () => _goDetail(context)),
+                                                       const SizedBox(width: 10),
+                                                       if (isCheckIn)
+                                                         _OutlineAction(
+                                                           icon: isCheckedIn ? Icons.check_circle : Icons.check_circle_outline,
+                                                           label: isCheckedIn ? l10n.checkedIn : l10n.checkIn,
+                                                           color: isCheckedIn ? habit.color : habit.color,
+                                                           onTap: () => _handleCheckIn(context, model, habit),
+                                                         )
+                                                         else
+                                                           _OutlineAction(icon: Icons.refresh_rounded, label: l10n.relapse,
+                                                                          color: GroveTheme.clayRed, onTap: () => _showRelapseDialog(context, model)),
+                                      ],
+                                    ),
+                                  ] else ...[
+                                    const SizedBox(height: 12),
+                                    Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                                      IconButton(icon: Icon(Icons.calendar_month_outlined, size: 16, color: theme.textSecondary),
+                                      onPressed: () => _goDetail(context), padding: EdgeInsets.zero, constraints: const BoxConstraints()),
+                                      if (isCheckIn)
+                                        IconButton(
+                                          icon: Icon(
+                                            isCheckedIn ? Icons.check_circle : Icons.check_circle_outline,
+                                            size: 16,
+                                            color: isCheckedIn ? habit.color : theme.textMuted),
+                                            onPressed: () => _handleCheckIn(context, model, habit),
+                                            padding: EdgeInsets.zero, constraints: const BoxConstraints())
+                                        else
+                                          IconButton(icon: const Icon(Icons.refresh_rounded, size: 16, color: GroveTheme.clayRed),
+                                          onPressed: () => _showRelapseDialog(context, model), padding: EdgeInsets.zero, constraints: const BoxConstraints()),
+                                    ]),
+                                  ],
           ],
         ),
       ),
