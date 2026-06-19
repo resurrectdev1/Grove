@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:grove/l10n/app_localizations.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/theme/grove_theme.dart';
 
@@ -22,6 +23,7 @@ class _RelapseDialogState extends State<RelapseDialog> {
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<GroveSettings>().theme;
+    final l10n  = AppLocalizations.of(context)!;
     return Dialog(
       insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       backgroundColor: theme.surfaceHigh,
@@ -35,14 +37,14 @@ class _RelapseDialogState extends State<RelapseDialog> {
                                     decoration: const BoxDecoration(color: Color(0x269E4C3B), shape: BoxShape.circle),
                                     child: const Icon(Icons.refresh_rounded, color: GroveTheme.clayRed, size: 20)),
                                     const SizedBox(width: 12),
-                                    Expanded(child: Text('Log a Relapse?',
+                                    Expanded(child: Text(l10n.logARelapse,
                                                          style: TextStyle(color: theme.textPrimary, fontSize: 18, fontWeight: FontWeight.w700))),
                         ]),
                       const SizedBox(height: 16),
-                      Text('You are stronger than you think.',
+                      Text(l10n.relapseMotivation,
                            style: TextStyle(color: theme.textSecondary, fontSize: 13, height: 1.5)),
                            const SizedBox(height: 20),
-                           Text('CUSTOM TIMESTAMP',
+                           Text(l10n.customTimestamp,
                                 style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
                                 const SizedBox(height: 12),
                                 Row(children: [
@@ -68,33 +70,33 @@ class _RelapseDialogState extends State<RelapseDialog> {
                                   )),
                                 ]),
                       const SizedBox(height: 20),
-                      Text('LOGGED REASON (Optional)',
-                      style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
-                      const SizedBox(height: 12),
-                      TextField(controller: _ctrl, maxLines: 3,
-                                style: TextStyle(color: theme.textPrimary, fontSize: 14),
-                                decoration: const InputDecoration(
-                                  hintText: 'Stress, Anxiety, Burnout, Peer pressure, Trigger? etc...',
-                                  contentPadding: EdgeInsets.all(12))),
-                                  const SizedBox(height: 24),
-                                  Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text('Cancel', style: TextStyle(color: theme.textSecondary)),
-                                    ),
-                                    const SizedBox(width: 8),
-                                    FilledButton(
-                                      onPressed: () {
-                                        final ts = DateTime(_selectedDate.year, _selectedDate.month, _selectedDate.day,
-                                                            _selectedTime.hour, _selectedTime.minute);
-                                        widget.onCustomRelapseConfirm(_ctrl.text.trim(), ts);
-                                        Navigator.pop(context);
-                                      },
-                                      style: FilledButton.styleFrom(backgroundColor: GroveTheme.clayRed,
-                                                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
-                                                                    child: const Text('Confirm Log'),
-                                    ),
-                                  ]),
+                      Text(l10n.loggedReason,
+                           style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
+                           const SizedBox(height: 12),
+                           TextField(controller: _ctrl, maxLines: 3,
+                                     style: TextStyle(color: theme.textPrimary, fontSize: 14),
+                                     decoration: InputDecoration(
+                                       hintText: l10n.loggedReasonHint,
+                                       contentPadding: const EdgeInsets.all(12))),
+                                       const SizedBox(height: 24),
+                                       Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                                         TextButton(
+                                           onPressed: () => Navigator.pop(context),
+                                           child: Text(l10n.cancel, style: TextStyle(color: theme.textSecondary)),
+                                         ),
+                                         const SizedBox(width: 8),
+                                         FilledButton(
+                                           onPressed: () {
+                                             final ts = DateTime(_selectedDate.year, _selectedDate.month, _selectedDate.day,
+                                                                 _selectedTime.hour, _selectedTime.minute);
+                                             widget.onCustomRelapseConfirm(_ctrl.text.trim(), ts);
+                                             Navigator.pop(context);
+                                           },
+                                           style: FilledButton.styleFrom(backgroundColor: GroveTheme.clayRed,
+                                                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                                                                         child: Text(l10n.confirmLog),
+                                         ),
+                                       ]),
                       ],
         ),
       ),
