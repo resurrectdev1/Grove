@@ -2,6 +2,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:grove/l10n/app_localizations.dart';
 import 'package:grove/models/grove_models.dart';
 import 'package:grove/painters/fractal_tree_painter.dart';
 import 'package:grove/providers/grove_model.dart';
@@ -29,6 +30,7 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
   @override
   Widget build(BuildContext context) {
     final theme     = context.watch<GroveSettings>().theme;
+    final l10n      = AppLocalizations.of(context)!;
     final bottomPad = math.max(MediaQuery.of(context).viewInsets.bottom, MediaQuery.of(context).padding.bottom);
 
     return Padding(
@@ -43,7 +45,7 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
                                                                        child: CustomPaint(painter: FractalTreePainter(
                                                                          stage: GrowthStage.sprout, baseColor: _color, progress: 0.75, windPhase: 0, geneticSeed: 0)))),
                       const SizedBox(height: 14),
-                      Text('Plant a New Tree', textAlign: TextAlign.center,
+                      Text(l10n.plantANewTree, textAlign: TextAlign.center,
                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: theme.textPrimary)),
                            const SizedBox(height: 20),
                            TextField(
@@ -51,11 +53,11 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
                              textCapitalization: TextCapitalization.words,
                              style: TextStyle(color: theme.textPrimary),
                              decoration: InputDecoration(
-                               labelText: 'Habit Name', hintText: 'e.g. Alcohol, Smoking, Social media',
+                               labelText: l10n.habitName, hintText: l10n.habitNameHint,
                                prefixIcon: Icon(Icons.edit_outlined, size: 18, color: theme.textMuted)),
                            ),
                       const SizedBox(height: 20),
-                      Text('TRACKING MODE', style: TextStyle(fontSize: 11, color: theme.textSecondary, letterSpacing: 1.0)),
+                      Text(l10n.trackingMode, style: TextStyle(fontSize: 11, color: theme.textSecondary, letterSpacing: 1.0)),
                       const SizedBox(height: 12),
                       Row(children: [
                         Expanded(child: GestureDetector(
@@ -74,12 +76,12 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
                             child: Column(children: [
                               Icon(Icons.shield_outlined, size: 22, color: _mode == HabitMode.abstain ? theme.primary : theme.textMuted),
                               const SizedBox(height: 6),
-                              Text('Abstain', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700,
-                                color: _mode == HabitMode.abstain ? theme.primary : theme.textSecondary)),
-                              const SizedBox(height: 2),
-                              Text('Auto-grows daily', style: TextStyle(fontSize: 9, color: theme.textMuted)),
-                              const SizedBox(height: 2),
-                              Text('Tap to record a relapse', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                              Text(l10n.abstain, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700,
+                                                                  color: _mode == HabitMode.abstain ? theme.primary : theme.textSecondary)),
+                                          const SizedBox(height: 2),
+                                          Text(l10n.abstainSubtitle1, style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                                          const SizedBox(height: 2),
+                                          Text(l10n.abstainSubtitle2, style: TextStyle(fontSize: 9, color: theme.textMuted)),
                             ]),
                           ),
                         )),
@@ -100,18 +102,18 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
                             child: Column(children: [
                               Icon(Icons.check_circle_outline, size: 22, color: _mode == HabitMode.checkIn ? theme.primary : theme.textMuted),
                               const SizedBox(height: 6),
-                              Text('Check-In', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700,
-                                color: _mode == HabitMode.checkIn ? theme.primary : theme.textSecondary)),
-                              const SizedBox(height: 2),
-                              Text('Check in daily to grow', style: TextStyle(fontSize: 9, color: theme.textMuted)),
-                              const SizedBox(height: 2),
-                              Text('Growth based on check-ins', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                              Text(l10n.checkIn, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700,
+                                                                  color: _mode == HabitMode.checkIn ? theme.primary : theme.textSecondary)),
+                                                                  const SizedBox(height: 2),
+                                                                  Text(l10n.checkInSubtitle1, style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                                                                  const SizedBox(height: 2),
+                                                                  Text(l10n.checkInSubtitle2, style: TextStyle(fontSize: 9, color: theme.textMuted)),
                             ]),
                           ),
                         )),
                       ]),
                       const SizedBox(height: 20),
-                      Text('PRESET COLORS', style: TextStyle(fontSize: 11, color: theme.textSecondary, letterSpacing: 1.0)),
+                      Text(l10n.presetColors, style: TextStyle(fontSize: 11, color: theme.textSecondary, letterSpacing: 1.0)),
                       const SizedBox(height: 12),
                       Wrap(
                         spacing: 12, runSpacing: 12,
@@ -129,18 +131,18 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
                         }).toList(),
                       ),
                       const SizedBox(height: 20),
-                      Text('CUSTOM HEX CODE', style: TextStyle(fontSize: 11, color: theme.textSecondary, letterSpacing: 1.0)),
+                      Text(l10n.customHexCode, style: TextStyle(fontSize: 11, color: theme.textSecondary, letterSpacing: 1.0)),
                       const SizedBox(height: 12),
                       Row(children: [
                         Expanded(child: TextField(
                           controller: _hexCtrl, textCapitalization: TextCapitalization.characters,
                           style: TextStyle(color: theme.textPrimary), onChanged: _updateFromHexInput, maxLength: 6,
                           decoration: InputDecoration(
-                            labelText: 'Hex Code', prefixText: '#',
+                            labelText: l10n.hexCode, prefixText: '#',
                             prefixStyle: TextStyle(color: theme.textSecondary),
                             hintText: '4E8B5F',
                             prefixIcon: Icon(Icons.palette_outlined, size: 18, color: theme.textMuted),
-                            errorText: _validHex ? null : 'Invalid hex', counterText: ''),
+                            errorText: _validHex ? null : l10n.invalidHex, counterText: ''),
                         )),
                         const SizedBox(width: 12),
                         AnimatedContainer(
@@ -152,9 +154,9 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
                       ]),
                       const SizedBox(height: 24),
                       FilledButton.icon(
-                        onPressed: _plant,
+                        onPressed: () => _plant(l10n),
                         icon: const Icon(Icons.forest_rounded, size: 18),
-                        label: const Text('Plant Tree', style: TextStyle(fontWeight: FontWeight.w600, letterSpacing: 0.5)),
+                        label: Text(l10n.plantTree, style: const TextStyle(fontWeight: FontWeight.w600, letterSpacing: 0.5)),
                         style: FilledButton.styleFrom(
                           backgroundColor: _color,
                           foregroundColor: Colors.white,
@@ -182,10 +184,10 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
     return argb.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase();
   }
 
-  void _plant() {
+  void _plant(AppLocalizations l10n) {
     final name = _nameCtrl.text.trim();
     if (name.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Give your habit a name.')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.giveHabitName)));
       return;
     }
     context.read<GroveModel>().addHabit(name: name, color: _color, mode: _mode);
