@@ -37,6 +37,8 @@ Simply open Grove and click the "Plant a Tree" button to start customizing your 
 
 🌐 **Fully Offline:** Fully functional without an internet connection. No cloud, no tracking. Your data stays where it belongs: solely on your device.
 
+🌎 **Localization:** Everyone deserves access to tools that help them grow. Grove supports multiple languages and automatically adapts to your device's language settings.
+
 ## Download 
 
 <a href="https://github.com/resurrectdev1/Grove/releases/latest">
