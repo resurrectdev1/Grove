@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:provider/provider.dart';
+import 'package:grove/l10n/app_localizations.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/services/grove_biometrics.dart';
 import 'package:grove/theme/grove_theme.dart';
@@ -9,6 +11,14 @@ import 'package:grove/screens/home_screen.dart';
 
 class GroveApp extends StatelessWidget {
   const GroveApp({super.key});
+  static const _supportedLocales = [
+    Locale('en'),
+    Locale('ar'),
+    Locale('es'),
+    Locale('fr'),
+    Locale('zh'),
+    Locale('zh', 'TW'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +39,31 @@ class GroveApp extends StatelessWidget {
               systemNavigationBarIconBrightness: gt.brightness == Brightness.light ? Brightness.dark : Brightness.light,
             ));
             return MaterialApp(
-              title:                      'Grove',
+              title:        'Grove',
               debugShowCheckedModeBanner: false,
-              theme:                      _buildTheme(gt),
+              theme:        _buildTheme(gt),
+              locale:             settings.locale,
+              supportedLocales:   _supportedLocales,
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              localeResolutionCallback: (deviceLocale, supported) {
+                if (deviceLocale == null) {
+                  return const Locale('en');
+                }
+                for (final s in supported) {
+                  if (s.languageCode == deviceLocale.languageCode &&
+                    s.countryCode  == deviceLocale.countryCode) return s;
+                }
+                for (final s in supported) {
+                  if (s.languageCode == deviceLocale.languageCode) return s;
+                }
+                return const Locale('en');
+              },
+
               home: settings.biometricUnlock
               ? const _BiometricGate(key: ValueKey('biometric_gate'), child: GroveHomeScreen())
               : const GroveHomeScreen(),
@@ -53,7 +85,7 @@ class GroveApp extends StatelessWidget {
       secondary:               GroveTheme.barkBrown,
       error:                   GroveTheme.clayRed,
       onSurface:               gt.textPrimary,
-      onPrimary:               gt.brightness == Brightness.light ? Colors.white : GroveTheme.dewWhite,
+      onPrimary: gt.brightness == Brightness.light ? Colors.white : GroveTheme.dewWhite,
     );
     return ThemeData(
       useMaterial3:            true,
@@ -129,6 +161,7 @@ class _BiometricGateState extends State<_BiometricGate> with WidgetsBindingObser
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<GroveSettings>().theme;
+    final l10n  = AppLocalizations.of(context)!;
     if (_unlocked) return widget.child;
 
     return Scaffold(
@@ -139,10 +172,10 @@ class _BiometricGateState extends State<_BiometricGate> with WidgetsBindingObser
           children: [
             Icon(Icons.lock_outline_rounded, size: 56, color: theme.textMuted),
             const SizedBox(height: 24),
-            Text('Grove is locked',
+            Text(l10n.groveLocked,
                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: theme.textPrimary)),
                  const SizedBox(height: 8),
-                 Text('Authenticate to continue',
+                 Text(l10n.authenticateToContinue,
                       style: TextStyle(fontSize: 13, color: theme.textSecondary)),
                       const SizedBox(height: 36),
                       FilledButton.icon(
@@ -151,7 +184,7 @@ class _BiometricGateState extends State<_BiometricGate> with WidgetsBindingObser
                           _prompt();
                         },
                         icon:  const Icon(Icons.fingerprint_rounded),
-                        label: const Text('Unlock Grove'),
+                        label: Text(l10n.unlockGrove),
                         style: FilledButton.styleFrom(
                           backgroundColor: theme.primary,
                           minimumSize: const Size(200, 50),
