@@ -12,6 +12,22 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.6.4] - 2026-06-19
+
+### Added
+- New Check-In Mode, created with help from @ADAIBLOG
+- Home screen widget support for Check-In Mode
+- Localization support for Chinese (Simplified), Chinese (Traditional), Spanish, French, and Arabic
+
+### Changed
+- Notification text made more clear and consistent to match tree growth milestone
+
+### Fixed
+- Fixed a bug that stopped notifications from firing rapidly upon being restored correctly
+- Performance optimisations and a range of smaller bug fixes
+
+---
+
 ## [0.6.2] - 2026-06-08
 
 ### Added
