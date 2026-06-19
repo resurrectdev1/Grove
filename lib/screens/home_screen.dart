@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:grove/l10n/app_localizations.dart';
 import 'package:grove/models/grove_models.dart';
 import 'package:grove/painters/fractal_tree_painter.dart';
 import 'package:grove/providers/grove_model.dart';
@@ -54,6 +55,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     final habits   = context.watch<GroveModel>().habits;
     final settings = context.watch<GroveSettings>();
     final theme    = settings.theme;
+    final l10n     = AppLocalizations.of(context)!;
 
     if (habits.isNotEmpty && _selectedIdx >= habits.length) {
       _selectedIdx = habits.length - 1;
@@ -74,7 +76,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
           ),
         ),
         title: Text(
-          'G R O V E',
+          l10n.appTagline,
           style: TextStyle(
             color: theme.textSecondary, fontSize: 13,
             fontWeight: FontWeight.w400, letterSpacing: 8,
@@ -91,9 +93,9 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
         ],
       ),
       body: habits.isEmpty
-      ? _emptyState(theme)
+      ? _emptyState(theme, l10n)
       : _buildLayoutEngine(habits, settings.layoutMode, theme),
-      floatingActionButton:         _fab(context, theme),
+      floatingActionButton:         _fab(context, theme, l10n),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
@@ -116,6 +118,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
   void _showAboutSheet(BuildContext ctx) {
     final theme     = ctx.read<GroveSettings>().theme;
     final bottomPad = MediaQuery.of(ctx).padding.bottom;
+    final l10n      = AppLocalizations.of(ctx)!;
 
     showModalBottomSheet(
       context:            ctx,
@@ -145,12 +148,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    'assets/images/app_icon.png',
-                    width:  52,
-                    height: 52,
-                    fit:    BoxFit.cover,
-                  ),
+                  child: Image.asset('assets/images/app_icon.png', width: 52, height: 52, fit: BoxFit.cover),
                 ),
                 const SizedBox(width: 14),
                 Column(
@@ -160,48 +158,42 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                       fontSize: 24, fontWeight: FontWeight.w800,
                       color: theme.textPrimary, letterSpacing: 1,
                     )),
-                    Text('v${_appVersion.isEmpty ? '...' : _appVersion} • Open Source',
-                         style: TextStyle(fontSize: 12, color: theme.textSecondary)),
+                    Text(l10n.versionLabel(_appVersion.isEmpty ? '...' : _appVersion),
+                    style: TextStyle(fontSize: 12, color: theme.textSecondary)),
                   ],
                 ),
               ],
             ),
             const SizedBox(height: 16),
-            Text(
-              'Grove is a minimalistic habit tracker that visualises your growth through trees. '
-            'Every day you stay clean, your tree grows. '
-            'Built with love as a free, open-source tool.',
-            style: TextStyle(fontSize: 13, color: theme.textSecondary, height: 1.6),
-            ),
-            const SizedBox(height: 24),
-            Text('LINKS', style: TextStyle(
-              fontSize: 11, fontWeight: FontWeight.w700,
-              color: theme.textMuted, letterSpacing: 1.0,
-            )),
-            const SizedBox(height: 12),
-            _AboutLinkTile(
-              icon:      Icons.code_rounded,
-              iconColor: theme.textPrimary,
-              label:     'GitHub',
-              sublabel:  'Source code & contributions',
-              url:       'https://github.com/resurrectdev1/Grove',
-              theme:     theme,
-            ),
-            const SizedBox(height: 10),
-            _AboutLinkTile(
-              icon:      Icons.coffee_rounded,
-              iconColor: const Color(0xFFFFDD57),
-              label:     'Buy Me a Coffee',
-              sublabel:  'Support development',
-              url:       'https://buymeacoffee.com/resurrect',
-              theme:     theme,
-            ),
-            const SizedBox(height: 24),
-            Text(
-              'Made with 🌿 • all data stays on your device.',
-              style:     TextStyle(fontSize: 10, color: theme.textMuted),
-              textAlign: TextAlign.center,
-            ),
+            Text(l10n.groveDescription,
+                 style: TextStyle(fontSize: 13, color: theme.textSecondary, height: 1.6)),
+                 const SizedBox(height: 24),
+                 Text(l10n.links, style: TextStyle(
+                   fontSize: 11, fontWeight: FontWeight.w700,
+                   color: theme.textMuted, letterSpacing: 1.0,
+                 )),
+                 const SizedBox(height: 12),
+                 _AboutLinkTile(
+                   icon:      Icons.code_rounded,
+                   iconColor: theme.textPrimary,
+                   label:     l10n.github,
+                   sublabel:  l10n.githubSubtitle,
+                   url:       'https://github.com/resurrectdev1/Grove',
+                   theme:     theme,
+                 ),
+                 const SizedBox(height: 10),
+                 _AboutLinkTile(
+                   icon:      Icons.coffee_rounded,
+                   iconColor: const Color(0xFFFFDD57),
+                   label:     l10n.buyMeCoffee,
+                   sublabel:  l10n.buyMeCoffeeSubtitle,
+                   url:       'https://buymeacoffee.com/resurrect',
+                   theme:     theme,
+                 ),
+                 const SizedBox(height: 24),
+                 Text(l10n.madeWith,
+                      style:     TextStyle(fontSize: 10, color: theme.textMuted),
+                      textAlign: TextAlign.center),
           ],
         ),
       ),
@@ -315,6 +307,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     final settings  = ctx.read<GroveSettings>();
     final theme     = settings.theme;
     final bottomPad = MediaQuery.of(ctx).padding.bottom;
+    final l10n      = AppLocalizations.of(ctx)!;
 
     showModalBottomSheet(
       context:            ctx,
@@ -343,10 +336,10 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                     ),
                     const SizedBox(height: 20),
                     Row(children: [
-                      Text('Reorder Grove',
+                      Text(l10n.reorderGrove,
                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: theme.textPrimary)),
                            const Spacer(),
-                           Text('Hold & drag ≡ to reorder',
+                           Text(l10n.holdDragToReorder,
                                 style: TextStyle(fontSize: 11, color: theme.textMuted, fontStyle: FontStyle.italic)),
                     ]),
                     const SizedBox(height: 16),
@@ -384,10 +377,10 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                             child: Text(h.name,
                                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: theme.textPrimary)),
                           ),
-                          Text('Day ${h.daysElapsed}',
-                               style: TextStyle(fontSize: 12, color: theme.textSecondary)),
-                               const SizedBox(width: 12),
-                               Icon(Icons.drag_handle_rounded, color: theme.textMuted, size: 22),
+                          Text(l10n.dayCount(h.daysElapsed),
+                          style: TextStyle(fontSize: 12, color: theme.textSecondary)),
+                          const SizedBox(width: 12),
+                          Icon(Icons.drag_handle_rounded, color: theme.textMuted, size: 22),
                         ]),
                       );
                     },
@@ -402,8 +395,8 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
   }
 
   void _showSettingsHub(BuildContext ctx) {
-    final settings  = ctx.read<GroveSettings>();
     final model     = ctx.read<GroveModel>();
+    final settings  = ctx.read<GroveSettings>();
     final bottomPad = MediaQuery.of(ctx).padding.bottom;
 
     showModalBottomSheet(
@@ -414,182 +407,256 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
-      builder: (sheetCtx) => Padding(
-        padding: EdgeInsets.fromLTRB(24, 24, 24, 24 + bottomPad),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize:       MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Center(
-                child: Container(
+      builder: (sheetCtx) => Consumer<GroveSettings>(
+        builder: (_, settings, _) {
+          final l10n = AppLocalizations.of(sheetCtx)!;
+          return SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(24, 20, 24, 24 + bottomPad),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Center(child: Container(
                   width: 36, height: 4,
                   decoration: BoxDecoration(
-                    color:        settings.theme.textMuted.withValues(alpha: 0.4),
+                    color: settings.theme.textMuted.withValues(alpha: 0.4),
                     borderRadius: BorderRadius.circular(2),
                   ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Text('Settings Hub', style: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.w700,
-                color: settings.theme.textPrimary,
-              )),
-              const SizedBox(height: 24),
-              Text('LAYOUT ARCHITECTURE', style: TextStyle(
-                fontSize: 11, fontWeight: FontWeight.w700,
-                color: settings.theme.textSecondary, letterSpacing: 1.0,
-              )),
-              const SizedBox(height: 12),
-              Row(
-                children: [
-                  _LayoutButton(
-                    label: 'Wheel', icon: Icons.view_day,
-                    isSelected: settings.layoutMode == LayoutMode.verticalWheel,
-                    theme: settings.theme,
-                    onTap: () { settings.setLayoutMode(LayoutMode.verticalWheel); HapticFeedback.selectionClick(); Navigator.pop(sheetCtx); },
+                )),
+                const SizedBox(height: 20),
+                Text(l10n.settingsHub, style: TextStyle(
+                  fontSize: 18, fontWeight: FontWeight.w700, color: settings.theme.textPrimary)),
+                  const SizedBox(height: 24),
+
+                  Text(l10n.layoutArchitecture, style: TextStyle(
+                    fontSize: 11, fontWeight: FontWeight.w700,
+                    color: settings.theme.textSecondary, letterSpacing: 1.0,
+                  )),
+                  const SizedBox(height: 12),
+                  Row(children: [
+                    _LayoutButton(
+                      label: l10n.layoutWheel, icon: Icons.view_day,
+                      isSelected: settings.layoutMode == LayoutMode.verticalWheel,
+                      theme: settings.theme,
+                      onTap: () { settings.setLayoutMode(LayoutMode.verticalWheel); HapticFeedback.selectionClick(); Navigator.pop(sheetCtx); },
+                    ),
+                    const SizedBox(width: 8),
+                    _LayoutButton(
+                      label: l10n.layoutCarousel, icon: Icons.view_carousel,
+                      isSelected: settings.layoutMode == LayoutMode.horizontalCarousel,
+                      theme: settings.theme,
+                      onTap: () { settings.setLayoutMode(LayoutMode.horizontalCarousel); HapticFeedback.selectionClick(); Navigator.pop(sheetCtx); },
+                    ),
+                    const SizedBox(width: 8),
+                    _LayoutButton(
+                      label: l10n.layoutGrid, icon: Icons.grid_view,
+                      isSelected: settings.layoutMode == LayoutMode.compactGrid,
+                      theme: settings.theme,
+                      onTap: () { settings.setLayoutMode(LayoutMode.compactGrid); HapticFeedback.selectionClick(); Navigator.pop(sheetCtx); },
+                    ),
+                    const SizedBox(width: 8),
+                    _LayoutButton(
+                      label: l10n.layoutList, icon: Icons.list,
+                      isSelected: settings.layoutMode == LayoutMode.compactList,
+                      theme: settings.theme,
+                      onTap: () { settings.setLayoutMode(LayoutMode.compactList); HapticFeedback.selectionClick(); Navigator.pop(sheetCtx); },
+                    ),
+                  ]),
+                  const SizedBox(height: 12),
+                  OutlinedButton.icon(
+                    onPressed: () { Navigator.pop(sheetCtx); _showReorderSheet(ctx); },
+                    icon:  Icon(Icons.swap_vert_rounded, size: 16, color: settings.theme.textSecondary),
+                    label: Text(l10n.reorderGrove, style: TextStyle(color: settings.theme.textPrimary)),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      side:    BorderSide(color: settings.theme.textMuted.withValues(alpha: 0.4)),
+                      shape:   RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    ),
                   ),
-                  const SizedBox(width: 8),
-                  _LayoutButton(
-                    label: 'Carousel', icon: Icons.view_carousel,
-                    isSelected: settings.layoutMode == LayoutMode.horizontalCarousel,
-                    theme: settings.theme,
-                    onTap: () { settings.setLayoutMode(LayoutMode.horizontalCarousel); HapticFeedback.selectionClick(); Navigator.pop(sheetCtx); },
+                  const SizedBox(height: 28),
+
+                  Text(l10n.renderThemes, style: TextStyle(
+                    fontSize: 11, fontWeight: FontWeight.w700,
+                    color: settings.theme.textSecondary, letterSpacing: 1.0,
+                  )),
+                  const SizedBox(height: 8),
+                  RadioGroup<GroveThemeMode>(
+                    groupValue: settings.themeMode,
+                    onChanged: (val) {
+                      if (val != null) settings.setThemeMode(val);
+                      HapticFeedback.selectionClick();
+                      Navigator.pop(sheetCtx);
+                    },
+                    child: Column(
+                      children: GroveThemeMode.values.map((mode) {
+                        final labels = {
+                          GroveThemeMode.forestDark:   l10n.themeForestDark,
+                          GroveThemeMode.amoledBlack:  l10n.themeAmoledBlack,
+                          GroveThemeMode.materialYou:  l10n.themeMaterialYou,
+                          GroveThemeMode.whiteMinimal: l10n.themeWhiteMinimal,
+                        };
+                        return RadioListTile<GroveThemeMode>(
+                          value:          mode,
+                          activeColor:    settings.theme.primary,
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(labels[mode]!, style: TextStyle(color: settings.theme.textPrimary)),
+                        );
+                      }).toList(),
+                    ),
                   ),
-                  const SizedBox(width: 8),
-                  _LayoutButton(
-                    label: 'Grid', icon: Icons.grid_view,
-                    isSelected: settings.layoutMode == LayoutMode.compactGrid,
-                    theme: settings.theme,
-                    onTap: () { settings.setLayoutMode(LayoutMode.compactGrid); HapticFeedback.selectionClick(); Navigator.pop(sheetCtx); },
-                  ),
-                  const SizedBox(width: 8),
-                  _LayoutButton(
-                    label: 'List', icon: Icons.list,
-                    isSelected: settings.layoutMode == LayoutMode.compactList,
-                    theme: settings.theme,
-                    onTap: () { settings.setLayoutMode(LayoutMode.compactList); HapticFeedback.selectionClick(); Navigator.pop(sheetCtx); },
-                  ),
-                ],
-              ),
-              const SizedBox(height: 12),
-              OutlinedButton.icon(
-                onPressed: () { Navigator.pop(sheetCtx); _showReorderSheet(ctx); },
-                icon:  Icon(Icons.swap_vert_rounded, size: 16, color: settings.theme.textSecondary),
-                label: Text('Reorder Grove', style: TextStyle(color: settings.theme.textPrimary)),
-                style: OutlinedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  side:    BorderSide(color: settings.theme.textMuted.withValues(alpha: 0.4)),
-                  shape:   RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                ),
-              ),
-              const SizedBox(height: 28),
-              Text('RENDER THEMES', style: TextStyle(
-                fontSize: 11, fontWeight: FontWeight.w700,
-                color: settings.theme.textSecondary, letterSpacing: 1.0,
-              )),
-              const SizedBox(height: 8),
-              RadioGroup<GroveThemeMode>(
-                groupValue: settings.themeMode,
-                onChanged: (val) {
-                  if (val != null) settings.setThemeMode(val);
-                  HapticFeedback.selectionClick();
-                  Navigator.pop(sheetCtx);
-                },
-                child: Column(
-                  children: GroveThemeMode.values.map((mode) {
-                    const labels = {
-                      GroveThemeMode.forestDark:   'Forest Dark',
-                      GroveThemeMode.amoledBlack:  'AMOLED Black',
-                      GroveThemeMode.materialYou:  'Material You',
-                      GroveThemeMode.whiteMinimal: 'White Minimal',
-                    };
-                    return RadioListTile<GroveThemeMode>(
-                      value:          mode,
-                      activeColor:    settings.theme.primary,
-                      contentPadding: EdgeInsets.zero,
-                      title: Text(labels[mode]!, style: TextStyle(color: settings.theme.textPrimary)),
-                    );
-                  }).toList(),
-                ),
-              ),
-              const Divider(height: 32),
-              Text('PRIVACY & NOTIFICATIONS', style: TextStyle(
-                fontSize: 11, fontWeight: FontWeight.w700,
-                color: settings.theme.textSecondary, letterSpacing: 1.0,
-              )),
-              const SizedBox(height: 4),
-              SwitchListTile(
-                contentPadding: EdgeInsets.zero,
-                title: Text('Milestone Notifications',
-                            style: TextStyle(color: settings.theme.textPrimary, fontSize: 14)),
-                            subtitle: Text('Get notified when a tree reaches a new growth stage',
-                                           style: TextStyle(color: settings.theme.textMuted, fontSize: 11)),
-                                           activeThumbColor: settings.theme.primary,
-                             value:    settings.milestoneNotifications,
-                             onChanged: (val) async {
-                               HapticFeedback.selectionClick();
-                               await settings.setMilestoneNotifications(val);
-                             },
-              ),
-              FutureBuilder<bool>(
-                future: GroveBiometrics.instance.isAvailable,
-                builder: (_, snap) {
-                  final available = snap.data ?? false;
-                  if (!available) return const SizedBox.shrink();
-                  return SwitchListTile(
+
+                  const Divider(height: 32),
+
+                  Text(l10n.privacyNotifications, style: TextStyle(
+                    fontSize: 11, fontWeight: FontWeight.w700,
+                    color: settings.theme.textSecondary, letterSpacing: 1.0,
+                  )),
+                  const SizedBox(height: 4),
+                  SwitchListTile(
                     contentPadding: EdgeInsets.zero,
-                    title: Text('Biometric Unlock',
+                    title:    Text(l10n.milestoneNotifications,
+                                   style: TextStyle(color: settings.theme.textPrimary, fontSize: 14)),
+                                   subtitle: Text(l10n.milestoneNotificationsSubtitle,
+                                                  style: TextStyle(color: settings.theme.textMuted, fontSize: 11)),
+                                                  activeThumbColor: settings.theme.primary,
+                                 value:    settings.milestoneNotifications,
+                                 onChanged: (val) async {
+                                   HapticFeedback.selectionClick();
+                                   await settings.setMilestoneNotifications(val);
+                                 },
+                  ),
+                  FutureBuilder<bool>(
+                    future: GroveBiometrics.instance.isAvailable,
+                    builder: (_, snap) {
+                      final available = snap.data ?? false;
+                      if (!available) return const SizedBox.shrink();
+                      return SwitchListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title:    Text(l10n.biometricUnlock,
+                                       style: TextStyle(color: settings.theme.textPrimary, fontSize: 14)),
+                                       subtitle: Text(l10n.biometricUnlockSubtitle,
+                                                      style: TextStyle(color: settings.theme.textMuted, fontSize: 11)),
+                                                      activeThumbColor: settings.theme.primary,
+                                            value:    settings.biometricUnlock,
+                                            onChanged: (val) async {
+                                              HapticFeedback.selectionClick();
+                                              await settings.setBiometricUnlock(val);
+                                            },
+                      );
+                    },
+                  ),
+
+                  const SizedBox(height: 4),
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    leading: Container(
+                      width: 38, height: 38,
+                      decoration: BoxDecoration(
+                        color:        settings.theme.primary.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(Icons.language_rounded, color: settings.theme.primary, size: 20),
+                    ),
+                    title: Text(l10n.languageLabel,
                                 style: TextStyle(color: settings.theme.textPrimary, fontSize: 14)),
-                                subtitle: Text('Require Fingerprint / Pin to open Grove',
-                                               style: TextStyle(color: settings.theme.textMuted, fontSize: 11)),
-                                               activeThumbColor: settings.theme.primary,
-                                        value:    settings.biometricUnlock,
-                                        onChanged: (val) async {
-                                          HapticFeedback.selectionClick();
-                                          await settings.setBiometricUnlock(val);
-                                        },
-                  );
-                },
-              ),
-              const Divider(height: 32),
-              Text('DATA MANAGEMENT', style: TextStyle(
-                fontSize: 11, fontWeight: FontWeight.w700,
-                color: settings.theme.textSecondary, letterSpacing: 1.0,
-              )),
-              const SizedBox(height: 12),
-              OutlinedButton.icon(
-                onPressed: () => _showExportSheet(ctx, model, settings),
-                icon:  const Icon(Icons.upload_outlined, size: 16),
-                label: const Text('Export Grove Backup'),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: settings.theme.textPrimary,
-                    side:    BorderSide(color: settings.theme.textMuted.withValues(alpha: 0.4)),
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape:   RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                ),
-              ),
-              const SizedBox(height: 10),
-              OutlinedButton.icon(
-                onPressed: () => _showImportSheet(ctx, model, settings),
-                icon:  const Icon(Icons.download_outlined, size: 16),
-                label: const Text('Restore Grove from Backup'),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: settings.theme.textPrimary,
-                    side:    BorderSide(color: settings.theme.textMuted.withValues(alpha: 0.4)),
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape:   RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Export saves a .json file to a location you choose.\nImporting will replace your current grove • export a backup first.',
-                style:     TextStyle(fontSize: 10, color: settings.theme.textMuted, height: 1.5),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
+                                subtitle: Text(
+                                  _localeName(settings.locale),
+                                  style: TextStyle(color: settings.theme.textMuted, fontSize: 11),
+                                ),
+                           trailing: Icon(Icons.chevron_right_rounded, color: settings.theme.textMuted),
+                           onTap: () => _showLanguagePicker(sheetCtx, settings, l10n),
+                  ),
+
+                  const Divider(height: 32),
+
+                  Text(l10n.dataManagement, style: TextStyle(
+                    fontSize: 11, fontWeight: FontWeight.w700,
+                    color: settings.theme.textSecondary, letterSpacing: 1.0,
+                  )),
+                  const SizedBox(height: 12),
+                  OutlinedButton.icon(
+                    onPressed: () => _showExportSheet(ctx, model, settings),
+                    icon:  const Icon(Icons.upload_outlined, size: 16),
+                    label: Text(l10n.exportGroveBackup),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: settings.theme.textPrimary,
+                        side:    BorderSide(color: settings.theme.textMuted.withValues(alpha: 0.4)),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape:   RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  OutlinedButton.icon(
+                    onPressed: () => _showImportSheet(ctx, model, settings),
+                    icon:  const Icon(Icons.download_outlined, size: 16),
+                    label: Text(l10n.restoreGroveBackup),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: settings.theme.textPrimary,
+                        side:    BorderSide(color: settings.theme.textMuted.withValues(alpha: 0.4)),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape:   RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(l10n.exportImportNote,
+                       style:     TextStyle(fontSize: 10, color: settings.theme.textMuted, height: 1.5),
+                       textAlign: TextAlign.center),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  static const _languageOptions = <String, Locale?>{
+    '🌐  System Default':   null,
+    '🇬🇧  English':          Locale('en'),
+    '🇸🇦  العربية':           Locale('ar'),
+    '🇪🇸  Español':           Locale('es'),
+    '🇫🇷  Français':          Locale('fr'),
+    '🇨🇳  简体中文':            Locale('zh'),
+    '🇹🇼  繁體中文':            Locale('zh', 'TW'),
+  };
+
+  String _localeName(Locale? locale) {
+    if (locale == null) return 'System Default';
+    for (final entry in _languageOptions.entries) {
+      if (entry.value == locale) return entry.key.replaceAll(RegExp(r'^.{2,3}\s+'), '');
+    }
+    return locale.toLanguageTag();
+  }
+
+  void _showLanguagePicker(BuildContext ctx, GroveSettings settings, AppLocalizations l10n) {
+    final theme = settings.theme;
+    showDialog(
+      context: ctx,
+      builder: (dialogCtx) => AlertDialog(
+        backgroundColor: theme.surfaceHigh,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        title: Text(l10n.languageLabel,
+                    style: TextStyle(color: theme.textPrimary, fontWeight: FontWeight.w700)),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 12),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: _languageOptions.entries.map((entry) {
+                        final isSelected = settings.locale == entry.value;
+                        return ListTile(
+                          title: Text(entry.key, style: TextStyle(
+                            color:      isSelected ? theme.primary : theme.textPrimary,
+                            fontWeight: isSelected ? FontWeight.w700 : FontWeight.normal,
+                            fontSize:   14,
+                          )),
+                          trailing: isSelected
+                          ? Icon(Icons.check_rounded, color: theme.primary, size: 18)
+                          : null,
+                          onTap: () async {
+                            HapticFeedback.selectionClick();
+                            await settings.setLocale(entry.value);
+                            if (dialogCtx.mounted) Navigator.pop(dialogCtx);
+                          },
+                        );
+                      }).toList(),
+                    ),
       ),
     );
   }
@@ -597,12 +664,13 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
   Future<void> _showExportSheet(BuildContext ctx, GroveModel model, GroveSettings settings) async {
     final json      = model.exportJson();
     final theme     = settings.theme;
+    final l10n      = AppLocalizations.of(ctx)!;
     final fileName  = 'Grove_backup_${DateFormat("yyyy-MM-dd_HH-mm-ss").format(DateTime.now())}.json';
     final bytes     = Uint8List.fromList(json.codeUnits);
     final messenger = ScaffoldMessenger.of(ctx);
 
     final String? outputPath = await FilePicker.saveFile(
-      dialogTitle:       'Save Grove Backup',
+      dialogTitle:       l10n.saveGroveBackupDialog,
       fileName:          fileName,
       type:              FileType.custom,
       allowedExtensions: ['json'],
@@ -615,7 +683,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
           await File(outputPath).writeAsString(json);
         } catch (e) {
           messenger.showSnackBar(SnackBar(
-            content:         Text('Save failed: $e'),
+            content:         Text(l10n.saveFailed(e.toString())),
             backgroundColor: GroveTheme.clayRed,
             behavior:        SnackBarBehavior.floating,
           ));
@@ -624,7 +692,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
       }
       HapticFeedback.lightImpact();
       messenger.showSnackBar(SnackBar(
-        content:         const Text('✓ Backup saved'),
+        content:         Text(l10n.backupSaved),
         backgroundColor: theme.primary,
         behavior:        SnackBarBehavior.floating,
       ));
@@ -633,10 +701,11 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
 
   Future<void> _showImportSheet(BuildContext ctx, GroveModel model, GroveSettings settings) async {
     final theme     = settings.theme;
+    final l10n      = AppLocalizations.of(ctx)!;
     final messenger = ScaffoldMessenger.of(ctx);
 
     final result = await FilePicker.pickFiles(
-      dialogTitle:       'Select Grove Backup',
+      dialogTitle:       l10n.selectGroveBackupDialog,
       type:              FileType.custom,
       allowedExtensions: ['json'],
       withData:          true,
@@ -655,8 +724,8 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     }
 
     if (raw == null || raw.trim().isEmpty) {
-      messenger.showSnackBar(const SnackBar(
-        content:         Text('Could not read the selected file.'),
+      messenger.showSnackBar(SnackBar(
+        content:         Text(l10n.couldNotReadFile),
         backgroundColor: GroveTheme.clayRed,
         behavior:        SnackBarBehavior.floating,
       ));
@@ -667,13 +736,14 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
 
     messenger.showSnackBar(SnackBar(
       content: Text(success
-      ? '✓ Grove restored — ${model.habits.length} trees loaded'
-      : '✗ Invalid backup — make sure you selected the right file'),
+      ? l10n.groveRestored(model.habits.length)
+      : l10n.invalidBackup),
       backgroundColor: success ? theme.primary : GroveTheme.clayRed,
       behavior:        SnackBarBehavior.floating,
     ));
   }
-  Widget _emptyState(GroveTheme theme) => Center(
+
+  Widget _emptyState(GroveTheme theme, AppLocalizations l10n) => Center(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -691,11 +761,11 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
           ),
         ),
         const SizedBox(height: 28),
-        Text('Your grove is bare.',
+        Text(l10n.groveIsBare,
              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300,
                               color: theme.textMuted, letterSpacing: 0.5)),
                   const SizedBox(height: 8),
-                  Text('Plant your first tree to begin.',
+                  Text(l10n.plantFirstTree,
                        style: TextStyle(fontSize: 13, color: theme.textMuted)),
                        const SizedBox(height: 120),
       ],
@@ -717,14 +787,14 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     ),
   );
 
-  Widget _fab(BuildContext context, GroveTheme theme) => Padding(
+  Widget _fab(BuildContext context, GroveTheme theme, AppLocalizations l10n) => Padding(
     padding: const EdgeInsets.only(bottom: 8),
     child: FloatingActionButton.extended(
       onPressed: () => showModalBottomSheet(
-        context:         context,
+        context:            context,
         isScrollControlled: true,
-        backgroundColor: theme.surfaceHigh,
-        useSafeArea:     true,
+        backgroundColor:    theme.surfaceHigh,
+        useSafeArea:        true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
         ),
@@ -733,8 +803,8 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
       backgroundColor: theme.primary,
       foregroundColor: theme.brightness == Brightness.light ? Colors.white : GroveTheme.dewWhite,
         icon:  const Icon(Icons.forest_rounded),
-        label: const Text('Plant a Tree',
-                          style: TextStyle(fontWeight: FontWeight.w600, letterSpacing: 0.5)),
+        label: Text(l10n.plantATree,
+                    style: const TextStyle(fontWeight: FontWeight.w600, letterSpacing: 0.5)),
     ),
   );
 }
@@ -784,9 +854,8 @@ class _AboutLinkTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(label, style: TextStyle(
-                    fontSize: 14, fontWeight: FontWeight.w600, color: theme.textPrimary)),
-                    Text(sublabel, style: TextStyle(fontSize: 11, color: theme.textSecondary)),
+                  Text(label,    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: theme.textPrimary)),
+                  Text(sublabel, style: TextStyle(fontSize: 11, color: theme.textSecondary)),
                 ],
               ),
             ),
@@ -822,7 +891,7 @@ class _LayoutButton extends StatelessWidget {
           decoration: BoxDecoration(
             color:        isSelected ? theme.primary : theme.surface,
             borderRadius: BorderRadius.circular(12),
-            border:       Border.all(
+            border: Border.all(
               color: isSelected ? theme.primary : theme.textMuted.withValues(alpha: 0.3),
             ),
           ),
