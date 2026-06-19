@@ -1,10 +1,12 @@
-import 'package:flutter/material.dart';
+import 'dart:ui' show Locale, PlatformDispatcher;
+import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest_all.dart' as tz_data;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:grove/models/grove_models.dart';
+import 'package:grove/l10n/app_localizations.dart';
 
 class GroveNotifications {
   GroveNotifications._();
@@ -70,8 +72,16 @@ class GroveNotifications {
     await _prefs?.setStringList(_prefsKey, _notified.toList());
   }
 
+  Future<void> markStagesSeen(List<HabitTree> habits) async {
+    for (final habit in habits) {
+      if (habit.stage == GrowthStage.seed) continue;
+      _notified.add('${habit.id}_${habit.stage.index}');
+    }
+    await _prefs?.setStringList(_prefsKey, _notified.toList());
+  }
+
   Future<void> _fireNotification(HabitTree habit) async {
-    final (title, body) = _copy(habit.name, habit.stage);
+    final (title, body) = await _copy(habit.name, habit.stage);
 
     const details = NotificationDetails(
       android: AndroidNotificationDetails(
@@ -99,28 +109,39 @@ class GroveNotifications {
     debugPrint('Grove milestone: [${habit.name}] reached ${habit.stage.name}');
   }
 
-  (String, String) _copy(String name, GrowthStage stage) {
+  Future<Locale> _resolveLocale() async {
+    final tag = _prefs?.getString('locale_language_tag');
+    if (tag != null && tag.isNotEmpty) {
+      final parts = tag.split('_');
+      final locale = parts.length >= 2 ? Locale(parts[0], parts[1]) : Locale(parts[0]);
+      if (AppLocalizations.supportedLocales.contains(locale)) {
+        return locale;
+      }
+    }
+    final deviceLocale = PlatformDispatcher.instance.locale;
+    for (final s in AppLocalizations.supportedLocales) {
+      if (s.languageCode == deviceLocale.languageCode &&
+        s.countryCode  == deviceLocale.countryCode) return s;
+    }
+    for (final s in AppLocalizations.supportedLocales) {
+      if (s.languageCode == deviceLocale.languageCode) return s;
+    }
+    return const Locale('en');
+  }
+
+  Future<(String, String)> _copy(String name, GrowthStage stage) async {
+    final locale = await _resolveLocale();
+    final l10n   = await AppLocalizations.delegate.load(locale);
+
     switch (stage) {
       case GrowthStage.sprout:
-        return (
-          '$name is sprouting! 🌱',
-          'Your tree\'s roots are done forming. Keep growing.',
-        );
+        return (l10n.notifSproutTitle(name), l10n.notifSproutBody);
       case GrowthStage.sapling:
-        return (
-          '$name is a sapling now! 🌿',
-          'Your tree is standing on its own, look how much you have grown',
-        );
+        return (l10n.notifSaplingTitle(name), l10n.notifSaplingBody);
       case GrowthStage.youngTree:
-        return (
-          '$name is growing tall! 🌳',
-          'Your canopy is starting to take shape, incredible.',
-        );
+        return (l10n.notifYoungTreeTitle(name), l10n.notifYoungTreeBody);
       case GrowthStage.groveTree:
-        return (
-          '$name is a grove tree! 🌲',
-          'Congratulations!!! You have become the forest.',
-        );
+        return (l10n.notifGroveTreeTitle(name), l10n.notifGroveTreeBody);
       case GrowthStage.seed:
         return ('', '');
     }
