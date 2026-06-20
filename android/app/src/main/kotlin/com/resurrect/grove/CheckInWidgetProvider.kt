@@ -139,13 +139,6 @@ class CheckInWidgetProvider : AppWidgetProvider() {
             makeBroadcast(ctx, ACTION_TOGGLE_CHECKIN, widgetId, widgetId * 10 + 1)
         )
 
-        val openApp = PendingIntent.getActivity(
-            ctx, widgetId * 10 + 2,
-            ctx.packageManager.getLaunchIntentForPackage(ctx.packageName),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-        views.setOnClickPendingIntent(R.id.checkin_root, openApp)
-
         mgr.updateAppWidget(widgetId, views)
     }
 
