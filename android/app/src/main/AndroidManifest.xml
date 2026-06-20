@@ -89,6 +89,19 @@
                 android:resource="@xml/tree_widget_info" />
         </receiver>
 
+        <!-- ── Grove Check-In Widget (1x1) ──────────────────────────── -->
+        <receiver
+            android:name=".CheckInWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.resurrect.grove.ACTION_CHECKIN_TOGGLE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/checkin_widget_info" />
+        </receiver>
+
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
