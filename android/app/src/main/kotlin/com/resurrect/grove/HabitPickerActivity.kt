@@ -25,10 +25,14 @@ class HabitPickerActivity : Activity() {
         private const val FLUTTER_PREFS = "FlutterSharedPreferences"
         private const val KEY_HABITS    = "flutter.grove_v2_ids"
         private const val LIST_PREFIX   = "VGhpcyBpcyB0aGUgcHJlZml4IGZvciBhIGxpc3Qu"
+
+        private const val TYPE_CALENDAR = "calendar"
+        private const val TYPE_CHECKIN  = "checkin"
+        private const val TYPE_TREE     = "tree"
     }
 
     private var widgetId   = AppWidgetManager.INVALID_APPWIDGET_ID
-    private var isCalendar = true
+    private var widgetType = TYPE_TREE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,18 +49,21 @@ class HabitPickerActivity : Activity() {
 
         val mgr          = AppWidgetManager.getInstance(this)
         val providerName = mgr.getAppWidgetInfo(widgetId)?.provider?.className ?: ""
-        isCalendar       = providerName.contains("Calendar", ignoreCase = true)
+        widgetType = when {
+            providerName.contains("Calendar", ignoreCase = true) -> TYPE_CALENDAR
+            providerName.contains("CheckIn",  ignoreCase = true) -> TYPE_CHECKIN
+            else                                                  -> TYPE_TREE
+        }
 
         val prefs = getSharedPreferences(FLUTTER_PREFS, Context.MODE_PRIVATE)
 
-        // ── Dump every key in the prefs file so we can see what's actually there ──
         Log.d(TAG, "=== FlutterSharedPreferences dump ===")
         val allKeys = prefs.all
         Log.d(TAG, "Total keys: ${allKeys.size}")
         allKeys.forEach { (k, v) ->
             val preview = when (v) {
-                is String -> if (v.length > 120) v.take(120) + "…" else v
-                is Set<*> -> "StringSet(${v.size}): ${v.take(3)}…"
+                is String -> if (v.length > 120) v.take(120) + "..." else v
+                is Set<*> -> "StringSet(${v.size}): ${v.take(3)}..."
                 else      -> v.toString()
             }
             Log.d(TAG, "  KEY='$k'  TYPE=${v?.javaClass?.simpleName}  VAL=$preview")
@@ -66,17 +73,23 @@ class HabitPickerActivity : Activity() {
         val habitIds = loadHabitIds(prefs)
         Log.d(TAG, "Loaded ${habitIds.size} habit IDs: $habitIds")
 
-        val habits = habitIds.mapNotNull { id ->
+        val allHabits = habitIds.mapNotNull { id ->
             val obj = loadHabit(prefs, id)
             Log.d(TAG, "  habit '$id' -> ${if (obj != null) obj.optString("name", "?") else "NOT FOUND"}")
-            obj ?: return@mapNotNull null
-            Pair(id, obj.optString("name", id))
+            if (obj == null) return@mapNotNull null
+                Triple(id, obj.optString("name", id), obj.optInt("mode", 0))
+        }
+
+        val habits: List<Pair<String, String>> = if (widgetType == TYPE_CHECKIN) {
+            allHabits
+            .filter { (_, _, mode) -> mode == 1 }
+            .map    { (id, name, _) -> Pair(id, name) }
+        } else {
+            allHabits.map { (id, name, _) -> Pair(id, name) }
         }
 
         setContentView(buildUI(habits))
     }
-
-    // ── Build UI programmatically ─────────────────────────────────────────
 
     private fun buildUI(habits: List<Pair<String, String>>): View {
         val dp = { n: Int ->
@@ -91,7 +104,11 @@ class HabitPickerActivity : Activity() {
             setPadding(dp(16), dp(24), dp(16), dp(16))
         }
 
-        val widgetTypeLabel = if (isCalendar) "Calendar Widget" else "Tree Widget"
+        val widgetTypeLabel = when (widgetType) {
+            TYPE_CALENDAR -> "Calendar Widget"
+            TYPE_CHECKIN  -> "Check-In Widget"
+            else          -> "Tree Widget"
+        }
         root.addView(TextView(this).apply {
             text = "Select a habit for your $widgetTypeLabel"
             setTextColor(Color.WHITE)
@@ -101,8 +118,14 @@ class HabitPickerActivity : Activity() {
         })
 
         if (habits.isEmpty()) {
+            val emptyMsg: String = if (widgetType == TYPE_CHECKIN) {
+                "No check-in habits found.\nOpen Grove and create a habit with Check-In mode first."
+            } else {
+                "No habits found.\nCreate a habit in Grove first."
+            }
+
             root.addView(TextView(this).apply {
-                text = "No habits found.\nCreate a habit in Grove first."
+                text = emptyMsg
                 setTextColor(Color.parseColor("#AAAAAA"))
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
                 gravity = Gravity.CENTER
@@ -116,7 +139,7 @@ class HabitPickerActivity : Activity() {
 
         habits.forEach { (id, name) ->
             list.addView(TextView(this).apply {
-                text = "🌿  $name"
+                text = "  $name"
                 setTextColor(Color.WHITE)
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
                 setPadding(dp(16), dp(14), dp(16), dp(14))
@@ -136,8 +159,6 @@ class HabitPickerActivity : Activity() {
         return root
     }
 
-    // ── Selection ─────────────────────────────────────────────────────────
-
     private fun onHabitSelected(habitId: String) {
         saveSelection(habitId)
         triggerWidgetUpdate()
@@ -147,32 +168,39 @@ class HabitPickerActivity : Activity() {
     }
 
     private fun saveSelection(habitId: String) {
-        if (isCalendar) {
-            getSharedPreferences(CalendarWidgetProvider.NAV_PREFS, Context.MODE_PRIVATE)
-            .edit().putString("cal_habit_id_$widgetId", habitId).apply()
-        } else {
-            getSharedPreferences("grove_widget_nav", Context.MODE_PRIVATE)
-            .edit().putString("tree_habit_id_$widgetId", habitId).apply()
+        when (widgetType) {
+            TYPE_CALENDAR -> {
+                getSharedPreferences(CalendarWidgetProvider.NAV_PREFS, Context.MODE_PRIVATE)
+                .edit().putString("cal_habit_id_$widgetId", habitId).apply()
+            }
+            TYPE_CHECKIN -> {
+                getSharedPreferences(CheckInWidgetProvider.NAV_PREFS, Context.MODE_PRIVATE)
+                .edit().putString("checkin_habit_id_$widgetId", habitId).apply()
+            }
+            else -> {
+                getSharedPreferences("grove_widget_nav", Context.MODE_PRIVATE)
+                .edit().putString("tree_habit_id_$widgetId", habitId).apply()
+            }
         }
     }
 
     private fun triggerWidgetUpdate() {
         val mgr = AppWidgetManager.getInstance(this)
-        val cls = if (isCalendar) CalendarWidgetProvider::class.java
-        else            TreeWidgetProvider::class.java
-            val ids = mgr.getAppWidgetIds(ComponentName(this, cls))
-            if (ids.isNotEmpty()) {
-                sendBroadcast(Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE).apply {
-                    component = ComponentName(this@HabitPickerActivity, cls)
-                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-                })
-            }
+        val cls = when (widgetType) {
+            TYPE_CALENDAR -> CalendarWidgetProvider::class.java
+            TYPE_CHECKIN  -> CheckInWidgetProvider::class.java
+            else          -> TreeWidgetProvider::class.java
+        }
+        val ids = mgr.getAppWidgetIds(ComponentName(this, cls))
+        if (ids.isNotEmpty()) {
+            sendBroadcast(Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE).apply {
+                component = ComponentName(this@HabitPickerActivity, cls)
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            })
+        }
     }
 
-    // ── Data helpers ──────────────────────────────────────────────────────
-
     private fun loadHabitIds(prefs: android.content.SharedPreferences): List<String> {
-        // Try 1: native StringSet (shared_preferences 2.x)
         try {
             val set = prefs.getStringSet(KEY_HABITS, null)
             if (!set.isNullOrEmpty()) {
@@ -185,13 +213,11 @@ class HabitPickerActivity : Activity() {
 
         val raw = prefs.getString(KEY_HABITS, null)
         if (raw == null) {
-            Log.d(TAG, "loadHabitIds: key '$KEY_HABITS' not found at all")
+            Log.d(TAG, "loadHabitIds: key not found")
             return emptyList()
         }
         Log.d(TAG, "loadHabitIds: raw value (first 200): ${raw.take(200)}")
 
-        // Try 2: "This is the prefix for a list." + "!" + JSON array
-        // e.g. VGhpcyBpcyB0aGUgcHJlZml4IGZvciBhIGxpc3Qu!["id1","id2"]
         if (raw.startsWith(LIST_PREFIX)) {
             val bang = raw.indexOf('!')
             if (bang >= 0) {
@@ -203,14 +229,13 @@ class HabitPickerActivity : Activity() {
             }
         }
 
-        // Try 3: plain JSON array
         return try {
-            val arr = JSONArray(raw)
+            val arr   = JSONArray(raw)
             val items = (0 until arr.length()).map { arr.getString(it) }
             Log.d(TAG, "loadHabitIds: decoded JSON array: $items")
             items
         } catch (e: Exception) {
-            Log.e(TAG, "loadHabitIds: all formats failed. raw='$raw'", e)
+            Log.e(TAG, "loadHabitIds: all formats failed. raw=$raw", e)
             emptyList()
         }
     }
