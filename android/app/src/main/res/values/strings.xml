@@ -3,4 +3,5 @@
   <string name="app_name">Grove</string>
   <string name="calendar_widget_description">Grove monthly calendar</string>
   <string name="tree_widget_description">Grove habit tree</string>
+  <string name="checkin_widget_description">Grove quick check-in</string>
 </resources>

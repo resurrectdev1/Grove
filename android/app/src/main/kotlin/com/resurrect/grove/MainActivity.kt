@@ -59,7 +59,8 @@ class MainActivity : FlutterFragmentActivity() {
         val mgr = AppWidgetManager.getInstance(this)
         listOf(
             CalendarWidgetProvider::class.java,
-            TreeWidgetProvider::class.java
+            TreeWidgetProvider::class.java,
+            CheckInWidgetProvider::class.java
         ).forEach { cls ->
             val ids = mgr.getAppWidgetIds(ComponentName(this, cls))
             if (ids.isNotEmpty()) {

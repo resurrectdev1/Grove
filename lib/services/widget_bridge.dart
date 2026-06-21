@@ -13,24 +13,27 @@ class GroveWidgetBridge {
   Future<void> renderAndUpdate(List<HabitTree> habits) async {
     try {
       final filesDir = await _channel.invokeMethod<String>('getFilesDir');
-      if (filesDir == null) return;
+      if (filesDir != null) {
+        for (final habit in habits) {
+          try {
+            final bytes = await _renderHabit(habit);
+            if (bytes == null) continue;
 
-      for (final habit in habits) {
-        final bytes = await _renderHabit(habit);
-        if (bytes == null) continue;
-
-        await _channel.invokeMethod<void>('saveTreeImage', {
-          'habitId': habit.id,
-          'bytes':   bytes,
-        });
+            await _channel.invokeMethod<void>('saveTreeImage', {
+              'habitId': habit.id,
+              'bytes':   bytes,
+            });
+          } catch (e) {
+            debugPrint('GroveWidgetBridge: failed to render habit ${habit.id}: $e');
+          }
+        }
       }
-
-      await _channel.invokeMethod<void>('updateWidgets');
     } on MissingPluginException {
-
     } catch (e) {
       debugPrint('GroveWidgetBridge.renderAndUpdate error: $e');
     }
+
+    await requestUpdate();
   }
 
   Future<void> requestUpdate() async {

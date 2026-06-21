@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/checkin_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:padding="6dp">
+
+    <TextView
+        android:id="@+id/checkin_habit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="Tap to pick"
+        android:textColor="#FF8AA88C"
+        android:textSize="8sp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/checkin_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="✓"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/checkin_streak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#FFE0EBE0"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
