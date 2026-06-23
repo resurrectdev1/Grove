@@ -12,6 +12,29 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.6.6] - 2026-06-22
+
+### Added
+
+* New 1×1 Check-In widget, created with help from @ADAIBLOG
+* Custom hex colour theme picker for greater personalisation
+* New daily Check-In reminder notification
+* Localization support for German, Hindi, Italian, Japanese, Korean, Portuguese, Urdu, and Vietnamese
+
+### Changed
+
+- Language setting now has its own dedicated section instead of being grouped under Privacy & Notifications
+- Localization screen updated to be scrollable
+- Upgraded Flutter dependencies
+
+### Fixed
+
+- Fixed a French localization issue where `swipeForEarlierMonths` could cause a pixel overflow
+- Performance optimisations and a range of smaller bug fixes
+
+
+---
+
 ## [0.6.4] - 2026-06-19
 
 ### Added
