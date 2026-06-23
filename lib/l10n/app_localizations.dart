@@ -1117,7 +1117,7 @@ abstract class AppLocalizations {
   /// No description provided for @dailyReminderSettingSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Your forest is waiting for you!'**
+  /// **'A nudge to check-in on your forest'**
   String get dailyReminderSettingSubtitle;
 
   /// No description provided for @tapToChange.

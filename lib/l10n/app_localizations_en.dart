@@ -537,7 +537,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dailyReminderSetting => 'Daily Check-in Reminder';
 
   @override
-  String get dailyReminderSettingSubtitle => 'Your forest is waiting for you!';
+  String get dailyReminderSettingSubtitle => 'A nudge to check-in on your forest';
 
   @override
   String get tapToChange => 'Tap to change';
