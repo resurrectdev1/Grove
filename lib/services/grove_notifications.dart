@@ -1,5 +1,6 @@
 import 'dart:ui' show Locale, PlatformDispatcher;
 import 'package:flutter/foundation.dart' show debugPrint;
+import 'package:flutter/material.dart' show TimeOfDay;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,9 +15,12 @@ class GroveNotifications {
 
   final _plugin = FlutterLocalNotificationsPlugin();
 
-  static const _channelId   = 'grove_milestones';
-  static const _channelName = 'Tree Milestones';
-  static const _prefsKey    = 'grove_notified_milestones';
+  static const _channelId        = 'grove_milestones';
+  static const _channelName      = 'Tree Milestones';
+  static const _prefsKey         = 'grove_notified_milestones';
+  static const _dailyChannelId   = 'grove_daily_reminder';
+  static const _dailyChannelName = 'Daily Check-in Reminder';
+  static const _dailyNotifId     = 99999;
 
   int _notifId(String habitId) => habitId.hashCode.abs() % 100000;
 
@@ -144,6 +148,62 @@ class GroveNotifications {
         return (l10n.notifGroveTreeTitle(name), l10n.notifGroveTreeBody);
       case GrowthStage.seed:
         return ('', '');
+    }
+  }
+
+  Future<void> scheduleDailyReminder(TimeOfDay time) async {
+    try {
+      final locale = await _resolveLocale();
+      final l10n   = await AppLocalizations.delegate.load(locale);
+
+      await _plugin.cancel(id: _dailyNotifId);
+
+      final now      = tz.TZDateTime.now(tz.local);
+      var   scheduled = tz.TZDateTime(
+        tz.local, now.year, now.month, now.day, time.hour, time.minute,
+      );
+      if (scheduled.isBefore(now)) {
+        scheduled = scheduled.add(const Duration(days: 1));
+      }
+
+      const details = NotificationDetails(
+        android: AndroidNotificationDetails(
+          _dailyChannelId,
+          _dailyChannelName,
+          channelDescription: 'Daily reminder to check in on your habits',
+          importance: Importance.high,
+          priority:   Priority.high,
+          icon:       '@drawable/ic_grove_notif',
+        ),
+        iOS: DarwinNotificationDetails(
+          presentAlert: true,
+          presentBadge: false,
+          presentSound: true,
+        ),
+      );
+
+      await _plugin.zonedSchedule(
+        id: _dailyNotifId,
+        title: l10n.dailyReminderSetting,
+        body: l10n.dailyReminderSettingSubtitle,
+        scheduledDate: scheduled,
+        notificationDetails: details,
+        androidScheduleMode:      AndroidScheduleMode.exactAllowWhileIdle,
+        matchDateTimeComponents:  DateTimeComponents.time,
+      );
+
+      debugPrint('Grove: daily reminder scheduled at ${time.hour}:${time.minute.toString().padLeft(2, '0')}');
+    } catch (e) {
+      debugPrint('Grove: scheduleDailyReminder error: $e');
+    }
+  }
+
+  Future<void> cancelDailyReminder() async {
+    try {
+      await _plugin.cancel(id: _dailyNotifId);
+      debugPrint('Grove: daily reminder cancelled');
+    } catch (e) {
+      debugPrint('Grove: cancelDailyReminder error: $e');
     }
   }
 
