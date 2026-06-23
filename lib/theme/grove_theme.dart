@@ -6,7 +6,8 @@ enum LayoutMode { verticalWheel, horizontalCarousel, compactGrid, compactList }
 class GroveTheme {
   final GroveThemeMode mode;
   final ColorScheme?   dynamicScheme;
-  const GroveTheme({required this.mode, this.dynamicScheme});
+  final Color?         customAccent;
+  const GroveTheme({required this.mode, this.dynamicScheme, this.customAccent});
 
   Color get bg {
     switch (mode) {
@@ -45,6 +46,7 @@ class GroveTheme {
   }
 
   Color get primary {
+    if (customAccent != null && mode != GroveThemeMode.materialYou) return customAccent!;
     switch (mode) {
       case GroveThemeMode.forestDark:   return const Color(0xFF4E8B5F);
       case GroveThemeMode.amoledBlack:  return const Color(0xFF4E8B5F);
