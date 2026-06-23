@@ -238,5 +238,14 @@
   "notifGroveTreeBody": "Congratulations!!! You have become the forest.",
 
   "saveGroveBackupDialog": "Save Grove Backup",
-  "selectGroveBackupDialog": "Select Grove Backup"
+  "selectGroveBackupDialog": "Select Grove Backup",
+  "customAccentColor": "Custom Accent",
+  "customAccentDefault": "Default green",
+  "customAccentSubtitle": "Applied across buttons, cards, and badges",
+  "applyAccent": "Apply Accent",
+  "resetAccentDefault": "Reset to default",
+  "dailyReminderSetting": "Daily Check-in Reminder",
+  "dailyReminderSettingSubtitle": "Your forest is waiting for you!",
+  "tapToChange": "Tap to change",
+  "languageSection": "LANGUAGE"
 }

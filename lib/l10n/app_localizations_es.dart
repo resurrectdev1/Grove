@@ -517,4 +517,31 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get selectGroveBackupDialog => 'Seleccionar copia de seguridad';
+
+  @override
+  String get customAccentColor => 'Acento personalizado';
+
+  @override
+  String get customAccentDefault => 'Verde predeterminado';
+
+  @override
+  String get customAccentSubtitle => 'Aplicado en botones, tarjetas e insignias';
+
+  @override
+  String get applyAccent => 'Aplicar acento';
+
+  @override
+  String get resetAccentDefault => 'Restablecer por defecto';
+
+  @override
+  String get dailyReminderSetting => 'Recordatorio diario de check-in';
+
+  @override
+  String get dailyReminderSettingSubtitle => '¡Tu bosque te está esperando!';
+
+  @override
+  String get tapToChange => 'Toca para cambiar';
+
+  @override
+  String get languageSection => 'IDIOMA';
 }

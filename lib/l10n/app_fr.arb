@@ -128,7 +128,7 @@
   "checkIns": "Pointages",
 
   "interactiveMonthlyLogs": "Journaux mensuels interactifs",
-  "swipeForEarlierMonths": "Faites glisser ← pour les mois précédents",
+  "swipeForEarlierMonths": "Glissez ← pour les mois précédents",
   "thisMonth": "Ce mois-ci",
   "logDateBeforeTracking": "← Enregistrer une date avant le début du suivi",
 
@@ -189,5 +189,14 @@
   "notifGroveTreeBody": "Félicitations !!! Vous êtes devenu la forêt.",
 
   "saveGroveBackupDialog": "Enregistrer la sauvegarde",
-  "selectGroveBackupDialog": "Sélectionner une sauvegarde"
+  "selectGroveBackupDialog": "Sélectionner une sauvegarde",
+  "customAccentColor": "Accent personnalisé",
+  "customAccentDefault": "Vert par défaut",
+  "customAccentSubtitle": "Appliqué sur les boutons, cartes et badges",
+  "applyAccent": "Appliquer l'accent",
+  "resetAccentDefault": "Rétablir par défaut",
+  "dailyReminderSetting": "Rappel quotidien de check-in",
+  "dailyReminderSettingSubtitle": "Votre forêt vous attend !",
+  "tapToChange": "Appuyez pour modifier",
+  "languageSection": "LANGUE"
 }

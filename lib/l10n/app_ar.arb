@@ -189,5 +189,14 @@
   "notifGroveTreeBody": "تهانينا!!! لقد أصبحت الغابة.",
 
   "saveGroveBackupDialog": "حفظ نسخة احتياطية",
-  "selectGroveBackupDialog": "اختر نسخة احتياطية"
+  "selectGroveBackupDialog": "اختر نسخة احتياطية",
+  "customAccentColor": "لون التمييز المخصص",
+  "customAccentDefault": "الأخضر الافتراضي",
+  "customAccentSubtitle": "يطبق على الأزرار والبطاقات والشارات",
+  "applyAccent": "تطبيق التمييز",
+  "resetAccentDefault": "إعادة إلى الافتراضي",
+  "dailyReminderSetting": "تذكير يومي بالتسجيل",
+  "dailyReminderSettingSubtitle": "غابتك في انتظارك!",
+  "tapToChange": "انقر للتغيير",
+  "languageSection": "اللغة"
 }

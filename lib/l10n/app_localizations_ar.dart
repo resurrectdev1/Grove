@@ -517,4 +517,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get selectGroveBackupDialog => 'اختر نسخة احتياطية';
+
+  @override
+  String get customAccentColor => 'لون التمييز المخصص';
+
+  @override
+  String get customAccentDefault => 'الأخضر الافتراضي';
+
+  @override
+  String get customAccentSubtitle => 'يطبق على الأزرار والبطاقات والشارات';
+
+  @override
+  String get applyAccent => 'تطبيق التمييز';
+
+  @override
+  String get resetAccentDefault => 'إعادة إلى الافتراضي';
+
+  @override
+  String get dailyReminderSetting => 'تذكير يومي بالتسجيل';
+
+  @override
+  String get dailyReminderSettingSubtitle => 'غابتك في انتظارك!';
+
+  @override
+  String get tapToChange => 'انقر للتغيير';
+
+  @override
+  String get languageSection => 'اللغة';
 }

@@ -517,6 +517,33 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get selectGroveBackupDialog => '选择备份';
+
+  @override
+  String get customAccentColor => '自定义强调色';
+
+  @override
+  String get customAccentDefault => '默认绿色';
+
+  @override
+  String get customAccentSubtitle => '应用于按钮、卡片和徽章';
+
+  @override
+  String get applyAccent => '应用强调色';
+
+  @override
+  String get resetAccentDefault => '重置为默认';
+
+  @override
+  String get dailyReminderSetting => '每日签到提醒';
+
+  @override
+  String get dailyReminderSettingSubtitle => '你的森林在等你！';
+
+  @override
+  String get tapToChange => '点击更改';
+
+  @override
+  String get languageSection => '语言';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -1032,4 +1059,31 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get selectGroveBackupDialog => '選擇備份';
+
+  @override
+  String get customAccentColor => '自訂強調色';
+
+  @override
+  String get customAccentDefault => '預設綠色';
+
+  @override
+  String get customAccentSubtitle => '套用於按鈕、卡片和徽章';
+
+  @override
+  String get applyAccent => '套用強調色';
+
+  @override
+  String get resetAccentDefault => '重設為預設值';
+
+  @override
+  String get dailyReminderSetting => '每日簽到提醒';
+
+  @override
+  String get dailyReminderSettingSubtitle => '你的森林在等你！';
+
+  @override
+  String get tapToChange => '點擊更改';
+
+  @override
+  String get languageSection => '語言';
 }

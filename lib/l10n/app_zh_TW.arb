@@ -189,5 +189,14 @@
   "notifGroveTreeBody": "恭喜！！！你已經成為了森林。",
 
   "saveGroveBackupDialog": "儲存備份",
-  "selectGroveBackupDialog": "選擇備份"
+  "selectGroveBackupDialog": "選擇備份",
+  "customAccentColor": "自訂強調色",
+  "customAccentDefault": "預設綠色",
+  "customAccentSubtitle": "套用於按鈕、卡片和徽章",
+  "applyAccent": "套用強調色",
+  "resetAccentDefault": "重設為預設值",
+  "dailyReminderSetting": "每日簽到提醒",
+  "dailyReminderSettingSubtitle": "你的森林在等你！",
+  "tapToChange": "點擊更改",
+  "languageSection": "語言"
 }

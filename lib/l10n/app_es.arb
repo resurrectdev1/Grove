@@ -189,5 +189,14 @@
   "notifGroveTreeBody": "¡¡¡Felicitaciones!!! Te has convertido en el bosque.",
 
   "saveGroveBackupDialog": "Guardar copia de seguridad",
-  "selectGroveBackupDialog": "Seleccionar copia de seguridad"
+  "selectGroveBackupDialog": "Seleccionar copia de seguridad",
+  "customAccentColor": "Acento personalizado",
+  "customAccentDefault": "Verde predeterminado",
+  "customAccentSubtitle": "Aplicado en botones, tarjetas e insignias",
+  "applyAccent": "Aplicar acento",
+  "resetAccentDefault": "Restablecer por defecto",
+  "dailyReminderSetting": "Recordatorio diario de check-in",
+  "dailyReminderSettingSubtitle": "¡Tu bosque te está esperando!",
+  "tapToChange": "Toca para cambiar",
+  "languageSection": "IDIOMA"
 }

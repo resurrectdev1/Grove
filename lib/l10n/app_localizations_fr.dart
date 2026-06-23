@@ -350,7 +350,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get interactiveMonthlyLogs => 'Journaux mensuels interactifs';
 
   @override
-  String get swipeForEarlierMonths => 'Faites glisser ← pour les mois précédents';
+  String get swipeForEarlierMonths => 'Glissez ← pour les mois précédents';
 
   @override
   String get thisMonth => 'Ce mois-ci';
@@ -517,4 +517,31 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get selectGroveBackupDialog => 'Sélectionner une sauvegarde';
+
+  @override
+  String get customAccentColor => 'Accent personnalisé';
+
+  @override
+  String get customAccentDefault => 'Vert par défaut';
+
+  @override
+  String get customAccentSubtitle => 'Appliqué sur les boutons, cartes et badges';
+
+  @override
+  String get applyAccent => 'Appliquer l\'accent';
+
+  @override
+  String get resetAccentDefault => 'Rétablir par défaut';
+
+  @override
+  String get dailyReminderSetting => 'Rappel quotidien de check-in';
+
+  @override
+  String get dailyReminderSettingSubtitle => 'Votre forêt vous attend !';
+
+  @override
+  String get tapToChange => 'Appuyez pour modifier';
+
+  @override
+  String get languageSection => 'LANGUE';
 }
