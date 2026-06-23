@@ -14,8 +14,16 @@ class GroveApp extends StatelessWidget {
   static const _supportedLocales = [
     Locale('en'),
     Locale('ar'),
+    Locale('de'),
     Locale('es'),
     Locale('fr'),
+    Locale('hi'),
+    Locale('it'),
+    Locale('ja'),
+    Locale('ko'),
+    Locale('pt'),
+    Locale('ur'),
+    Locale('vi'),
     Locale('zh'),
     Locale('zh', 'TW'),
   ];
