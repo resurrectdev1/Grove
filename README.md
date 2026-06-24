@@ -67,4 +67,6 @@ alt="Get it on F-Droid" align="center" height="80" /></a>
 
 ## License
 
-This software is free software licensed under the GNU General Public License 3.0.
+This software is licensed under the GNU General Public License 3.0.
+
+[![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)
