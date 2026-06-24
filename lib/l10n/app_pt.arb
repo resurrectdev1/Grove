@@ -25,9 +25,21 @@
   "checkedIn": "Check-in feito",
   "checkInAction": "Check-in",
   "dayStreak": "Sequência de {days} dias",
-  "@dayStreak": {"placeholders": {"days": {"type": "int"}}},
+  "@dayStreak": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "dayCount": "Dia {days}",
-  "@dayCount": {"placeholders": {"days": {"type": "int"}}},
+  "@dayCount": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "alreadyCheckedInToday": "Já fez check-in hoje ✓",
   "tapBelowToCheckIn": "Toque abaixo para fazer check-in",
   "giveHabitName": "Dê um nome ao seu hábito.",
@@ -89,10 +101,22 @@
   "exportImportNote": "Exportar salva um arquivo .json em um local que você escolher.\nImportar substituirá seu grove atual • exporte um backup primeiro.",
   "backupSaved": "✓ Backup salvo",
   "saveFailed": "Falha ao salvar: {error}",
-  "@saveFailed": {"placeholders": {"error": {"type": "String"}}},
+  "@saveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "couldNotReadFile": "Não foi possível ler o arquivo selecionado.",
   "groveRestored": "✓ Grove restaurado — {count} árvores carregadas",
-  "@groveRestored": {"placeholders": {"count": {"type": "int"}}},
+  "@groveRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "invalidBackup": "✗ Backup inválido — certifique-se de ter selecionado o arquivo correto",
   "language": "IDIOMA",
   "languageLabel": "Idioma",
@@ -104,7 +128,13 @@
   "madeWith": "Feito com 🌿 • todos os dados ficam no seu dispositivo.",
   "openSource": "Código aberto",
   "versionLabel": "v{version} • Código aberto",
-  "@versionLabel": {"placeholders": {"version": {"type": "String"}}},
+  "@versionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "groveDescription": "Grove é um rastreador de hábitos minimalista que visualiza seu crescimento através de árvores. Cada dia limpo, sua árvore cresce. Gratuito e de código aberto.",
   "groveLocked": "Grove está bloqueado",
   "authenticateToContinue": "Autentique para continuar",
@@ -120,7 +150,7 @@
   "cleanSinceStart": "Limpo desde o início",
   "timeSinceLastRelapse": "Tempo desde a última recaída",
   "days": "DIAS",
-  "hrs": "HRS",
+  "hrs": "H",
   "min": "MIN",
   "sec": "SEG",
   "checkedInToday": "Check-in feito hoje",
@@ -132,7 +162,13 @@
   "relapseSweepTimeline": "Linha do tempo de recaídas",
   "checkInHistory": "Histórico de check-ins",
   "totalCount": "{count} no total",
-  "@totalCount": {"placeholders": {"count": {"type": "int"}}},
+  "@totalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "noRelapsesRecorded": "Nenhuma recaída registrada. Continue crescendo.",
   "noCheckInsYet": "Ainda sem check-ins. Comece hoje!",
   "renameHabit": "Renomear hábito",
@@ -141,11 +177,23 @@
   "deleteHabitPermanently": "Excluir hábito permanentemente",
   "deleteHabit": "Excluir hábito?",
   "deleteHabitConfirm": "Isso excluirá permanentemente \"{name}\" e todo o seu histórico. Esta ação não pode ser desfeita.",
-  "@deleteHabitConfirm": {"placeholders": {"name": {"type": "String"}}},
+  "@deleteHabitConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "delete": "Excluir",
   "earlierThanLogs": "Anterior aos seus registros?",
   "trackingStarted": "Rastreamento iniciado em {date}.\nSe algo aconteceu antes disso, você pode registrar aqui.",
-  "@trackingStarted": {"placeholders": {"date": {"type": "String"}}},
+  "@trackingStarted": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "logEarlierDate": "Registrar data anterior",
   "extendsHistoryNote": "Isso estende seu histórico e recalcula sequências",
   "logEarlierDateTitle": "Registrar data anterior",
@@ -157,19 +205,49 @@
   "onlyExtendStartDate": "Apenas estender a data de início (sem recaída)",
   "whatHappenedHint": "O que aconteceu naquele dia…",
   "peakSweep": "Sequência máxima: {days} dias",
-  "@peakSweep": {"placeholders": {"days": {"type": "int"}}},
+  "@peakSweep": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "noReasonRecorded": "Nenhum motivo registrado.",
   "notifSproutTitle": "{name} está brotando! 🌱",
-  "@notifSproutTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSproutTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSproutBody": "As raízes da sua árvore terminaram de se formar. Continue crescendo.",
   "notifSaplingTitle": "{name} é uma muda agora! 🌿",
-  "@notifSaplingTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSaplingTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSaplingBody": "Sua árvore está de pé sozinha, veja quanto você cresceu",
   "notifYoungTreeTitle": "{name} está crescendo alto! 🌳",
-  "@notifYoungTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifYoungTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifYoungTreeBody": "Sua copa está começando a tomar forma, incrível.",
   "notifGroveTreeTitle": "{name} é uma árvore do bosque! 🌲",
-  "@notifGroveTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifGroveTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifGroveTreeBody": "Parabéns!!! Você se tornou a floresta.",
   "saveGroveBackupDialog": "Salvar backup do Grove",
   "selectGroveBackupDialog": "Selecionar backup do Grove",

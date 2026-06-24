@@ -1,9 +1,7 @@
 {
   "@@locale": "en",
-
   "appTitle": "Grove",
   "appTagline": "G R O V E",
-
   "plantATree": "Plant a Tree",
   "plantTree": "Plant Tree",
   "plantANewTree": "Plant a New Tree",
@@ -14,14 +12,12 @@
   "customHexCode": "CUSTOM HEX CODE",
   "hexCode": "Hex Code",
   "invalidHex": "Invalid hex",
-
   "abstain": "Abstain",
   "abstainSubtitle1": "Auto-grows daily",
   "abstainSubtitle2": "Tap to record a relapse",
   "checkIn": "Check-In",
   "checkInSubtitle1": "Check in daily to grow",
   "checkInSubtitle2": "Growth based on check-ins",
-
   "history": "History",
   "daysSuffix": "{days}d",
   "historyCount": "History ({count})",
@@ -31,31 +27,32 @@
   "dayStreak": "{days}-day streak",
   "@dayStreak": {
     "placeholders": {
-      "days": { "type": "int" }
+      "days": {
+        "type": "int"
+      }
     }
   },
   "dayCount": "Day {days}",
   "@dayCount": {
     "placeholders": {
-      "days": { "type": "int" }
+      "days": {
+        "type": "int"
+      }
     }
   },
   "alreadyCheckedInToday": "Already checked in today ✓",
   "tapBelowToCheckIn": "Tap below to check in",
   "giveHabitName": "Give your habit a name.",
-
   "stageSeed": "Seed",
   "stageSprout": "Sprout",
   "stageSapling": "Sapling",
   "stageYoungTree": "Young Tree",
   "stageGroveTree": "Grove Tree",
-
   "taglineSeed": "Every great forest starts here.",
   "taglineSprout": "Roots are forming beneath the surface.",
   "taglineSapling": "Growing stronger with every sunrise.",
   "taglineYoungTree": "Your canopy is taking shape.",
   "taglineGroveTree": "You have become the forest.",
-
   "logARelapse": "Log a Relapse?",
   "relapseMotivation": "You are stronger than you think.",
   "customTimestamp": "CUSTOM TIMESTAMP",
@@ -63,7 +60,6 @@
   "loggedReasonHint": "Stress, Anxiety, Burnout, Peer pressure, Trigger? etc...",
   "confirmLog": "Confirm Log",
   "cancel": "Cancel",
-
   "onboarding0Title": "Welcome to Grove 🌿",
   "onboarding0Body": "A private sobriety and habit tracker where trees represent your growth, the longer you stay clean, the more vibrant and lush your trees become.",
   "onboarding1Title": "Plant a Tree",
@@ -79,10 +75,8 @@
   "next": "Next",
   "back": "Back",
   "startGrowing": "Start Growing 🌱",
-
   "groveIsBare": "Your grove is bare.",
   "plantFirstTree": "Plant your first tree to begin.",
-
   "settingsHub": "Settings Hub",
   "layoutArchitecture": "LAYOUT ARCHITECTURE",
   "renderThemes": "RENDER THEMES",
@@ -90,22 +84,18 @@
   "dataManagement": "DATA MANAGEMENT",
   "reorderGrove": "Reorder Grove",
   "holdDragToReorder": "Hold & drag ≡ to reorder",
-
   "layoutWheel": "Wheel",
   "layoutCarousel": "Carousel",
   "layoutGrid": "Grid",
   "layoutList": "List",
-
   "themeForestDark": "Forest Dark",
   "themeAmoledBlack": "AMOLED Black",
   "themeMaterialYou": "Material You",
   "themeWhiteMinimal": "White Minimal",
-
   "milestoneNotifications": "Milestone Notifications",
   "milestoneNotificationsSubtitle": "Get notified when a tree reaches a new growth stage",
   "biometricUnlock": "Biometric Unlock",
   "biometricUnlockSubtitle": "Require Fingerprint / Pin to open Grove",
-
   "exportGroveBackup": "Export Grove Backup",
   "restoreGroveBackup": "Restore Grove from Backup",
   "exportImportNote": "Export saves a .json file to a location you choose.\nImporting will replace your current grove • export a backup first.",
@@ -113,21 +103,23 @@
   "saveFailed": "Save failed: {error}",
   "@saveFailed": {
     "placeholders": {
-      "error": { "type": "String" }
+      "error": {
+        "type": "String"
+      }
     }
   },
   "couldNotReadFile": "Could not read the selected file.",
   "groveRestored": "✓ Grove restored — {count} trees loaded",
   "@groveRestored": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "invalidBackup": "✗ Invalid backup — make sure you selected the right file",
-
   "language": "LANGUAGE",
   "languageLabel": "Language",
-
   "links": "LINKS",
   "github": "GitHub",
   "githubSubtitle": "Source code & contributions",
@@ -138,75 +130,72 @@
   "versionLabel": "v{version} • Open Source",
   "@versionLabel": {
     "placeholders": {
-      "version": { "type": "String" }
+      "version": {
+        "type": "String"
+      }
     }
   },
   "groveDescription": "Grove is a minimalistic habit tracker that visualises your growth through trees. Every day you stay clean, your tree grows. Built with love as a free, open-source tool.",
-
   "groveLocked": "Grove is locked",
   "authenticateToContinue": "Authenticate to continue",
   "unlockGrove": "Unlock Grove",
-
   "currentStreak": "Current Streak",
   "peakRecord": "Peak Record",
   "relapses": "Relapses",
   "checkIns": "Check-ins",
-
   "interactiveMonthlyLogs": "Interactive Monthly Logs",
   "swipeForEarlierMonths": "Swipe ← for earlier months",
   "thisMonth": "This month",
   "logDateBeforeTracking": "← Log a date before tracking started",
-
   "cleanSinceStart": "Clean since start",
   "timeSinceLastRelapse": "Time since last relapse",
   "days": "DAYS",
   "hrs": "HRS",
   "min": "MIN",
   "sec": "SEC",
-
   "checkedInToday": "Checked in today",
   "notCheckedInToday": "Not checked in today",
   "streak": "STREAK",
   "total": "TOTAL",
   "alreadyCheckedIn": "Already Checked In",
   "checkInToday": "Check In Today",
-
   "relapseSweepTimeline": "Relapse Timeline Sweep",
   "checkInHistory": "Check-In History",
   "totalCount": "{count} total",
   "@totalCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
-
   "noRelapsesRecorded": "No relapses recorded. Keep growing.",
   "noCheckInsYet": "No check-ins yet. Start today!",
-
   "renameHabit": "Rename Habit",
   "save": "Save",
-
   "dangerZone": "Danger Zone",
   "deleteHabitPermanently": "Delete Habit Permanently",
   "deleteHabit": "Delete Habit?",
   "deleteHabitConfirm": "This will permanently delete \"{name}\" and all its history. This action cannot be undone.",
   "@deleteHabitConfirm": {
     "placeholders": {
-      "name": { "type": "String" }
+      "name": {
+        "type": "String"
+      }
     }
   },
   "delete": "Delete",
-
   "earlierThanLogs": "Earlier than your logs?",
   "trackingStarted": "Tracking started {date}.\nIf something happened before that, you can log it here.",
   "@trackingStarted": {
     "placeholders": {
-      "date": { "type": "String" }
+      "date": {
+        "type": "String"
+      }
     }
   },
   "logEarlierDate": "Log an Earlier Date",
   "extendsHistoryNote": "This extends your history and recalculates streaks",
-
   "logEarlierDateTitle": "Log Earlier Date",
   "beforeTrackingStarted": "Before tracking started",
   "extendHistoryInfo": "This will extend your tracking history earlier and recalculate your peak streaks.",
@@ -215,28 +204,51 @@
   "logAsRelapseOnDate": "Log as Relapse on This Date",
   "onlyExtendStartDate": "Only Extend Start Date (No Relapse)",
   "whatHappenedHint": "What happened that day…",
-
   "peakSweep": "Peak Sweep: {days} days",
   "@peakSweep": {
     "placeholders": {
-      "days": { "type": "int" }
+      "days": {
+        "type": "int"
+      }
     }
   },
   "noReasonRecorded": "No reason recorded.",
-
   "notifSproutTitle": "{name} is sprouting! 🌱",
-  "@notifSproutTitle": { "placeholders": { "name": { "type": "String" } } },
+  "@notifSproutTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSproutBody": "Your tree's roots are done forming. Keep growing.",
   "notifSaplingTitle": "{name} is a sapling now! 🌿",
-  "@notifSaplingTitle": { "placeholders": { "name": { "type": "String" } } },
+  "@notifSaplingTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSaplingBody": "Your tree is standing on its own, look how much you have grown",
   "notifYoungTreeTitle": "{name} is growing tall! 🌳",
-  "@notifYoungTreeTitle": { "placeholders": { "name": { "type": "String" } } },
+  "@notifYoungTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifYoungTreeBody": "Your canopy is starting to take shape, incredible.",
   "notifGroveTreeTitle": "{name} is a grove tree! 🌲",
-  "@notifGroveTreeTitle": { "placeholders": { "name": { "type": "String" } } },
+  "@notifGroveTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifGroveTreeBody": "Congratulations!!! You have become the forest.",
-
   "saveGroveBackupDialog": "Save Grove Backup",
   "selectGroveBackupDialog": "Select Grove Backup",
   "customAccentColor": "Custom Accent",
@@ -247,5 +259,7 @@
   "dailyReminderSetting": "Daily Check-in Reminder",
   "dailyReminderSettingSubtitle": "A nudge to check-in on your forest",
   "tapToChange": "Tap to change",
-  "languageSection": "LANGUAGE"
+  "languageSection": "LANGUAGE",
+  "dailyReminderTitle": "Time to check in 🌿",
+  "dailyReminderBody": "Your grove is waiting. Keep the streak alive."
 }

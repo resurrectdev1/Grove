@@ -368,13 +368,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get days => 'JOURS';
 
   @override
-  String get hrs => 'HRS';
+  String get hrs => 'H';
 
   @override
   String get min => 'MIN';
 
   @override
-  String get sec => 'SEC';
+  String get sec => 'S';
 
   @override
   String get checkedInToday => 'Pointé aujourd\'hui';
@@ -544,4 +544,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get languageSection => 'LANGUE';
+
+  @override
+  String get dailyReminderTitle => 'C\'est l\'heure du pointage 🌿';
+
+  @override
+  String get dailyReminderBody => 'Votre bosquet vous attend. Gardez la série vivante.';
 }

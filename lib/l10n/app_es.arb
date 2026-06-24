@@ -1,9 +1,7 @@
 {
   "@@locale": "es",
-
   "appTitle": "Grove",
   "appTagline": "G R O V E",
-
   "plantATree": "Plantar un árbol",
   "plantTree": "Plantar árbol",
   "plantANewTree": "Plantar un árbol nuevo",
@@ -14,14 +12,12 @@
   "customHexCode": "CÓDIGO HEX PERSONALIZADO",
   "hexCode": "Código Hex",
   "invalidHex": "Hex inválido",
-
   "abstain": "Abstinencia",
   "abstainSubtitle1": "Crece automáticamente cada día",
   "abstainSubtitle2": "Toca para registrar una recaída",
   "checkIn": "Check-In",
   "checkInSubtitle1": "Regístrate diariamente para crecer",
   "checkInSubtitle2": "El crecimiento se basa en los registros",
-
   "history": "Historial",
   "daysSuffix": "{days}d",
   "historyCount": "Historial ({count})",
@@ -33,19 +29,16 @@
   "alreadyCheckedInToday": "Ya registrado hoy ✓",
   "tapBelowToCheckIn": "Toca abajo para registrarte",
   "giveHabitName": "Ponle un nombre a tu hábito.",
-
   "stageSeed": "Semilla",
   "stageSprout": "Brote",
   "stageSapling": "Plántula",
   "stageYoungTree": "Árbol joven",
   "stageGroveTree": "Árbol del bosque",
-
   "taglineSeed": "Todo gran bosque comienza aquí.",
   "taglineSprout": "Las raíces se forman bajo la superficie.",
   "taglineSapling": "Cada amanecer te hace más fuerte.",
   "taglineYoungTree": "Tu copa está tomando forma.",
   "taglineGroveTree": "Te has convertido en el bosque.",
-
   "logARelapse": "¿Registrar una recaída?",
   "relapseMotivation": "Eres más fuerte de lo que crees.",
   "customTimestamp": "MARCA DE TIEMPO PERSONALIZADA",
@@ -53,7 +46,6 @@
   "loggedReasonHint": "Estrés, ansiedad, agotamiento, presión social, desencadenante, etc.",
   "confirmLog": "Confirmar registro",
   "cancel": "Cancelar",
-
   "onboarding0Title": "Bienvenido a Grove 🌿",
   "onboarding0Body": "Un rastreador privado de sobriedad y hábitos donde los árboles representan tu crecimiento. Cuanto más tiempo te mantengas limpio, más vibrantes y frondosos se vuelven tus árboles.",
   "onboarding1Title": "Planta un árbol",
@@ -69,10 +61,8 @@
   "next": "Siguiente",
   "back": "Atrás",
   "startGrowing": "Empieza a crecer 🌱",
-
   "groveIsBare": "Tu bosque está vacío.",
   "plantFirstTree": "Planta tu primer árbol para empezar.",
-
   "settingsHub": "Ajustes",
   "layoutArchitecture": "DISEÑO DE PANTALLA",
   "renderThemes": "TEMAS",
@@ -80,22 +70,18 @@
   "dataManagement": "GESTIÓN DE DATOS",
   "reorderGrove": "Reordenar bosque",
   "holdDragToReorder": "Mantén y arrastra ≡ para reordenar",
-
   "layoutWheel": "Rueda",
   "layoutCarousel": "Carrusel",
   "layoutGrid": "Cuadrícula",
   "layoutList": "Lista",
-
   "themeForestDark": "Bosque oscuro",
   "themeAmoledBlack": "Negro AMOLED",
   "themeMaterialYou": "Material You",
   "themeWhiteMinimal": "Blanco minimalista",
-
   "milestoneNotifications": "Notificaciones de hitos",
   "milestoneNotificationsSubtitle": "Recibe avisos cuando un árbol alcance una nueva etapa de crecimiento",
   "biometricUnlock": "Desbloqueo biométrico",
   "biometricUnlockSubtitle": "Requerir huella dactilar / PIN para abrir Grove",
-
   "exportGroveBackup": "Exportar copia de seguridad",
   "restoreGroveBackup": "Restaurar bosque desde copia de seguridad",
   "exportImportNote": "La exportación guarda un archivo .json en una ubicación elegida.\nImportar reemplazará tu bosque actual • exporta primero una copia.",
@@ -104,10 +90,8 @@
   "couldNotReadFile": "No se pudo leer el archivo seleccionado.",
   "groveRestored": "✓ Bosque restaurado — {count} árboles cargados",
   "invalidBackup": "✗ Copia inválida — asegúrate de seleccionar el archivo correcto",
-
   "language": "IDIOMA",
   "languageLabel": "Idioma",
-
   "links": "ENLACES",
   "github": "GitHub",
   "githubSubtitle": "Código fuente y contribuciones",
@@ -117,56 +101,45 @@
   "openSource": "Código abierto",
   "versionLabel": "v{version} • Código abierto",
   "groveDescription": "Grove es un rastreador de hábitos minimalista que visualiza tu crecimiento mediante árboles. Cada día que te mantienes limpio, tu árbol crece. Construido con amor como una herramienta gratuita y de código abierto.",
-
   "groveLocked": "Grove está bloqueado",
   "authenticateToContinue": "Autentícate para continuar",
   "unlockGrove": "Desbloquear Grove",
-
   "currentStreak": "Racha actual",
   "peakRecord": "Récord máximo",
   "relapses": "Recaídas",
   "checkIns": "Registros",
-
   "interactiveMonthlyLogs": "Registros mensuales interactivos",
   "swipeForEarlierMonths": "Desliza ← para meses anteriores",
   "thisMonth": "Este mes",
   "logDateBeforeTracking": "← Registra una fecha antes del inicio",
-
   "cleanSinceStart": "Limpio desde el inicio",
   "timeSinceLastRelapse": "Tiempo desde la última recaída",
   "days": "DÍAS",
   "hrs": "HORAS",
   "min": "MIN",
   "sec": "SEG",
-
   "checkedInToday": "Registrado hoy",
   "notCheckedInToday": "Sin registro hoy",
   "streak": "RACHA",
   "total": "TOTAL",
   "alreadyCheckedIn": "Ya registrado",
   "checkInToday": "Registrarse hoy",
-
   "relapseSweepTimeline": "Línea de tiempo de recaídas",
   "checkInHistory": "Historial de registros",
   "totalCount": "{count} en total",
-
   "noRelapsesRecorded": "Sin recaídas registradas. Sigue creciendo.",
   "noCheckInsYet": "Sin registros aún. ¡Empieza hoy!",
-
   "renameHabit": "Renombrar hábito",
   "save": "Guardar",
-
   "dangerZone": "Zona de peligro",
   "deleteHabitPermanently": "Eliminar hábito permanentemente",
   "deleteHabit": "¿Eliminar hábito?",
   "deleteHabitConfirm": "Esto eliminará permanentemente \"{name}\" y todo su historial. Esta acción no se puede deshacer.",
   "delete": "Eliminar",
-
   "earlierThanLogs": "¿Antes que tus registros?",
   "trackingStarted": "El seguimiento comenzó el {date}.\nSi algo ocurrió antes, puedes registrarlo aquí.",
   "logEarlierDate": "Registrar una fecha anterior",
   "extendsHistoryNote": "Esto extiende tu historial y recalcula las rachas",
-
   "logEarlierDateTitle": "Registrar fecha anterior",
   "beforeTrackingStarted": "Antes del inicio del seguimiento",
   "extendHistoryInfo": "Esto extenderá tu historial de seguimiento y recalculará tus rachas máximas.",
@@ -175,10 +148,8 @@
   "logAsRelapseOnDate": "Registrar como recaída en esta fecha",
   "onlyExtendStartDate": "Solo extender fecha de inicio (sin recaída)",
   "whatHappenedHint": "¿Qué pasó ese día…?",
-
   "peakSweep": "Récord de racha: {days} días",
   "noReasonRecorded": "Sin motivo registrado.",
-
   "notifSproutTitle": "¡{name} está brotando! 🌱",
   "notifSproutBody": "Las raíces de tu árbol ya están formadas. Sigue creciendo.",
   "notifSaplingTitle": "¡{name} ya es una plántula! 🌿",
@@ -187,7 +158,6 @@
   "notifYoungTreeBody": "Tu copa está tomando forma, increíble.",
   "notifGroveTreeTitle": "¡{name} es un árbol del bosque! 🌲",
   "notifGroveTreeBody": "¡¡¡Felicitaciones!!! Te has convertido en el bosque.",
-
   "saveGroveBackupDialog": "Guardar copia de seguridad",
   "selectGroveBackupDialog": "Seleccionar copia de seguridad",
   "customAccentColor": "Acento personalizado",
@@ -198,5 +168,7 @@
   "dailyReminderSetting": "Recordatorio diario de check-in",
   "dailyReminderSettingSubtitle": "¡Tu bosque te está esperando!",
   "tapToChange": "Toca para cambiar",
-  "languageSection": "IDIOMA"
+  "languageSection": "IDIOMA",
+  "dailyReminderTitle": "Hora de registrarse 🌿",
+  "dailyReminderBody": "Tu bosque te está esperando. ¡Mantén la racha viva!"
 }

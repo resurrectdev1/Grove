@@ -1,9 +1,7 @@
 {
   "@@locale": "zh_TW",
-
   "appTitle": "Grove",
   "appTagline": "G R O V E",
-
   "plantATree": "種一棵樹",
   "plantTree": "種下樹木",
   "plantANewTree": "種一棵新樹",
@@ -14,14 +12,12 @@
   "customHexCode": "自訂顏色代碼",
   "hexCode": "顏色代碼",
   "invalidHex": "無效的顏色代碼",
-
   "abstain": "戒除",
   "abstainSubtitle1": "每天自動生長",
   "abstainSubtitle2": "點擊記錄復發",
   "checkIn": "打卡",
   "checkInSubtitle1": "每日打卡以促進生長",
   "checkInSubtitle2": "根據打卡次數生長",
-
   "history": "歷史",
   "daysSuffix": "{days}天",
   "historyCount": "歷史記錄 ({count})",
@@ -33,19 +29,16 @@
   "alreadyCheckedInToday": "今日已打卡 ✓",
   "tapBelowToCheckIn": "點擊下方打卡",
   "giveHabitName": "請為你的習慣命名。",
-
   "stageSeed": "種子",
   "stageSprout": "嫩芽",
   "stageSapling": "幼苗",
   "stageYoungTree": "小樹",
   "stageGroveTree": "大樹",
-
   "taglineSeed": "每片偉大的森林都從這裡開始。",
   "taglineSprout": "根系正在地下形成。",
   "taglineSapling": "每一個清晨都讓你更加茁壯。",
   "taglineYoungTree": "你的樹冠正在成形。",
   "taglineGroveTree": "你已經成為了森林。",
-
   "logARelapse": "記錄復發？",
   "relapseMotivation": "你比你想像的更堅強。",
   "customTimestamp": "自訂時間戳記",
@@ -53,7 +46,6 @@
   "loggedReasonHint": "壓力、焦慮、倦怠、同儕壓力、觸發因素等……",
   "confirmLog": "確認記錄",
   "cancel": "取消",
-
   "onboarding0Title": "歡迎使用 Grove 🌿",
   "onboarding0Body": "這是一款私密的戒癮與習慣追蹤應用程式，用樹木代表你的成長。你保持潔淨的時間越長，你的樹就越茁壯繁茂。",
   "onboarding1Title": "種一棵樹",
@@ -69,10 +61,8 @@
   "next": "下一步",
   "back": "返回",
   "startGrowing": "開始成長 🌱",
-
   "groveIsBare": "你的樹林還是空的。",
   "plantFirstTree": "種下第一棵樹，開始你的旅程。",
-
   "settingsHub": "設定",
   "layoutArchitecture": "版面配置",
   "renderThemes": "主題",
@@ -80,22 +70,18 @@
   "dataManagement": "資料管理",
   "reorderGrove": "重新排序",
   "holdDragToReorder": "長按並拖曳 ≡ 進行排序",
-
   "layoutWheel": "滾輪",
   "layoutCarousel": "輪播",
   "layoutGrid": "格狀",
   "layoutList": "清單",
-
   "themeForestDark": "森林暗色",
   "themeAmoledBlack": "AMOLED 純黑",
   "themeMaterialYou": "Material You",
   "themeWhiteMinimal": "簡約白色",
-
   "milestoneNotifications": "里程碑通知",
   "milestoneNotificationsSubtitle": "當樹木達到新的生長階段時獲得通知",
   "biometricUnlock": "生物識別解鎖",
   "biometricUnlockSubtitle": "需要指紋/PIN 才能開啟 Grove",
-
   "exportGroveBackup": "匯出備份",
   "restoreGroveBackup": "從備份還原樹林",
   "exportImportNote": "匯出會將 .json 檔案儲存到你選擇的位置。\n匯入將取代目前的樹林 • 請先匯出備份。",
@@ -104,10 +90,8 @@
   "couldNotReadFile": "無法讀取所選檔案。",
   "groveRestored": "✓ 樹林已還原 — 已載入 {count} 棵樹",
   "invalidBackup": "✗ 無效備份 — 請確認選擇了正確的檔案",
-
   "language": "語言",
   "languageLabel": "語言",
-
   "links": "連結",
   "github": "GitHub",
   "githubSubtitle": "原始碼與貢獻",
@@ -117,56 +101,45 @@
   "openSource": "開源",
   "versionLabel": "v{version} • 開源",
   "groveDescription": "Grove 是一款簡約的習慣追蹤應用程式，透過樹木將你的成長視覺化。每一天你保持潔淨，你的樹就會成長。作為一款免費開源工具，用心製作。",
-
   "groveLocked": "Grove 已鎖定",
   "authenticateToContinue": "驗證身份以繼續",
   "unlockGrove": "解鎖 Grove",
-
   "currentStreak": "當前連續",
   "peakRecord": "最高記錄",
   "relapses": "復發次數",
   "checkIns": "打卡次數",
-
   "interactiveMonthlyLogs": "月度互動日誌",
   "swipeForEarlierMonths": "向左滑動查看更早的月份",
   "thisMonth": "本月",
   "logDateBeforeTracking": "← 記錄追蹤開始之前的日期",
-
   "cleanSinceStart": "從開始保持潔淨",
   "timeSinceLastRelapse": "距上次復發的時間",
   "days": "天",
   "hrs": "時",
   "min": "分",
   "sec": "秒",
-
   "checkedInToday": "今日已打卡",
   "notCheckedInToday": "今日未打卡",
   "streak": "連續",
   "total": "總計",
   "alreadyCheckedIn": "已打卡",
   "checkInToday": "今日打卡",
-
   "relapseSweepTimeline": "復發時間線",
   "checkInHistory": "打卡歷史",
   "totalCount": "共 {count} 次",
-
   "noRelapsesRecorded": "沒有記錄復發。繼續成長。",
   "noCheckInsYet": "還沒有打卡記錄。今天開始！",
-
   "renameHabit": "重新命名習慣",
   "save": "儲存",
-
   "dangerZone": "危險區域",
   "deleteHabitPermanently": "永久刪除習慣",
   "deleteHabit": "刪除習慣？",
   "deleteHabitConfirm": "這將永久刪除「{name}」及其所有歷史記錄。此操作無法撤銷。",
   "delete": "刪除",
-
   "earlierThanLogs": "早於你的記錄？",
   "trackingStarted": "追蹤於 {date} 開始。\n如果在此之前發生了什麼，你可以在此記錄。",
   "logEarlierDate": "記錄更早的日期",
   "extendsHistoryNote": "這將擴展你的歷史並重新計算連續記錄",
-
   "logEarlierDateTitle": "記錄更早的日期",
   "beforeTrackingStarted": "追蹤開始之前",
   "extendHistoryInfo": "這將擴展你的追蹤歷史，並重新計算你的最高連續記錄。",
@@ -175,10 +148,8 @@
   "logAsRelapseOnDate": "記錄為該日期的復發",
   "onlyExtendStartDate": "僅延伸開始日期（不記錄復發）",
   "whatHappenedHint": "那天發生了什麼……",
-
   "peakSweep": "最高連續：{days} 天",
   "noReasonRecorded": "未記錄原因。",
-
   "notifSproutTitle": "{name} 正在發芽！🌱",
   "notifSproutBody": "你的樹的根已經形成。繼續成長。",
   "notifSaplingTitle": "{name} 現在是幼苗了！🌿",
@@ -187,7 +158,6 @@
   "notifYoungTreeBody": "你的樹冠開始成形，太棒了。",
   "notifGroveTreeTitle": "{name} 成為了大樹！🌲",
   "notifGroveTreeBody": "恭喜！！！你已經成為了森林。",
-
   "saveGroveBackupDialog": "儲存備份",
   "selectGroveBackupDialog": "選擇備份",
   "customAccentColor": "自訂強調色",
@@ -198,5 +168,7 @@
   "dailyReminderSetting": "每日簽到提醒",
   "dailyReminderSettingSubtitle": "你的森林在等你！",
   "tapToChange": "點擊更改",
-  "languageSection": "語言"
+  "languageSection": "語言",
+  "dailyReminderTitle": "該打卡了 🌿",
+  "dailyReminderBody": "你的樹林在等你！保持連續記錄。"
 }

@@ -544,4 +544,10 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get languageSection => 'زبان';
+
+  @override
+  String get dailyReminderTitle => 'چیک-ان کا وقت ہے 🌿';
+
+  @override
+  String get dailyReminderBody => 'آپ کا باغ انتظار کر رہا ہے۔ سلسلہ زندہ رکھیں۔';
 }

@@ -45,7 +45,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get invalidHex => '無効なHEXコード';
 
   @override
-  String get abstain => '禁止';
+  String get abstain => '節制';
 
   @override
   String get abstainSubtitle1 => '毎日自動的に成長';
@@ -359,7 +359,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get logDateBeforeTracking => '← トラッキング開始前の日付を記録';
 
   @override
-  String get cleanSinceStart => '開始から清潔';
+  String get cleanSinceStart => '開始からクリーン';
 
   @override
   String get timeSinceLastRelapse => '最後の再発からの時間';
@@ -544,4 +544,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get languageSection => '言語';
+
+  @override
+  String get dailyReminderTitle => 'チェックインの時間です 🌿';
+
+  @override
+  String get dailyReminderBody => 'あなたの森が待っています。連続記録を守りましょう。';
 }

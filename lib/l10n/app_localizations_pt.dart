@@ -368,7 +368,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get days => 'DIAS';
 
   @override
-  String get hrs => 'HRS';
+  String get hrs => 'H';
 
   @override
   String get min => 'MIN';
@@ -544,4 +544,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get languageSection => 'IDIOMA';
+
+  @override
+  String get dailyReminderTitle => 'Hora do check-in 🌿';
+
+  @override
+  String get dailyReminderBody => 'Seu bosque está esperando. Mantenha a sequência viva.';
 }

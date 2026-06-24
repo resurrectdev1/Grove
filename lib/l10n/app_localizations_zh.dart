@@ -544,6 +544,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get languageSection => '语言';
+
+  @override
+  String get dailyReminderTitle => '该打卡了 🌿';
+
+  @override
+  String get dailyReminderBody => '你的树林在等你！保持连续记录。';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -1086,4 +1092,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get languageSection => '語言';
+
+  @override
+  String get dailyReminderTitle => '該打卡了 🌿';
+
+  @override
+  String get dailyReminderBody => '你的樹林在等你！保持連續記錄。';
 }

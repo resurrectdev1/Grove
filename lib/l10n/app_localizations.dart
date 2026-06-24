@@ -1131,6 +1131,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'LANGUAGE'**
   String get languageSection;
+
+  /// No description provided for @dailyReminderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Time to check in 🌿'**
+  String get dailyReminderTitle;
+
+  /// No description provided for @dailyReminderBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your grove is waiting. Keep the streak alive.'**
+  String get dailyReminderBody;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

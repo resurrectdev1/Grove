@@ -544,4 +544,10 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get languageSection => '언어';
+
+  @override
+  String get dailyReminderTitle => '체크인 시간이에요 🌿';
+
+  @override
+  String get dailyReminderBody => '당신의 숲이 기다리고 있습니다. 연속 기록을 지키세요.';
 }

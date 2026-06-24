@@ -544,4 +544,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get languageSection => 'NGÔN NGỮ';
+
+  @override
+  String get dailyReminderTitle => 'Đến giờ điểm danh 🌿';
+
+  @override
+  String get dailyReminderBody => 'Khu rừng của bạn đang chờ. Giữ chuỗi sống.';
 }

@@ -544,4 +544,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get languageSection => 'SPRACHE';
+
+  @override
+  String get dailyReminderTitle => 'Zeit zum Einchecken 🌿';
+
+  @override
+  String get dailyReminderBody => 'Dein Hain wartet. Halte die Serie am Leben.';
 }

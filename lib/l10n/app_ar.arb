@@ -1,9 +1,7 @@
 {
   "@@locale": "ar",
-
   "appTitle": "غروف",
   "appTagline": "G R O V E",
-
   "plantATree": "ازرع شجرة",
   "plantTree": "ازرع الشجرة",
   "plantANewTree": "ازرع شجرة جديدة",
@@ -14,14 +12,12 @@
   "customHexCode": "كود لون مخصص",
   "hexCode": "كود اللون",
   "invalidHex": "كود لون غير صالح",
-
   "abstain": "الامتناع",
   "abstainSubtitle1": "تنمو تلقائياً يومياً",
   "abstainSubtitle2": "اضغط لتسجيل انتكاسة",
   "checkIn": "تسجيل الحضور",
   "checkInSubtitle1": "سجّل حضورك يومياً للنمو",
   "checkInSubtitle2": "النمو بناءً على تسجيلات الحضور",
-
   "history": "السجل",
   "daysSuffix": "{days} يوم",
   "historyCount": "السجل ({count})",
@@ -33,19 +29,16 @@
   "alreadyCheckedInToday": "تم التسجيل اليوم ✓",
   "tapBelowToCheckIn": "اضغط أدناه للتسجيل",
   "giveHabitName": "أعطِ عادتك اسماً.",
-
   "stageSeed": "بذرة",
   "stageSprout": "نبتة",
   "stageSapling": "شتلة",
   "stageYoungTree": "شجرة صغيرة",
   "stageGroveTree": "شجرة الغابة",
-
   "taglineSeed": "كل غابة عظيمة تبدأ من هنا.",
   "taglineSprout": "الجذور تتشكل تحت السطح.",
   "taglineSapling": "تنمو أقوى مع كل شروق شمس.",
   "taglineYoungTree": "مظلتك الخضراء تأخذ شكلها.",
   "taglineGroveTree": "لقد أصبحت الغابة.",
-
   "logARelapse": "تسجيل انتكاسة؟",
   "relapseMotivation": "أنت أقوى مما تعتقد.",
   "customTimestamp": "طابع زمني مخصص",
@@ -53,7 +46,6 @@
   "loggedReasonHint": "ضغط، قلق، إرهاق، ضغط اجتماعي، مثير؟ إلخ...",
   "confirmLog": "تأكيد التسجيل",
   "cancel": "إلغاء",
-
   "onboarding0Title": "مرحباً بك في غروف 🌿",
   "onboarding0Body": "متتبع خاص للرصانة والعادات حيث تمثل الأشجار نموك، كلما ظللت نظيفاً أطول، كلما أصبحت أشجارك أكثر إشراقاً وخضرة.",
   "onboarding1Title": "ازرع شجرة",
@@ -69,10 +61,8 @@
   "next": "التالي",
   "back": "السابق",
   "startGrowing": "ابدأ النمو 🌱",
-
   "groveIsBare": "غابتك خالية.",
   "plantFirstTree": "ازرع أول شجرة للبدء.",
-
   "settingsHub": "مركز الإعدادات",
   "layoutArchitecture": "تخطيط العرض",
   "renderThemes": "السمات",
@@ -80,22 +70,18 @@
   "dataManagement": "إدارة البيانات",
   "reorderGrove": "إعادة ترتيب الغابة",
   "holdDragToReorder": "اضغط مطولاً واسحب ≡ لإعادة الترتيب",
-
   "layoutWheel": "عجلة",
   "layoutCarousel": "دوار",
   "layoutGrid": "شبكة",
   "layoutList": "قائمة",
-
   "themeForestDark": "الغابة الداكنة",
   "themeAmoledBlack": "أسود AMOLED",
   "themeMaterialYou": "Material You",
   "themeWhiteMinimal": "أبيض بسيط",
-
   "milestoneNotifications": "إشعارات الإنجازات",
   "milestoneNotificationsSubtitle": "احصل على إشعار عندما تصل شجرة إلى مرحلة نمو جديدة",
   "biometricUnlock": "فتح بصمة",
   "biometricUnlockSubtitle": "طلب بصمة الإصبع / الرمز لفتح غروف",
-
   "exportGroveBackup": "تصدير نسخة احتياطية",
   "restoreGroveBackup": "استعادة الغابة من النسخة الاحتياطية",
   "exportImportNote": "التصدير يحفظ ملف .json في موقع تختاره.\nالاستيراد سيستبدل غابتك الحالية • صدّر نسخة احتياطية أولاً.",
@@ -104,10 +90,8 @@
   "couldNotReadFile": "لا يمكن قراءة الملف المحدد.",
   "groveRestored": "✓ تمت الاستعادة — تم تحميل {count} أشجار",
   "invalidBackup": "✗ نسخة احتياطية غير صالحة — تأكد من اختيار الملف الصحيح",
-
   "language": "اللغة",
   "languageLabel": "اللغة",
-
   "links": "الروابط",
   "github": "GitHub",
   "githubSubtitle": "الكود المصدري والمساهمات",
@@ -117,56 +101,45 @@
   "openSource": "مفتوح المصدر",
   "versionLabel": "v{version} • مفتوح المصدر",
   "groveDescription": "غروف متتبع عادات بسيط يُصوِّر نموك من خلال الأشجار. كل يوم تظل نظيفاً، تنمو شجرتك. بُني بحب كأداة مجانية مفتوحة المصدر.",
-
   "groveLocked": "غروف مقفل",
   "authenticateToContinue": "المصادقة للمتابعة",
   "unlockGrove": "فتح غروف",
-
   "currentStreak": "السلسلة الحالية",
   "peakRecord": "الرقم القياسي",
   "relapses": "الانتكاسات",
   "checkIns": "تسجيلات الحضور",
-
   "interactiveMonthlyLogs": "السجلات الشهرية التفاعلية",
   "swipeForEarlierMonths": "اسحب ← للأشهر السابقة",
   "thisMonth": "هذا الشهر",
   "logDateBeforeTracking": "← سجّل تاريخاً قبل بدء التتبع",
-
   "cleanSinceStart": "نظيف منذ البداية",
   "timeSinceLastRelapse": "الوقت منذ آخر انتكاسة",
   "days": "أيام",
   "hrs": "ساعات",
   "min": "دقائق",
   "sec": "ثوانٍ",
-
   "checkedInToday": "تم التسجيل اليوم",
   "notCheckedInToday": "لم يتم التسجيل اليوم",
   "streak": "سلسلة",
   "total": "الإجمالي",
   "alreadyCheckedIn": "تم التسجيل مسبقاً",
   "checkInToday": "سجّل حضورك اليوم",
-
   "relapseSweepTimeline": "الجدول الزمني للانتكاسات",
   "checkInHistory": "سجل تسجيلات الحضور",
   "totalCount": "{count} إجمالاً",
-
   "noRelapsesRecorded": "لا انتكاسات مسجلة. واصل النمو.",
   "noCheckInsYet": "لا تسجيلات حضور بعد. ابدأ اليوم!",
-
   "renameHabit": "إعادة تسمية العادة",
   "save": "حفظ",
-
   "dangerZone": "منطقة الخطر",
   "deleteHabitPermanently": "حذف العادة نهائياً",
   "deleteHabit": "حذف العادة؟",
   "deleteHabitConfirm": "سيتم حذف \"{name}\" وكل تاريخها نهائياً. لا يمكن التراجع عن هذا الإجراء.",
   "delete": "حذف",
-
   "earlierThanLogs": "أقدم من سجلاتك؟",
   "trackingStarted": "بدأ التتبع في {date}.\nإذا حدث شيء قبل ذلك، يمكنك تسجيله هنا.",
   "logEarlierDate": "تسجيل تاريخ سابق",
   "extendsHistoryNote": "يمتد هذا إلى تاريخك ويُعيد حساب السلاسل",
-
   "logEarlierDateTitle": "تسجيل تاريخ سابق",
   "beforeTrackingStarted": "قبل بدء التتبع",
   "extendHistoryInfo": "سيمتد هذا إلى تاريخ التتبع السابق ويُعيد حساب أعلى سلاسلك.",
@@ -175,10 +148,8 @@
   "logAsRelapseOnDate": "تسجيل كانتكاسة في هذا التاريخ",
   "onlyExtendStartDate": "تمديد تاريخ البداية فقط (بدون انتكاسة)",
   "whatHappenedHint": "ماذا حدث في ذلك اليوم…",
-
   "peakSweep": "أعلى سلسلة: {days} يوم",
   "noReasonRecorded": "لم يُسجَّل أي سبب.",
-
   "notifSproutTitle": "{name} تنبت! 🌱",
   "notifSproutBody": "جذور شجرتك اكتملت. واصل النمو.",
   "notifSaplingTitle": "{name} أصبحت شتلة! 🌿",
@@ -187,7 +158,6 @@
   "notifYoungTreeBody": "مظلتك الخضراء تأخذ شكلها، رائع.",
   "notifGroveTreeTitle": "{name} أصبحت شجرة الغابة! 🌲",
   "notifGroveTreeBody": "تهانينا!!! لقد أصبحت الغابة.",
-
   "saveGroveBackupDialog": "حفظ نسخة احتياطية",
   "selectGroveBackupDialog": "اختر نسخة احتياطية",
   "customAccentColor": "لون التمييز المخصص",
@@ -198,5 +168,7 @@
   "dailyReminderSetting": "تذكير يومي بالتسجيل",
   "dailyReminderSettingSubtitle": "غابتك في انتظارك!",
   "tapToChange": "انقر للتغيير",
-  "languageSection": "اللغة"
+  "languageSection": "اللغة",
+  "dailyReminderTitle": "حان وقت تسجيل الحضور 🌿",
+  "dailyReminderBody": "غابتك في انتظارك. واصل السلسلة."
 }
