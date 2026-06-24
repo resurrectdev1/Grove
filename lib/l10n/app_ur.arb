@@ -25,9 +25,21 @@
   "checkedIn": "چیک-ان ہو گیا",
   "checkInAction": "چیک-ان",
   "dayStreak": "{days} دن کی سلسلہ",
-  "@dayStreak": {"placeholders": {"days": {"type": "int"}}},
+  "@dayStreak": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "dayCount": "دن {days}",
-  "@dayCount": {"placeholders": {"days": {"type": "int"}}},
+  "@dayCount": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "alreadyCheckedInToday": "آج پہلے ہی چیک-ان ہو گیا ✓",
   "tapBelowToCheckIn": "چیک-ان کے لیے نیچے ٹیپ کریں",
   "giveHabitName": "اپنی عادت کو نام دیں۔",
@@ -59,7 +71,7 @@
   "onboarding4Title": "آپ کی تاریخ",
   "onboarding4Body": "کوئی بھی درخت کھولیں اور کیلنڈر، سنگ میل، سلسلہ کی تاریخ دیکھیں۔",
   "onboarding5Title": "مکمل طور پر نجی",
-  "onboarding5Body": "سب کچھ آپ کے آلے پر رہتا ہے۔ کچھ بھی کہیں نہیں بھیجا جاتا۔ ترتیبات میں Export / Import کے ذریعے بیک اپ لیں۔ 🌱",
+  "onboarding5Body": "سب کچھ آپ کے آلے پر رہتا ہے۔ کچھ بھی کہیں نہیں بھیجا جاتا۔ ترتیبات میں Export / Import کے ذریعے بیک اپ لیں یا grove منتقل کریں۔ اب کچھ ایسا اگائیں جو رکھنے کے قابل ہو۔ 🌱",
   "next": "آگے",
   "back": "پیچھے",
   "startGrowing": "بڑھنا شروع کریں 🌱",
@@ -89,10 +101,22 @@
   "exportImportNote": "برآمد .json فائل محفوظ کرتا ہے۔\nدرآمد آپ کا موجودہ grove بدل دے گا • پہلے بیک اپ لیں۔",
   "backupSaved": "✓ بیک اپ محفوظ ہو گیا",
   "saveFailed": "محفوظ کرنے میں ناکامی: {error}",
-  "@saveFailed": {"placeholders": {"error": {"type": "String"}}},
+  "@saveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "couldNotReadFile": "منتخب فائل پڑھی نہیں جا سکی۔",
   "groveRestored": "✓ Grove بحال — {count} درخت لوڈ ہوئے",
-  "@groveRestored": {"placeholders": {"count": {"type": "int"}}},
+  "@groveRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "invalidBackup": "✗ غلط بیک اپ — یقینی بنائیں کہ آپ نے صحیح فائل منتخب کی ہے",
   "language": "زبان",
   "languageLabel": "زبان",
@@ -104,7 +128,13 @@
   "madeWith": "🌿 کے ساتھ بنایا • تمام ڈیٹا آپ کے آلے پر رہتا ہے۔",
   "openSource": "اوپن سورس",
   "versionLabel": "v{version} • اوپن سورس",
-  "@versionLabel": {"placeholders": {"version": {"type": "String"}}},
+  "@versionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "groveDescription": "Grove ایک کم سے کم عادت ٹریکر ہے جو درختوں کے ذریعے آپ کی ترقی کو دکھاتا ہے۔ ہر صاف دن آپ کا درخت بڑھتا ہے۔ مفت، اوپن سورس۔",
   "groveLocked": "Grove بند ہے",
   "authenticateToContinue": "جاری رکھنے کے لیے تصدیق کریں",
@@ -132,7 +162,13 @@
   "relapseSweepTimeline": "دوبارہ لگنے کی ٹائم لائن",
   "checkInHistory": "چیک-ان تاریخ",
   "totalCount": "{count} کل",
-  "@totalCount": {"placeholders": {"count": {"type": "int"}}},
+  "@totalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "noRelapsesRecorded": "کوئی دوبارہ لگنا درج نہیں۔ بڑھتے رہیں۔",
   "noCheckInsYet": "ابھی تک کوئی چیک-ان نہیں۔ آج شروع کریں!",
   "renameHabit": "عادت کا نام بدلیں",
@@ -141,11 +177,23 @@
   "deleteHabitPermanently": "عادت مستقل طور پر حذف کریں",
   "deleteHabit": "عادت حذف کریں؟",
   "deleteHabitConfirm": "یہ \"{name}\" اور اس کی تمام تاریخ مستقل طور پر حذف کر دے گا۔ یہ عمل واپس نہیں ہو سکتا۔",
-  "@deleteHabitConfirm": {"placeholders": {"name": {"type": "String"}}},
+  "@deleteHabitConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "delete": "حذف کریں",
   "earlierThanLogs": "آپ کے لاگز سے پہلے؟",
   "trackingStarted": "ٹریکنگ {date} سے شروع ہوئی۔\nاگر اس سے پہلے کچھ ہوا تو آپ یہاں درج کر سکتے ہیں۔",
-  "@trackingStarted": {"placeholders": {"date": {"type": "String"}}},
+  "@trackingStarted": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "logEarlierDate": "پہلے کی تاریخ درج کریں",
   "extendsHistoryNote": "یہ آپ کی تاریخ بڑھاتا ہے اور سلسلہ کا دوبارہ حساب لگاتا ہے",
   "logEarlierDateTitle": "پہلے کی تاریخ درج کریں",
@@ -157,19 +205,49 @@
   "onlyExtendStartDate": "صرف شروعاتی تاریخ بڑھائیں (دوبارہ لگنے کے بغیر)",
   "whatHappenedHint": "اس دن کیا ہوا…",
   "peakSweep": "اعلیٰ سلسلہ: {days} دن",
-  "@peakSweep": {"placeholders": {"days": {"type": "int"}}},
+  "@peakSweep": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "noReasonRecorded": "کوئی وجہ درج نہیں۔",
   "notifSproutTitle": "{name} انکرہ ہو رہا ہے! 🌱",
-  "@notifSproutTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSproutTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSproutBody": "آپ کے درخت کی جڑیں بن گئی ہیں۔ بڑھتے رہیں۔",
   "notifSaplingTitle": "{name} اب پودا ہے! 🌿",
-  "@notifSaplingTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSaplingTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSaplingBody": "آپ کا درخت اپنے دم پر کھڑا ہے، دیکھیں آپ کتنے بڑھے ہیں",
   "notifYoungTreeTitle": "{name} بڑھ رہا ہے! 🌳",
-  "@notifYoungTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifYoungTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifYoungTreeBody": "آپ کی چھتری شکل لے رہی ہے، ناقابل یقین۔",
   "notifGroveTreeTitle": "{name} باغ کا درخت بن گیا! 🌲",
-  "@notifGroveTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifGroveTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifGroveTreeBody": "مبارک ہو!!! آپ جنگل بن گئے ہیں۔",
   "saveGroveBackupDialog": "Grove بیک اپ محفوظ کریں",
   "selectGroveBackupDialog": "Grove بیک اپ منتخب کریں",
@@ -179,7 +257,7 @@
   "applyAccent": "ایکسنٹ لگائیں",
   "resetAccentDefault": "ڈیفالٹ پر ری سیٹ کریں",
   "dailyReminderSetting": "روزانہ چیک-ان یاددہانی",
-  "dailyReminderSettingSubtitle": "اپنا سلسلہ زندہ رکھنے کے لیے ایک اشارہ",
+  "dailyReminderSettingSubtitle": "اپنے باغ میں چیک-ان کرنے کا ایک اشارہ",
   "tapToChange": "تبدیل کرنے کے لیے ٹیپ کریں",
   "languageSection": "زبان",
   "dailyReminderTitle": "چیک-ان کا وقت ہے 🌿",

@@ -25,9 +25,21 @@
   "checkedIn": "Đã điểm danh",
   "checkInAction": "Điểm danh",
   "dayStreak": "Chuỗi {days} ngày",
-  "@dayStreak": {"placeholders": {"days": {"type": "int"}}},
+  "@dayStreak": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "dayCount": "Ngày {days}",
-  "@dayCount": {"placeholders": {"days": {"type": "int"}}},
+  "@dayCount": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "alreadyCheckedInToday": "Đã điểm danh hôm nay ✓",
   "tapBelowToCheckIn": "Nhấn bên dưới để điểm danh",
   "giveHabitName": "Đặt tên cho thói quen của bạn.",
@@ -89,10 +101,22 @@
   "exportImportNote": "Xuất lưu file .json vào vị trí bạn chọn.\nNhập sẽ thay thế grove hiện tại của bạn • xuất bản sao lưu trước.",
   "backupSaved": "✓ Đã lưu bản sao lưu",
   "saveFailed": "Lưu thất bại: {error}",
-  "@saveFailed": {"placeholders": {"error": {"type": "String"}}},
+  "@saveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "couldNotReadFile": "Không thể đọc file đã chọn.",
   "groveRestored": "✓ Đã khôi phục grove — {count} cây được tải",
-  "@groveRestored": {"placeholders": {"count": {"type": "int"}}},
+  "@groveRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "invalidBackup": "✗ Bản sao lưu không hợp lệ — hãy chắc chắn bạn chọn đúng file",
   "language": "NGÔN NGỮ",
   "languageLabel": "Ngôn ngữ",
@@ -104,7 +128,13 @@
   "madeWith": "Được tạo với 🌿 • tất cả dữ liệu ở trên thiết bị của bạn.",
   "openSource": "Mã nguồn mở",
   "versionLabel": "v{version} • Mã nguồn mở",
-  "@versionLabel": {"placeholders": {"version": {"type": "String"}}},
+  "@versionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "groveDescription": "Grove là ứng dụng theo dõi thói quen tối giản, trực quan hóa sự phát triển của bạn qua những cái cây. Mỗi ngày bạn sạch, cây của bạn phát triển. Được xây dựng miễn phí, mã nguồn mở.",
   "groveLocked": "Grove đã bị khóa",
   "authenticateToContinue": "Xác thực để tiếp tục",
@@ -132,7 +162,13 @@
   "relapseSweepTimeline": "Dòng thời gian tái phát",
   "checkInHistory": "Lịch sử điểm danh",
   "totalCount": "{count} tổng cộng",
-  "@totalCount": {"placeholders": {"count": {"type": "int"}}},
+  "@totalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "noRelapsesRecorded": "Chưa có tái phát nào. Tiếp tục phát triển.",
   "noCheckInsYet": "Chưa có điểm danh. Bắt đầu hôm nay!",
   "renameHabit": "Đổi tên thói quen",
@@ -141,11 +177,23 @@
   "deleteHabitPermanently": "Xóa thói quen vĩnh viễn",
   "deleteHabit": "Xóa thói quen?",
   "deleteHabitConfirm": "Điều này sẽ xóa vĩnh viễn \"{name}\" và toàn bộ lịch sử. Hành động này không thể hoàn tác.",
-  "@deleteHabitConfirm": {"placeholders": {"name": {"type": "String"}}},
+  "@deleteHabitConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "delete": "Xóa",
   "earlierThanLogs": "Sớm hơn nhật ký?",
   "trackingStarted": "Bắt đầu theo dõi từ {date}.\nNếu có gì xảy ra trước đó, bạn có thể ghi lại ở đây.",
-  "@trackingStarted": {"placeholders": {"date": {"type": "String"}}},
+  "@trackingStarted": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "logEarlierDate": "Ghi ngày trước đó",
   "extendsHistoryNote": "Điều này mở rộng lịch sử và tính toán lại chuỗi",
   "logEarlierDateTitle": "Ghi ngày trước đó",
@@ -157,19 +205,49 @@
   "onlyExtendStartDate": "Chỉ mở rộng ngày bắt đầu (không tái phát)",
   "whatHappenedHint": "Điều gì đã xảy ra hôm đó…",
   "peakSweep": "Chuỗi đỉnh: {days} ngày",
-  "@peakSweep": {"placeholders": {"days": {"type": "int"}}},
+  "@peakSweep": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "noReasonRecorded": "Không có lý do nào được ghi.",
   "notifSproutTitle": "{name} đang nảy mầm! 🌱",
-  "@notifSproutTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSproutTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSproutBody": "Rễ cây của bạn đã hình thành. Tiếp tục phát triển.",
   "notifSaplingTitle": "{name} đã thành cây non! 🌿",
-  "@notifSaplingTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSaplingTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSaplingBody": "Cây của bạn đứng vững, hãy xem bạn đã phát triển thế nào",
   "notifYoungTreeTitle": "{name} đang lớn! 🌳",
-  "@notifYoungTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifYoungTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifYoungTreeBody": "Tán cây của bạn đang thành hình, thật tuyệt vời.",
   "notifGroveTreeTitle": "{name} đã thành cây rừng! 🌲",
-  "@notifGroveTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifGroveTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifGroveTreeBody": "Chúc mừng!!! Bạn đã trở thành khu rừng.",
   "saveGroveBackupDialog": "Lưu bản sao lưu Grove",
   "selectGroveBackupDialog": "Chọn bản sao lưu Grove",
@@ -179,7 +257,7 @@
   "applyAccent": "Áp dụng màu",
   "resetAccentDefault": "Đặt lại mặc định",
   "dailyReminderSetting": "Nhắc nhở điểm danh hàng ngày",
-  "dailyReminderSettingSubtitle": "Nhắc nhở để duy trì chuỗi của bạn",
+  "dailyReminderSettingSubtitle": "Nhắc nhở bạn điểm danh trong khu rừng của mình",
   "tapToChange": "Nhấn để thay đổi",
   "languageSection": "NGÔN NGỮ",
   "dailyReminderTitle": "Đến giờ điểm danh 🌿",

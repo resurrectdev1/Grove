@@ -374,7 +374,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get min => 'MIN';
 
   @override
-  String get sec => 'SEC';
+  String get sec => 'S';
 
   @override
   String get checkedInToday => 'Check-in effettuato oggi';
@@ -537,7 +537,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get dailyReminderSetting => 'Promemoria check-in giornaliero';
 
   @override
-  String get dailyReminderSettingSubtitle => 'Una spinta per mantenere viva la tua serie';
+  String get dailyReminderSettingSubtitle => 'Un promemoria per fare il check-in nel tuo bosco';
 
   @override
   String get tapToChange => 'Tocca per modificare';

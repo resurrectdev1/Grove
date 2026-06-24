@@ -45,7 +45,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get invalidHex => 'Ungültiger Hex-Code';
 
   @override
-  String get abstain => 'Enthalten';
+  String get abstain => 'Abstinenz';
 
   @override
   String get abstainSubtitle1 => 'Wächst täglich automatisch';
@@ -534,10 +534,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get resetAccentDefault => 'Auf Standard zurücksetzen';
 
   @override
-  String get dailyReminderSetting => 'Tägliche Erinnerung';
+  String get dailyReminderSetting => 'Tägliche Check-in-Erinnerung';
 
   @override
-  String get dailyReminderSettingSubtitle => 'Ein Anstoß, deine Serie am Leben zu erhalten';
+  String get dailyReminderSettingSubtitle => 'Ein Anstoß, in deinem Hain einzuchecken';
 
   @override
   String get tapToChange => 'Zum Ändern tippen';

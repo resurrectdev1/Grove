@@ -537,7 +537,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get dailyReminderSetting => 'Nhắc nhở điểm danh hàng ngày';
 
   @override
-  String get dailyReminderSettingSubtitle => 'Nhắc nhở để duy trì chuỗi của bạn';
+  String get dailyReminderSettingSubtitle => 'Nhắc nhở bạn điểm danh trong khu rừng của mình';
 
   @override
   String get tapToChange => 'Nhấn để thay đổi';

@@ -537,7 +537,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get dailyReminderSetting => '매일 체크인 알림';
 
   @override
-  String get dailyReminderSettingSubtitle => '연속 기록을 유지하기 위한 알림';
+  String get dailyReminderSettingSubtitle => '당신의 숲에 체크인하라는 알림';
 
   @override
   String get tapToChange => '탭하여 변경';

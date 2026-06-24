@@ -1,9 +1,7 @@
 {
   "@@locale": "hi",
-
   "appTitle": "Grove",
   "appTagline": "G R O V E",
-
   "plantATree": "एक पेड़ लगाएं",
   "plantTree": "पेड़ लगाएं",
   "plantANewTree": "नया पेड़ लगाएं",
@@ -14,14 +12,12 @@
   "customHexCode": "कस्टम हेक्स कोड",
   "hexCode": "हेक्स कोड",
   "invalidHex": "अमान्य हेक्स कोड",
-
   "abstain": "परहेज़",
   "abstainSubtitle1": "प्रतिदिन स्वचालित रूप से बढ़ता है",
   "abstainSubtitle2": "पुनरावृत्ति दर्ज करने के लिए टैप करें",
   "checkIn": "चेक-इन",
   "checkInSubtitle1": "बढ़ने के लिए रोज़ चेक-इन करें",
   "checkInSubtitle2": "चेक-इन के आधार पर विकास",
-
   "history": "इतिहास",
   "daysSuffix": "{days}दि",
   "historyCount": "इतिहास ({count})",
@@ -29,25 +25,34 @@
   "checkedIn": "चेक-इन हो गया",
   "checkInAction": "चेक-इन",
   "dayStreak": "{days}-दिन की श्रृंखला",
-  "@dayStreak": {"placeholders": {"days": {"type": "int"}}},
+  "@dayStreak": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "dayCount": "दिन {days}",
-  "@dayCount": {"placeholders": {"days": {"type": "int"}}},
+  "@dayCount": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "alreadyCheckedInToday": "आज पहले ही चेक-इन हो गया ✓",
   "tapBelowToCheckIn": "चेक-इन के लिए नीचे टैप करें",
   "giveHabitName": "अपनी आदत को नाम दें।",
-
   "stageSeed": "बीज",
   "stageSprout": "अंकुर",
   "stageSapling": "पौधा",
   "stageYoungTree": "युवा पेड़",
   "stageGroveTree": "वन वृक्ष",
-
   "taglineSeed": "हर महान वन यहीं से शुरू होता है।",
   "taglineSprout": "सतह के नीचे जड़ें बन रही हैं।",
   "taglineSapling": "हर सूर्योदय के साथ और मजबूत होता जा रहा है।",
   "taglineYoungTree": "आपकी छतरी आकार ले रही है।",
   "taglineGroveTree": "आप जंगल बन गए हैं।",
-
   "logARelapse": "पुनरावृत्ति दर्ज करें?",
   "relapseMotivation": "आप उससे ज्यादा मजबूत हैं जितना आप सोचते हैं।",
   "customTimestamp": "कस्टम समय",
@@ -55,7 +60,6 @@
   "loggedReasonHint": "तनाव, चिंता, थकान, साथियों का दबाव, ट्रिगर? आदि",
   "confirmLog": "लॉग पुष्टि करें",
   "cancel": "रद्द करें",
-
   "onboarding0Title": "Grove में आपका स्वागत है 🌿",
   "onboarding0Body": "एक निजी आदत ट्रैकर जहां पेड़ आपके विकास का प्रतिनिधित्व करते हैं। जितने लंबे समय तक आप स्वच्छ रहेंगे, आपके पेड़ उतने ही जीवंत होते जाएंगे।",
   "onboarding1Title": "एक पेड़ लगाएं",
@@ -65,16 +69,14 @@
   "onboarding3Title": "पुनरावृत्ति दर्ज करें",
   "onboarding3Body": "यदि आप फिसल जाएं, तो ईमानदारी से दर्ज करें। Grove आपकी सबसे लंबी श्रृंखलाएं और इतिहास ट्रैक करता है।",
   "onboarding4Title": "आपका इतिहास",
-  "onboarding4Body": "किसी भी पेड़ को खोलें और कैलेंडर, मील के पत्थर, श्रृंखला इतिहास देखें।",
+  "onboarding4Body": "किसी भी पेड़ को खोलें और कैलेंडर, मील के पत्थर, श्रृंखला इतिहास, पुनरावृत्ति नोट्स और आपकी दीर्घकालिक निरंतरता की जानकारी देखें।",
   "onboarding5Title": "पूरी तरह निजी",
   "onboarding5Body": "सब कुछ आपके डिवाइस पर रहता है। कुछ भी कहीं नहीं भेजा जाता। सेटिंग में Export / Import के जरिए बैकअप लें। अब कुछ बढ़ाएं! 🌱",
   "next": "आगे",
   "back": "पीछे",
   "startGrowing": "बढ़ना शुरू करें 🌱",
-
   "groveIsBare": "आपका वन खाली है।",
   "plantFirstTree": "शुरू करने के लिए अपना पहला पेड़ लगाएं।",
-
   "settingsHub": "सेटिंग्स",
   "layoutArchitecture": "लेआउट",
   "renderThemes": "थीम",
@@ -82,36 +84,42 @@
   "dataManagement": "डेटा प्रबंधन",
   "reorderGrove": "वन को पुनर्व्यवस्थित करें",
   "holdDragToReorder": "≡ को दबाकर खींचें",
-
   "layoutWheel": "पहिया",
   "layoutCarousel": "कैरोसेल",
   "layoutGrid": "ग्रिड",
   "layoutList": "सूची",
-
   "themeForestDark": "वन अंधेरा",
   "themeAmoledBlack": "AMOLED काला",
   "themeMaterialYou": "Material You",
   "themeWhiteMinimal": "सफेद मिनिमल",
-
   "milestoneNotifications": "मील का पत्थर सूचनाएं",
   "milestoneNotificationsSubtitle": "जब पेड़ नए विकास चरण पर पहुंचे तो सूचित हों",
   "biometricUnlock": "बायोमेट्रिक अनलॉक",
   "biometricUnlockSubtitle": "Grove खोलने के लिए फिंगरप्रिंट / पिन आवश्यक है",
-
   "exportGroveBackup": "Grove बैकअप निर्यात करें",
   "restoreGroveBackup": "बैकअप से Grove पुनर्स्थापित करें",
   "exportImportNote": "निर्यात एक .json फ़ाइल सहेजता है।\nआयात आपका वर्तमान grove बदल देगा • पहले बैकअप लें।",
   "backupSaved": "✓ बैकअप सहेजा गया",
   "saveFailed": "सहेजना विफल: {error}",
-  "@saveFailed": {"placeholders": {"error": {"type": "String"}}},
+  "@saveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "couldNotReadFile": "चुनी गई फ़ाइल पढ़ी नहीं जा सकी।",
   "groveRestored": "✓ Grove पुनर्स्थापित — {count} पेड़ लोड हुए",
-  "@groveRestored": {"placeholders": {"count": {"type": "int"}}},
+  "@groveRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "invalidBackup": "✗ अमान्य बैकअप — सुनिश्चित करें कि आपने सही फ़ाइल चुनी है",
-
   "language": "भाषा",
   "languageLabel": "भाषा",
-
   "links": "लिंक",
   "github": "GitHub",
   "githubSubtitle": "स्रोत कोड और योगदान",
@@ -120,60 +128,74 @@
   "madeWith": "🌿 के साथ बनाया • सभी डेटा आपके डिवाइस पर रहता है।",
   "openSource": "ओपन सोर्स",
   "versionLabel": "v{version} • ओपन सोर्स",
-  "@versionLabel": {"placeholders": {"version": {"type": "String"}}},
+  "@versionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "groveDescription": "Grove एक न्यूनतम आदत ट्रैकर है जो पेड़ों के माध्यम से आपके विकास को दर्शाता है। हर स्वच्छ दिन आपका पेड़ बढ़ता है। मुफ्त, ओपन-सोर्स।",
-
   "groveLocked": "Grove लॉक है",
   "authenticateToContinue": "जारी रखने के लिए प्रमाणित करें",
   "unlockGrove": "Grove अनलॉक करें",
-
   "currentStreak": "वर्तमान श्रृंखला",
   "peakRecord": "शीर्ष रिकॉर्ड",
   "relapses": "पुनरावृत्तियां",
   "checkIns": "चेक-इन",
-
   "interactiveMonthlyLogs": "मासिक लॉग",
   "swipeForEarlierMonths": "पहले के महीनों के लिए ← स्वाइप करें",
   "thisMonth": "इस महीने",
   "logDateBeforeTracking": "← ट्रैकिंग शुरू होने से पहले की तारीख दर्ज करें",
-
   "cleanSinceStart": "शुरू से स्वच्छ",
   "timeSinceLastRelapse": "अंतिम पुनरावृत्ति के बाद का समय",
   "days": "दिन",
   "hrs": "घंटे",
   "min": "मिनट",
   "sec": "सेकंड",
-
   "checkedInToday": "आज चेक-इन हुआ",
   "notCheckedInToday": "आज चेक-इन नहीं हुआ",
   "streak": "श्रृंखला",
   "total": "कुल",
   "alreadyCheckedIn": "पहले ही चेक-इन हो गया",
   "checkInToday": "आज चेक-इन करें",
-
   "relapseSweepTimeline": "पुनरावृत्ति समयरेखा",
   "checkInHistory": "चेक-इन इतिहास",
   "totalCount": "{count} कुल",
-  "@totalCount": {"placeholders": {"count": {"type": "int"}}},
+  "@totalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "noRelapsesRecorded": "कोई पुनरावृत्ति दर्ज नहीं। बढ़ते रहें।",
   "noCheckInsYet": "अभी तक कोई चेक-इन नहीं। आज शुरू करें!",
-
   "renameHabit": "आदत का नाम बदलें",
   "save": "सहेजें",
-
   "dangerZone": "खतरनाक क्षेत्र",
   "deleteHabitPermanently": "आदत स्थायी रूप से हटाएं",
   "deleteHabit": "आदत हटाएं?",
   "deleteHabitConfirm": "यह \"{name}\" और उसका पूरा इतिहास स्थायी रूप से हटा देगा। यह क्रिया पूर्ववत नहीं की जा सकती।",
-  "@deleteHabitConfirm": {"placeholders": {"name": {"type": "String"}}},
+  "@deleteHabitConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "delete": "हटाएं",
-
   "earlierThanLogs": "आपके लॉग से पहले?",
   "trackingStarted": "ट्रैकिंग {date} से शुरू हुई।\nयदि उससे पहले कुछ हुआ, तो आप इसे यहां दर्ज कर सकते हैं।",
-  "@trackingStarted": {"placeholders": {"date": {"type": "String"}}},
+  "@trackingStarted": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "logEarlierDate": "पहले की तारीख दर्ज करें",
   "extendsHistoryNote": "यह आपके इतिहास को बढ़ाता है और श्रृंखलाओं की पुनर्गणना करता है",
-
   "logEarlierDateTitle": "पहले की तारीख दर्ज करें",
   "beforeTrackingStarted": "ट्रैकिंग शुरू होने से पहले",
   "extendHistoryInfo": "यह आपके ट्रैकिंग इतिहास को बढ़ाएगा और शीर्ष श्रृंखलाओं की पुनर्गणना करेगा।",
@@ -182,24 +204,51 @@
   "logAsRelapseOnDate": "इस तारीख को पुनरावृत्ति के रूप में दर्ज करें",
   "onlyExtendStartDate": "केवल प्रारंभ तारीख बढ़ाएं (पुनरावृत्ति नहीं)",
   "whatHappenedHint": "उस दिन क्या हुआ…",
-
   "peakSweep": "शीर्ष श्रृंखला: {days} दिन",
-  "@peakSweep": {"placeholders": {"days": {"type": "int"}}},
+  "@peakSweep": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "noReasonRecorded": "कोई कारण दर्ज नहीं।",
-
   "notifSproutTitle": "{name} अंकुरित हो रहा है! 🌱",
-  "@notifSproutTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSproutTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSproutBody": "आपके पेड़ की जड़ें बन गई हैं। बढ़ते रहें।",
   "notifSaplingTitle": "{name} अब पौधा है! 🌿",
-  "@notifSaplingTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSaplingTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSaplingBody": "आपका पेड़ अपने दम पर खड़ा है, देखें आप कितना बढ़े हैं",
   "notifYoungTreeTitle": "{name} बढ़ रहा है! 🌳",
-  "@notifYoungTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifYoungTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifYoungTreeBody": "आपकी छतरी आकार ले रही है, अविश्वसनीय।",
   "notifGroveTreeTitle": "{name} वन वृक्ष बन गया! 🌲",
-  "@notifGroveTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifGroveTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifGroveTreeBody": "बधाई हो!!! आप जंगल बन गए हैं।",
-
   "saveGroveBackupDialog": "Grove बैकअप सहेजें",
   "selectGroveBackupDialog": "Grove बैकअप चुनें",
   "customAccentColor": "कस्टम एक्सेंट रंग",
@@ -208,7 +257,7 @@
   "applyAccent": "एक्सेंट लगाएं",
   "resetAccentDefault": "डिफ़ॉल्ट पर रीसेट करें",
   "dailyReminderSetting": "दैनिक चेक-इन रिमाइंडर",
-  "dailyReminderSettingSubtitle": "अपनी श्रृंखला जीवित रखने के लिए एक संकेत",
+  "dailyReminderSettingSubtitle": "अपने वन में चेक-इन करने का एक संकेत",
   "tapToChange": "बदलने के लिए टैप करें",
   "languageSection": "भाषा",
   "dailyReminderTitle": "चेक-इन का समय 🌿",

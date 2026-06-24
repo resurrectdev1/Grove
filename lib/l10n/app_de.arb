@@ -12,7 +12,7 @@
   "customHexCode": "BENUTZERDEFINIERTER HEX-CODE",
   "hexCode": "Hex-Code",
   "invalidHex": "Ungültiger Hex-Code",
-  "abstain": "Enthalten",
+  "abstain": "Abstinenz",
   "abstainSubtitle1": "Wächst täglich automatisch",
   "abstainSubtitle2": "Tippen um Rückfall zu erfassen",
   "checkIn": "Einchecken",
@@ -25,9 +25,21 @@
   "checkedIn": "Eingecheckt",
   "checkInAction": "Einchecken",
   "dayStreak": "{days}-Tage-Serie",
-  "@dayStreak": {"placeholders": {"days": {"type": "int"}}},
+  "@dayStreak": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "dayCount": "Tag {days}",
-  "@dayCount": {"placeholders": {"days": {"type": "int"}}},
+  "@dayCount": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "alreadyCheckedInToday": "Heute bereits eingecheckt ✓",
   "tapBelowToCheckIn": "Unten tippen zum Einchecken",
   "giveHabitName": "Gib deiner Gewohnheit einen Namen.",
@@ -89,10 +101,22 @@
   "exportImportNote": "Export speichert eine .json-Datei an einem Ort deiner Wahl.\nImportieren ersetzt deinen aktuellen Hain • zuerst sichern.",
   "backupSaved": "✓ Sicherung gespeichert",
   "saveFailed": "Speichern fehlgeschlagen: {error}",
-  "@saveFailed": {"placeholders": {"error": {"type": "String"}}},
+  "@saveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "couldNotReadFile": "Die ausgewählte Datei konnte nicht gelesen werden.",
   "groveRestored": "✓ Grove wiederhergestellt — {count} Bäume geladen",
-  "@groveRestored": {"placeholders": {"count": {"type": "int"}}},
+  "@groveRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "invalidBackup": "✗ Ungültige Sicherung — stelle sicher, dass du die richtige Datei ausgewählt hast",
   "language": "SPRACHE",
   "languageLabel": "Sprache",
@@ -104,7 +128,13 @@
   "madeWith": "Gemacht mit 🌿 • alle Daten bleiben auf deinem Gerät.",
   "openSource": "Open Source",
   "versionLabel": "v{version} • Open Source",
-  "@versionLabel": {"placeholders": {"version": {"type": "String"}}},
+  "@versionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "groveDescription": "Grove ist ein minimalistischer Gewohnheitstracker, der dein Wachstum durch Bäume visualisiert. Jeden sauberen Tag wächst dein Baum. Kostenlos und Open-Source.",
   "groveLocked": "Grove ist gesperrt",
   "authenticateToContinue": "Authentifizieren um fortzufahren",
@@ -132,7 +162,13 @@
   "relapseSweepTimeline": "Rückfall-Zeitleiste",
   "checkInHistory": "Check-in-Verlauf",
   "totalCount": "{count} gesamt",
-  "@totalCount": {"placeholders": {"count": {"type": "int"}}},
+  "@totalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "noRelapsesRecorded": "Keine Rückfälle erfasst. Wachse weiter.",
   "noCheckInsYet": "Noch keine Check-ins. Starte heute!",
   "renameHabit": "Gewohnheit umbenennen",
@@ -141,11 +177,23 @@
   "deleteHabitPermanently": "Gewohnheit dauerhaft löschen",
   "deleteHabit": "Gewohnheit löschen?",
   "deleteHabitConfirm": "Dadurch wird \"{name}\" und der gesamte Verlauf dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.",
-  "@deleteHabitConfirm": {"placeholders": {"name": {"type": "String"}}},
+  "@deleteHabitConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "delete": "Löschen",
   "earlierThanLogs": "Früher als deine Aufzeichnungen?",
   "trackingStarted": "Tracking begann am {date}.\nWenn davor etwas passiert ist, kannst du es hier protokollieren.",
-  "@trackingStarted": {"placeholders": {"date": {"type": "String"}}},
+  "@trackingStarted": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "logEarlierDate": "Früheres Datum protokollieren",
   "extendsHistoryNote": "Dies erweitert deinen Verlauf und berechnet Serien neu",
   "logEarlierDateTitle": "Früheres Datum protokollieren",
@@ -157,19 +205,49 @@
   "onlyExtendStartDate": "Nur Startdatum erweitern (kein Rückfall)",
   "whatHappenedHint": "Was ist an dem Tag passiert…",
   "peakSweep": "Spitzenserie: {days} Tage",
-  "@peakSweep": {"placeholders": {"days": {"type": "int"}}},
+  "@peakSweep": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "noReasonRecorded": "Kein Grund protokolliert.",
   "notifSproutTitle": "{name} keimt! 🌱",
-  "@notifSproutTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSproutTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSproutBody": "Die Wurzeln deines Baumes sind fertig gebildet. Wachse weiter.",
   "notifSaplingTitle": "{name} ist jetzt ein Setzling! 🌿",
-  "@notifSaplingTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSaplingTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSaplingBody": "Dein Baum steht auf eigenen Beinen – sieh, wie weit du gekommen bist",
   "notifYoungTreeTitle": "{name} wächst! 🌳",
-  "@notifYoungTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifYoungTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifYoungTreeBody": "Dein Blätterdach nimmt Gestalt an, unglaublich.",
   "notifGroveTreeTitle": "{name} ist ein Hainbaum! 🌲",
-  "@notifGroveTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifGroveTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifGroveTreeBody": "Herzlichen Glückwunsch!!! Du bist zum Wald geworden.",
   "saveGroveBackupDialog": "Grove-Sicherung speichern",
   "selectGroveBackupDialog": "Grove-Sicherung auswählen",
@@ -178,8 +256,8 @@
   "customAccentSubtitle": "Auf Schaltflächen, Karten und Abzeichen angewendet",
   "applyAccent": "Akzent anwenden",
   "resetAccentDefault": "Auf Standard zurücksetzen",
-  "dailyReminderSetting": "Tägliche Erinnerung",
-  "dailyReminderSettingSubtitle": "Ein Anstoß, deine Serie am Leben zu erhalten",
+  "dailyReminderSetting": "Tägliche Check-in-Erinnerung",
+  "dailyReminderSettingSubtitle": "Ein Anstoß, in deinem Hain einzuchecken",
   "tapToChange": "Zum Ändern tippen",
   "languageSection": "SPRACHE",
   "dailyReminderTitle": "Zeit zum Einchecken 🌿",

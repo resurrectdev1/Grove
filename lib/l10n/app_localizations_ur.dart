@@ -188,7 +188,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get onboarding5Title => 'مکمل طور پر نجی';
 
   @override
-  String get onboarding5Body => 'سب کچھ آپ کے آلے پر رہتا ہے۔ کچھ بھی کہیں نہیں بھیجا جاتا۔ ترتیبات میں Export / Import کے ذریعے بیک اپ لیں۔ 🌱';
+  String get onboarding5Body => 'سب کچھ آپ کے آلے پر رہتا ہے۔ کچھ بھی کہیں نہیں بھیجا جاتا۔ ترتیبات میں Export / Import کے ذریعے بیک اپ لیں یا grove منتقل کریں۔ اب کچھ ایسا اگائیں جو رکھنے کے قابل ہو۔ 🌱';
 
   @override
   String get next => 'آگے';
@@ -537,7 +537,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get dailyReminderSetting => 'روزانہ چیک-ان یاددہانی';
 
   @override
-  String get dailyReminderSettingSubtitle => 'اپنا سلسلہ زندہ رکھنے کے لیے ایک اشارہ';
+  String get dailyReminderSettingSubtitle => 'اپنے باغ میں چیک-ان کرنے کا ایک اشارہ';
 
   @override
   String get tapToChange => 'تبدیل کرنے کے لیے ٹیپ کریں';

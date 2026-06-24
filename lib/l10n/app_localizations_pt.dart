@@ -537,7 +537,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get dailyReminderSetting => 'Lembrete diário de check-in';
 
   @override
-  String get dailyReminderSettingSubtitle => 'Um incentivo para manter sua sequência viva';
+  String get dailyReminderSettingSubtitle => 'Um lembrete para fazer check-in na sua floresta';
 
   @override
   String get tapToChange => 'Toque para alterar';

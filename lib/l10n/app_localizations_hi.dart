@@ -182,7 +182,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboarding4Title => 'आपका इतिहास';
 
   @override
-  String get onboarding4Body => 'किसी भी पेड़ को खोलें और कैलेंडर, मील के पत्थर, श्रृंखला इतिहास देखें।';
+  String get onboarding4Body => 'किसी भी पेड़ को खोलें और कैलेंडर, मील के पत्थर, श्रृंखला इतिहास, पुनरावृत्ति नोट्स और आपकी दीर्घकालिक निरंतरता की जानकारी देखें।';
 
   @override
   String get onboarding5Title => 'पूरी तरह निजी';
@@ -537,7 +537,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get dailyReminderSetting => 'दैनिक चेक-इन रिमाइंडर';
 
   @override
-  String get dailyReminderSettingSubtitle => 'अपनी श्रृंखला जीवित रखने के लिए एक संकेत';
+  String get dailyReminderSettingSubtitle => 'अपने वन में चेक-इन करने का एक संकेत';
 
   @override
   String get tapToChange => 'बदलने के लिए टैप करें';

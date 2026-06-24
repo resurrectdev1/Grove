@@ -25,9 +25,21 @@
   "checkedIn": "체크인 완료",
   "checkInAction": "체크인",
   "dayStreak": "{days}일 연속",
-  "@dayStreak": {"placeholders": {"days": {"type": "int"}}},
+  "@dayStreak": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "dayCount": "{days}일째",
-  "@dayCount": {"placeholders": {"days": {"type": "int"}}},
+  "@dayCount": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "alreadyCheckedInToday": "오늘 이미 체크인 완료 ✓",
   "tapBelowToCheckIn": "아래 탭하여 체크인",
   "giveHabitName": "습관에 이름을 붙여주세요.",
@@ -89,10 +101,22 @@
   "exportImportNote": "내보내기는 선택한 위치에 .json 파일을 저장합니다.\n가져오기는 현재 grove를 교체합니다 • 먼저 백업하세요.",
   "backupSaved": "✓ 백업 저장됨",
   "saveFailed": "저장 실패: {error}",
-  "@saveFailed": {"placeholders": {"error": {"type": "String"}}},
+  "@saveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "couldNotReadFile": "선택한 파일을 읽을 수 없습니다.",
   "groveRestored": "✓ Grove 복원됨 — 나무 {count}그루 로드됨",
-  "@groveRestored": {"placeholders": {"count": {"type": "int"}}},
+  "@groveRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "invalidBackup": "✗ 잘못된 백업 — 올바른 파일을 선택했는지 확인하세요",
   "language": "언어",
   "languageLabel": "언어",
@@ -104,7 +128,13 @@
   "madeWith": "🌿로 만들어졌습니다 • 모든 데이터는 기기에 저장됩니다.",
   "openSource": "오픈 소스",
   "versionLabel": "v{version} • 오픈 소스",
-  "@versionLabel": {"placeholders": {"version": {"type": "String"}}},
+  "@versionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "groveDescription": "Grove는 나무를 통해 성장을 시각화하는 미니멀리스트 습관 추적기입니다. 매일 깨끗하게 지내면 나무가 자랍니다. 무료 오픈 소스.",
   "groveLocked": "Grove가 잠겨 있습니다",
   "authenticateToContinue": "계속하려면 인증하세요",
@@ -132,7 +162,13 @@
   "relapseSweepTimeline": "재발 타임라인",
   "checkInHistory": "체크인 기록",
   "totalCount": "총 {count}건",
-  "@totalCount": {"placeholders": {"count": {"type": "int"}}},
+  "@totalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "noRelapsesRecorded": "기록된 재발 없음. 계속 성장하세요.",
   "noCheckInsYet": "아직 체크인 없음. 오늘 시작하세요!",
   "renameHabit": "습관 이름 변경",
@@ -141,11 +177,23 @@
   "deleteHabitPermanently": "습관 영구 삭제",
   "deleteHabit": "습관을 삭제할까요?",
   "deleteHabitConfirm": "\"{name}\"과 모든 기록을 영구적으로 삭제합니다. 이 작업은 취소할 수 없습니다.",
-  "@deleteHabitConfirm": {"placeholders": {"name": {"type": "String"}}},
+  "@deleteHabitConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "delete": "삭제",
   "earlierThanLogs": "기록보다 이전 날짜인가요?",
   "trackingStarted": "추적 시작일: {date}.\n그 이전에 무언가 있었다면 여기에 기록할 수 있습니다.",
-  "@trackingStarted": {"placeholders": {"date": {"type": "String"}}},
+  "@trackingStarted": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "logEarlierDate": "이전 날짜 기록",
   "extendsHistoryNote": "이렇게 하면 기록이 연장되고 연속이 재계산됩니다",
   "logEarlierDateTitle": "이전 날짜 기록",
@@ -157,19 +205,49 @@
   "onlyExtendStartDate": "시작 날짜만 연장 (재발 없음)",
   "whatHappenedHint": "그날 무슨 일이 있었나요…",
   "peakSweep": "최고 연속: {days}일",
-  "@peakSweep": {"placeholders": {"days": {"type": "int"}}},
+  "@peakSweep": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "noReasonRecorded": "이유 기록 없음.",
   "notifSproutTitle": "{name}이(가) 싹트고 있어요! 🌱",
-  "@notifSproutTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSproutTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSproutBody": "나무의 뿌리가 형성되었습니다. 계속 성장하세요.",
   "notifSaplingTitle": "{name}이(가) 묘목이 되었어요! 🌿",
-  "@notifSaplingTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSaplingTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSaplingBody": "나무가 스스로 서 있습니다. 얼마나 성장했는지 보세요",
   "notifYoungTreeTitle": "{name}이(가) 쑥쑥 자라고 있어요! 🌳",
-  "@notifYoungTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifYoungTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifYoungTreeBody": "나무 지붕이 형성되기 시작했습니다. 대단해요.",
   "notifGroveTreeTitle": "{name}이(가) 숲 나무가 되었어요! 🌲",
-  "@notifGroveTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifGroveTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifGroveTreeBody": "축하합니다!!! 당신은 숲이 되었습니다.",
   "saveGroveBackupDialog": "Grove 백업 저장",
   "selectGroveBackupDialog": "Grove 백업 선택",
@@ -179,7 +257,7 @@
   "applyAccent": "강조색 적용",
   "resetAccentDefault": "기본값으로 재설정",
   "dailyReminderSetting": "매일 체크인 알림",
-  "dailyReminderSettingSubtitle": "연속 기록을 유지하기 위한 알림",
+  "dailyReminderSettingSubtitle": "당신의 숲에 체크인하라는 알림",
   "tapToChange": "탭하여 변경",
   "languageSection": "언어",
   "dailyReminderTitle": "체크인 시간이에요 🌿",

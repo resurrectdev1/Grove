@@ -25,9 +25,21 @@
   "checkedIn": "Check-in effettuato",
   "checkInAction": "Check-in",
   "dayStreak": "Serie di {days} giorni",
-  "@dayStreak": {"placeholders": {"days": {"type": "int"}}},
+  "@dayStreak": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "dayCount": "Giorno {days}",
-  "@dayCount": {"placeholders": {"days": {"type": "int"}}},
+  "@dayCount": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "alreadyCheckedInToday": "Check-in già effettuato oggi ✓",
   "tapBelowToCheckIn": "Tocca qui sotto per fare il check-in",
   "giveHabitName": "Dai un nome alla tua abitudine.",
@@ -89,10 +101,22 @@
   "exportImportNote": "L'esportazione salva un file .json in una posizione a tua scelta.\nL'importazione sostituirà il tuo bosco attuale • esporta prima un backup.",
   "backupSaved": "✓ Backup salvato",
   "saveFailed": "Salvataggio fallito: {error}",
-  "@saveFailed": {"placeholders": {"error": {"type": "String"}}},
+  "@saveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "couldNotReadFile": "Impossibile leggere il file selezionato.",
   "groveRestored": "✓ Grove ripristinato — {count} alberi caricati",
-  "@groveRestored": {"placeholders": {"count": {"type": "int"}}},
+  "@groveRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "invalidBackup": "✗ Backup non valido — assicurati di aver selezionato il file corretto",
   "language": "LINGUA",
   "languageLabel": "Lingua",
@@ -104,7 +128,13 @@
   "madeWith": "Fatto con 🌿 • tutti i dati rimangono sul tuo dispositivo.",
   "openSource": "Open Source",
   "versionLabel": "v{version} • Open Source",
-  "@versionLabel": {"placeholders": {"version": {"type": "String"}}},
+  "@versionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "groveDescription": "Grove è un tracker delle abitudini minimalista che visualizza la tua crescita attraverso alberi. Ogni giorno pulito, il tuo albero cresce. Gratuito e open source.",
   "groveLocked": "Grove è bloccato",
   "authenticateToContinue": "Autenticati per continuare",
@@ -122,7 +152,7 @@
   "days": "GIORNI",
   "hrs": "ORE",
   "min": "MIN",
-  "sec": "SEC",
+  "sec": "S",
   "checkedInToday": "Check-in effettuato oggi",
   "notCheckedInToday": "Nessun check-in oggi",
   "streak": "SERIE",
@@ -132,7 +162,13 @@
   "relapseSweepTimeline": "Linea temporale ricadute",
   "checkInHistory": "Cronologia check-in",
   "totalCount": "{count} in totale",
-  "@totalCount": {"placeholders": {"count": {"type": "int"}}},
+  "@totalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "noRelapsesRecorded": "Nessuna ricaduta registrata. Continua a crescere.",
   "noCheckInsYet": "Ancora nessun check-in. Inizia oggi!",
   "renameHabit": "Rinomina abitudine",
@@ -141,11 +177,23 @@
   "deleteHabitPermanently": "Elimina abitudine definitivamente",
   "deleteHabit": "Eliminare l'abitudine?",
   "deleteHabitConfirm": "Questa azione eliminerà definitivamente \"{name}\" e tutta la sua cronologia. Non può essere annullata.",
-  "@deleteHabitConfirm": {"placeholders": {"name": {"type": "String"}}},
+  "@deleteHabitConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "delete": "Elimina",
   "earlierThanLogs": "Prima dei tuoi registri?",
   "trackingStarted": "Tracciamento iniziato il {date}.\nSe è successo qualcosa prima, puoi registrarlo qui.",
-  "@trackingStarted": {"placeholders": {"date": {"type": "String"}}},
+  "@trackingStarted": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "logEarlierDate": "Registra una data precedente",
   "extendsHistoryNote": "Questo estende la tua cronologia e ricalcola le serie",
   "logEarlierDateTitle": "Registra data precedente",
@@ -157,19 +205,49 @@
   "onlyExtendStartDate": "Solo estendi la data di inizio (nessuna ricaduta)",
   "whatHappenedHint": "Cosa è successo quel giorno…",
   "peakSweep": "Serie massima: {days} giorni",
-  "@peakSweep": {"placeholders": {"days": {"type": "int"}}},
+  "@peakSweep": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "noReasonRecorded": "Nessun motivo registrato.",
   "notifSproutTitle": "{name} sta germogliando! 🌱",
-  "@notifSproutTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSproutTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSproutBody": "Le radici del tuo albero hanno finito di formarsi. Continua a crescere.",
   "notifSaplingTitle": "{name} è un alberello ora! 🌿",
-  "@notifSaplingTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifSaplingTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifSaplingBody": "Il tuo albero regge da solo, guarda quanto sei cresciuto",
   "notifYoungTreeTitle": "{name} sta crescendo! 🌳",
-  "@notifYoungTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifYoungTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifYoungTreeBody": "La tua chioma sta iniziando a prendere forma, incredibile.",
   "notifGroveTreeTitle": "{name} è un albero del bosco! 🌲",
-  "@notifGroveTreeTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@notifGroveTreeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notifGroveTreeBody": "Congratulazioni!!! Sei diventato la foresta.",
   "saveGroveBackupDialog": "Salva backup Grove",
   "selectGroveBackupDialog": "Seleziona backup Grove",
@@ -179,7 +257,7 @@
   "applyAccent": "Applica evidenziazione",
   "resetAccentDefault": "Ripristina predefinito",
   "dailyReminderSetting": "Promemoria check-in giornaliero",
-  "dailyReminderSettingSubtitle": "Una spinta per mantenere viva la tua serie",
+  "dailyReminderSettingSubtitle": "Un promemoria per fare il check-in nel tuo bosco",
   "tapToChange": "Tocca per modificare",
   "languageSection": "LINGUA",
   "dailyReminderTitle": "È ora del check-in 🌿",

@@ -537,7 +537,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get dailyReminderSetting => '毎日のチェックインリマインダー';
 
   @override
-  String get dailyReminderSettingSubtitle => '連続記録を維持するための通知';
+  String get dailyReminderSettingSubtitle => 'あなたの森にチェックインするための通知';
 
   @override
   String get tapToChange => 'タップして変更';

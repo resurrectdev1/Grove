@@ -537,7 +537,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get dailyReminderSetting => '每日签到提醒';
 
   @override
-  String get dailyReminderSettingSubtitle => '你的森林在等你！';
+  String get dailyReminderSettingSubtitle => '提醒你在树林中打卡';
 
   @override
   String get tapToChange => '点击更改';
@@ -1085,7 +1085,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get dailyReminderSetting => '每日簽到提醒';
 
   @override
-  String get dailyReminderSettingSubtitle => '你的森林在等你！';
+  String get dailyReminderSettingSubtitle => '提醒你在樹林中打卡';
 
   @override
   String get tapToChange => '點擊更改';

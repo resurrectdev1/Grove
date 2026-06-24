@@ -537,7 +537,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dailyReminderSetting => 'تذكير يومي بالتسجيل';
 
   @override
-  String get dailyReminderSettingSubtitle => 'غابتك في انتظارك!';
+  String get dailyReminderSettingSubtitle => 'تذكير للتسجيل في غابتك';
 
   @override
   String get tapToChange => 'انقر للتغيير';
