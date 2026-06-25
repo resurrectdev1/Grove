@@ -45,14 +45,14 @@ Simply open Grove and click the "Plant a Tree" button to start customizing your 
 <img src="https://user-images.githubusercontent.com/69304392/148696068-0cfea65d-b18f-4685-82b5-329a330b1c0d.png"
 alt="Get it on GitHub" align="center" height="80" /></a>
 
+<a href="https://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/resurrectdev1/Grove/releases/latest">
+<img src="https://github.com/resurrectdev1/Obtainium-Badge-Fix/blob/main/assets/badge_obtainium.png"
+alt="Get it on Obtainium" align="center" height="80" /></a>
+</div>
+
 <a href="https://f-droid.org/en/packages/com.resurrect.grove/">
 <img src="https://f-droid.org/badge/get-it-on.png"
 alt="Get it on F-Droid" align="center" height="80" /></a>
-</div>
-
-<a href="https://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/resurrectdev1/Grove/releases/latest">
-<img src="https://github.com/ImranR98/Obtainium/blob/main/assets/graphics/badge_obtainium.png"
-alt="Get it on Obtainium" align="center" height="80" /></a>
 </div>
 
 ## Support The App
