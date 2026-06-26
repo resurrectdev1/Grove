@@ -589,114 +589,102 @@ class FractalTreePainter extends CustomPainter {
                                                                                            canvas.restore();
                                                                                                                 }
 
+
+
                                                                                                                 void _drawSeed(Canvas canvas, Size size) {
-                                                                                                                  final cx = size.width * 0.5; final cy = size.height * 0.68;
-                                                                                                                  final r  = size.width * 0.13 * (0.35 + progress * 0.65);
-                                                                                                                  final ac = _activeColor; final bc = _barkColor;
+                                                                                                                  final gx = size.width  * 0.5;
+                                                                                                                  final gy = size.height * 0.93;
+                                                                                                                  final ac = _activeColor;
+                                                                                                                  final bc = _barkColor;
 
-                                                                                                                  canvas.drawOval(
-                                                                                                                    Rect.fromCenter(center: Offset(cx, cy + r * 0.65), width: r * 3.0, height: r * 0.7),
-                                                                                                                    Paint()
-                                                                                                                    ..color = Colors.black.withValues(alpha: 0.15)
-                                                                                                                    ..style = PaintingStyle.fill
-                                                                                                                    ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5),
-                                                                                                                  );
+                                                                                                                  const sproutStart = 0.35;
+                                                                                                                  const sproutEnd   = 0.75;
+                                                                                                                  final sproutMix = progress <= sproutStart
+                                                                                                                  ? 0.0
+                                                                                                                  : progress >= sproutEnd
+                                                                                                                  ? 1.0
+                                                                                                                  : (progress - sproutStart) / (sproutEnd - sproutStart);
+                                                                                                                  final seedMix = 1.0 - sproutMix;
 
-                                                                                                                  final seedPath = Path()
-                                                                                                                  ..moveTo(cx, cy - r * 0.95)
-                                                                                                                  ..cubicTo(cx + r * 0.85, cy - r * 0.55, cx + r * 0.90, cy + r * 0.40, cx, cy + r * 0.60)
-                                                                                                                  ..cubicTo(cx - r * 0.90, cy + r * 0.40, cx - r * 0.85, cy - r * 0.55, cx, cy - r * 0.95)
-                                                                                                                  ..close();
-                                                                                                                  canvas.drawPath(seedPath,
-                                                                                                                                  Paint()..color = ac.withValues(alpha: 0.75)..style = PaintingStyle.fill);
-
-                                                                                                                  final sheenPath = Path()
-                                                                                                                  ..moveTo(cx, cy - r * 0.90)
-                                                                                                                  ..cubicTo(cx + r * 0.30, cy - r * 0.70, cx + r * 0.28, cy - r * 0.10, cx, cy - r * 0.05)
-                                                                                                                  ..cubicTo(cx - r * 0.28, cy - r * 0.10, cx - r * 0.30, cy - r * 0.70, cx, cy - r * 0.90)
-                                                                                                                  ..close();
-                                                                                                                  canvas.drawPath(sheenPath,
-                                                                                                                                  Paint()..color = ac.withValues(alpha: 0.30)..style = PaintingStyle.fill);
-
-                                                                                                                  canvas.drawPath(seedPath,
-                                                                                                                                  Paint()
-                                                                                                                                  ..color = bc.withValues(alpha: 0.70)
-                                                                                                                                  ..strokeWidth = r * 0.10
-                                                                                                                                  ..style = PaintingStyle.stroke);
-                                                                                                                  canvas.drawLine(
-                                                                                                                    Offset(cx, cy - r * 0.80), Offset(cx, cy + r * 0.50),
-                                                                                                                    Paint()
-                                                                                                                    ..color = bc.withValues(alpha: 0.50)
-                                                                                                                    ..strokeWidth = r * 0.06
-                                                                                                                    ..strokeCap = StrokeCap.round
-                                                                                                                    ..style = PaintingStyle.stroke,
-                                                                                                                  );
-
-                                                                                                                  {
-                                                                                                                    final rootOpacity = (0.25 + progress * 0.45).clamp(0.0, 0.7);
-                                                                                                                    final rootCount   = 5;
-                                                                                                                    for (int i = 0; i < rootCount; i++) {
-                                                                                                                      final baseAngle  = (math.pi * 0.12) + (i - (rootCount - 1) / 2.0) * 0.38;
-                                                                                                                      final rootLen    = r * (0.70 + progress * 0.80 + _genetic('root_$i') * 0.25);
-                                                                                                                      final rootWidth  = r * (0.11 - i.abs() * 0.008).clamp(0.05, 0.13);
-                                                                                                                      final midX = cx + math.cos(math.pi / 2 + baseAngle * 0.45) * r * 0.4;
-                                                                                                                      final midY = cy + r * 0.50 + r * 0.35;
-                                                                                                                      final endX = cx + math.cos(math.pi / 2 + baseAngle) * rootLen;
-                                                                                                                      final endY = cy + r * 0.50 + rootLen * 0.70;
-                                                                                                                      canvas.drawPath(
-                                                                                                                        Path()..moveTo(cx, cy + r * 0.45)..quadraticBezierTo(midX, midY, endX, endY),
-                                                                                                                        Paint()
-                                                                                                                        ..color = bc.withValues(alpha: rootOpacity * 0.60)
-                                                                                                                        ..strokeWidth = rootWidth * 1.6
-                                                                                                                        ..strokeCap = StrokeCap.round
-                                                                                                                        ..style = PaintingStyle.stroke,
-                                                                                                                      );
-                                                                                                                      canvas.drawPath(
-                                                                                                                        Path()..moveTo(cx, cy + r * 0.45)..quadraticBezierTo(midX, midY, endX, endY),
-                                                                                                                        Paint()
-                                                                                                                        ..color = ac.withValues(alpha: rootOpacity * 0.55)
-                                                                                                                        ..strokeWidth = rootWidth
-                                                                                                                        ..strokeCap = StrokeCap.round
-                                                                                                                        ..style = PaintingStyle.stroke,
-                                                                                                                      );
-                                                                                                                    }
+                                                                                                                  if (seedMix > 0) {
+                                                                                                                    final r = size.width * 0.085 * (0.55 + seedMix * 0.45);
+                                                                                                                    final cx = gx;
+                                                                                                                    final cy = gy - r * 0.55;
 
                                                                                                                     canvas.drawOval(
-                                                                                                                      Rect.fromCenter(
-                                                                                                                        center: Offset(cx, cy + r * 0.52),
-                                                                                                                        width: r * (2.2 + progress * 1.8),
-                                                                                                                        height: r * 0.28,
-                                                                                                                      ),
+                                                                                                                      Rect.fromCenter(center: Offset(cx, gy), width: r * 2.6, height: r * 0.6),
                                                                                                                       Paint()
-                                                                                                                      ..color = bc.withValues(alpha: rootOpacity * 0.45)
-                                                                                                                      ..style = PaintingStyle.fill,
+                                                                                                                      ..color = Colors.black.withValues(alpha: 0.15 * seedMix)
+                                                                                                                      ..style = PaintingStyle.fill
+                                                                                                                      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5),
+                                                                                                                    );
+
+                                                                                                                    final seedPath = Path()
+                                                                                                                    ..moveTo(cx, cy - r * 0.95)
+                                                                                                                    ..cubicTo(cx + r * 0.85, cy - r * 0.55, cx + r * 0.90, cy + r * 0.40, cx, cy + r * 0.60)
+                                                                                                                    ..cubicTo(cx - r * 0.90, cy + r * 0.40, cx - r * 0.85, cy - r * 0.55, cx, cy - r * 0.95)
+                                                                                                                    ..close();
+                                                                                                                    canvas.drawPath(seedPath,
+                                                                                                                                    Paint()..color = ac.withValues(alpha: 0.75 * seedMix)..style = PaintingStyle.fill);
+
+                                                                                                                    final sheenPath = Path()
+                                                                                                                    ..moveTo(cx, cy - r * 0.90)
+                                                                                                                    ..cubicTo(cx + r * 0.30, cy - r * 0.70, cx + r * 0.28, cy - r * 0.10, cx, cy - r * 0.05)
+                                                                                                                    ..cubicTo(cx - r * 0.28, cy - r * 0.10, cx - r * 0.30, cy - r * 0.70, cx, cy - r * 0.90)
+                                                                                                                    ..close();
+                                                                                                                    canvas.drawPath(sheenPath,
+                                                                                                                                    Paint()..color = ac.withValues(alpha: 0.30 * seedMix)..style = PaintingStyle.fill);
+
+                                                                                                                    canvas.drawPath(seedPath,
+                                                                                                                                    Paint()
+                                                                                                                                    ..color = bc.withValues(alpha: 0.70 * seedMix)
+                                                                                                                                    ..strokeWidth = r * 0.10
+                                                                                                                                    ..style = PaintingStyle.stroke);
+                                                                                                                    canvas.drawLine(
+                                                                                                                      Offset(cx, cy - r * 0.80), Offset(cx, cy + r * 0.50),
+                                                                                                                      Paint()
+                                                                                                                      ..color = bc.withValues(alpha: 0.50 * seedMix)
+                                                                                                                      ..strokeWidth = r * 0.06
+                                                                                                                      ..strokeCap = StrokeCap.round
+                                                                                                                      ..style = PaintingStyle.stroke,
                                                                                                                     );
                                                                                                                   }
 
-                                                                                                                  if (progress > 0.3) {
-                                                                                                                    final sproutH  = size.height * 0.22 * ((progress - 0.3) / 0.7);
-                                                                                                                    final sproutY0 = cy - r * 0.90;
-                                                                                                                    final sproutY1 = sproutY0 - sproutH;
+                                                                                                                  if (sproutMix > 0) {
+                                                                                                                    final growth   = (0.25 + sproutMix * 0.75).clamp(0.0, 1.0);
+                                                                                                                    final sproutH  = size.height * 0.18 * growth;
+                                                                                                                    final stemBase = Offset(gx, gy);
+                                                                                                                    final stemTip  = Offset(gx, gy - sproutH);
+
+                                                                                                                    canvas.drawOval(
+                                                                                                                      Rect.fromCenter(center: stemBase.translate(0, 2), width: sproutH * 0.55, height: sproutH * 0.10),
+                                                                                                                      Paint()
+                                                                                                                      ..color = Colors.black.withValues(alpha: 0.12 * sproutMix)
+                                                                                                                      ..style = PaintingStyle.fill
+                                                                                                                      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
+                                                                                                                    );
+
                                                                                                                     final stemPath = Path()
-                                                                                                                    ..moveTo(cx, sproutY0)
-                                                                                                                    ..quadraticBezierTo(cx + r * 0.18, sproutY0 - sproutH * 0.5, cx, sproutY1);
+                                                                                                                    ..moveTo(stemBase.dx, stemBase.dy)
+                                                                                                                    ..quadraticBezierTo(stemBase.dx + sproutH * 0.10, stemBase.dy - sproutH * 0.5, stemTip.dx, stemTip.dy);
                                                                                                                     canvas.drawPath(stemPath,
                                                                                                                                     Paint()
-                                                                                                                                    ..color = ac.withValues(alpha: 0.85)
-                                                                                                                                    ..strokeWidth = r * 0.14
+                                                                                                                                    ..color = ac.withValues(alpha: 0.85 * sproutMix)
+                                                                                                                                    ..strokeWidth = size.width * 0.016
                                                                                                                                     ..strokeCap = StrokeCap.round
                                                                                                                                     ..style = PaintingStyle.stroke);
-                                                                                                                    if (progress > 0.5) {
-                                                                                                                      final leafGrow = ((progress - 0.5) / 0.5).clamp(0.0, 1.0);
-                                                                                                                      final leafSz   = r * 0.45 * leafGrow;
+
+                                                                                                                    final leafGrow = sproutMix > 0.35 ? ((sproutMix - 0.35) / 0.65).clamp(0.0, 1.0) : 0.0;
+                                                                                                                    if (leafGrow > 0) {
+                                                                                                                      final leafSz = sproutH * 0.32 * leafGrow;
                                                                                                                       _drawSingleLeaf(canvas,
-                                                                                                                                      Offset(cx - leafSz * 0.8, sproutY1 + leafSz * 0.3),
+                                                                                                                                      Offset(stemTip.dx - leafSz * 0.8, stemTip.dy + leafSz * 0.3),
                                                                                                                                       leafSz, -math.pi * 0.35, _leafColor, _leafHighlight,
-                                                                                                                                      0.80 * leafGrow, _dna.leafAspect);
+                                                                                                                                      0.80 * leafGrow * sproutMix, _dna.leafAspect);
                                                                                                                       _drawSingleLeaf(canvas,
-                                                                                                                                      Offset(cx + leafSz * 0.8, sproutY1 + leafSz * 0.3),
+                                                                                                                                      Offset(stemTip.dx + leafSz * 0.8, stemTip.dy + leafSz * 0.3),
                                                                                                                                       leafSz,  math.pi * 0.35, _leafColor, _leafHighlight,
-                                                                                                                                      0.80 * leafGrow, _dna.leafAspect);
+                                                                                                                                      0.80 * leafGrow * sproutMix, _dna.leafAspect);
                                                                                                                     }
                                                                                                                   }
                                                                                                                 }
