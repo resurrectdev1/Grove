@@ -196,6 +196,63 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                       GestureDetector(
                         onTap: () {
                           HapticFeedback.mediumImpact();
+                          context.read<GroveModel>().toggleStreakFreeze(habit.id);
+                        },
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 220),
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                          decoration: BoxDecoration(
+                            color: habit.streakFrozen
+                            ? const Color(0xFF42A5C8).withValues(alpha: 0.15)
+                            : theme.surfaceHigh,
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(
+                              color: habit.streakFrozen
+                              ? const Color(0xFF42A5C8).withValues(alpha: 0.5)
+                              : theme.textMuted.withValues(alpha: 0.25),
+                              width: habit.streakFrozen ? 1.5 : 1,
+                            ),
+                          ),
+                          child: Row(mainAxisSize: MainAxisSize.min, children: [
+                            Icon(
+                              habit.streakFrozen ? Icons.ac_unit_rounded : Icons.ac_unit_outlined,
+                              size: 15,
+                              color: habit.streakFrozen
+                              ? const Color(0xFF42A5C8)
+                              : theme.textMuted,
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              habit.streakFrozen ? 'Streak frozen' : 'Freeze streak',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: habit.streakFrozen
+                                ? const Color(0xFF42A5C8)
+                                : theme.textMuted,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            AnimatedSwitcher(
+                              duration: const Duration(milliseconds: 200),
+                              child: Icon(
+                                habit.streakFrozen
+                                ? Icons.toggle_on_rounded
+                                : Icons.toggle_off_rounded,
+                                key: ValueKey(habit.streakFrozen),
+                                size: 28,
+                                color: habit.streakFrozen
+                                ? const Color(0xFF42A5C8)
+                                : theme.textMuted.withValues(alpha: 0.5),
+                              ),
+                            ),
+                          ]),
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+                      GestureDetector(
+                        onTap: () {
+                          HapticFeedback.mediumImpact();
                           context.read<GroveModel>().toggleCheckIn(habit.id);
                         },
                         child: Container(
