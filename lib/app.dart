@@ -64,7 +64,9 @@ class GroveApp extends StatelessWidget {
                 }
                 for (final s in supported) {
                   if (s.languageCode == deviceLocale.languageCode &&
-                    s.countryCode  == deviceLocale.countryCode) return s;
+                    s.countryCode  == deviceLocale.countryCode) {
+                    return s;
+                  }
                 }
                 for (final s in supported) {
                   if (s.languageCode == deviceLocale.languageCode) return s;
