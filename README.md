@@ -17,7 +17,7 @@ Whether you're maintaining sobriety, breaking harmful habits, or building positi
 
 ### How does it work?
 
-Simply open Grove and click the "Plant a Tree" button then select your tracking mode, colro & name of your habit! Once you give your tree a name and color, click "Plant Tree" to see it come to life on your home screen :) You can then click on any habit to open a menu showing you your total relapses (or check-ins), your best record, and your current streak. There is also additional information, such as a "time since last relapse" or "check-in details) tracker and a interactive calender where you can report a relapse (or check-in), add notes, and even edit past or present times. Just under that, you will find a full history of your recorded relapses (or check-ins) along with the reasons why!
+Simply open Grove and click the "Plant a Tree" button then select your tracking mode, color & name of your habit! Once you give your tree a name and color, click "Plant Tree" to see it come to life on your home screen :) You can then click on any habit to open a menu showing you your total relapses (or check-ins), your best record, and your current streak. There is also additional information, such as a "time since last relapse" or "check-in details) tracker and a interactive calendar where you can report a relapse (or check-in), add notes, and even edit past or present times. Just under that, you will find a full history of your recorded relapses (or check-ins) along with the reasons why!
 
 ### Features
 
@@ -25,7 +25,7 @@ Simply open Grove and click the "Plant a Tree" button then select your tracking 
 
 🌀 **Dynamic Layouts:** Experience your forest your way. Switch between a 3D vertical drum roll, a smooth horizontal carousel, a compact grid, or a streamlined list.
 
-🎨 **Customizability:** A tree hex color picker, aswell as a custom made theme engine suppourting Android 12+ Material You, allowing you to adjust your app's palette to match your wallpaper.
+🎨 **Customizability:** A tree hex color picker, aswell as a custom made theme engine supporting Android 12+ Material You, allowing you to adjust your app's palette to match your wallpaper.
 
 📈 **Analytics:** Beyond simple streaks, Grove tracks your peak record, total relapses, and time you've spent clean since your last relapse as well as the reasons why logged across an interactive monthly calendar.
 
