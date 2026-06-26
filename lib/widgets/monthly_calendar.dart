@@ -72,31 +72,36 @@ class MonthlyCalendar extends StatelessWidget {
                                        final isFuture   = cellDate.isAfter(today);
                                        final hasRelapse = habit.relapseDays.contains(cellDate);
                                        final hasCheckIn = isCheckIn && habit.checkInDays.contains(cellDate);
-                                       final hasMark    = isCheckIn ? hasCheckIn : hasRelapse;
+                                       final hasNullDay = isCheckIn && habit.nullDays.contains(cellDate);
+                                       final hasMark    = isCheckIn ? (hasCheckIn || hasNullDay) : hasRelapse;
 
                                        final cellColor = isFuture
                                        ? theme.surfaceHigh.withValues(alpha: 0.3)
+                                       : hasNullDay
+                                       ? const Color(0xFF42A5C8).withValues(alpha: 0.25)
                                        : hasMark
-                                         ? (isCheckIn ? habit.color.withValues(alpha: 0.7) : GroveTheme.clayRed.withValues(alpha: 0.7))
-                                         : theme.surfaceHigh;
+                                       ? (isCheckIn ? habit.color.withValues(alpha: 0.7) : GroveTheme.clayRed.withValues(alpha: 0.7))
+                                       : theme.surfaceHigh;
 
                                        return Expanded(
                                          child: GestureDetector(
-                                               onTap: isFuture ? null : () {
-                                                 HapticFeedback.selectionClick();
-                                                 _showCellManager(context, cellDate, hasMark, model, theme);
-                                               },
-                                               child: Container(
-                                                 margin: const EdgeInsets.all(2),
-                                                 decoration: BoxDecoration(color: cellColor, borderRadius: BorderRadius.circular(8),
-                                                 border: isToday ? Border.all(color: habit.color, width: 2) : null),
-                                                 alignment: Alignment.center,
-                                                 child: Text('$day', style: TextStyle(
-                                                   fontSize: 11, fontWeight: isToday ? FontWeight.w700 : FontWeight.w500,
-                                                   color: hasMark ? GroveTheme.dewWhite : isFuture
-                                                   ? theme.textMuted.withValues(alpha: 0.5) : theme.textSecondary)),
-                                               ),
-                                             ),
+                                           onTap: isFuture ? null : () {
+                                             HapticFeedback.selectionClick();
+                                             _showCellManager(context, cellDate, hasMark, hasNullDay, model, theme);
+                                           },
+                                           child: Container(
+                                             margin: const EdgeInsets.all(2),
+                                             decoration: BoxDecoration(color: cellColor, borderRadius: BorderRadius.circular(8),
+                                             border: isToday ? Border.all(color: habit.color, width: 2) : null),
+                                             alignment: Alignment.center,
+                                             child: Text('$day', style: TextStyle(
+                                               fontSize: 11, fontWeight: isToday ? FontWeight.w700 : FontWeight.w500,
+                                               color: hasNullDay
+                                               ? const Color(0xFF42A5C8)
+                                               : hasMark ? GroveTheme.dewWhite : isFuture
+                                               ? theme.textMuted.withValues(alpha: 0.5) : theme.textSecondary)),
+                                           ),
+                                         ),
                                        );
                                      })),
                                    ))),
@@ -109,12 +114,18 @@ class MonthlyCalendar extends StatelessWidget {
                       _legendDot(isCheckIn ? habit.color.withValues(alpha: 0.7) : GroveTheme.clayRed.withValues(alpha: 0.7)),
                       const SizedBox(width: 5),
                       Text(isCheckIn ? 'Check-in' : 'Relapse', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                      if (isCheckIn) ...[
+                        const SizedBox(width: 14),
+                        _legendDot(const Color(0xFF42A5C8).withValues(alpha: 0.25)),
+                        const SizedBox(width: 5),
+                        Text('Excused', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                      ],
                     ]),
       ]),
     );
   }
 
-  void _showCellManager(BuildContext ctx, DateTime targetDate, bool hasMark,
+  void _showCellManager(BuildContext ctx, DateTime targetDate, bool hasMark, bool hasNullDay,
                         GroveModel model, GroveTheme theme) {
     showModalBottomSheet(
       context: ctx, backgroundColor: theme.surfaceHigh,
@@ -125,6 +136,7 @@ class MonthlyCalendar extends StatelessWidget {
           habit:      habit,
           targetDate: targetDate,
           hasRelapse: hasMark,
+          hasNullDay: hasNullDay,
           model:      model,
           theme:      theme,
         ),
@@ -140,6 +152,7 @@ class _CellManagerSheet extends StatefulWidget {
   final HabitTree habit;
   final DateTime  targetDate;
   final bool      hasRelapse;
+  final bool      hasNullDay;
   final GroveModel model;
   final GroveTheme theme;
 
@@ -147,6 +160,7 @@ class _CellManagerSheet extends StatefulWidget {
     required this.habit,
     required this.targetDate,
     required this.hasRelapse,
+    required this.hasNullDay,
     required this.model,
     required this.theme,
   });
@@ -195,8 +209,8 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
 
     final dateStr = DateFormat('EEEE, MMMM d, yyyy').format(widget.targetDate);
     final hasMark = _isCheckIn
-      ? widget.habit.checkInDays.contains(DateTime(widget.targetDate.year, widget.targetDate.month, widget.targetDate.day))
-      : widget.hasRelapse;
+    ? widget.habit.checkInDays.contains(DateTime(widget.targetDate.year, widget.targetDate.month, widget.targetDate.day))
+    : widget.hasRelapse;
 
     return Padding(
       padding: EdgeInsets.fromLTRB(24, 24, 24, 24 + bottomPad),
@@ -212,33 +226,32 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                 borderRadius: BorderRadius.circular(2)))),
                 const SizedBox(height: 20),
                 Text(dateStr,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: theme.textPrimary)),
-                const SizedBox(height: 6),
-                Text(hasMark
-                  ? (_isCheckIn ? '✅ Checked in on this day.' : '⚠️ Relapse logged on this day.')
-                  : '🌿 Clean record.',
-                  style: TextStyle(
-                    fontSize:   12,
-                    color:      hasMark
-                      ? (_isCheckIn ? widget.habit.color : GroveTheme.clayRed)
-                      : theme.textSecondary,
-                    fontWeight: FontWeight.w600)),
-                    const SizedBox(height: 20),
-                    if (!_isCheckIn) ...[
-                      Text('TIME OVERRIDE',
-                           style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
-                           const SizedBox(height: 8),
-                           OutlinedButton.icon(
-                             onPressed: () async {
-                               final picked = await showTimePicker(context: context, initialTime: _selectedTime);
-                               if (picked != null) setState(() => _selectedTime = picked);
-                             },
-                             icon:  const Icon(Icons.access_time, size: 14),
-                             label: Text('Anchor: ${_selectedTime.format(context)}', style: const TextStyle(fontSize: 13)),
-                             style: OutlinedButton.styleFrom(
-                               foregroundColor: theme.textPrimary,
-                                 padding:         const EdgeInsets.symmetric(vertical: 12)),
-                           ),
+                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: theme.textPrimary)),
+                     const SizedBox(height: 6),
+                     Text(
+                       _isCheckIn
+                       ? ''
+                     : hasMark ? '⚠️ Relapse logged on this day.' : '🌿 Clean record.',
+                     style: TextStyle(
+                       fontSize:   12,
+                       color:      hasMark ? GroveTheme.clayRed : theme.textSecondary,
+                       fontWeight: FontWeight.w600)),
+                      const SizedBox(height: 20),
+                      if (!_isCheckIn) ...[
+                        Text('TIME OVERRIDE',
+                             style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
+                             const SizedBox(height: 8),
+                             OutlinedButton.icon(
+                               onPressed: () async {
+                                 final picked = await showTimePicker(context: context, initialTime: _selectedTime);
+                                 if (picked != null) setState(() => _selectedTime = picked);
+                               },
+                               icon:  const Icon(Icons.access_time, size: 14),
+                               label: Text('Anchor: ${_selectedTime.format(context)}', style: const TextStyle(fontSize: 13)),
+                               style: OutlinedButton.styleFrom(
+                                 foregroundColor: theme.textPrimary,
+                                   padding:         const EdgeInsets.symmetric(vertical: 12)),
+                             ),
                       const SizedBox(height: 16),
                       Text(hasMark ? 'EDIT REASON' : 'REASON (optional)',
                       style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
@@ -251,55 +264,87 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                           hintText:       'Stress, Anxiety, Burnout, Peer pressure, Trigger? etc...',
                           contentPadding: EdgeInsets.all(12))),
                           const SizedBox(height: 24),
-                    ],
-                    if (_isCheckIn) ...[
-                      const SizedBox(height: 12),
-                      FilledButton.icon(
-                        onPressed: () {
-                           if (hasMark) {
-                             widget.model.removeCheckInOnDate(widget.habit.id, widget.targetDate);
-                           } else {
-                             widget.model.toggleCheckIn(widget.habit.id, date: widget.targetDate);
-                           }
-                           HapticFeedback.lightImpact();
-                           Navigator.pop(context);
-                         },
-                        icon: Icon(
-                          hasMark ? Icons.clear : Icons.check_circle_outline,
-                          size: 16,
-                          color: hasMark ? theme.textPrimary : Colors.white,
+                      ],
+                      if (_isCheckIn) ...[
+                        const SizedBox(height: 6),
+                        Text(
+                          widget.hasNullDay
+                          ? '❄️ Excused, your streak is preserved.'
+                        : hasMark
+                        ? '✅ Checked in on this day.'
+                        : '🌿 No check-in recorded.',
+                        style: TextStyle(
+                          fontSize: 12, fontWeight: FontWeight.w600,
+                          color: widget.hasNullDay
+                          ? const Color(0xFF42A5C8)
+                          : hasMark ? widget.habit.color : theme.textSecondary,
                         ),
-                        label: Text(hasMark ? 'Remove Check-in' : 'Check In This Day',
-                          style: TextStyle(
+                        ),
+                      const SizedBox(height: 16),
+                      if (!widget.hasNullDay)
+                        FilledButton.icon(
+                          onPressed: () {
+                            if (hasMark) {
+                              widget.model.removeCheckInOnDate(widget.habit.id, widget.targetDate);
+                            } else {
+                              widget.model.toggleCheckIn(widget.habit.id, date: widget.targetDate);
+                            }
+                            HapticFeedback.lightImpact();
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            hasMark ? Icons.clear : Icons.check_circle_outline,
+                            size: 16,
                             color: hasMark ? theme.textPrimary : Colors.white,
-                          )),
-                        style: FilledButton.styleFrom(
-                          backgroundColor: hasMark ? theme.surfaceHigh : widget.habit.color,
-                            minimumSize:     const Size.fromHeight(48),
-                            shape:           RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              side: hasMark ? BorderSide(color: theme.textMuted.withValues(alpha: 0.3)) : BorderSide.none,
-                            ),
+                          ),
+                          label: Text(hasMark ? 'Remove Check-in' : 'Check In This Day',
+                                      style: TextStyle(color: hasMark ? theme.textPrimary : Colors.white)),
+                                      style: FilledButton.styleFrom(
+                                        backgroundColor: hasMark ? theme.surfaceHigh : widget.habit.color,
+                                        minimumSize: const Size.fromHeight(48),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(12),
+                                          side: hasMark ? BorderSide(color: theme.textMuted.withValues(alpha: 0.3)) : BorderSide.none,
+                                        ),
+                                      ),
                         ),
-                      ),
-                    ] else if (hasMark) ...[
-                      FilledButton.icon(
-                        onPressed: () {
-                          final ts = DateTime(
-                            widget.targetDate.year, widget.targetDate.month, widget.targetDate.day,
-                            _selectedTime.hour, _selectedTime.minute);
-                          widget.model.recordCustomRelapse(widget.habit.id, _reasonCtrl.text.trim(), ts);
-                          HapticFeedback.lightImpact();
-                          Navigator.pop(context);
-                        },
-                        icon:  const Icon(Icons.check, size: 16),
-                        label: const Text('Update Log'),
-                        style: FilledButton.styleFrom(
-                          backgroundColor: widget.habit.color,
-                          foregroundColor: Colors.white,
-                            minimumSize:     const Size.fromHeight(48),
-                            shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
-                      ),
+                      if (!widget.hasNullDay) const SizedBox(height: 10),
+                        OutlinedButton.icon(
+                          onPressed: () {
+                            widget.model.toggleNullDay(widget.habit.id, widget.targetDate);
+                            HapticFeedback.lightImpact();
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            widget.hasNullDay ? Icons.remove_circle_outline : Icons.ac_unit_rounded,
+                            size: 16,
+                          ),
+                          label: Text(widget.hasNullDay ? 'Remove excuse' : 'Excuse this day'),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: const Color(0xFF42A5C8),
+                              side: BorderSide(color: const Color(0xFF42A5C8).withValues(alpha: 0.45)),
+                              minimumSize: const Size.fromHeight(48),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          ),
+                        ),
+                      ] else if (hasMark) ...[
+                        FilledButton.icon(
+                          onPressed: () {
+                            final ts = DateTime(
+                              widget.targetDate.year, widget.targetDate.month, widget.targetDate.day,
+                              _selectedTime.hour, _selectedTime.minute);
+                            widget.model.recordCustomRelapse(widget.habit.id, _reasonCtrl.text.trim(), ts);
+                            HapticFeedback.lightImpact();
+                            Navigator.pop(context);
+                          },
+                          icon:  const Icon(Icons.check, size: 16),
+                          label: const Text('Update Log'),
+                          style: FilledButton.styleFrom(
+                            backgroundColor: widget.habit.color,
+                            foregroundColor: Colors.white,
+                              minimumSize:     const Size.fromHeight(48),
+                              shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                        ),
                       const SizedBox(height: 10),
                       OutlinedButton.icon(
                         onPressed: () {
@@ -315,25 +360,25 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                             minimumSize:     const Size.fromHeight(48),
                             shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
                       ),
-                    ] else ...[
-                      FilledButton.icon(
-                        onPressed: () {
-                          final ts = DateTime(
-                            widget.targetDate.year, widget.targetDate.month, widget.targetDate.day,
-                            _selectedTime.hour, _selectedTime.minute);
-                          widget.model.recordCustomRelapse(widget.habit.id, _reasonCtrl.text.trim(), ts);
-                          HapticFeedback.lightImpact();
-                          Navigator.pop(context);
-                        },
-                        icon:  const Icon(Icons.add, size: 16),
-                        label: const Text('Add Relapse Here'),
-                        style: FilledButton.styleFrom(
-                          backgroundColor: GroveTheme.clayRed,
-                          foregroundColor: Colors.white,
-                            minimumSize:     const Size.fromHeight(48),
-                            shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
-                      ),
-                    ],
+                      ] else ...[
+                        FilledButton.icon(
+                          onPressed: () {
+                            final ts = DateTime(
+                              widget.targetDate.year, widget.targetDate.month, widget.targetDate.day,
+                              _selectedTime.hour, _selectedTime.minute);
+                            widget.model.recordCustomRelapse(widget.habit.id, _reasonCtrl.text.trim(), ts);
+                            HapticFeedback.lightImpact();
+                            Navigator.pop(context);
+                          },
+                          icon:  const Icon(Icons.add, size: 16),
+                          label: const Text('Add Relapse Here'),
+                          style: FilledButton.styleFrom(
+                            backgroundColor: GroveTheme.clayRed,
+                            foregroundColor: Colors.white,
+                              minimumSize:     const Size.fromHeight(48),
+                              shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                        ),
+                      ],
           ],
         ),
       ),
