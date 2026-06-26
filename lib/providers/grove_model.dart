@@ -210,6 +210,33 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     return target.copyWith(relapses: sweptRelapses);
   }
 
+  void toggleNullDay(String habitId, DateTime date) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1 || _habits[i].mode != HabitMode.checkIn) return;
+
+    final target    = _habits[i];
+    final day       = DateTime(date.year, date.month, date.day);
+    final updatedNullDays = Set<DateTime>.of(target.nullDays);
+
+    if (updatedNullDays.contains(day)) {
+      updatedNullDays.remove(day);
+    } else {
+      updatedNullDays.add(day);
+    }
+
+    _habits[i] = target.copyWith(nullDays: updatedNullDays);
+    _persist();
+    notifyListeners();
+  }
+
+  void toggleStreakFreeze(String habitId) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1) return;
+    _habits[i] = _habits[i].copyWith(streakFrozen: !_habits[i].streakFrozen);
+    _persist();
+    notifyListeners();
+  }
+
   void renameHabit(String habitId, String newName) {
     final i = _habits.indexWhere((h) => h.id == habitId);
     if (i == -1) return;
