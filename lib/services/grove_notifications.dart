@@ -125,7 +125,9 @@ class GroveNotifications {
     final deviceLocale = PlatformDispatcher.instance.locale;
     for (final s in AppLocalizations.supportedLocales) {
       if (s.languageCode == deviceLocale.languageCode &&
-        s.countryCode  == deviceLocale.countryCode) return s;
+        s.countryCode  == deviceLocale.countryCode) {
+        return s;
+      }
     }
     for (final s in AppLocalizations.supportedLocales) {
       if (s.languageCode == deviceLocale.languageCode) return s;
