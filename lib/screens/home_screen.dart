@@ -148,7 +148,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset('assets/images/app_icon.png', width: 52, height: 52, fit: BoxFit.cover),
+                  child: Image.asset('assets/images/app_icon_info.png', width: 52, height: 52, fit: BoxFit.cover),
                 ),
                 const SizedBox(width: 14),
                 Column(
