@@ -64,10 +64,14 @@ class HabitTree {
   final HabitMode          mode;
   final Set<DateTime>      _checkInDays;
 
+  final Set<DateTime>      _nullDays;
+
   List<RelapseEvent> get relapses     => _relapses;
   Set<DateTime>      get checkInDays  => _checkInDays;
+  Set<DateTime>      get nullDays     => _nullDays;
 
-  final int geneticSeed;
+  final int  geneticSeed;
+  final bool streakFrozen;
 
   HabitTree({
     required this.id,
@@ -79,18 +83,31 @@ class HabitTree {
     int? geneticSeed,
     this.mode = HabitMode.abstain,
     Set<DateTime>? checkInDays,
+    Set<DateTime>? nullDays,
+    this.streakFrozen = false,
   })  : _relapses    = relapses != null ? List<RelapseEvent>.of(relapses) : [],
-        _checkInDays = checkInDays != null ? Set<DateTime>.of(checkInDays) : <DateTime>{},
-        geneticSeed  = geneticSeed ?? id.hashCode;
+  _checkInDays = checkInDays != null ? Set<DateTime>.of(checkInDays) : <DateTime>{},
+  _nullDays    = nullDays    != null ? Set<DateTime>.of(nullDays)    : <DateTime>{},
+  geneticSeed  = geneticSeed ?? id.hashCode;
 
   int get checkInStreak {
-    if (_checkInDays.isEmpty) return 0;
-    final sorted = _checkInDays.toList()..sort((a, b) => b.compareTo(a));
-    final latest = sorted.first;
-    int streak = 0;
-    for (int i = 0; ; i++) {
-      final d = latest.subtract(Duration(days: i));
-      if (_checkInDays.contains(d)) {
+    final allDays = <DateTime>{..._checkInDays, ..._nullDays}.toList()
+    ..sort((a, b) => b.compareTo(a));
+
+    if (allDays.isEmpty) return 0;
+
+    final today    = DateTime.now();
+    final todayNorm = DateTime(today.year, today.month, today.day);
+
+    if (!streakFrozen) {
+      final gap = todayNorm.difference(allDays.first).inDays;
+      if (gap > 1) return 0;
+    }
+
+    int streak = 1;
+    for (int i = 1; i < allDays.length; i++) {
+      final gap = allDays[i - 1].difference(allDays[i]).inDays;
+      if (gap == 1) {
         streak++;
       } else {
         break;
@@ -106,8 +123,8 @@ class HabitTree {
   }
 
   int get daysElapsed => mode == HabitMode.abstain
-    ? DateTime.now().difference(lastReset).inDays
-    : checkInStreak;
+  ? DateTime.now().difference(lastReset).inDays
+  : checkInStreak;
 
   int         get totalDays   => DateTime.now().difference(startDate).inDays;
   GrowthStage get stage       => stageFromDays(daysElapsed);
@@ -129,8 +146,8 @@ class HabitTree {
       return maxRun;
     }
     return _relapses.isEmpty
-      ? daysElapsed
-      : math.max(daysElapsed, _relapses.map((e) => e.peakDays).reduce(math.max));
+    ? daysElapsed
+    : math.max(daysElapsed, _relapses.map((e) => e.peakDays).reduce(math.max));
   }
 
   double get stageProgress {
@@ -143,8 +160,8 @@ class HabitTree {
   }
 
   Set<DateTime> get relapseDays => _relapses
-    .map((e) => DateTime(e.timestamp.year, e.timestamp.month, e.timestamp.day))
-    .toSet();
+  .map((e) => DateTime(e.timestamp.year, e.timestamp.month, e.timestamp.day))
+  .toSet();
 
   Map<String, dynamic> toMap() => {
     'id':          id,
@@ -154,8 +171,10 @@ class HabitTree {
     'lastReset':   lastReset.toIso8601String(),
     'relapses':    _relapses.map((r) => r.toMap()).toList(),
     'geneticSeed': geneticSeed,
-    'mode':        mode.index,
-    'checkInDays': _checkInDays.map((d) => d.toIso8601String()).toList(),
+    'mode':         mode.index,
+    'checkInDays':  _checkInDays.map((d) => d.toIso8601String()).toList(),
+    'nullDays':     _nullDays.map((d) => d.toIso8601String()).toList(),
+    'streakFrozen': streakFrozen,
   };
 
   String toJson() => jsonEncode(toMap());
@@ -167,17 +186,21 @@ class HabitTree {
     startDate:   DateTime.parse(m['startDate'] as String),
     lastReset:   DateTime.parse(m['lastReset'] as String),
     relapses: (m['relapses'] as List<dynamic>? ?? [])
-      .map((r) => RelapseEvent.fromMap(r as Map<String, dynamic>))
-      .toList(),
+    .map((r) => RelapseEvent.fromMap(r as Map<String, dynamic>))
+    .toList(),
     geneticSeed: m['geneticSeed'] as int?,
-    mode:        m['mode'] != null ? HabitMode.values[m['mode'] as int] : HabitMode.abstain,
-    checkInDays: (m['checkInDays'] as List<dynamic>?)
-      ?.map((d) => DateTime.parse(d as String))
-      .toSet(),
+    mode:         m['mode'] != null ? HabitMode.values[m['mode'] as int] : HabitMode.abstain,
+    checkInDays:  (m['checkInDays'] as List<dynamic>?)
+    ?.map((d) => DateTime.parse(d as String))
+    .toSet(),
+    nullDays:     (m['nullDays'] as List<dynamic>?)
+    ?.map((d) => DateTime.parse(d as String))
+    .toSet(),
+    streakFrozen: m['streakFrozen'] as bool? ?? false,
   );
 
   factory HabitTree.fromJson(String s) =>
-    HabitTree.fromMap(jsonDecode(s) as Map<String, dynamic>);
+  HabitTree.fromMap(jsonDecode(s) as Map<String, dynamic>);
 
   HabitTree copyWith({
     String?             id,
@@ -189,16 +212,20 @@ class HabitTree {
     int?                geneticSeed,
     HabitMode?          mode,
     Set<DateTime>?      checkInDays,
+    Set<DateTime>?      nullDays,
+    bool?               streakFrozen,
   }) =>
-    HabitTree(
-      id:          id          ?? this.id,
-      name:        name        ?? this.name,
-      color:       color       ?? this.color,
-      startDate:   startDate   ?? this.startDate,
-      lastReset:   lastReset   ?? this.lastReset,
-      relapses:    relapses    ?? List<RelapseEvent>.of(_relapses),
-      geneticSeed: geneticSeed ?? this.geneticSeed,
-      mode:        mode        ?? this.mode,
-      checkInDays: checkInDays ?? Set<DateTime>.of(_checkInDays),
-    );
+  HabitTree(
+    id:           id           ?? this.id,
+    name:         name         ?? this.name,
+    color:        color        ?? this.color,
+    startDate:    startDate    ?? this.startDate,
+    lastReset:    lastReset    ?? this.lastReset,
+    relapses:     relapses     ?? List<RelapseEvent>.of(_relapses),
+    geneticSeed:  geneticSeed  ?? this.geneticSeed,
+    mode:         mode         ?? this.mode,
+    checkInDays:  checkInDays  ?? Set<DateTime>.of(_checkInDays),
+    nullDays:     nullDays     ?? Set<DateTime>.of(_nullDays),
+    streakFrozen: streakFrozen ?? this.streakFrozen,
+  );
 }
