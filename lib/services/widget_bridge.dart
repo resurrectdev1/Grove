@@ -28,7 +28,6 @@ class GroveWidgetBridge {
           }
         }
       }
-    } on MissingPluginException {
     } catch (e) {
       debugPrint('GroveWidgetBridge.renderAndUpdate error: $e');
     }
@@ -39,8 +38,6 @@ class GroveWidgetBridge {
   Future<void> requestUpdate() async {
     try {
       await _channel.invokeMethod<void>('updateWidgets');
-    } on MissingPluginException {
-
     } catch (e) {
       debugPrint('GroveWidgetBridge.requestUpdate error: $e');
     }
