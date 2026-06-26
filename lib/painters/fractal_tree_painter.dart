@@ -54,14 +54,16 @@ class FractalTreePainter extends CustomPainter {
   final double      windPhase;
   final int         daysElapsed;
   final int         geneticSeed;
+  final double      burstProgress;
 
   const FractalTreePainter({
     required this.stage,
     required this.baseColor,
     required this.progress,
-    this.windPhase   = 0,
-    this.daysElapsed = 0,
-    this.geneticSeed = 0,
+    this.windPhase      = 0,
+    this.daysElapsed    = 0,
+    this.geneticSeed    = 0,
+    this.burstProgress  = 0,
   });
 
   _TreeDNA get _dna => _TreeDNA.fromSeed(geneticSeed);
@@ -131,7 +133,15 @@ class FractalTreePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    if (stage == GrowthStage.seed) { _drawSeed(canvas, size); return; }
+    if (stage == GrowthStage.seed) {
+      _drawSeed(canvas, size);
+      if (burstProgress > 0) {
+        final gx = size.width * 0.5;
+        final gy = size.height * 0.93 - size.height * 0.18;
+        _drawGrowthBurst(canvas, size, [Offset(gx, gy)]);
+      }
+      return;
+    }
 
     final tipPositions = <Offset>[];
     _drawTree(canvas: canvas, size: size, color: _activeColor,
@@ -140,6 +150,10 @@ class FractalTreePainter extends CustomPainter {
     if (stage == GrowthStage.groveTree ||
       (stage == GrowthStage.youngTree && progress > 0.6)) {
       _drawSpores(canvas, size, tipPositions);
+      }
+
+      if (burstProgress > 0) {
+        _drawGrowthBurst(canvas, size, tipPositions);
       }
   }
 
@@ -591,6 +605,60 @@ class FractalTreePainter extends CustomPainter {
 
 
 
+                                                                                                                void _drawGrowthBurst(Canvas canvas, Size size, List<Offset> tips) {
+                                                                                                                  if (tips.isEmpty) return;
+                                                                                                                  final t = burstProgress.clamp(0.0, 1.0);
+
+                                                                                                                  final eased = 1.0 - math.pow(1.0 - t, 3).toDouble();
+
+                                                                                                                  final envelope = t < 0.12
+                                                                                                                  ? (t / 0.12)
+                                                                                                                  : t > 0.70
+                                                                                                                  ? (1.0 - (t - 0.70) / 0.30).clamp(0.0, 1.0)
+                                                                                                                  : 1.0;
+                                                                                                                  if (envelope <= 0.0) return;
+
+                                                                                                                  final lc = _leafColor;
+                                                                                                                  final lh = _leafHighlight;
+                                                                                                                  final sc = _sporeColor;
+                                                                                                                  final paint = Paint()..style = PaintingStyle.fill;
+
+                                                                                                                  for (int ti = 0; ti < tips.length; ti++) {
+                                                                                                                    final tip = tips[ti];
+                                                                                                                    final particleCount = 5 + (geneticSeed.abs() + ti * 31) % 4;
+                                                                                                                    final rng = math.Random(geneticSeed + ti * 97);
+
+                                                                                                                    for (int i = 0; i < particleCount; i++) {
+                                                                                                                      final seedOff   = (geneticSeed.abs() + ti * 53 + i * 17) % 100;
+                                                                                                                      final baseAngle = -math.pi / 2 + (rng.nextDouble() - 0.5) * math.pi * 1.1;
+                                                                                                                      final dist      = (18.0 + seedOff * 0.6) * eased;
+                                                                                                                      final drift     = math.sin(eased * math.pi) * 6.0 * (i.isEven ? 1 : -1);
+
+                                                                                                                      final px = tip.dx + math.cos(baseAngle) * dist + drift * 0.3;
+                                                                                                                      final py = tip.dy + math.sin(baseAngle) * dist - eased * (10.0 + seedOff * 0.25);
+
+                                                                                                                      final particleFade = (1.0 - eased * 0.55).clamp(0.0, 1.0);
+                                                                                                                      final opacity = (particleFade * envelope).clamp(0.0, 1.0);
+                                                                                                                      if (opacity < 0.02) continue;
+
+                                                                                                                      final leafSz = (4.0 + (seedOff % 5) * 0.9) * (0.6 + eased * 0.4);
+                                                                                                                      final rotation = baseAngle + eased * math.pi * (i.isEven ? 1.4 : -1.4);
+
+                                                                                                                      _drawSingleLeaf(canvas, Offset(px, py), leafSz, rotation,
+                                                                                                                      lc, lh, opacity * 0.85, _dna.leafAspect);
+
+                                                                                                                      paint.color = sc.withValues(alpha: opacity * 0.55);
+                                                                                                                      canvas.drawCircle(Offset(px, py), leafSz * 0.22, paint);
+                                                                                                                    }
+
+                                                                                                                    final glowOpacity = (0.35 * (1.0 - eased) * envelope).clamp(0.0, 1.0);
+                                                                                                                    if (glowOpacity > 0.02) {
+                                                                                                                      paint.color = lh.withValues(alpha: glowOpacity);
+                                                                                                                      canvas.drawCircle(tip, 10.0 + eased * 6.0, paint);
+                                                                                                                    }
+                                                                                                                  }
+                                                                                                                }
+
                                                                                                                 void _drawSeed(Canvas canvas, Size size) {
                                                                                                                   final gx = size.width  * 0.5;
                                                                                                                   final gy = size.height * 0.93;
@@ -695,5 +763,6 @@ class FractalTreePainter extends CustomPainter {
                                                                                                                 bool shouldRepaint(FractalTreePainter old) =>
                                                                                                                 old.stage        != stage        || old.baseColor   != baseColor   ||
                                                                                                                 old.progress     != progress     || old.windPhase   != windPhase   ||
-                                                                                                                old.daysElapsed  != daysElapsed  || old.geneticSeed != geneticSeed;
+                                                                                                                old.daysElapsed  != daysElapsed  || old.geneticSeed != geneticSeed ||
+                                                                                                                old.burstProgress != burstProgress;
 }
