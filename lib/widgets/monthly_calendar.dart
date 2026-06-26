@@ -227,15 +227,15 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                 const SizedBox(height: 20),
                 Text(dateStr,
                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: theme.textPrimary)),
-                     const SizedBox(height: 6),
-                     Text(
-                       _isCheckIn
-                       ? ''
-                     : hasMark ? '⚠️ Relapse logged on this day.' : '🌿 Clean record.',
-                     style: TextStyle(
-                       fontSize:   12,
-                       color:      hasMark ? GroveTheme.clayRed : theme.textSecondary,
-                       fontWeight: FontWeight.w600)),
+                     if (!_isCheckIn) ...[
+                       const SizedBox(height: 6),
+                       Text(
+                         hasMark ? '⚠️ Relapse logged on this day.' : '🌿 Clean record.',
+                         style: TextStyle(
+                           fontSize:   12,
+                           color:      hasMark ? GroveTheme.clayRed : theme.textSecondary,
+                           fontWeight: FontWeight.w600)),
+                     ],
                       const SizedBox(height: 20),
                       if (!_isCheckIn) ...[
                         Text('TIME OVERRIDE',
