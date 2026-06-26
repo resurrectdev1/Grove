@@ -174,7 +174,7 @@ If you're unsure about a translation, feel free to open a discussion before subm
 
 ## Development Setup
 
-Grove pins an exact Flutter version in `pubspec.yaml` (currently `3.41.2`, see the `environment:` block) rather than a range. This isn't a typo — it keeps everyone's generated code (`flutter gen-l10n`, build output) consistent and avoids "works on my machine" issues from contributors on a different Flutter version. Please match it rather than using whatever Flutter you already have installed, especially before reporting a build issue.
+Grove pins an exact Flutter version in `pubspec.yaml` (currently `3.41.2`, see the `environment:` block) rather than a range. This isn't a typo, it keeps everyone's generated code (`flutter gen-l10n`, build output) consistent and avoids "works on my machine" issues from contributors on a different Flutter version. Please match it rather than using whatever Flutter you already have installed, especially before reporting a build issue.
 
 1. Check your installed version: `flutter --version`. If it doesn't match the version pinned in `pubspec.yaml`, you have a couple of options:
 
