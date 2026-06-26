@@ -27,12 +27,12 @@ A quick map of `lib/` so new code ends up in the right place:
 | Folder        | Contains |
 |----------------|----------|
 | `models/`      | Plain data classes - `HabitTree`, `RelapseEvent`, the `GrowthStage`/`HabitMode` enums. No Flutter UI code here. |
+| `painters/`    | `CustomPainter` implementations - currently just the fractal tree renderer. |
 | `providers/`   | App state - `GroveModel` (habits, persistence) and `GroveSettings` (theme, layout, prefs), both `ChangeNotifier`s consumed via `provider`. |
 | `screens/`     | Full-page routes - home screen, habit detail screen. |
-| `widgets/`     | Reusable UI pieces used within screens (cards, sheets, dialogs, calendar). |
-| `painters/`    | `CustomPainter` implementations - currently just the fractal tree renderer. |
 | `services/`    | Platform/IO integrations - notifications, biometrics, the native widget bridge. |
 | `theme/`       | `GroveTheme` and the color/layout enums. |
+| `widgets/`     | Reusable UI pieces used within screens (cards, sheets, dialogs, calendar). |
 | `l10n/`        | Generated localization (`.arb` sources, see the translations section below). |
 
 If you're not sure where something goes, look at what it's most similar to and put it next to that.
