@@ -12,6 +12,27 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.6.8] - 2026-06-26
+
+### Added
+
+* Streak freeze toggle for Check-In Mode, letting you freeze a habit's streak
+* Excused days for Check-In Mode, so rest days, vacations, and similar don't break your streak
+* New tree growth animations
+* Revamped designs for the Day 0 seed and Day 1 sprout
+
+### Changed
+
+- Polished all translations further for accuracy
+- App icon in the info tab made larger
+- Code cleanup (e.g. `curly_braces_in_flow_control_structures` and empty catches)
+
+### Fixed
+
+- Fixed a typo in the Check-In Mode interactive monthly calendar, "clean" corrected to "missed"
+
+---
+
 ## [0.6.6] - 2026-06-22
 
 ### Added
