@@ -90,7 +90,7 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     notifyListeners();
   }
 
-  void toggleCheckIn(String habitId, {DateTime? date}) {
+  void toggleCheckIn(String habitId, {DateTime? date, TimeOfDay? overrideTime}) {
     final i = _habits.indexWhere((h) => h.id == habitId);
     if (i == -1 || _habits[i].mode != HabitMode.checkIn) return;
 
@@ -98,10 +98,9 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     final targetDay = date ?? now;
     final today = DateTime(targetDay.year, targetDay.month, targetDay.day);
 
-    final recordedTimestamp = DateTime(
-      today.year, today.month, today.day,
-      now.hour, now.minute, now.second, now.millisecond,
-    );
+    final recordedTimestamp = overrideTime != null
+    ? DateTime(today.year, today.month, today.day, overrideTime.hour, overrideTime.minute)
+    : DateTime(today.year, today.month, today.day, now.hour, now.minute, now.second, now.millisecond);
 
     final original = _habits[i];
     final updatedDays = Set<DateTime>.of(original.checkInDays);
@@ -114,6 +113,23 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
       updatedDays.add(today);
       updatedTimestamps[today] = recordedTimestamp;
     }
+
+    _habits[i] = original.copyWith(checkInDays: updatedDays, checkInTimestamps: updatedTimestamps);
+    _persist();
+    notifyListeners();
+  }
+
+  void setCheckInTime(String habitId, DateTime date, TimeOfDay overrideTime) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1 || _habits[i].mode != HabitMode.checkIn) return;
+
+    final today = DateTime(date.year, date.month, date.day);
+    final recordedTimestamp = DateTime(today.year, today.month, today.day, overrideTime.hour, overrideTime.minute);
+
+    final original = _habits[i];
+    final updatedDays = Set<DateTime>.of(original.checkInDays)..add(today);
+    final updatedTimestamps = Map<DateTime, DateTime>.of(original.checkInTimestamps);
+    updatedTimestamps[today] = recordedTimestamp;
 
     _habits[i] = original.copyWith(checkInDays: updatedDays, checkInTimestamps: updatedTimestamps);
     _persist();
