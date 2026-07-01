@@ -65,10 +65,14 @@ class HabitTree {
   final Set<DateTime>      _checkInDays;
 
   final Set<DateTime>      _nullDays;
+  final Map<DateTime, DateTime> _checkInTimestamps;
 
   List<RelapseEvent> get relapses     => _relapses;
   Set<DateTime>      get checkInDays  => _checkInDays;
   Set<DateTime>      get nullDays     => _nullDays;
+  Map<DateTime, DateTime> get checkInTimestamps => _checkInTimestamps;
+
+  DateTime checkInTimeFor(DateTime day) => _checkInTimestamps[day] ?? day;
 
   final int  geneticSeed;
   final bool streakFrozen;
@@ -84,10 +88,14 @@ class HabitTree {
     this.mode = HabitMode.abstain,
     Set<DateTime>? checkInDays,
     Set<DateTime>? nullDays,
+    Map<DateTime, DateTime>? checkInTimestamps,
     this.streakFrozen = false,
   })  : _relapses    = relapses != null ? List<RelapseEvent>.of(relapses) : [],
   _checkInDays = checkInDays != null ? Set<DateTime>.of(checkInDays) : <DateTime>{},
   _nullDays    = nullDays    != null ? Set<DateTime>.of(nullDays)    : <DateTime>{},
+  _checkInTimestamps = checkInTimestamps != null
+    ? Map<DateTime, DateTime>.of(checkInTimestamps)
+    : <DateTime, DateTime>{},
   geneticSeed  = geneticSeed ?? id.hashCode;
 
   int get checkInStreak {
@@ -174,6 +182,9 @@ class HabitTree {
     'mode':         mode.index,
     'checkInDays':  _checkInDays.map((d) => d.toIso8601String()).toList(),
     'nullDays':     _nullDays.map((d) => d.toIso8601String()).toList(),
+    'checkInTimestamps': _checkInTimestamps.map(
+      (day, ts) => MapEntry(day.toIso8601String(), ts.toIso8601String()),
+    ),
     'streakFrozen': streakFrozen,
   };
 
@@ -196,6 +207,8 @@ class HabitTree {
     nullDays:     (m['nullDays'] as List<dynamic>?)
     ?.map((d) => DateTime.parse(d as String))
     .toSet(),
+    checkInTimestamps: (m['checkInTimestamps'] as Map<String, dynamic>?)
+    ?.map((day, ts) => MapEntry(DateTime.parse(day), DateTime.parse(ts as String))),
     streakFrozen: m['streakFrozen'] as bool? ?? false,
   );
 
@@ -213,6 +226,7 @@ class HabitTree {
     HabitMode?          mode,
     Set<DateTime>?      checkInDays,
     Set<DateTime>?      nullDays,
+    Map<DateTime, DateTime>? checkInTimestamps,
     bool?               streakFrozen,
   }) =>
   HabitTree(
@@ -226,6 +240,7 @@ class HabitTree {
     mode:         mode         ?? this.mode,
     checkInDays:  checkInDays  ?? Set<DateTime>.of(_checkInDays),
     nullDays:     nullDays     ?? Set<DateTime>.of(_nullDays),
+    checkInTimestamps: checkInTimestamps ?? Map<DateTime, DateTime>.of(_checkInTimestamps),
     streakFrozen: streakFrozen ?? this.streakFrozen,
   );
 }
