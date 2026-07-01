@@ -65,10 +65,6 @@ class HabitTree {
   final Set<DateTime>      _checkInDays;
 
   final Set<DateTime>      _nullDays;
-
-  // Maps a day-normalized date (year/month/day, time stripped) to the actual
-  // timestamp the check-in happened at, so history can show the real time
-  // instead of always midnight.
   final Map<DateTime, DateTime> _checkInTimestamps;
 
   List<RelapseEvent> get relapses     => _relapses;
@@ -76,10 +72,6 @@ class HabitTree {
   Set<DateTime>      get nullDays     => _nullDays;
   Map<DateTime, DateTime> get checkInTimestamps => _checkInTimestamps;
 
-  /// Returns the actual timestamp a check-in happened at for [day] (which
-  /// should already be day-normalized). Falls back to midnight on that day
-  /// if no recorded timestamp exists (e.g. data saved before this field
-  /// existed).
   DateTime checkInTimeFor(DateTime day) => _checkInTimestamps[day] ?? day;
 
   final int  geneticSeed;
