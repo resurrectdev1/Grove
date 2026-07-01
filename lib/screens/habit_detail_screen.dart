@@ -93,47 +93,47 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
           SliverToBoxAdapter(child: _calendarSection(habit, theme, l10n)),
           if (isCheckIn)
             SliverToBoxAdapter(child: _freezeStreakSection(habit, theme, l10n)),
-            if (!isCheckIn) ...[
-              SliverToBoxAdapter(child: _historyHeader(habit, theme, l10n)),
-              habit.relapses.isEmpty
-              ? SliverToBoxAdapter(child: _noHistory(theme, l10n))
-              : SliverList(delegate: SliverChildBuilderDelegate(
-                (_, i) => RelapseEventTile(event: habit.relapses[i], index: i),
-                childCount: habit.relapses.length)),
-            ] else ...[
-              SliverToBoxAdapter(child: _checkInHistoryHeader(habit, theme, l10n)),
-              if (habit.checkInDays.isEmpty)
-                SliverToBoxAdapter(child: _noHistory(theme, l10n, checkIn: true))
-                else
-                  SliverList(delegate: SliverChildBuilderDelegate(
-                    (_, i) {
-                      final sorted = habit.checkInDays.toList()..sort((a, b) => b.compareTo(a));
-                      final day = sorted[i];
-                      final date = habit.checkInTimeFor(day);
-                      return Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                        padding: const EdgeInsets.all(14),
-                        decoration: BoxDecoration(color: theme.surface, borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: theme.surfaceHigh)),
-                        child: Row(children: [
-                          Container(width: 28, height: 28,
-                                    decoration: BoxDecoration(color: habit.color.withValues(alpha: 0.12), shape: BoxShape.circle),
-                                    alignment: Alignment.center,
-                                    child: Icon(Icons.check, size: 14, color: habit.color)),
-                                    const SizedBox(width: 12),
-                                    Expanded(child: Text(
-                                      DateFormat('EEEE, MMMM d, yyyy').format(date),
-                                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: theme.textPrimary),
-                                    )),
-                                   Text(DateFormat('h:mm a').format(date), style: TextStyle(fontSize: 11, color: theme.textMuted)),
-                        ]),
-                      );
-                    },
-                    childCount: habit.checkInDays.length,
-                  )),
-            ],
-            SliverToBoxAdapter(child: _deleteSection(context, habit, theme, l10n)),
-            const SliverToBoxAdapter(child: SizedBox(height: 80)),
+          if (!isCheckIn) ...[
+            SliverToBoxAdapter(child: _historyHeader(habit, theme, l10n)),
+            habit.relapses.isEmpty
+            ? SliverToBoxAdapter(child: _noHistory(theme, l10n))
+            : SliverList(delegate: SliverChildBuilderDelegate(
+              (_, i) => RelapseEventTile(event: habit.relapses[i], index: i),
+              childCount: habit.relapses.length)),
+          ] else ...[
+            SliverToBoxAdapter(child: _checkInHistoryHeader(habit, theme, l10n)),
+            if (habit.checkInDays.isEmpty)
+              SliverToBoxAdapter(child: _noHistory(theme, l10n, checkIn: true))
+              else
+                SliverList(delegate: SliverChildBuilderDelegate(
+                  (_, i) {
+                    final sorted = habit.checkInDays.toList()..sort((a, b) => b.compareTo(a));
+                    final day = sorted[i];
+                    final date = habit.checkInTimeFor(day);
+                    return Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                      padding: const EdgeInsets.all(14),
+                      decoration: BoxDecoration(color: theme.surface, borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: theme.surfaceHigh)),
+                      child: Row(children: [
+                        Container(width: 28, height: 28,
+                                  decoration: BoxDecoration(color: habit.color.withValues(alpha: 0.12), shape: BoxShape.circle),
+                                  alignment: Alignment.center,
+                                  child: Icon(Icons.check, size: 14, color: habit.color)),
+                                  const SizedBox(width: 12),
+                                  Expanded(child: Text(
+                                    DateFormat('EEEE, MMMM d, yyyy').format(date),
+                                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: theme.textPrimary),
+                                  )),
+                                 Text(DateFormat('h:mm a').format(date), style: TextStyle(fontSize: 11, color: theme.textMuted)),
+                      ]),
+                    );
+                  },
+                  childCount: habit.checkInDays.length,
+                )),
+          ],
+          SliverToBoxAdapter(child: _deleteSection(context, habit, theme, l10n)),
+          const SliverToBoxAdapter(child: SizedBox(height: 80)),
         ],
       ),
     );
@@ -189,15 +189,13 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
           Text(checkedIn ? l10n.checkedInToday : l10n.notCheckedInToday,
                style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600,
                                 color: theme.textSecondary, letterSpacing: 0.8)),
-                      const SizedBox(height: 12),
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                        _streakUnit(value: habit.checkInStreak, label: l10n.streak, color: habit.color),
-                        _streakUnit(value: habit.checkInDays.length, label: l10n.total, color: GroveTheme.streakGold),
-                        _streakUnit(value: habit.totalDays, label: l10n.days, color: theme.textSecondary),
-                      ]),
                       const SizedBox(height: 14),
                       GestureDetector(
                         onTap: () {
+                          if (habit.nullDays.contains(DateTime(
+                            DateTime.now().year, DateTime.now().month, DateTime.now().day))) {
+                            return;
+                          }
                           HapticFeedback.mediumImpact();
                           context.read<GroveModel>().toggleCheckIn(habit.id);
                         },
@@ -227,16 +225,6 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
         ]),
       ),
     );
-  }
-
-  Widget _streakUnit({required int value, required String label, required Color color}) {
-    return Column(mainAxisSize: MainAxisSize.min, children: [
-      Text(value.toString(),
-      style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, color: color,
-                       fontFeatures: const [FontFeature.tabularFigures()])),
-                       const SizedBox(height: 2),
-                       Text(label, style: TextStyle(fontSize: 9, color: GroveTheme.slateGrey, fontWeight: FontWeight.w600, letterSpacing: 0.5)),
-    ]);
   }
 
   Widget _appBar(BuildContext ctx, HabitTree habit, GroveTheme theme, AppLocalizations l10n) =>
@@ -442,40 +430,40 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
           ),
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
-              habit.streakFrozen ? Icons.ac_unit_rounded : Icons.ac_unit_outlined,
-              size: 15,
-              color: habit.streakFrozen
-              ? const Color(0xFF42A5C8)
-              : theme.textMuted,
-            ),
-            const SizedBox(width: 8),
-            Text(
-              habit.streakFrozen ? 'Streak frozen' : 'Freeze streak',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
+                habit.streakFrozen ? Icons.ac_unit_rounded : Icons.ac_unit_outlined,
+                size: 15,
                 color: habit.streakFrozen
                 ? const Color(0xFF42A5C8)
                 : theme.textMuted,
               ),
-            ),
-            const SizedBox(width: 10),
-            AnimatedSwitcher(
-              duration: const Duration(milliseconds: 200),
-              child: Icon(
-                habit.streakFrozen
-                ? Icons.toggle_on_rounded
-                : Icons.toggle_off_rounded,
-                key: ValueKey(habit.streakFrozen),
-                size: 28,
-                color: habit.streakFrozen
-                ? const Color(0xFF42A5C8)
-                : theme.textMuted.withValues(alpha: 0.5),
+              const SizedBox(width: 8),
+              Text(
+                habit.streakFrozen ? 'Streak frozen' : 'Freeze streak',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: habit.streakFrozen
+                  ? const Color(0xFF42A5C8)
+                  : theme.textMuted,
+                ),
               ),
-            ),
-          ]),
+              const SizedBox(width: 10),
+              AnimatedSwitcher(
+                duration: const Duration(milliseconds: 200),
+                child: Icon(
+                  habit.streakFrozen
+                  ? Icons.toggle_on_rounded
+                  : Icons.toggle_off_rounded,
+                  key: ValueKey(habit.streakFrozen),
+                  size: 28,
+                  color: habit.streakFrozen
+                  ? const Color(0xFF42A5C8)
+                  : theme.textMuted.withValues(alpha: 0.5),
+                ),
+              ),
+            ]),
+          ),
         ),
-      ),
     );
   }
 
