@@ -191,6 +191,12 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
         _reasonCtrl.text = matches.first.reason;
         _selectedTime    = TimeOfDay.fromDateTime(matches.first.timestamp);
       }
+    } else {
+      final day = DateTime(widget.targetDate.year, widget.targetDate.month, widget.targetDate.day);
+      final existing = widget.habit.checkInTimestamps[day];
+      if (existing != null) {
+        _selectedTime = TimeOfDay.fromDateTime(existing);
+      }
     }
   }
 
@@ -280,14 +286,29 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                           : hasMark ? widget.habit.color : theme.textSecondary,
                         ),
                         ),
-                      const SizedBox(height: 16),
-                      if (!widget.hasNullDay)
+                      const SizedBox(height: 20),
+                      if (!widget.hasNullDay) ...[
+                        Text('TIME OVERRIDE',
+                             style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
+                             const SizedBox(height: 8),
+                             OutlinedButton.icon(
+                               onPressed: () async {
+                                 final picked = await showTimePicker(context: context, initialTime: _selectedTime);
+                                 if (picked != null) setState(() => _selectedTime = picked);
+                               },
+                               icon:  const Icon(Icons.access_time, size: 14),
+                               label: Text('Check-in time: ${_selectedTime.format(context)}', style: const TextStyle(fontSize: 13)),
+                               style: OutlinedButton.styleFrom(
+                                 foregroundColor: theme.textPrimary,
+                                   padding:         const EdgeInsets.symmetric(vertical: 12)),
+                             ),
+                        const SizedBox(height: 16),
                         FilledButton.icon(
                           onPressed: () {
                             if (hasMark) {
                               widget.model.removeCheckInOnDate(widget.habit.id, widget.targetDate);
                             } else {
-                              widget.model.toggleCheckIn(widget.habit.id, date: widget.targetDate);
+                              widget.model.toggleCheckIn(widget.habit.id, date: widget.targetDate, overrideTime: _selectedTime);
                             }
                             HapticFeedback.lightImpact();
                             Navigator.pop(context);
@@ -308,18 +329,33 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                                         ),
                                       ),
                         ),
-                      if (!widget.hasNullDay) const SizedBox(height: 10),
+                        if (hasMark) ...[
+                          const SizedBox(height: 10),
+                          OutlinedButton.icon(
+                            onPressed: () {
+                              widget.model.setCheckInTime(widget.habit.id, widget.targetDate, _selectedTime);
+                              HapticFeedback.lightImpact();
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(Icons.save_outlined, size: 16),
+                            label: const Text('Save New Time'),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: widget.habit.color,
+                              side: BorderSide(color: widget.habit.color.withValues(alpha: 0.45)),
+                              minimumSize: const Size.fromHeight(48),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                          ),
+                        ],
+                        const SizedBox(height: 10),
                         OutlinedButton.icon(
                           onPressed: () {
                             widget.model.toggleNullDay(widget.habit.id, widget.targetDate);
                             HapticFeedback.lightImpact();
                             Navigator.pop(context);
                           },
-                          icon: Icon(
-                            widget.hasNullDay ? Icons.remove_circle_outline : Icons.ac_unit_rounded,
-                            size: 16,
-                          ),
-                          label: Text(widget.hasNullDay ? 'Remove excuse' : 'Excuse this day'),
+                          icon: const Icon(Icons.ac_unit_rounded, size: 16),
+                          label: const Text('Excuse this day instead'),
                           style: OutlinedButton.styleFrom(
                             foregroundColor: const Color(0xFF42A5C8),
                               side: BorderSide(color: const Color(0xFF42A5C8).withValues(alpha: 0.45)),
@@ -327,6 +363,40 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                           ),
                         ),
+                      ] else ...[
+                        FilledButton.icon(
+                          onPressed: () {
+                            widget.model.toggleNullDay(widget.habit.id, widget.targetDate);
+                            widget.model.toggleCheckIn(widget.habit.id, date: widget.targetDate);
+                            HapticFeedback.lightImpact();
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.check_circle_outline, size: 16),
+                          label: const Text('Check In Instead'),
+                          style: FilledButton.styleFrom(
+                            backgroundColor: widget.habit.color,
+                            foregroundColor: Colors.white,
+                            minimumSize: const Size.fromHeight(48),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        OutlinedButton.icon(
+                          onPressed: () {
+                            widget.model.toggleNullDay(widget.habit.id, widget.targetDate);
+                            HapticFeedback.lightImpact();
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.remove_circle_outline, size: 16),
+                          label: const Text('Remove excuse'),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: const Color(0xFF42A5C8),
+                              side: BorderSide(color: const Color(0xFF42A5C8).withValues(alpha: 0.45)),
+                              minimumSize: const Size.fromHeight(48),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          ),
+                        ),
+                      ],
                       ] else if (hasMark) ...[
                         FilledButton.icon(
                           onPressed: () {
