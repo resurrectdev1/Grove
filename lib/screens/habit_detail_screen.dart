@@ -106,7 +106,8 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                 SliverList(delegate: SliverChildBuilderDelegate(
                   (_, i) {
                     final sorted = habit.checkInDays.toList()..sort((a, b) => b.compareTo(a));
-                    final date = sorted[i];
+                    final day = sorted[i];
+                    final date = habit.checkInTimeFor(day);
                     return Container(
                       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
                       padding: const EdgeInsets.all(14),
