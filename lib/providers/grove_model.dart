@@ -94,18 +94,28 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     final i = _habits.indexWhere((h) => h.id == habitId);
     if (i == -1 || _habits[i].mode != HabitMode.checkIn) return;
 
-    final now   = date ?? DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
+    final now = DateTime.now();
+    final targetDay = date ?? now;
+    final today = DateTime(targetDay.year, targetDay.month, targetDay.day);
+
+    final recordedTimestamp = DateTime(
+      today.year, today.month, today.day,
+      now.hour, now.minute, now.second, now.millisecond,
+    );
+
     final original = _habits[i];
     final updatedDays = Set<DateTime>.of(original.checkInDays);
+    final updatedTimestamps = Map<DateTime, DateTime>.of(original.checkInTimestamps);
 
     if (updatedDays.contains(today)) {
       updatedDays.remove(today);
+      updatedTimestamps.remove(today);
     } else {
       updatedDays.add(today);
+      updatedTimestamps[today] = recordedTimestamp;
     }
 
-    _habits[i] = original.copyWith(checkInDays: updatedDays);
+    _habits[i] = original.copyWith(checkInDays: updatedDays, checkInTimestamps: updatedTimestamps);
     _persist();
     notifyListeners();
   }
@@ -119,7 +129,8 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     if (!target.checkInDays.contains(cleanedDate)) return;
 
     final updatedDays = Set<DateTime>.of(target.checkInDays)..remove(cleanedDate);
-    _habits[i] = target.copyWith(checkInDays: updatedDays);
+    final updatedTimestamps = Map<DateTime, DateTime>.of(target.checkInTimestamps)..remove(cleanedDate);
+    _habits[i] = target.copyWith(checkInDays: updatedDays, checkInTimestamps: updatedTimestamps);
     _persist();
     notifyListeners();
   }
