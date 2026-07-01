@@ -65,6 +65,10 @@ class HabitTree {
   final Set<DateTime>      _checkInDays;
 
   final Set<DateTime>      _nullDays;
+
+  // Maps a day-normalized date (year/month/day, time stripped) to the actual
+  // timestamp the check-in happened at, so history can show the real time
+  // instead of always midnight.
   final Map<DateTime, DateTime> _checkInTimestamps;
 
   List<RelapseEvent> get relapses     => _relapses;
@@ -72,6 +76,10 @@ class HabitTree {
   Set<DateTime>      get nullDays     => _nullDays;
   Map<DateTime, DateTime> get checkInTimestamps => _checkInTimestamps;
 
+  /// Returns the actual timestamp a check-in happened at for [day] (which
+  /// should already be day-normalized). Falls back to midnight on that day
+  /// if no recorded timestamp exists (e.g. data saved before this field
+  /// existed).
   DateTime checkInTimeFor(DateTime day) => _checkInTimestamps[day] ?? day;
 
   final int  geneticSeed;
@@ -127,7 +135,7 @@ class HabitTree {
   bool get checkedInToday {
     final now  = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
-    return _checkInDays.contains(today);
+    return _checkInDays.contains(today) || _nullDays.contains(today);
   }
 
   int get daysElapsed => mode == HabitMode.abstain
@@ -139,19 +147,19 @@ class HabitTree {
 
   int get peakDays {
     if (mode == HabitMode.checkIn) {
-      if (_checkInDays.isEmpty) return 0;
-      final sorted = _checkInDays.toList()..sort();
+      final allDays = <DateTime>{..._checkInDays, ..._nullDays}.toList()..sort();
+      if (allDays.isEmpty) return 0;
       int maxRun = 1;
       int current = 1;
-      for (int i = 1; i < sorted.length; i++) {
-        if (sorted[i].difference(sorted[i - 1]).inDays == 1) {
+      for (int i = 1; i < allDays.length; i++) {
+        if (allDays[i].difference(allDays[i - 1]).inDays == 1) {
           current++;
           if (current > maxRun) maxRun = current;
         } else {
           current = 1;
         }
       }
-      return maxRun;
+      return math.max(maxRun, checkInStreak);
     }
     return _relapses.isEmpty
     ? daysElapsed
