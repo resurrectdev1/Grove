@@ -629,4 +629,13 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get checkInThisDay => '이 날 체크인';
+
+  @override
+  String get editNote => '메모 수정';
+
+  @override
+  String get noteOptional => '메모 (선택 사항)';
+
+  @override
+  String get noteHint => '오늘 하루는 어땠나요? 기억하고 싶은 성취나 메모가 있다면...';
 }

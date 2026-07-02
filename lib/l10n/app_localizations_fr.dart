@@ -629,4 +629,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get checkInThisDay => 'Pointer ce jour';
+
+  @override
+  String get editNote => 'MODIFIER LA NOTE';
+
+  @override
+  String get noteOptional => 'NOTE (facultatif)';
+
+  @override
+  String get noteHint => 'Comment s\'est passée la journée ? Des réussites ou des notes à retenir...';
 }

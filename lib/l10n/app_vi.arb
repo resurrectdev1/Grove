@@ -286,5 +286,8 @@
   "removeRelapseBtn": "Xóa tái phạm",
   "addRelapseHere": "Thêm tái phạm tại đây",
   "removeCheckIn": "Xóa điểm danh",
-  "checkInThisDay": "Điểm danh ngày này"
+  "checkInThisDay": "Điểm danh ngày này",
+  "editNote": "CHỈNH SỬA GHI CHÚ",
+  "noteOptional": "GHI CHÚ (không bắt buộc)",
+  "noteHint": "Hôm nay thế nào? Có thành công hay ghi chú nào cần nhớ..."
 }

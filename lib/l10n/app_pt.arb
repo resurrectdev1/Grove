@@ -286,5 +286,8 @@
   "removeRelapseBtn": "Remover recaída",
   "addRelapseHere": "Adicionar recaída aqui",
   "removeCheckIn": "Remover check-in",
-  "checkInThisDay": "Fazer check-in neste dia"
+  "checkInThisDay": "Fazer check-in neste dia",
+  "editNote": "EDITAR NOTA",
+  "noteOptional": "NOTA (opcional)",
+  "noteHint": "Como foi o dia hoje? Alguma conquista ou nota para lembrar..."
 }

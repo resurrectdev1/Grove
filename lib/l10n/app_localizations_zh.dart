@@ -629,6 +629,15 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get checkInThisDay => '签到此日';
+
+  @override
+  String get editNote => '编辑备注';
+
+  @override
+  String get noteOptional => '备注（可选）';
+
+  @override
+  String get noteHint => '今天过得怎么样？有什么值得记住的小胜利或备注……';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -1256,4 +1265,13 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get checkInThisDay => '簽到此日';
+
+  @override
+  String get editNote => '編輯備註';
+
+  @override
+  String get noteOptional => '備註（可選）';
+
+  @override
+  String get noteHint => '今天過得怎麼樣？有什麼值得記住的小勝利或備註……';
 }

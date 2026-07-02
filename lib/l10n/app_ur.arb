@@ -286,5 +286,8 @@
   "removeRelapseBtn": "لغزش ہٹائیں",
   "addRelapseHere": "یہاں لغزش شامل کریں",
   "removeCheckIn": "چیک ان ہٹائیں",
-  "checkInThisDay": "اس دن چیک ان کریں"
+  "checkInThisDay": "اس دن چیک ان کریں",
+  "editNote": "نوٹ میں ترمیم کریں",
+  "noteOptional": "نوٹ (اختیاری)",
+  "noteHint": "آج کا دن کیسا رہا؟ کوئی کامیابی یا یاد رکھنے والا نوٹ..."
 }

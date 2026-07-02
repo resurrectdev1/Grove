@@ -629,4 +629,13 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get checkInThisDay => 'इस दिन चेक-इन करें';
+
+  @override
+  String get editNote => 'नोट संपादित करें';
+
+  @override
+  String get noteOptional => 'नोट (वैकल्पिक)';
+
+  @override
+  String get noteHint => 'आज का दिन कैसा रहा? याद रखने लायक कोई उपलब्धि या नोट...';
 }

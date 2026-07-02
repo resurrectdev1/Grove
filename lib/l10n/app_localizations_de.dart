@@ -629,4 +629,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get checkInThisDay => 'An diesem Tag einchecken';
+
+  @override
+  String get editNote => 'NOTIZ BEARBEITEN';
+
+  @override
+  String get noteOptional => 'NOTIZ (optional)';
+
+  @override
+  String get noteHint => 'Wie lief dein Tag? Erfolge oder Notizen, die du festhalten möchtest...';
 }

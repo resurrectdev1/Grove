@@ -195,5 +195,8 @@
   "removeRelapseBtn": "Quitar recaída",
   "addRelapseHere": "Añadir recaída aquí",
   "removeCheckIn": "Quitar registro",
-  "checkInThisDay": "Registrar este día"
+  "checkInThisDay": "Registrar este día",
+  "editNote": "EDITAR NOTA",
+  "noteOptional": "NOTA (opcional)",
+  "noteHint": "¿Cómo te fue hoy? ¿Algún logro o nota que quieras recordar?"
 }

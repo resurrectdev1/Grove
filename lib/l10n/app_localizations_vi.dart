@@ -629,4 +629,13 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get checkInThisDay => 'Điểm danh ngày này';
+
+  @override
+  String get editNote => 'CHỈNH SỬA GHI CHÚ';
+
+  @override
+  String get noteOptional => 'GHI CHÚ (không bắt buộc)';
+
+  @override
+  String get noteHint => 'Hôm nay thế nào? Có thành công hay ghi chú nào cần nhớ...';
 }

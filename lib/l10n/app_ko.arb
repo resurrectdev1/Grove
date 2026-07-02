@@ -286,5 +286,8 @@
   "removeRelapseBtn": "재발 삭제",
   "addRelapseHere": "여기에 재발 추가",
   "removeCheckIn": "체크인 삭제",
-  "checkInThisDay": "이 날 체크인"
+  "checkInThisDay": "이 날 체크인",
+  "editNote": "메모 수정",
+  "noteOptional": "메모 (선택 사항)",
+  "noteHint": "오늘 하루는 어땠나요? 기억하고 싶은 성취나 메모가 있다면..."
 }

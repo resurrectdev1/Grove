@@ -300,5 +300,8 @@
   "removeRelapseBtn": "Remove Relapse",
   "addRelapseHere": "Add Relapse Here",
   "removeCheckIn": "Remove Check-in",
-  "checkInThisDay": "Check In This Day"
+  "checkInThisDay": "Check In This Day",
+  "editNote": "EDIT NOTE",
+  "noteOptional": "NOTE (optional)",
+  "noteHint": "How did it go today? Any wins or notes to remember..."
 }

@@ -286,5 +286,8 @@
   "removeRelapseBtn": "再発を削除",
   "addRelapseHere": "ここに再発を追加",
   "removeCheckIn": "チェックインを削除",
-  "checkInThisDay": "この日にチェックイン"
+  "checkInThisDay": "この日にチェックイン",
+  "editNote": "メモを編集",
+  "noteOptional": "メモ（任意）",
+  "noteHint": "今日はどうでしたか？覚えておきたい成果やメモなど…"
 }

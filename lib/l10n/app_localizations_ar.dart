@@ -629,4 +629,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get checkInThisDay => 'تسجيل الدخول لهذا اليوم';
+
+  @override
+  String get editNote => 'تعديل الملاحظة';
+
+  @override
+  String get noteOptional => 'ملاحظة (اختياري)';
+
+  @override
+  String get noteHint => 'كيف كان يومك؟ أي إنجازات أو ملاحظات تريد تذكرها...';
 }

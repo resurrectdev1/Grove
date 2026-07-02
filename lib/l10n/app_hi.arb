@@ -286,5 +286,8 @@
   "removeRelapseBtn": "पुनरावृत्ति हटाएं",
   "addRelapseHere": "यहाँ पुनरावृत्ति जोड़ें",
   "removeCheckIn": "चेक-इन हटाएं",
-  "checkInThisDay": "इस दिन चेक-इन करें"
+  "checkInThisDay": "इस दिन चेक-इन करें",
+  "editNote": "नोट संपादित करें",
+  "noteOptional": "नोट (वैकल्पिक)",
+  "noteHint": "आज का दिन कैसा रहा? याद रखने लायक कोई उपलब्धि या नोट..."
 }

@@ -629,4 +629,13 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get checkInThisDay => 'Fazer check-in neste dia';
+
+  @override
+  String get editNote => 'EDITAR NOTA';
+
+  @override
+  String get noteOptional => 'NOTA (opcional)';
+
+  @override
+  String get noteHint => 'Como foi o dia hoje? Alguma conquista ou nota para lembrar...';
 }

@@ -195,5 +195,8 @@
   "removeRelapseBtn": "移除复发",
   "addRelapseHere": "在此添加复发",
   "removeCheckIn": "移除签到",
-  "checkInThisDay": "签到此日"
+  "checkInThisDay": "签到此日",
+  "editNote": "编辑备注",
+  "noteOptional": "备注（可选）",
+  "noteHint": "今天过得怎么样？有什么值得记住的小胜利或备注……"
 }

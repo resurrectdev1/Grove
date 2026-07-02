@@ -195,5 +195,8 @@
   "removeRelapseBtn": "إزالة الانتكاسة",
   "addRelapseHere": "إضافة انتكاسة هنا",
   "removeCheckIn": "إزالة تسجيل الدخول",
-  "checkInThisDay": "تسجيل الدخول لهذا اليوم"
+  "checkInThisDay": "تسجيل الدخول لهذا اليوم",
+  "editNote": "تعديل الملاحظة",
+  "noteOptional": "ملاحظة (اختياري)",
+  "noteHint": "كيف كان يومك؟ أي إنجازات أو ملاحظات تريد تذكرها..."
 }

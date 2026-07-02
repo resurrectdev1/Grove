@@ -629,4 +629,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get checkInThisDay => 'この日にチェックイン';
+
+  @override
+  String get editNote => 'メモを編集';
+
+  @override
+  String get noteOptional => 'メモ（任意）';
+
+  @override
+  String get noteHint => '今日はどうでしたか？覚えておきたい成果やメモなど…';
 }

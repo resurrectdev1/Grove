@@ -1293,6 +1293,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Check In This Day'**
   String get checkInThisDay;
+
+  /// No description provided for @editNote.
+  ///
+  /// In en, this message translates to:
+  /// **'EDIT NOTE'**
+  String get editNote;
+
+  /// No description provided for @noteOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'NOTE (optional)'**
+  String get noteOptional;
+
+  /// No description provided for @noteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'How did it go today? Any wins or notes to remember...'**
+  String get noteHint;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

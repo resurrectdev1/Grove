@@ -195,5 +195,8 @@
   "removeRelapseBtn": "Supprimer la rechute",
   "addRelapseHere": "Ajouter une rechute ici",
   "removeCheckIn": "Retirer le pointage",
-  "checkInThisDay": "Pointer ce jour"
+  "checkInThisDay": "Pointer ce jour",
+  "editNote": "MODIFIER LA NOTE",
+  "noteOptional": "NOTE (facultatif)",
+  "noteHint": "Comment s'est passée la journée ? Des réussites ou des notes à retenir..."
 }
