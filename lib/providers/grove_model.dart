@@ -105,16 +105,22 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     final original = _habits[i];
     final updatedDays = Set<DateTime>.of(original.checkInDays);
     final updatedTimestamps = Map<DateTime, DateTime>.of(original.checkInTimestamps);
+    final updatedNullDays = Set<DateTime>.of(original.nullDays);
 
     if (updatedDays.contains(today)) {
       updatedDays.remove(today);
       updatedTimestamps.remove(today);
     } else {
+      updatedNullDays.remove(today);
       updatedDays.add(today);
       updatedTimestamps[today] = recordedTimestamp;
     }
 
-    _habits[i] = original.copyWith(checkInDays: updatedDays, checkInTimestamps: updatedTimestamps);
+    _habits[i] = original.copyWith(
+      checkInDays: updatedDays,
+      checkInTimestamps: updatedTimestamps,
+      nullDays: updatedNullDays,
+    );
     _persist();
     notifyListeners();
   }
@@ -136,6 +142,35 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     notifyListeners();
   }
 
+  void setCheckInTimeAndNote(String habitId, DateTime date, TimeOfDay overrideTime, String note) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1 || _habits[i].mode != HabitMode.checkIn) return;
+
+    final today = DateTime(date.year, date.month, date.day);
+    final recordedTimestamp = DateTime(today.year, today.month, today.day, overrideTime.hour, overrideTime.minute);
+
+    final original = _habits[i];
+    final updatedDays = Set<DateTime>.of(original.checkInDays)..add(today);
+    final updatedTimestamps = Map<DateTime, DateTime>.of(original.checkInTimestamps);
+    updatedTimestamps[today] = recordedTimestamp;
+
+    final updatedNotes = Map<DateTime, String>.of(original.checkInNotes);
+    final trimmedNote = note.trim();
+    if (trimmedNote.isEmpty) {
+      updatedNotes.remove(today);
+    } else {
+      updatedNotes[today] = trimmedNote;
+    }
+
+    _habits[i] = original.copyWith(
+      checkInDays: updatedDays,
+      checkInTimestamps: updatedTimestamps,
+      checkInNotes: updatedNotes,
+    );
+    _persist();
+    notifyListeners();
+  }
+
   void removeCheckInOnDate(String habitId, DateTime date) {
     final i = _habits.indexWhere((h) => h.id == habitId);
     if (i == -1 || _habits[i].mode != HabitMode.checkIn) return;
@@ -146,7 +181,12 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
 
     final updatedDays = Set<DateTime>.of(target.checkInDays)..remove(cleanedDate);
     final updatedTimestamps = Map<DateTime, DateTime>.of(target.checkInTimestamps)..remove(cleanedDate);
-    _habits[i] = target.copyWith(checkInDays: updatedDays, checkInTimestamps: updatedTimestamps);
+    final updatedNotes = Map<DateTime, String>.of(target.checkInNotes)..remove(cleanedDate);
+    _habits[i] = target.copyWith(
+      checkInDays: updatedDays,
+      checkInTimestamps: updatedTimestamps,
+      checkInNotes: updatedNotes,
+    );
     _persist();
     notifyListeners();
   }
@@ -243,15 +283,48 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
 
     final target    = _habits[i];
     final day       = DateTime(date.year, date.month, date.day);
-    final updatedNullDays = Set<DateTime>.of(target.nullDays);
+    final updatedNullDays  = Set<DateTime>.of(target.nullDays);
+    final updatedNotes     = Map<DateTime, String>.of(target.checkInNotes);
+    final updatedCheckIns  = Set<DateTime>.of(target.checkInDays);
+    final updatedTimestamps = Map<DateTime, DateTime>.of(target.checkInTimestamps);
 
     if (updatedNullDays.contains(day)) {
       updatedNullDays.remove(day);
+      updatedNotes.remove(day);
     } else {
       updatedNullDays.add(day);
+      updatedCheckIns.remove(day);
+      updatedTimestamps.remove(day);
+      updatedNotes.remove(day);
     }
 
-    _habits[i] = target.copyWith(nullDays: updatedNullDays);
+    _habits[i] = target.copyWith(
+      nullDays: updatedNullDays,
+      checkInNotes: updatedNotes,
+      checkInDays: updatedCheckIns,
+      checkInTimestamps: updatedTimestamps,
+    );
+    _persist();
+    notifyListeners();
+  }
+
+  void setNullDayNote(String habitId, DateTime date, String note) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1 || _habits[i].mode != HabitMode.checkIn) return;
+
+    final target = _habits[i];
+    final day    = DateTime(date.year, date.month, date.day);
+    if (!target.nullDays.contains(day)) return;
+
+    final updatedNotes = Map<DateTime, String>.of(target.checkInNotes);
+    final trimmedNote  = note.trim();
+    if (trimmedNote.isEmpty) {
+      updatedNotes.remove(day);
+    } else {
+      updatedNotes[day] = trimmedNote;
+    }
+
+    _habits[i] = target.copyWith(checkInNotes: updatedNotes);
     _persist();
     notifyListeners();
   }
