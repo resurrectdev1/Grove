@@ -455,7 +455,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
               ),
               const SizedBox(width: 8),
               Text(
-                habit.streakFrozen ? 'Streak frozen' : 'Freeze streak',
+                habit.streakFrozen ? l10n.streakFrozen : l10n.freezeStreak,
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
