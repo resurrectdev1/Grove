@@ -12,6 +12,27 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.7.0] - 2026-07-01
+
+### Added
+
+* Customizable check-in times for Check-In Mode, matching Abstinence Mode
+
+### Changed
+
+* Moved the streak freeze toggle below the interactive monthly calendar
+* Updated terminology across the app to be more inclusive, shifting from "clean" to "abstain" in multiple places
+* Improved the UX/UI for the interactive monthly calendar within Check-In Mode
+* Upgraded Flutter dependencies
+
+### Fixed
+
+* Fixed an issue in Check-In Mode where excused days were not correctly factored into your streak
+* Fixed a bug where the check-in time defaulted to 12:00
+* Fixed a layout issue by removing a redundant duplicate pill underneath the streak, peak, and check-in pills in the detailed habit view
+
+---
+
 ## [0.6.8] - 2026-06-26
 
 ### Added
