@@ -10,6 +10,21 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 > Changes staged for the next release go here. Move them down when you cut a tag.
 
+### Added
+
+* Full localization of the interactive monthly calendar, including locale-aware weekday headers
+* Notes for Check-In Mode, so you can jot down how a check-in or excused day went
+* Excused days now appear in the Check-In history list, marked with a frost icon
+
+### Changed
+
+* Check-In Mode trees now show their growth stage (Seed, Sprout, Sapling, etc.) alongside the day count, matching Abstinence Mode, instead of a redundant day-streak label
+
+### Fixed
+
+* Fixed a bug where excusing a day that already had a check-in could leave the day in a broken combined state
+* Fixed check-in buttons not working on excused days in the habit detail view and home screen
+
 ---
 
 ## [0.7.0] - 2026-07-01
