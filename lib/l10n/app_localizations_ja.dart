@@ -638,4 +638,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get noteHint => '今日はどうでしたか？覚えておきたい成果やメモなど…';
+
+  @override
+  String get streakFrozen => '連続記録を凍結中';
+
+  @override
+  String get freezeStreak => '連続記録を凍結';
 }

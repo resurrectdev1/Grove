@@ -289,5 +289,7 @@
   "checkInThisDay": "An diesem Tag einchecken",
   "editNote": "NOTIZ BEARBEITEN",
   "noteOptional": "NOTIZ (optional)",
-  "noteHint": "Wie lief dein Tag? Erfolge oder Notizen, die du festhalten möchtest..."
+  "noteHint": "Wie lief dein Tag? Erfolge oder Notizen, die du festhalten möchtest...",
+  "streakFrozen": "Serie eingefroren",
+  "freezeStreak": "Serie einfrieren"
 }

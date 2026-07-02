@@ -638,4 +638,10 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get noteHint => 'آج کا دن کیسا رہا؟ کوئی کامیابی یا یاد رکھنے والا نوٹ...';
+
+  @override
+  String get streakFrozen => 'تسلسل منجمد';
+
+  @override
+  String get freezeStreak => 'تسلسل منجمد کریں';
 }

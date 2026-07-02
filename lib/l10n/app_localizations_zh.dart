@@ -638,6 +638,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get noteHint => '今天过得怎么样？有什么值得记住的小胜利或备注……';
+
+  @override
+  String get streakFrozen => '连续记录已冻结';
+
+  @override
+  String get freezeStreak => '冻结连续记录';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -1274,4 +1280,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get noteHint => '今天過得怎麼樣？有什麼值得記住的小勝利或備註……';
+
+  @override
+  String get streakFrozen => '連續記錄已凍結';
+
+  @override
+  String get freezeStreak => '凍結連續記錄';
 }

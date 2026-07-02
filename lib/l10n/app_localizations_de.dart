@@ -638,4 +638,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get noteHint => 'Wie lief dein Tag? Erfolge oder Notizen, die du festhalten möchtest...';
+
+  @override
+  String get streakFrozen => 'Serie eingefroren';
+
+  @override
+  String get freezeStreak => 'Serie einfrieren';
 }

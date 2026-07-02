@@ -638,4 +638,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get noteHint => 'आज का दिन कैसा रहा? याद रखने लायक कोई उपलब्धि या नोट...';
+
+  @override
+  String get streakFrozen => 'लगातार गिनती फ़्रीज़ है';
+
+  @override
+  String get freezeStreak => 'लगातार गिनती फ़्रीज़ करें';
 }

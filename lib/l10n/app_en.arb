@@ -303,5 +303,7 @@
   "checkInThisDay": "Check In This Day",
   "editNote": "EDIT NOTE",
   "noteOptional": "NOTE (optional)",
-  "noteHint": "How did it go today? Any wins or notes to remember..."
+  "noteHint": "How did it go today? Any wins or notes to remember...",
+  "streakFrozen": "Streak frozen",
+  "freezeStreak": "Freeze streak"
 }

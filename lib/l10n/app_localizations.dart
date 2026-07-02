@@ -1311,6 +1311,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'How did it go today? Any wins or notes to remember...'**
   String get noteHint;
+
+  /// No description provided for @streakFrozen.
+  ///
+  /// In en, this message translates to:
+  /// **'Streak frozen'**
+  String get streakFrozen;
+
+  /// No description provided for @freezeStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Freeze streak'**
+  String get freezeStreak;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

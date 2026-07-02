@@ -289,5 +289,7 @@
   "checkInThisDay": "Fazer check-in neste dia",
   "editNote": "EDITAR NOTA",
   "noteOptional": "NOTA (opcional)",
-  "noteHint": "Como foi o dia hoje? Alguma conquista ou nota para lembrar..."
+  "noteHint": "Como foi o dia hoje? Alguma conquista ou nota para lembrar...",
+  "streakFrozen": "Sequência congelada",
+  "freezeStreak": "Congelar sequência"
 }

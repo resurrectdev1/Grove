@@ -289,5 +289,7 @@
   "checkInThisDay": "この日にチェックイン",
   "editNote": "メモを編集",
   "noteOptional": "メモ（任意）",
-  "noteHint": "今日はどうでしたか？覚えておきたい成果やメモなど…"
+  "noteHint": "今日はどうでしたか？覚えておきたい成果やメモなど…",
+  "streakFrozen": "連続記録を凍結中",
+  "freezeStreak": "連続記録を凍結"
 }

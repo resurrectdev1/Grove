@@ -638,4 +638,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noteHint => 'كيف كان يومك؟ أي إنجازات أو ملاحظات تريد تذكرها...';
+
+  @override
+  String get streakFrozen => 'السلسلة مجمدة';
+
+  @override
+  String get freezeStreak => 'تجميد السلسلة';
 }

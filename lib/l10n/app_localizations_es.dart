@@ -638,4 +638,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get noteHint => '¿Cómo te fue hoy? ¿Algún logro o nota que quieras recordar?';
+
+  @override
+  String get streakFrozen => 'Racha congelada';
+
+  @override
+  String get freezeStreak => 'Congelar racha';
 }

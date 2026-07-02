@@ -638,4 +638,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get noteHint => 'Hôm nay thế nào? Có thành công hay ghi chú nào cần nhớ...';
+
+  @override
+  String get streakFrozen => 'Chuỗi ngày đã đóng băng';
+
+  @override
+  String get freezeStreak => 'Đóng băng chuỗi ngày';
 }

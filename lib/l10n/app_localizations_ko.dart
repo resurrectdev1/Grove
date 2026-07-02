@@ -638,4 +638,10 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get noteHint => '오늘 하루는 어땠나요? 기억하고 싶은 성취나 메모가 있다면...';
+
+  @override
+  String get streakFrozen => '연속 기록 동결됨';
+
+  @override
+  String get freezeStreak => '연속 기록 동결';
 }

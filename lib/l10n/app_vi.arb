@@ -289,5 +289,7 @@
   "checkInThisDay": "Điểm danh ngày này",
   "editNote": "CHỈNH SỬA GHI CHÚ",
   "noteOptional": "GHI CHÚ (không bắt buộc)",
-  "noteHint": "Hôm nay thế nào? Có thành công hay ghi chú nào cần nhớ..."
+  "noteHint": "Hôm nay thế nào? Có thành công hay ghi chú nào cần nhớ...",
+  "streakFrozen": "Chuỗi ngày đã đóng băng",
+  "freezeStreak": "Đóng băng chuỗi ngày"
 }

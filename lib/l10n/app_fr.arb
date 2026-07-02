@@ -198,5 +198,7 @@
   "checkInThisDay": "Pointer ce jour",
   "editNote": "MODIFIER LA NOTE",
   "noteOptional": "NOTE (facultatif)",
-  "noteHint": "Comment s'est passée la journée ? Des réussites ou des notes à retenir..."
+  "noteHint": "Comment s'est passée la journée ? Des réussites ou des notes à retenir...",
+  "streakFrozen": "Série gelée",
+  "freezeStreak": "Geler la série"
 }
