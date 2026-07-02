@@ -145,7 +145,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     final hours   = d.inHours   % 24;
     final minutes = d.inMinutes % 60;
     final seconds = d.inSeconds % 60;
-    final label   = habit.relapses.isEmpty ? l10n.cleanSinceStart : l10n.timeSinceLastRelapse;
+    final label   = habit.relapses.isEmpty ? l10n.abstinentSinceStart : l10n.timeSinceLastRelapse;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
