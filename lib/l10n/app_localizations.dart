@@ -1143,6 +1143,156 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your grove is waiting. Keep the streak alive.'**
   String get dailyReminderBody;
+
+  /// No description provided for @legendMissed.
+  ///
+  /// In en, this message translates to:
+  /// **'Missed'**
+  String get legendMissed;
+
+  /// No description provided for @legendAbstained.
+  ///
+  /// In en, this message translates to:
+  /// **'Abstained'**
+  String get legendAbstained;
+
+  /// No description provided for @legendCheckIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Check-in'**
+  String get legendCheckIn;
+
+  /// No description provided for @legendRelapse.
+  ///
+  /// In en, this message translates to:
+  /// **'Relapse'**
+  String get legendRelapse;
+
+  /// No description provided for @legendExcused.
+  ///
+  /// In en, this message translates to:
+  /// **'Excused'**
+  String get legendExcused;
+
+  /// No description provided for @relapseLoggedThisDay.
+  ///
+  /// In en, this message translates to:
+  /// **'⚠️ Relapse logged on this day.'**
+  String get relapseLoggedThisDay;
+
+  /// No description provided for @cleanRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'🌿 Clean record.'**
+  String get cleanRecord;
+
+  /// No description provided for @timeOverride.
+  ///
+  /// In en, this message translates to:
+  /// **'TIME OVERRIDE'**
+  String get timeOverride;
+
+  /// No description provided for @anchorTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Anchor: {time}'**
+  String anchorTime(String time);
+
+  /// No description provided for @checkInTimeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Check-in time: {time}'**
+  String checkInTimeLabel(String time);
+
+  /// No description provided for @editReason.
+  ///
+  /// In en, this message translates to:
+  /// **'EDIT REASON'**
+  String get editReason;
+
+  /// No description provided for @reasonOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'REASON (optional)'**
+  String get reasonOptional;
+
+  /// No description provided for @reasonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Stress, Anxiety, Burnout, Peer pressure, Trigger? etc...'**
+  String get reasonHint;
+
+  /// No description provided for @excusedStreakPreserved.
+  ///
+  /// In en, this message translates to:
+  /// **'❄️ Excused, your streak is preserved.'**
+  String get excusedStreakPreserved;
+
+  /// No description provided for @checkedInThisDay.
+  ///
+  /// In en, this message translates to:
+  /// **'✅ Checked in on this day.'**
+  String get checkedInThisDay;
+
+  /// No description provided for @noCheckInRecorded.
+  ///
+  /// In en, this message translates to:
+  /// **'🌿 No check-in recorded.'**
+  String get noCheckInRecorded;
+
+  /// No description provided for @saveNewTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Save New Time'**
+  String get saveNewTime;
+
+  /// No description provided for @excuseThisDayInstead.
+  ///
+  /// In en, this message translates to:
+  /// **'Excuse this day instead'**
+  String get excuseThisDayInstead;
+
+  /// No description provided for @checkInInstead.
+  ///
+  /// In en, this message translates to:
+  /// **'Check In Instead'**
+  String get checkInInstead;
+
+  /// No description provided for @removeExcuse.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove excuse'**
+  String get removeExcuse;
+
+  /// No description provided for @updateLog.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Log'**
+  String get updateLog;
+
+  /// No description provided for @removeRelapseBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Relapse'**
+  String get removeRelapseBtn;
+
+  /// No description provided for @addRelapseHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Relapse Here'**
+  String get addRelapseHere;
+
+  /// No description provided for @removeCheckIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Check-in'**
+  String get removeCheckIn;
+
+  /// No description provided for @checkInThisDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Check In This Day'**
+  String get checkInThisDay;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

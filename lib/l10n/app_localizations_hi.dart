@@ -550,4 +550,83 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get dailyReminderBody => 'आपका वन प्रतीक्षा कर रहा है। श्रृंखला जीवित रखें।';
+
+  @override
+  String get legendMissed => 'छूटा';
+
+  @override
+  String get legendAbstained => 'परहेज़ किया';
+
+  @override
+  String get legendCheckIn => 'चेक-इन';
+
+  @override
+  String get legendRelapse => 'पुनरावृत्ति';
+
+  @override
+  String get legendExcused => 'माफ़ किया गया';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ इस दिन पुनरावृत्ति दर्ज की गई।';
+
+  @override
+  String get cleanRecord => '🌿 स्वच्छ रिकॉर्ड।';
+
+  @override
+  String get timeOverride => 'समय ओवरराइड';
+
+  @override
+  String anchorTime(String time) {
+    return 'एंकर: $time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return 'चेक-इन समय: $time';
+  }
+
+  @override
+  String get editReason => 'कारण संपादित करें';
+
+  @override
+  String get reasonOptional => 'कारण (वैकल्पिक)';
+
+  @override
+  String get reasonHint => 'तनाव, चिंता, थकावट, साथियों का दबाव, ट्रिगर? आदि...';
+
+  @override
+  String get excusedStreakPreserved => '❄️ माफ़ किया गया, आपकी लगातार गिनती सुरक्षित है।';
+
+  @override
+  String get checkedInThisDay => '✅ इस दिन चेक-इन किया गया।';
+
+  @override
+  String get noCheckInRecorded => '🌿 कोई चेक-इन दर्ज नहीं है।';
+
+  @override
+  String get saveNewTime => 'नया समय सहेजें';
+
+  @override
+  String get excuseThisDayInstead => 'इसके बजाय इस दिन को माफ़ करें';
+
+  @override
+  String get checkInInstead => 'इसके बजाय चेक-इन करें';
+
+  @override
+  String get removeExcuse => 'माफ़ी हटाएं';
+
+  @override
+  String get updateLog => 'लॉग अपडेट करें';
+
+  @override
+  String get removeRelapseBtn => 'पुनरावृत्ति हटाएं';
+
+  @override
+  String get addRelapseHere => 'यहाँ पुनरावृत्ति जोड़ें';
+
+  @override
+  String get removeCheckIn => 'चेक-इन हटाएं';
+
+  @override
+  String get checkInThisDay => 'इस दिन चेक-इन करें';
 }

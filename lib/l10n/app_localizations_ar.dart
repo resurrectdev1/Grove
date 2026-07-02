@@ -550,4 +550,83 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dailyReminderBody => 'غابتك في انتظارك. واصل السلسلة.';
+
+  @override
+  String get legendMissed => 'فائت';
+
+  @override
+  String get legendAbstained => 'امتنع';
+
+  @override
+  String get legendCheckIn => 'تسجيل الدخول';
+
+  @override
+  String get legendRelapse => 'انتكاسة';
+
+  @override
+  String get legendExcused => 'معفى';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ تم تسجيل انتكاسة في هذا اليوم.';
+
+  @override
+  String get cleanRecord => '🌿 سجل نظيف.';
+
+  @override
+  String get timeOverride => 'تجاوز الوقت';
+
+  @override
+  String anchorTime(String time) {
+    return 'الوقت المرجعي: $time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return 'وقت تسجيل الدخول: $time';
+  }
+
+  @override
+  String get editReason => 'تعديل السبب';
+
+  @override
+  String get reasonOptional => 'السبب (اختياري)';
+
+  @override
+  String get reasonHint => 'توتر، قلق، إرهاق، ضغط الأقران، محفز؟ إلخ.';
+
+  @override
+  String get excusedStreakPreserved => '❄️ معفى، تم الحفاظ على سلسلتك.';
+
+  @override
+  String get checkedInThisDay => '✅ تم تسجيل الدخول في هذا اليوم.';
+
+  @override
+  String get noCheckInRecorded => '🌿 لم يتم تسجيل أي دخول.';
+
+  @override
+  String get saveNewTime => 'حفظ الوقت الجديد';
+
+  @override
+  String get excuseThisDayInstead => 'إعفاء هذا اليوم بدلاً من ذلك';
+
+  @override
+  String get checkInInstead => 'تسجيل الدخول بدلاً من ذلك';
+
+  @override
+  String get removeExcuse => 'إزالة الإعفاء';
+
+  @override
+  String get updateLog => 'تحديث السجل';
+
+  @override
+  String get removeRelapseBtn => 'إزالة الانتكاسة';
+
+  @override
+  String get addRelapseHere => 'إضافة انتكاسة هنا';
+
+  @override
+  String get removeCheckIn => 'إزالة تسجيل الدخول';
+
+  @override
+  String get checkInThisDay => 'تسجيل الدخول لهذا اليوم';
 }

@@ -550,6 +550,85 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get dailyReminderBody => '你的树林在等你！保持连续记录。';
+
+  @override
+  String get legendMissed => '错过';
+
+  @override
+  String get legendAbstained => '已戒断';
+
+  @override
+  String get legendCheckIn => '签到';
+
+  @override
+  String get legendRelapse => '复发';
+
+  @override
+  String get legendExcused => '已豁免';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ 这一天记录了复发。';
+
+  @override
+  String get cleanRecord => '🌿 记录清白。';
+
+  @override
+  String get timeOverride => '覆盖时间';
+
+  @override
+  String anchorTime(String time) {
+    return '锚定时间：$time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return '签到时间：$time';
+  }
+
+  @override
+  String get editReason => '编辑原因';
+
+  @override
+  String get reasonOptional => '原因（可选）';
+
+  @override
+  String get reasonHint => '压力、焦虑、倦怠、同辈压力、触发因素？等等……';
+
+  @override
+  String get excusedStreakPreserved => '❄️ 已豁免，你的连续记录得以保留。';
+
+  @override
+  String get checkedInThisDay => '✅ 这一天已签到。';
+
+  @override
+  String get noCheckInRecorded => '🌿 未记录签到。';
+
+  @override
+  String get saveNewTime => '保存新时间';
+
+  @override
+  String get excuseThisDayInstead => '改为豁免这一天';
+
+  @override
+  String get checkInInstead => '改为签到';
+
+  @override
+  String get removeExcuse => '移除豁免';
+
+  @override
+  String get updateLog => '更新记录';
+
+  @override
+  String get removeRelapseBtn => '移除复发';
+
+  @override
+  String get addRelapseHere => '在此添加复发';
+
+  @override
+  String get removeCheckIn => '移除签到';
+
+  @override
+  String get checkInThisDay => '签到此日';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -1098,4 +1177,83 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get dailyReminderBody => '你的樹林在等你！保持連續記錄。';
+
+  @override
+  String get legendMissed => '錯過';
+
+  @override
+  String get legendAbstained => '已戒斷';
+
+  @override
+  String get legendCheckIn => '簽到';
+
+  @override
+  String get legendRelapse => '復發';
+
+  @override
+  String get legendExcused => '已豁免';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ 這一天記錄了復發。';
+
+  @override
+  String get cleanRecord => '🌿 記錄清白。';
+
+  @override
+  String get timeOverride => '覆蓋時間';
+
+  @override
+  String anchorTime(String time) {
+    return '錨定時間：$time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return '簽到時間：$time';
+  }
+
+  @override
+  String get editReason => '編輯原因';
+
+  @override
+  String get reasonOptional => '原因（可選）';
+
+  @override
+  String get reasonHint => '壓力、焦慮、倦怠、同儕壓力、觸發因素？等等……';
+
+  @override
+  String get excusedStreakPreserved => '❄️ 已豁免，你的連續記錄得以保留。';
+
+  @override
+  String get checkedInThisDay => '✅ 這一天已簽到。';
+
+  @override
+  String get noCheckInRecorded => '🌿 未記錄簽到。';
+
+  @override
+  String get saveNewTime => '儲存新時間';
+
+  @override
+  String get excuseThisDayInstead => '改為豁免這一天';
+
+  @override
+  String get checkInInstead => '改為簽到';
+
+  @override
+  String get removeExcuse => '移除豁免';
+
+  @override
+  String get updateLog => '更新記錄';
+
+  @override
+  String get removeRelapseBtn => '移除復發';
+
+  @override
+  String get addRelapseHere => '在此新增復發';
+
+  @override
+  String get removeCheckIn => '移除簽到';
+
+  @override
+  String get checkInThisDay => '簽到此日';
 }

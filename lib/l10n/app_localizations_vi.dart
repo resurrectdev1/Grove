@@ -550,4 +550,83 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get dailyReminderBody => 'Khu rừng của bạn đang chờ. Giữ chuỗi sống.';
+
+  @override
+  String get legendMissed => 'Đã bỏ lỡ';
+
+  @override
+  String get legendAbstained => 'Đã kiêng';
+
+  @override
+  String get legendCheckIn => 'Điểm danh';
+
+  @override
+  String get legendRelapse => 'Tái phạm';
+
+  @override
+  String get legendExcused => 'Được miễn';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ Đã ghi nhận tái phạm vào ngày này.';
+
+  @override
+  String get cleanRecord => '🌿 Ghi nhận sạch.';
+
+  @override
+  String get timeOverride => 'GHI ĐÈ THỜI GIAN';
+
+  @override
+  String anchorTime(String time) {
+    return 'Mốc thời gian: $time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return 'Giờ điểm danh: $time';
+  }
+
+  @override
+  String get editReason => 'CHỈNH SỬA LÝ DO';
+
+  @override
+  String get reasonOptional => 'LÝ DO (không bắt buộc)';
+
+  @override
+  String get reasonHint => 'Căng thẳng, lo âu, kiệt sức, áp lực bạn bè, tác nhân kích hoạt? v.v...';
+
+  @override
+  String get excusedStreakPreserved => '❄️ Được miễn, chuỗi ngày của bạn được giữ nguyên.';
+
+  @override
+  String get checkedInThisDay => '✅ Đã điểm danh vào ngày này.';
+
+  @override
+  String get noCheckInRecorded => '🌿 Không có điểm danh nào được ghi nhận.';
+
+  @override
+  String get saveNewTime => 'Lưu thời gian mới';
+
+  @override
+  String get excuseThisDayInstead => 'Miễn ngày này thay thế';
+
+  @override
+  String get checkInInstead => 'Điểm danh thay thế';
+
+  @override
+  String get removeExcuse => 'Xóa miễn trừ';
+
+  @override
+  String get updateLog => 'Cập nhật nhật ký';
+
+  @override
+  String get removeRelapseBtn => 'Xóa tái phạm';
+
+  @override
+  String get addRelapseHere => 'Thêm tái phạm tại đây';
+
+  @override
+  String get removeCheckIn => 'Xóa điểm danh';
+
+  @override
+  String get checkInThisDay => 'Điểm danh ngày này';
 }

@@ -550,4 +550,83 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get dailyReminderBody => 'Votre bosquet vous attend. Gardez la série vivante.';
+
+  @override
+  String get legendMissed => 'Manqué';
+
+  @override
+  String get legendAbstained => 'Abstenu';
+
+  @override
+  String get legendCheckIn => 'Pointage';
+
+  @override
+  String get legendRelapse => 'Rechute';
+
+  @override
+  String get legendExcused => 'Excusé';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ Rechute enregistrée ce jour-là.';
+
+  @override
+  String get cleanRecord => '🌿 Dossier vierge.';
+
+  @override
+  String get timeOverride => 'MODIFIER L\'HEURE';
+
+  @override
+  String anchorTime(String time) {
+    return 'Ancrage : $time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return 'Heure de pointage : $time';
+  }
+
+  @override
+  String get editReason => 'MODIFIER LE MOTIF';
+
+  @override
+  String get reasonOptional => 'MOTIF (facultatif)';
+
+  @override
+  String get reasonHint => 'Stress, anxiété, épuisement, pression sociale, déclencheur ? etc.';
+
+  @override
+  String get excusedStreakPreserved => '❄️ Excusé, votre série est préservée.';
+
+  @override
+  String get checkedInThisDay => '✅ Pointage effectué ce jour-là.';
+
+  @override
+  String get noCheckInRecorded => '🌿 Aucun pointage enregistré.';
+
+  @override
+  String get saveNewTime => 'Enregistrer la nouvelle heure';
+
+  @override
+  String get excuseThisDayInstead => 'Excuser ce jour à la place';
+
+  @override
+  String get checkInInstead => 'Pointer à la place';
+
+  @override
+  String get removeExcuse => 'Retirer l\'excuse';
+
+  @override
+  String get updateLog => 'Mettre à jour l\'entrée';
+
+  @override
+  String get removeRelapseBtn => 'Supprimer la rechute';
+
+  @override
+  String get addRelapseHere => 'Ajouter une rechute ici';
+
+  @override
+  String get removeCheckIn => 'Retirer le pointage';
+
+  @override
+  String get checkInThisDay => 'Pointer ce jour';
 }

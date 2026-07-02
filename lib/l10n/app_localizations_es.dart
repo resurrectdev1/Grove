@@ -550,4 +550,83 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get dailyReminderBody => 'Tu bosque te está esperando. ¡Mantén la racha viva!';
+
+  @override
+  String get legendMissed => 'Perdido';
+
+  @override
+  String get legendAbstained => 'Abstenido';
+
+  @override
+  String get legendCheckIn => 'Registro';
+
+  @override
+  String get legendRelapse => 'Recaída';
+
+  @override
+  String get legendExcused => 'Excusado';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ Recaída registrada este día.';
+
+  @override
+  String get cleanRecord => '🌿 Registro limpio.';
+
+  @override
+  String get timeOverride => 'ANULAR HORA';
+
+  @override
+  String anchorTime(String time) {
+    return 'Ancla: $time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return 'Hora de registro: $time';
+  }
+
+  @override
+  String get editReason => 'EDITAR MOTIVO';
+
+  @override
+  String get reasonOptional => 'MOTIVO (opcional)';
+
+  @override
+  String get reasonHint => '¿Estrés, ansiedad, agotamiento, presión social, detonante? etc.';
+
+  @override
+  String get excusedStreakPreserved => '❄️ Excusado, tu racha se mantiene.';
+
+  @override
+  String get checkedInThisDay => '✅ Registrado este día.';
+
+  @override
+  String get noCheckInRecorded => '🌿 No hay registro de este día.';
+
+  @override
+  String get saveNewTime => 'Guardar nueva hora';
+
+  @override
+  String get excuseThisDayInstead => 'Excusar este día en su lugar';
+
+  @override
+  String get checkInInstead => 'Registrar en su lugar';
+
+  @override
+  String get removeExcuse => 'Quitar excusa';
+
+  @override
+  String get updateLog => 'Actualizar registro';
+
+  @override
+  String get removeRelapseBtn => 'Quitar recaída';
+
+  @override
+  String get addRelapseHere => 'Añadir recaída aquí';
+
+  @override
+  String get removeCheckIn => 'Quitar registro';
+
+  @override
+  String get checkInThisDay => 'Registrar este día';
 }

@@ -550,4 +550,83 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get dailyReminderBody => 'Seu bosque está esperando. Mantenha a sequência viva.';
+
+  @override
+  String get legendMissed => 'Perdido';
+
+  @override
+  String get legendAbstained => 'Abstido';
+
+  @override
+  String get legendCheckIn => 'Check-in';
+
+  @override
+  String get legendRelapse => 'Recaída';
+
+  @override
+  String get legendExcused => 'Dispensado';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ Recaída registrada neste dia.';
+
+  @override
+  String get cleanRecord => '🌿 Registro limpo.';
+
+  @override
+  String get timeOverride => 'SUBSTITUIR HORÁRIO';
+
+  @override
+  String anchorTime(String time) {
+    return 'Âncora: $time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return 'Horário de check-in: $time';
+  }
+
+  @override
+  String get editReason => 'EDITAR MOTIVO';
+
+  @override
+  String get reasonOptional => 'MOTIVO (opcional)';
+
+  @override
+  String get reasonHint => 'Estresse, ansiedade, esgotamento, pressão social, gatilho? etc.';
+
+  @override
+  String get excusedStreakPreserved => '❄️ Dispensado, sua sequência foi preservada.';
+
+  @override
+  String get checkedInThisDay => '✅ Check-in feito neste dia.';
+
+  @override
+  String get noCheckInRecorded => '🌿 Nenhum check-in registrado.';
+
+  @override
+  String get saveNewTime => 'Salvar novo horário';
+
+  @override
+  String get excuseThisDayInstead => 'Dispensar este dia em vez disso';
+
+  @override
+  String get checkInInstead => 'Fazer check-in em vez disso';
+
+  @override
+  String get removeExcuse => 'Remover dispensa';
+
+  @override
+  String get updateLog => 'Atualizar registro';
+
+  @override
+  String get removeRelapseBtn => 'Remover recaída';
+
+  @override
+  String get addRelapseHere => 'Adicionar recaída aqui';
+
+  @override
+  String get removeCheckIn => 'Remover check-in';
+
+  @override
+  String get checkInThisDay => 'Fazer check-in neste dia';
 }

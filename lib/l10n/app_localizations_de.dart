@@ -550,4 +550,83 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get dailyReminderBody => 'Dein Hain wartet. Halte die Serie am Leben.';
+
+  @override
+  String get legendMissed => 'Verpasst';
+
+  @override
+  String get legendAbstained => 'Enthalten';
+
+  @override
+  String get legendCheckIn => 'Check-in';
+
+  @override
+  String get legendRelapse => 'Rückfall';
+
+  @override
+  String get legendExcused => 'Entschuldigt';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ An diesem Tag wurde ein Rückfall protokolliert.';
+
+  @override
+  String get cleanRecord => '🌿 Sauberer Eintrag.';
+
+  @override
+  String get timeOverride => 'ZEIT ÜBERSCHREIBEN';
+
+  @override
+  String anchorTime(String time) {
+    return 'Anker: $time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return 'Check-in-Zeit: $time';
+  }
+
+  @override
+  String get editReason => 'GRUND BEARBEITEN';
+
+  @override
+  String get reasonOptional => 'GRUND (optional)';
+
+  @override
+  String get reasonHint => 'Stress, Angst, Erschöpfung, Gruppendruck, Auslöser? usw.';
+
+  @override
+  String get excusedStreakPreserved => '❄️ Entschuldigt, deine Serie bleibt erhalten.';
+
+  @override
+  String get checkedInThisDay => '✅ An diesem Tag eingecheckt.';
+
+  @override
+  String get noCheckInRecorded => '🌿 Kein Check-in erfasst.';
+
+  @override
+  String get saveNewTime => 'Neue Zeit speichern';
+
+  @override
+  String get excuseThisDayInstead => 'Diesen Tag stattdessen entschuldigen';
+
+  @override
+  String get checkInInstead => 'Stattdessen einchecken';
+
+  @override
+  String get removeExcuse => 'Entschuldigung entfernen';
+
+  @override
+  String get updateLog => 'Eintrag aktualisieren';
+
+  @override
+  String get removeRelapseBtn => 'Rückfall entfernen';
+
+  @override
+  String get addRelapseHere => 'Rückfall hier hinzufügen';
+
+  @override
+  String get removeCheckIn => 'Check-in entfernen';
+
+  @override
+  String get checkInThisDay => 'An diesem Tag einchecken';
 }

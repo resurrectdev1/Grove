@@ -550,4 +550,83 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get dailyReminderBody => 'あなたの森が待っています。連続記録を守りましょう。';
+
+  @override
+  String get legendMissed => '欠席';
+
+  @override
+  String get legendAbstained => '断った';
+
+  @override
+  String get legendCheckIn => 'チェックイン';
+
+  @override
+  String get legendRelapse => '再発';
+
+  @override
+  String get legendExcused => '免除';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ この日に再発が記録されました。';
+
+  @override
+  String get cleanRecord => '🌿 記録はクリーンです。';
+
+  @override
+  String get timeOverride => '時刻を上書き';
+
+  @override
+  String anchorTime(String time) {
+    return '基準時刻: $time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return 'チェックイン時刻: $time';
+  }
+
+  @override
+  String get editReason => '理由を編集';
+
+  @override
+  String get reasonOptional => '理由（任意）';
+
+  @override
+  String get reasonHint => 'ストレス、不安、燃え尽き、周囲からのプレッシャー、きっかけなど…';
+
+  @override
+  String get excusedStreakPreserved => '❄️ 免除されたため、連続記録は維持されます。';
+
+  @override
+  String get checkedInThisDay => '✅ この日にチェックインしました。';
+
+  @override
+  String get noCheckInRecorded => '🌿 チェックインの記録はありません。';
+
+  @override
+  String get saveNewTime => '新しい時刻を保存';
+
+  @override
+  String get excuseThisDayInstead => '代わりにこの日を免除する';
+
+  @override
+  String get checkInInstead => '代わりにチェックインする';
+
+  @override
+  String get removeExcuse => '免除を解除';
+
+  @override
+  String get updateLog => 'ログを更新';
+
+  @override
+  String get removeRelapseBtn => '再発を削除';
+
+  @override
+  String get addRelapseHere => 'ここに再発を追加';
+
+  @override
+  String get removeCheckIn => 'チェックインを削除';
+
+  @override
+  String get checkInThisDay => 'この日にチェックイン';
 }

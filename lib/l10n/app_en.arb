@@ -261,5 +261,44 @@
   "tapToChange": "Tap to change",
   "languageSection": "LANGUAGE",
   "dailyReminderTitle": "Time to check in 🌿",
-  "dailyReminderBody": "Your grove is waiting. Keep the streak alive."
+  "dailyReminderBody": "Your grove is waiting. Keep the streak alive.",
+  "legendMissed": "Missed",
+  "legendAbstained": "Abstained",
+  "legendCheckIn": "Check-in",
+  "legendRelapse": "Relapse",
+  "legendExcused": "Excused",
+  "relapseLoggedThisDay": "⚠️ Relapse logged on this day.",
+  "cleanRecord": "🌿 Clean record.",
+  "timeOverride": "TIME OVERRIDE",
+  "anchorTime": "Anchor: {time}",
+  "@anchorTime": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "checkInTimeLabel": "Check-in time: {time}",
+  "@checkInTimeLabel": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "editReason": "EDIT REASON",
+  "reasonOptional": "REASON (optional)",
+  "reasonHint": "Stress, Anxiety, Burnout, Peer pressure, Trigger? etc...",
+  "excusedStreakPreserved": "❄️ Excused, your streak is preserved.",
+  "checkedInThisDay": "✅ Checked in on this day.",
+  "noCheckInRecorded": "🌿 No check-in recorded.",
+  "saveNewTime": "Save New Time",
+  "excuseThisDayInstead": "Excuse this day instead",
+  "checkInInstead": "Check In Instead",
+  "removeExcuse": "Remove excuse",
+  "updateLog": "Update Log",
+  "removeRelapseBtn": "Remove Relapse",
+  "addRelapseHere": "Add Relapse Here",
+  "removeCheckIn": "Remove Check-in",
+  "checkInThisDay": "Check In This Day"
 }

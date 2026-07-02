@@ -550,4 +550,83 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get dailyReminderBody => 'آپ کا باغ انتظار کر رہا ہے۔ سلسلہ زندہ رکھیں۔';
+
+  @override
+  String get legendMissed => 'چھوٹا ہوا';
+
+  @override
+  String get legendAbstained => 'پرہیز کیا';
+
+  @override
+  String get legendCheckIn => 'چیک ان';
+
+  @override
+  String get legendRelapse => 'دوبارہ لغزش';
+
+  @override
+  String get legendExcused => 'معاف شدہ';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ اس دن دوبارہ لغزش درج کی گئی۔';
+
+  @override
+  String get cleanRecord => '🌿 صاف ریکارڈ۔';
+
+  @override
+  String get timeOverride => 'وقت اوور رائیڈ';
+
+  @override
+  String anchorTime(String time) {
+    return 'اینکر: $time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return 'چیک ان کا وقت: $time';
+  }
+
+  @override
+  String get editReason => 'وجہ میں ترمیم کریں';
+
+  @override
+  String get reasonOptional => 'وجہ (اختیاری)';
+
+  @override
+  String get reasonHint => 'تناؤ، پریشانی، تھکن، ساتھیوں کا دباؤ، محرک؟ وغیرہ';
+
+  @override
+  String get excusedStreakPreserved => '❄️ معاف شدہ، آپ کا تسلسل برقرار ہے۔';
+
+  @override
+  String get checkedInThisDay => '✅ اس دن چیک ان کیا گیا۔';
+
+  @override
+  String get noCheckInRecorded => '🌿 کوئی چیک ان درج نہیں۔';
+
+  @override
+  String get saveNewTime => 'نیا وقت محفوظ کریں';
+
+  @override
+  String get excuseThisDayInstead => 'اس کے بجائے اس دن کو معاف کریں';
+
+  @override
+  String get checkInInstead => 'اس کے بجائے چیک ان کریں';
+
+  @override
+  String get removeExcuse => 'معافی ہٹائیں';
+
+  @override
+  String get updateLog => 'لاگ اپ ڈیٹ کریں';
+
+  @override
+  String get removeRelapseBtn => 'لغزش ہٹائیں';
+
+  @override
+  String get addRelapseHere => 'یہاں لغزش شامل کریں';
+
+  @override
+  String get removeCheckIn => 'چیک ان ہٹائیں';
+
+  @override
+  String get checkInThisDay => 'اس دن چیک ان کریں';
 }

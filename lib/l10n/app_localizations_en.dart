@@ -550,4 +550,83 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dailyReminderBody => 'Your grove is waiting. Keep the streak alive.';
+
+  @override
+  String get legendMissed => 'Missed';
+
+  @override
+  String get legendAbstained => 'Abstained';
+
+  @override
+  String get legendCheckIn => 'Check-in';
+
+  @override
+  String get legendRelapse => 'Relapse';
+
+  @override
+  String get legendExcused => 'Excused';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ Relapse logged on this day.';
+
+  @override
+  String get cleanRecord => '🌿 Clean record.';
+
+  @override
+  String get timeOverride => 'TIME OVERRIDE';
+
+  @override
+  String anchorTime(String time) {
+    return 'Anchor: $time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return 'Check-in time: $time';
+  }
+
+  @override
+  String get editReason => 'EDIT REASON';
+
+  @override
+  String get reasonOptional => 'REASON (optional)';
+
+  @override
+  String get reasonHint => 'Stress, Anxiety, Burnout, Peer pressure, Trigger? etc...';
+
+  @override
+  String get excusedStreakPreserved => '❄️ Excused, your streak is preserved.';
+
+  @override
+  String get checkedInThisDay => '✅ Checked in on this day.';
+
+  @override
+  String get noCheckInRecorded => '🌿 No check-in recorded.';
+
+  @override
+  String get saveNewTime => 'Save New Time';
+
+  @override
+  String get excuseThisDayInstead => 'Excuse this day instead';
+
+  @override
+  String get checkInInstead => 'Check In Instead';
+
+  @override
+  String get removeExcuse => 'Remove excuse';
+
+  @override
+  String get updateLog => 'Update Log';
+
+  @override
+  String get removeRelapseBtn => 'Remove Relapse';
+
+  @override
+  String get addRelapseHere => 'Add Relapse Here';
+
+  @override
+  String get removeCheckIn => 'Remove Check-in';
+
+  @override
+  String get checkInThisDay => 'Check In This Day';
 }

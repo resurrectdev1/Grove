@@ -550,4 +550,83 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get dailyReminderBody => '당신의 숲이 기다리고 있습니다. 연속 기록을 지키세요.';
+
+  @override
+  String get legendMissed => '놓침';
+
+  @override
+  String get legendAbstained => '자제함';
+
+  @override
+  String get legendCheckIn => '체크인';
+
+  @override
+  String get legendRelapse => '재발';
+
+  @override
+  String get legendExcused => '면제됨';
+
+  @override
+  String get relapseLoggedThisDay => '⚠️ 이 날 재발이 기록되었습니다.';
+
+  @override
+  String get cleanRecord => '🌿 깨끗한 기록입니다.';
+
+  @override
+  String get timeOverride => '시간 재설정';
+
+  @override
+  String anchorTime(String time) {
+    return '기준 시각: $time';
+  }
+
+  @override
+  String checkInTimeLabel(String time) {
+    return '체크인 시각: $time';
+  }
+
+  @override
+  String get editReason => '사유 수정';
+
+  @override
+  String get reasonOptional => '사유 (선택 사항)';
+
+  @override
+  String get reasonHint => '스트레스, 불안, 번아웃, 또래 압박, 촉발 요인 등...';
+
+  @override
+  String get excusedStreakPreserved => '❄️ 면제됨, 연속 기록이 유지됩니다.';
+
+  @override
+  String get checkedInThisDay => '✅ 이 날 체크인했습니다.';
+
+  @override
+  String get noCheckInRecorded => '🌿 체크인 기록이 없습니다.';
+
+  @override
+  String get saveNewTime => '새 시간 저장';
+
+  @override
+  String get excuseThisDayInstead => '대신 이 날을 면제';
+
+  @override
+  String get checkInInstead => '대신 체크인';
+
+  @override
+  String get removeExcuse => '면제 취소';
+
+  @override
+  String get updateLog => '기록 업데이트';
+
+  @override
+  String get removeRelapseBtn => '재발 삭제';
+
+  @override
+  String get addRelapseHere => '여기에 재발 추가';
+
+  @override
+  String get removeCheckIn => '체크인 삭제';
+
+  @override
+  String get checkInThisDay => '이 날 체크인';
 }
