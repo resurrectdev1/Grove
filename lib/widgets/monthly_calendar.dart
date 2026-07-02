@@ -1,8 +1,10 @@
 import 'dart:math' as math;
+import 'package:characters/characters.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:grove/l10n/app_localizations.dart';
 import 'package:grove/models/grove_models.dart';
 import 'package:grove/providers/grove_model.dart';
 import 'package:grove/providers/grove_settings.dart';
@@ -17,15 +19,21 @@ class MonthlyCalendar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme          = context.watch<GroveSettings>().theme;
     final model          = context.read<GroveModel>();
+    final l10n           = AppLocalizations.of(context)!;
+    final locale         = Localizations.localeOf(context).toString();
     final now            = DateTime.now();
     final isCheckIn      = habit.mode == HabitMode.checkIn;
     final targetMonth    = DateTime(now.year, now.month + monthOffset, 1);
-    final monthName      = DateFormat('MMMM yyyy').format(targetMonth);
+    final monthName      = DateFormat('MMMM yyyy', locale).format(targetMonth);
     final lastDayOfMonth = DateTime(targetMonth.year, targetMonth.month + 1, 0);
     final daysInMonth    = lastDayOfMonth.day;
     final firstWeekday   = targetMonth.weekday;
     final startOffset    = firstWeekday - 1;
-    const dayLabels      = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+    final dayLabels      = List.generate(7, (i) {
+      final sample = DateTime(2024, 1, 1 + i);
+      final short  = DateFormat.E(locale).format(sample);
+      return short.characters.first.toUpperCase();
+    });
     final totalCells      = startOffset + daysInMonth;
     final numWeeks        = (totalCells / 7).ceil();
     final daysInPrevMonth = DateTime(targetMonth.year, targetMonth.month, 0).day;
@@ -109,16 +117,16 @@ class MonthlyCalendar extends StatelessWidget {
                     const SizedBox(height: 12),
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       _legendDot(theme.surfaceHigh), const SizedBox(width: 5),
-                      Text(isCheckIn ? 'Missed' : 'Abstained', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                      Text(isCheckIn ? l10n.legendMissed : l10n.legendAbstained, style: TextStyle(fontSize: 9, color: theme.textMuted)),
                       const SizedBox(width: 14),
                       _legendDot(isCheckIn ? habit.color.withValues(alpha: 0.7) : GroveTheme.clayRed.withValues(alpha: 0.7)),
                       const SizedBox(width: 5),
-                      Text(isCheckIn ? 'Check-in' : 'Relapse', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                      Text(isCheckIn ? l10n.legendCheckIn : l10n.legendRelapse, style: TextStyle(fontSize: 9, color: theme.textMuted)),
                       if (isCheckIn) ...[
                         const SizedBox(width: 14),
                         _legendDot(const Color(0xFF42A5C8).withValues(alpha: 0.25)),
                         const SizedBox(width: 5),
-                        Text('Excused', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                        Text(l10n.legendExcused, style: TextStyle(fontSize: 9, color: theme.textMuted)),
                       ],
                     ]),
       ]),
@@ -209,11 +217,13 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
   @override
   Widget build(BuildContext context) {
     final theme     = widget.theme;
+    final l10n      = AppLocalizations.of(context)!;
+    final locale    = Localizations.localeOf(context).toString();
     final bottomPad = math.max(
       MediaQuery.of(context).viewInsets.bottom,
       MediaQuery.of(context).padding.bottom);
 
-    final dateStr = DateFormat('EEEE, MMMM d, yyyy').format(widget.targetDate);
+    final dateStr = DateFormat('EEEE, MMMM d, yyyy', locale).format(widget.targetDate);
     final hasMark = _isCheckIn
     ? widget.habit.checkInDays.contains(DateTime(widget.targetDate.year, widget.targetDate.month, widget.targetDate.day))
     : widget.hasRelapse;
@@ -236,7 +246,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                      if (!_isCheckIn) ...[
                        const SizedBox(height: 6),
                        Text(
-                         hasMark ? '⚠️ Relapse logged on this day.' : '🌿 Clean record.',
+                         hasMark ? l10n.relapseLoggedThisDay : l10n.cleanRecord,
                          style: TextStyle(
                            fontSize:   12,
                            color:      hasMark ? GroveTheme.clayRed : theme.textSecondary,
@@ -244,7 +254,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                      ],
                       const SizedBox(height: 20),
                       if (!_isCheckIn) ...[
-                        Text('TIME OVERRIDE',
+                        Text(l10n.timeOverride,
                              style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
                              const SizedBox(height: 8),
                              OutlinedButton.icon(
@@ -253,32 +263,32 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                                  if (picked != null) setState(() => _selectedTime = picked);
                                },
                                icon:  const Icon(Icons.access_time, size: 14),
-                               label: Text('Anchor: ${_selectedTime.format(context)}', style: const TextStyle(fontSize: 13)),
+                               label: Text(l10n.anchorTime(_selectedTime.format(context)), style: const TextStyle(fontSize: 13)),
                                style: OutlinedButton.styleFrom(
                                  foregroundColor: theme.textPrimary,
                                    padding:         const EdgeInsets.symmetric(vertical: 12)),
                              ),
                       const SizedBox(height: 16),
-                      Text(hasMark ? 'EDIT REASON' : 'REASON (optional)',
+                      Text(hasMark ? l10n.editReason : l10n.reasonOptional,
                       style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
                       const SizedBox(height: 8),
                       TextField(
                         controller: _reasonCtrl,
                         maxLines:   3,
                         style:      TextStyle(color: theme.textPrimary, fontSize: 14),
-                        decoration: const InputDecoration(
-                          hintText:       'Stress, Anxiety, Burnout, Peer pressure, Trigger? etc...',
-                          contentPadding: EdgeInsets.all(12))),
+                        decoration: InputDecoration(
+                          hintText:       l10n.reasonHint,
+                          contentPadding: const EdgeInsets.all(12))),
                           const SizedBox(height: 24),
                       ],
                       if (_isCheckIn) ...[
                         const SizedBox(height: 6),
                         Text(
                           widget.hasNullDay
-                          ? '❄️ Excused, your streak is preserved.'
+                          ? l10n.excusedStreakPreserved
                         : hasMark
-                        ? '✅ Checked in on this day.'
-                        : '🌿 No check-in recorded.',
+                        ? l10n.checkedInThisDay
+                        : l10n.noCheckInRecorded,
                         style: TextStyle(
                           fontSize: 12, fontWeight: FontWeight.w600,
                           color: widget.hasNullDay
@@ -288,7 +298,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                         ),
                       const SizedBox(height: 20),
                       if (!widget.hasNullDay) ...[
-                        Text('TIME OVERRIDE',
+                        Text(l10n.timeOverride,
                              style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
                              const SizedBox(height: 8),
                              OutlinedButton.icon(
@@ -297,7 +307,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                                  if (picked != null) setState(() => _selectedTime = picked);
                                },
                                icon:  const Icon(Icons.access_time, size: 14),
-                               label: Text('Check-in time: ${_selectedTime.format(context)}', style: const TextStyle(fontSize: 13)),
+                               label: Text(l10n.checkInTimeLabel(_selectedTime.format(context)), style: const TextStyle(fontSize: 13)),
                                style: OutlinedButton.styleFrom(
                                  foregroundColor: theme.textPrimary,
                                    padding:         const EdgeInsets.symmetric(vertical: 12)),
@@ -318,7 +328,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                             size: 16,
                             color: hasMark ? theme.textPrimary : Colors.white,
                           ),
-                          label: Text(hasMark ? 'Remove Check-in' : 'Check In This Day',
+                          label: Text(hasMark ? l10n.removeCheckIn : l10n.checkInThisDay,
                                       style: TextStyle(color: hasMark ? theme.textPrimary : Colors.white)),
                                       style: FilledButton.styleFrom(
                                         backgroundColor: hasMark ? theme.surfaceHigh : widget.habit.color,
@@ -338,7 +348,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                               Navigator.pop(context);
                             },
                             icon: const Icon(Icons.save_outlined, size: 16),
-                            label: const Text('Save New Time'),
+                            label: Text(l10n.saveNewTime),
                             style: OutlinedButton.styleFrom(
                               foregroundColor: widget.habit.color,
                               side: BorderSide(color: widget.habit.color.withValues(alpha: 0.45)),
@@ -355,7 +365,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                             Navigator.pop(context);
                           },
                           icon: const Icon(Icons.ac_unit_rounded, size: 16),
-                          label: const Text('Excuse this day instead'),
+                          label: Text(l10n.excuseThisDayInstead),
                           style: OutlinedButton.styleFrom(
                             foregroundColor: const Color(0xFF42A5C8),
                               side: BorderSide(color: const Color(0xFF42A5C8).withValues(alpha: 0.45)),
@@ -372,7 +382,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                             Navigator.pop(context);
                           },
                           icon: const Icon(Icons.check_circle_outline, size: 16),
-                          label: const Text('Check In Instead'),
+                          label: Text(l10n.checkInInstead),
                           style: FilledButton.styleFrom(
                             backgroundColor: widget.habit.color,
                             foregroundColor: Colors.white,
@@ -388,7 +398,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                             Navigator.pop(context);
                           },
                           icon: const Icon(Icons.remove_circle_outline, size: 16),
-                          label: const Text('Remove excuse'),
+                          label: Text(l10n.removeExcuse),
                           style: OutlinedButton.styleFrom(
                             foregroundColor: const Color(0xFF42A5C8),
                               side: BorderSide(color: const Color(0xFF42A5C8).withValues(alpha: 0.45)),
@@ -408,7 +418,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                             Navigator.pop(context);
                           },
                           icon:  const Icon(Icons.check, size: 16),
-                          label: const Text('Update Log'),
+                          label: Text(l10n.updateLog),
                           style: FilledButton.styleFrom(
                             backgroundColor: widget.habit.color,
                             foregroundColor: Colors.white,
@@ -423,7 +433,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                           Navigator.pop(context);
                         },
                         icon:  const Icon(Icons.clear, size: 16),
-                        label: const Text('Remove Relapse'),
+                        label: Text(l10n.removeRelapseBtn),
                         style: OutlinedButton.styleFrom(
                           foregroundColor: GroveTheme.clayRed,
                             side:            BorderSide(color: GroveTheme.clayRed.withValues(alpha: 0.4)),
@@ -441,7 +451,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                             Navigator.pop(context);
                           },
                           icon:  const Icon(Icons.add, size: 16),
-                          label: const Text('Add Relapse Here'),
+                          label: Text(l10n.addRelapseHere),
                           style: FilledButton.styleFrom(
                             backgroundColor: GroveTheme.clayRed,
                             foregroundColor: Colors.white,
