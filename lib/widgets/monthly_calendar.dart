@@ -109,7 +109,7 @@ class MonthlyCalendar extends StatelessWidget {
                     const SizedBox(height: 12),
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       _legendDot(theme.surfaceHigh), const SizedBox(width: 5),
-                      Text(isCheckIn ? 'Missed' : 'Clean', style: TextStyle(fontSize: 9, color: theme.textMuted)),
+                      Text(isCheckIn ? 'Missed' : 'Abstained', style: TextStyle(fontSize: 9, color: theme.textMuted)),
                       const SizedBox(width: 14),
                       _legendDot(isCheckIn ? habit.color.withValues(alpha: 0.7) : GroveTheme.clayRed.withValues(alpha: 0.7)),
                       const SizedBox(width: 5),
