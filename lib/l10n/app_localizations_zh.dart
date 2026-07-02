@@ -158,7 +158,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onboarding0Title => '欢迎使用 Grove 🌿';
 
   @override
-  String get onboarding0Body => '这是一款私密的戒瘾与习惯追踪应用，用树木代表你的成长。你保持洁净的时间越长，你的树就越茁壮繁茂。';
+  String get onboarding0Body => '这是一款私密的戒瘾与习惯追踪应用，用树木代表你的成长。你保持戒断或打卡的时间越长，你的树就越茁壮繁茂。';
 
   @override
   String get onboarding1Title => '种一棵树';
@@ -170,7 +170,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onboarding2Title => '看它成长';
 
   @override
-  String get onboarding2Body => '每一天的洁净都帮助你的树经历五个生长阶段，从一粒小小的种子，成长为随风摇曳、枝繁叶茂的大树。';
+  String get onboarding2Body => '每一天都帮助你的树经历五个生长阶段，从一粒小小的种子，成长为随风摇曳、枝繁叶茂的大树。';
 
   @override
   String get onboarding3Title => '记录复发';
@@ -323,7 +323,7 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove 是一款简约的习惯追踪应用，通过树木将你的成长可视化。每一天你保持洁净，你的树就会成长。作为一款免费开源工具，用心制作。';
+  String get groveDescription => 'Grove 是一款简约的习惯与戒瘾追踪应用，通过树木将你的成长可视化。每一天你保持戒断或打卡，你的树就会成长。作为一款免费开源工具，用心制作。';
 
   @override
   String get groveLocked => 'Grove 已锁定';
@@ -359,7 +359,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get logDateBeforeTracking => '← 记录追踪开始之前的日期';
 
   @override
-  String get cleanSinceStart => '从开始保持洁净';
+  String get abstinentSinceStart => '尚无复发记录。';
 
   @override
   String get timeSinceLastRelapse => '距上次复发的时间';
@@ -706,7 +706,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get onboarding0Title => '歡迎使用 Grove 🌿';
 
   @override
-  String get onboarding0Body => '這是一款私密的戒癮與習慣追蹤應用程式，用樹木代表你的成長。你保持潔淨的時間越長，你的樹就越茁壯繁茂。';
+  String get onboarding0Body => '這是一款私密的戒癮與習慣追蹤應用程式，用樹木代表你的成長。你保持戒斷或打卡的時間越長，你的樹就越茁壯繁茂。';
 
   @override
   String get onboarding1Title => '種一棵樹';
@@ -718,7 +718,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get onboarding2Title => '看它成長';
 
   @override
-  String get onboarding2Body => '每一天的潔淨都幫助你的樹歷經五個生長階段，從一粒小小的種子，成長為隨風搖曳、枝繁葉茂的大樹。';
+  String get onboarding2Body => '每一天都幫助你的樹歷經五個生長階段，從一粒小小的種子，成長為隨風搖曳、枝繁葉茂的大樹。';
 
   @override
   String get onboarding3Title => '記錄復發';
@@ -871,7 +871,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   }
 
   @override
-  String get groveDescription => 'Grove 是一款簡約的習慣追蹤應用程式，透過樹木將你的成長視覺化。每一天你保持潔淨，你的樹就會成長。作為一款免費開源工具，用心製作。';
+  String get groveDescription => 'Grove 是一款簡約的習慣與戒癮追蹤應用程式，透過樹木將你的成長視覺化。每一天你保持戒斷或打卡，你的樹就會成長。作為一款免費開源工具，用心製作。';
 
   @override
   String get groveLocked => 'Grove 已鎖定';
@@ -907,7 +907,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get logDateBeforeTracking => '← 記錄追蹤開始之前的日期';
 
   @override
-  String get cleanSinceStart => '從開始保持潔淨';
+  String get abstinentSinceStart => '尚無復發記錄。';
 
   @override
   String get timeSinceLastRelapse => '距上次復發的時間';

@@ -158,7 +158,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get onboarding0Title => 'Bem-vindo ao Grove 🌿';
 
   @override
-  String get onboarding0Body => 'Um rastreador de hábitos privado onde árvores representam seu crescimento. Quanto mais tempo você ficar limpo, mais viçosas suas árvores ficam.';
+  String get onboarding0Body => 'Um rastreador de hábitos privado onde árvores representam seu crescimento. Quanto mais tempo você se abstiver ou registrar, mais viçosas suas árvores ficam.';
 
   @override
   String get onboarding1Title => 'Plante uma árvore';
@@ -170,7 +170,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get onboarding2Title => 'Veja crescer';
 
   @override
-  String get onboarding2Body => 'Cada dia limpo ajuda sua árvore a amadurecer por cinco estágios — de uma minúscula semente até uma árvore do bosque com galhos balançando.';
+  String get onboarding2Body => 'Cada dia ajuda sua árvore a amadurecer por cinco estágios — de uma minúscula semente até uma árvore do bosque com galhos balançando.';
 
   @override
   String get onboarding3Title => 'Registre uma recaída';
@@ -323,7 +323,7 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove é um rastreador de hábitos minimalista que visualiza seu crescimento através de árvores. Cada dia limpo, sua árvore cresce. Gratuito e de código aberto.';
+  String get groveDescription => 'Grove é um rastreador de hábitos e sobriedade minimalista que visualiza seu crescimento através de árvores. Cada dia que você se abstém ou registra, sua árvore cresce. Gratuito e de código aberto.';
 
   @override
   String get groveLocked => 'Grove está bloqueado';
@@ -359,7 +359,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get logDateBeforeTracking => '← Registrar data anterior ao rastreamento';
 
   @override
-  String get cleanSinceStart => 'Limpo desde o início';
+  String get abstinentSinceStart => 'Nenhuma recaída registrada.';
 
   @override
   String get timeSinceLastRelapse => 'Tempo desde a última recaída';

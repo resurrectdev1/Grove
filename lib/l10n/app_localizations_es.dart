@@ -158,7 +158,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboarding0Title => 'Bienvenido a Grove 🌿';
 
   @override
-  String get onboarding0Body => 'Un rastreador privado de sobriedad y hábitos donde los árboles representan tu crecimiento. Cuanto más tiempo te mantengas limpio, más vibrantes y frondosos se vuelven tus árboles.';
+  String get onboarding0Body => 'Un rastreador privado de sobriedad y hábitos donde los árboles representan tu crecimiento. Cuanto más tiempo te abstengas o registres, más vibrantes y frondosos se vuelven tus árboles.';
 
   @override
   String get onboarding1Title => 'Planta un árbol';
@@ -170,7 +170,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboarding2Title => 'Míralo crecer';
 
   @override
-  String get onboarding2Body => 'Cada día limpio ayuda a tu árbol a madurar a través de cinco etapas de crecimiento, desde una pequeña semilla hasta un árbol frondoso con ramas y hojas mecidas por el viento.';
+  String get onboarding2Body => 'Cada día ayuda a tu árbol a madurar a través de cinco etapas de crecimiento, desde una pequeña semilla hasta un árbol frondoso con ramas y hojas mecidas por el viento.';
 
   @override
   String get onboarding3Title => 'Registra una recaída';
@@ -323,7 +323,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove es un rastreador de hábitos minimalista que visualiza tu crecimiento mediante árboles. Cada día que te mantienes limpio, tu árbol crece. Construido con amor como una herramienta gratuita y de código abierto.';
+  String get groveDescription => 'Grove es un rastreador de hábitos y sobriedad minimalista que visualiza tu crecimiento mediante árboles. Cada día que te abstienes o registras, tu árbol crece. Construido con amor como una herramienta gratuita y de código abierto.';
 
   @override
   String get groveLocked => 'Grove está bloqueado';
@@ -359,7 +359,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get logDateBeforeTracking => '← Registra una fecha antes del inicio';
 
   @override
-  String get cleanSinceStart => 'Limpio desde el inicio';
+  String get abstinentSinceStart => 'Sin recaídas registradas.';
 
   @override
   String get timeSinceLastRelapse => 'Tiempo desde la última recaída';

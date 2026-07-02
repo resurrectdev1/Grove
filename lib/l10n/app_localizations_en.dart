@@ -158,7 +158,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboarding0Title => 'Welcome to Grove 🌿';
 
   @override
-  String get onboarding0Body => 'A private sobriety and habit tracker where trees represent your growth, the longer you stay clean, the more vibrant and lush your trees become.';
+  String get onboarding0Body => 'A private sobriety and habit tracker where trees represent your growth, the longer you abstain or check-in, the more vibrant and lush your trees become.';
 
   @override
   String get onboarding1Title => 'Plant a Tree';
@@ -170,7 +170,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboarding2Title => 'Watch It Grow';
 
   @override
-  String get onboarding2Body => 'Every day clean helps your tree mature through five growth stages. from a tiny seed all the way to a full grove tree with swaying branches and leaves.';
+  String get onboarding2Body => 'Every day helps your tree mature through five growth stages, from a tiny seed all the way to a full grove tree with swaying branches and leaves.';
 
   @override
   String get onboarding3Title => 'Log a Relapse';
@@ -323,7 +323,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove is a minimalistic habit tracker that visualises your growth through trees. Every day you stay clean, your tree grows. Built with love as a free, open-source tool.';
+  String get groveDescription => 'Grove is a minimalist habit & sobriety tracker that visualizes your growth through trees. Every day you abstain or check-in, your tree grows. Built with love as a free, open-source tool.';
 
   @override
   String get groveLocked => 'Grove is locked';
@@ -359,7 +359,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logDateBeforeTracking => '← Log a date before tracking started';
 
   @override
-  String get cleanSinceStart => 'Clean since start';
+  String get abstinentSinceStart => 'No relapses recorded.';
 
   @override
   String get timeSinceLastRelapse => 'Time since last relapse';

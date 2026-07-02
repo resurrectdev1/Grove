@@ -158,7 +158,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get onboarding0Title => 'Grove میں خوش آمدید 🌿';
 
   @override
-  String get onboarding0Body => 'ایک نجی عادت ٹریکر جہاں درخت آپ کی ترقی کی نمائندگی کرتے ہیں۔ جتنا لمبا آپ صاف رہیں گے، آپ کے درخت اتنے ہی سرسبز ہوتے جائیں گے۔';
+  String get onboarding0Body => 'ایک نجی عادت ٹریکر جہاں درخت آپ کی ترقی کی نمائندگی کرتے ہیں۔ جتنا لمبا آپ پرہیز کریں گے یا چیک ان کریں گے، آپ کے درخت اتنے ہی سرسبز ہوتے جائیں گے۔';
 
   @override
   String get onboarding1Title => 'ایک درخت لگائیں';
@@ -170,7 +170,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get onboarding2Title => 'اسے بڑھتے دیکھیں';
 
   @override
-  String get onboarding2Body => 'ہر صاف دن آپ کے درخت کو پانچ مراحل سے گزرنے میں مدد کرتا ہے — ایک چھوٹے بیج سے لے کر مکمل باغ کے درخت تک۔';
+  String get onboarding2Body => 'ہر دن آپ کے درخت کو پانچ مراحل سے گزرنے میں مدد کرتا ہے — ایک چھوٹے بیج سے لے کر مکمل باغ کے درخت تک۔';
 
   @override
   String get onboarding3Title => 'دوبارہ لگنا درج کریں';
@@ -323,7 +323,7 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove ایک کم سے کم عادت ٹریکر ہے جو درختوں کے ذریعے آپ کی ترقی کو دکھاتا ہے۔ ہر صاف دن آپ کا درخت بڑھتا ہے۔ مفت، اوپن سورس۔';
+  String get groveDescription => 'Grove ایک کم سے کم عادت اور پرہیز ٹریکر ہے جو درختوں کے ذریعے آپ کی ترقی کو دکھاتا ہے۔ جس دن بھی آپ پرہیز کریں یا چیک ان کریں، آپ کا درخت بڑھتا ہے۔ مفت، اوپن سورس۔';
 
   @override
   String get groveLocked => 'Grove بند ہے';
@@ -359,7 +359,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get logDateBeforeTracking => '← ٹریکنگ شروع ہونے سے پہلے کی تاریخ درج کریں';
 
   @override
-  String get cleanSinceStart => 'شروع سے صاف';
+  String get abstinentSinceStart => 'کوئی دوبارہ لگنا درج نہیں۔';
 
   @override
   String get timeSinceLastRelapse => 'آخری دوبارہ لگنے کے بعد کا وقت';

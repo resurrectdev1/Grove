@@ -158,7 +158,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get onboarding0Title => 'Grove에 오신 것을 환영합니다 🌿';
 
   @override
-  String get onboarding0Body => '나무가 당신의 성장을 나타내는 개인 습관 추적기입니다. 깨끗하게 지낼수록 나무가 더 생생하고 무성해집니다.';
+  String get onboarding0Body => '나무가 당신의 성장을 나타내는 개인 습관 추적기입니다. 금욕하거나 체크인할수록 나무가 더 생생하고 무성해집니다.';
 
   @override
   String get onboarding1Title => '나무 심기';
@@ -170,7 +170,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get onboarding2Title => '성장 지켜보기';
 
   @override
-  String get onboarding2Body => '깨끗한 하루하루가 나무를 5단계로 성숙시킵니다. 작은 씨앗부터 흔들리는 가지와 잎이 있는 완전한 숲 나무까지.';
+  String get onboarding2Body => '매일매일이 나무를 5단계로 성숙시킵니다. 작은 씨앗부터 흔들리는 가지와 잎이 있는 완전한 숲 나무까지.';
 
   @override
   String get onboarding3Title => '재발 기록하기';
@@ -323,7 +323,7 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove는 나무를 통해 성장을 시각화하는 미니멀리스트 습관 추적기입니다. 매일 깨끗하게 지내면 나무가 자랍니다. 무료 오픈 소스.';
+  String get groveDescription => 'Grove는 나무를 통해 성장을 시각화하는 미니멀리스트 습관 및 금욕 추적기입니다. 매일 금욕하거나 체크인하면 나무가 자랍니다. 무료 오픈 소스.';
 
   @override
   String get groveLocked => 'Grove가 잠겨 있습니다';
@@ -359,7 +359,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get logDateBeforeTracking => '← 추적 시작 전 날짜 기록';
 
   @override
-  String get cleanSinceStart => '시작부터 깨끗';
+  String get abstinentSinceStart => '재발 기록 없음.';
 
   @override
   String get timeSinceLastRelapse => '마지막 재발 이후 시간';

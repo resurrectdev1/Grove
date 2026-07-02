@@ -158,7 +158,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get onboarding0Title => 'Chào mừng đến Grove 🌿';
 
   @override
-  String get onboarding0Body => 'Công cụ theo dõi thói quen riêng tư, nơi những cái cây đại diện cho sự phát triển của bạn. Bạn càng sạch lâu, cây càng xanh tươi.';
+  String get onboarding0Body => 'Công cụ theo dõi thói quen riêng tư, nơi những cái cây đại diện cho sự phát triển của bạn. Bạn kiêng cữ hoặc điểm danh càng lâu, cây càng xanh tươi.';
 
   @override
   String get onboarding1Title => 'Trồng một cây';
@@ -170,7 +170,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get onboarding2Title => 'Xem cây phát triển';
 
   @override
-  String get onboarding2Body => 'Mỗi ngày sạch giúp cây của bạn trưởng thành qua năm giai đoạn — từ hạt giống nhỏ đến cây rừng đầy đủ với cành lá đung đưa.';
+  String get onboarding2Body => 'Mỗi ngày giúp cây của bạn trưởng thành qua năm giai đoạn — từ hạt giống nhỏ đến cây rừng đầy đủ với cành lá đung đưa.';
 
   @override
   String get onboarding3Title => 'Ghi lại tái phát';
@@ -323,7 +323,7 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove là ứng dụng theo dõi thói quen tối giản, trực quan hóa sự phát triển của bạn qua những cái cây. Mỗi ngày bạn sạch, cây của bạn phát triển. Được xây dựng miễn phí, mã nguồn mở.';
+  String get groveDescription => 'Grove là ứng dụng theo dõi thói quen và sự tỉnh táo tối giản, trực quan hóa sự phát triển của bạn qua những cái cây. Mỗi ngày bạn kiêng cữ hoặc điểm danh, cây của bạn phát triển. Được xây dựng miễn phí, mã nguồn mở.';
 
   @override
   String get groveLocked => 'Grove đã bị khóa';
@@ -359,7 +359,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get logDateBeforeTracking => '← Ghi ngày trước khi bắt đầu theo dõi';
 
   @override
-  String get cleanSinceStart => 'Sạch từ đầu';
+  String get abstinentSinceStart => 'Chưa có tái phát nào được ghi nhận.';
 
   @override
   String get timeSinceLastRelapse => 'Thời gian từ lần tái phát cuối';

@@ -158,7 +158,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboarding0Title => 'مرحباً بك في غروف 🌿';
 
   @override
-  String get onboarding0Body => 'متتبع خاص للرصانة والعادات حيث تمثل الأشجار نموك، كلما ظللت نظيفاً أطول، كلما أصبحت أشجارك أكثر إشراقاً وخضرة.';
+  String get onboarding0Body => 'متتبع خاص للرصانة والعادات حيث تمثل الأشجار نموك، كلما استمررت في الامتناع أو تسجيل الحضور لفترة أطول، أصبحت أشجارك أكثر إشراقاً وخضرة.';
 
   @override
   String get onboarding1Title => 'ازرع شجرة';
@@ -170,7 +170,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboarding2Title => 'شاهد النمو';
 
   @override
-  String get onboarding2Body => 'كل يوم نظيف يساعد شجرتك على النضج عبر خمس مراحل نمو. من بذرة صغيرة وحتى شجرة غابة كاملة بأغصان وأوراق متمايلة.';
+  String get onboarding2Body => 'كل يوم يساعد شجرتك على النضج عبر خمس مراحل نمو. من بذرة صغيرة وحتى شجرة غابة كاملة بأغصان وأوراق متمايلة.';
 
   @override
   String get onboarding3Title => 'تسجيل انتكاسة';
@@ -323,7 +323,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'غروف متتبع عادات بسيط يُصوِّر نموك من خلال الأشجار. كل يوم تظل نظيفاً، تنمو شجرتك. بُني بحب كأداة مجانية مفتوحة المصدر.';
+  String get groveDescription => 'غروف متتبع عادات ورصانة بسيط يُصوِّر نموك من خلال الأشجار. كل يوم تمتنع فيه أو تسجل حضورك، تنمو شجرتك. بُني بحب كأداة مجانية مفتوحة المصدر.';
 
   @override
   String get groveLocked => 'غروف مقفل';
@@ -359,7 +359,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get logDateBeforeTracking => '← سجّل تاريخاً قبل بدء التتبع';
 
   @override
-  String get cleanSinceStart => 'نظيف منذ البداية';
+  String get abstinentSinceStart => 'لا توجد انتكاسات مسجلة.';
 
   @override
   String get timeSinceLastRelapse => 'الوقت منذ آخر انتكاسة';

@@ -403,7 +403,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboarding0Body.
   ///
   /// In en, this message translates to:
-  /// **'A private sobriety and habit tracker where trees represent your growth, the longer you stay clean, the more vibrant and lush your trees become.'**
+  /// **'A private sobriety and habit tracker where trees represent your growth, the longer you abstain or check-in, the more vibrant and lush your trees become.'**
   String get onboarding0Body;
 
   /// No description provided for @onboarding1Title.
@@ -427,7 +427,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboarding2Body.
   ///
   /// In en, this message translates to:
-  /// **'Every day clean helps your tree mature through five growth stages. from a tiny seed all the way to a full grove tree with swaying branches and leaves.'**
+  /// **'Every day helps your tree mature through five growth stages, from a tiny seed all the way to a full grove tree with swaying branches and leaves.'**
   String get onboarding2Body;
 
   /// No description provided for @onboarding3Title.
@@ -721,7 +721,7 @@ abstract class AppLocalizations {
   /// No description provided for @groveDescription.
   ///
   /// In en, this message translates to:
-  /// **'Grove is a minimalistic habit tracker that visualises your growth through trees. Every day you stay clean, your tree grows. Built with love as a free, open-source tool.'**
+  /// **'Grove is a minimalist habit & sobriety tracker that visualizes your growth through trees. Every day you abstain or check-in, your tree grows. Built with love as a free, open-source tool.'**
   String get groveDescription;
 
   /// No description provided for @groveLocked.
@@ -790,11 +790,11 @@ abstract class AppLocalizations {
   /// **'← Log a date before tracking started'**
   String get logDateBeforeTracking;
 
-  /// No description provided for @cleanSinceStart.
+  /// No description provided for @abstinentSinceStart.
   ///
   /// In en, this message translates to:
-  /// **'Clean since start'**
-  String get cleanSinceStart;
+  /// **'No relapses recorded.'**
+  String get abstinentSinceStart;
 
   /// No description provided for @timeSinceLastRelapse.
   ///

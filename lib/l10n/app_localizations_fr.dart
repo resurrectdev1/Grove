@@ -158,7 +158,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboarding0Title => 'Bienvenue sur Grove 🌿';
 
   @override
-  String get onboarding0Body => 'Un suivi privé de sobriété et d\'habitudes où les arbres représentent votre croissance. Plus vous restez sobre longtemps, plus vos arbres deviennent vibrants et luxuriants.';
+  String get onboarding0Body => 'Un suivi privé de sobriété et d\'habitudes où les arbres représentent votre croissance. Plus vous vous abstenez ou pointez longtemps, plus vos arbres deviennent vibrants et luxuriants.';
 
   @override
   String get onboarding1Title => 'Plantez un arbre';
@@ -170,7 +170,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboarding2Title => 'Regardez-le pousser';
 
   @override
-  String get onboarding2Body => 'Chaque jour sans rechute aide votre arbre à mûrir à travers cinq stades de croissance, d\'une toute petite graine jusqu\'à un arbre majestueux aux branches balancées par le vent.';
+  String get onboarding2Body => 'Chaque jour aide votre arbre à mûrir à travers cinq stades de croissance, d\'une toute petite graine jusqu\'à un arbre majestueux aux branches balancées par le vent.';
 
   @override
   String get onboarding3Title => 'Enregistrez une rechute';
@@ -323,7 +323,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove est un suivi d\'habitudes minimaliste qui visualise votre croissance à travers des arbres. Chaque jour sobre, votre arbre grandit. Créé avec amour comme un outil gratuit et open source.';
+  String get groveDescription => 'Grove est un suivi d\'habitudes et de sobriété minimaliste qui visualise votre croissance à travers des arbres. Chaque jour où vous vous abstenez ou pointez, votre arbre grandit. Créé avec amour comme un outil gratuit et open source.';
 
   @override
   String get groveLocked => 'Grove est verrouillé';
@@ -359,7 +359,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get logDateBeforeTracking => '← Enregistrer une date avant le début du suivi';
 
   @override
-  String get cleanSinceStart => 'Sobre depuis le début';
+  String get abstinentSinceStart => 'Aucune rechute enregistrée.';
 
   @override
   String get timeSinceLastRelapse => 'Temps depuis la dernière rechute';

@@ -158,7 +158,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get onboarding0Title => 'Benvenuto in Grove 🌿';
 
   @override
-  String get onboarding0Body => 'Un tracker delle abitudini privato dove gli alberi rappresentano la tua crescita. Più a lungo rimani pulito, più i tuoi alberi diventano rigogliosi.';
+  String get onboarding0Body => 'Un tracker delle abitudini privato dove gli alberi rappresentano la tua crescita. Più a lungo ti astieni o registri, più i tuoi alberi diventano rigogliosi.';
 
   @override
   String get onboarding1Title => 'Pianta un albero';
@@ -170,7 +170,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get onboarding2Title => 'Guardalo crescere';
 
   @override
-  String get onboarding2Body => 'Ogni giorno pulito aiuta il tuo albero a maturare attraverso cinque stadi di crescita, da un piccolo seme fino a un albero del bosco con rami e foglie che ondeggiano.';
+  String get onboarding2Body => 'Ogni giorno aiuta il tuo albero a maturare attraverso cinque stadi di crescita, da un piccolo seme fino a un albero del bosco con rami e foglie che ondeggiano.';
 
   @override
   String get onboarding3Title => 'Registra una ricaduta';
@@ -323,7 +323,7 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove è un tracker delle abitudini minimalista che visualizza la tua crescita attraverso alberi. Ogni giorno pulito, il tuo albero cresce. Gratuito e open source.';
+  String get groveDescription => 'Grove è un tracker delle abitudini e della sobrietà minimalista che visualizza la tua crescita attraverso alberi. Ogni giorno in cui ti astieni o registri, il tuo albero cresce. Gratuito e open source.';
 
   @override
   String get groveLocked => 'Grove è bloccato';
@@ -359,7 +359,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get logDateBeforeTracking => '← Registra una data prima dell\'inizio del tracciamento';
 
   @override
-  String get cleanSinceStart => 'Pulito dall\'inizio';
+  String get abstinentSinceStart => 'Nessuna ricaduta registrata.';
 
   @override
   String get timeSinceLastRelapse => 'Tempo dall\'ultima ricaduta';

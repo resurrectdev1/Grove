@@ -158,7 +158,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get onboarding0Title => 'Willkommen bei Grove 🌿';
 
   @override
-  String get onboarding0Body => 'Ein privater Gewohnheitstracker, bei dem Bäume dein Wachstum darstellen. Je länger du sauber bleibst, desto lebendiger werden deine Bäume.';
+  String get onboarding0Body => 'Ein privater Gewohnheitstracker, bei dem Bäume dein Wachstum darstellen. Je länger du abstinent bleibst oder eincheckst, desto lebendiger werden deine Bäume.';
 
   @override
   String get onboarding1Title => 'Einen Baum pflanzen';
@@ -170,7 +170,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get onboarding2Title => 'Sieh ihn wachsen';
 
   @override
-  String get onboarding2Body => 'Jeder saubere Tag hilft deinem Baum, durch fünf Wachstumsstufen zu reifen — vom winzigen Samen bis zum vollen Hainbaum mit schwankenden Ästen.';
+  String get onboarding2Body => 'Jeder Tag hilft deinem Baum, durch fünf Wachstumsstufen zu reifen — vom winzigen Samen bis zum vollen Hainbaum mit schwankenden Ästen.';
 
   @override
   String get onboarding3Title => 'Rückfall protokollieren';
@@ -323,7 +323,7 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove ist ein minimalistischer Gewohnheitstracker, der dein Wachstum durch Bäume visualisiert. Jeden sauberen Tag wächst dein Baum. Kostenlos und Open-Source.';
+  String get groveDescription => 'Grove ist ein minimalistischer Gewohnheits- und Nüchternheitstracker, der dein Wachstum durch Bäume visualisiert. An jedem Tag, an dem du abstinent bleibst oder eincheckst, wächst dein Baum. Kostenlos und Open-Source.';
 
   @override
   String get groveLocked => 'Grove ist gesperrt';
@@ -359,7 +359,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get logDateBeforeTracking => '← Datum vor Tracking-Beginn protokollieren';
 
   @override
-  String get cleanSinceStart => 'Sauber seit Beginn';
+  String get abstinentSinceStart => 'Keine Rückfälle verzeichnet.';
 
   @override
   String get timeSinceLastRelapse => 'Zeit seit letztem Rückfall';

@@ -158,7 +158,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get onboarding0Title => 'Groveへようこそ 🌿';
 
   @override
-  String get onboarding0Body => '木があなたの成長を表すプライベートな習慣トラッカーです。清潔でいる期間が長いほど、木は生き生きと茂っていきます。';
+  String get onboarding0Body => '木があなたの成長を表すプライベートな習慣トラッカーです。禁欲またはチェックインを続ける期間が長いほど、木は生き生きと茂っていきます。';
 
   @override
   String get onboarding1Title => '木を植える';
@@ -170,7 +170,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get onboarding2Title => '成長を見守る';
 
   @override
-  String get onboarding2Body => '清潔な1日ごとに木は5つの成長段階を経て成熟します。小さな種から、揺れる枝と葉を持つ森の木へ。';
+  String get onboarding2Body => '毎日、木は5つの成長段階を経て成熟します。小さな種から、揺れる枝と葉を持つ森の木へ。';
 
   @override
   String get onboarding3Title => '再発を記録する';
@@ -323,7 +323,7 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Groveは木を通してあなたの成長を視覚化するミニマリストの習慣トラッカーです。清潔な毎日、木が育ちます。無料・オープンソース。';
+  String get groveDescription => 'Groveは木を通してあなたの成長を視覚化するミニマリストの習慣・禁欲トラッカーです。禁欲またはチェックインした日、木が育ちます。無料・オープンソース。';
 
   @override
   String get groveLocked => 'Groveはロックされています';
@@ -359,7 +359,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get logDateBeforeTracking => '← トラッキング開始前の日付を記録';
 
   @override
-  String get cleanSinceStart => '開始からクリーン';
+  String get abstinentSinceStart => '再発記録なし。';
 
   @override
   String get timeSinceLastRelapse => '最後の再発からの時間';

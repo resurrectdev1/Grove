@@ -158,7 +158,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboarding0Title => 'Grove में आपका स्वागत है 🌿';
 
   @override
-  String get onboarding0Body => 'एक निजी आदत ट्रैकर जहां पेड़ आपके विकास का प्रतिनिधित्व करते हैं। जितने लंबे समय तक आप स्वच्छ रहेंगे, आपके पेड़ उतने ही जीवंत होते जाएंगे।';
+  String get onboarding0Body => 'एक निजी आदत ट्रैकर जहां पेड़ आपके विकास का प्रतिनिधित्व करते हैं। जितने लंबे समय तक आप संयम बनाए रखेंगे या चेक-इन करेंगे, आपके पेड़ उतने ही जीवंत होते जाएंगे।';
 
   @override
   String get onboarding1Title => 'एक पेड़ लगाएं';
@@ -170,7 +170,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboarding2Title => 'इसे बढ़ते देखें';
 
   @override
-  String get onboarding2Body => 'हर स्वच्छ दिन आपके पेड़ को पांच विकास चरणों से गुजरने में मदद करता है — एक छोटे बीज से लेकर पूर्ण वन वृक्ष तक।';
+  String get onboarding2Body => 'हर दिन आपके पेड़ को पांच विकास चरणों से गुजरने में मदद करता है — एक छोटे बीज से लेकर पूर्ण वन वृक्ष तक।';
 
   @override
   String get onboarding3Title => 'पुनरावृत्ति दर्ज करें';
@@ -323,7 +323,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove एक न्यूनतम आदत ट्रैकर है जो पेड़ों के माध्यम से आपके विकास को दर्शाता है। हर स्वच्छ दिन आपका पेड़ बढ़ता है। मुफ्त, ओपन-सोर्स।';
+  String get groveDescription => 'Grove एक न्यूनतम आदत और संयम ट्रैकर है जो पेड़ों के माध्यम से आपके विकास को दर्शाता है। जिस दिन भी आप संयम बनाए रखें या चेक-इन करें, आपका पेड़ बढ़ता है। मुफ्त, ओपन-सोर्स।';
 
   @override
   String get groveLocked => 'Grove लॉक है';
@@ -359,7 +359,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get logDateBeforeTracking => '← ट्रैकिंग शुरू होने से पहले की तारीख दर्ज करें';
 
   @override
-  String get cleanSinceStart => 'शुरू से स्वच्छ';
+  String get abstinentSinceStart => 'कोई पुनरावृत्ति दर्ज नहीं।';
 
   @override
   String get timeSinceLastRelapse => 'अंतिम पुनरावृत्ति के बाद का समय';
