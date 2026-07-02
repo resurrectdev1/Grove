@@ -102,34 +102,55 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
               childCount: habit.relapses.length)),
           ] else ...[
             SliverToBoxAdapter(child: _checkInHistoryHeader(habit, theme, l10n)),
-            if (habit.checkInDays.isEmpty)
+            if (habit.checkInDays.isEmpty && habit.nullDays.isEmpty)
               SliverToBoxAdapter(child: _noHistory(theme, l10n, checkIn: true))
               else
                 SliverList(delegate: SliverChildBuilderDelegate(
                   (_, i) {
-                    final sorted = habit.checkInDays.toList()..sort((a, b) => b.compareTo(a));
+                    final sorted = <DateTime>{...habit.checkInDays, ...habit.nullDays}.toList()
+                    ..sort((a, b) => b.compareTo(a));
                     final day = sorted[i];
-                    final date = habit.checkInTimeFor(day);
+                    final isExcused = habit.nullDays.contains(day);
+                    final note = habit.checkInNoteFor(day);
+                    const frostColor = Color(0xFF42A5C8);
                     return Container(
                       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(color: theme.surface, borderRadius: BorderRadius.circular(16),
                       border: Border.all(color: theme.surfaceHigh)),
-                      child: Row(children: [
+                      child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                         Container(width: 28, height: 28,
-                                  decoration: BoxDecoration(color: habit.color.withValues(alpha: 0.12), shape: BoxShape.circle),
+                                  decoration: BoxDecoration(
+                                    color: isExcused ? frostColor.withValues(alpha: 0.14) : habit.color.withValues(alpha: 0.12),
+                                    shape: BoxShape.circle),
                                   alignment: Alignment.center,
-                                  child: Icon(Icons.check, size: 14, color: habit.color)),
+                                  child: isExcused
+                                  ? const Text('❄️', style: TextStyle(fontSize: 13))
+                                  : Icon(Icons.check, size: 14, color: habit.color)),
                                   const SizedBox(width: 12),
-                                  Expanded(child: Text(
-                                    DateFormat('EEEE, MMMM d, yyyy').format(date),
-                                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: theme.textPrimary),
-                                  )),
-                                 Text(DateFormat('h:mm a').format(date), style: TextStyle(fontSize: 11, color: theme.textMuted)),
+                                  Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                    Row(children: [
+                                      Expanded(child: Text(
+                                        DateFormat('EEEE, MMMM d, yyyy').format(day),
+                                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: theme.textPrimary),
+                                      )),
+                                      if (isExcused)
+                                        Text(l10n.legendExcused,
+                                             style: TextStyle(fontSize: 11, color: frostColor, fontWeight: FontWeight.w500))
+                                      else
+                                        Text(DateFormat('h:mm a').format(habit.checkInTimeFor(day)),
+                                             style: TextStyle(fontSize: 11, color: theme.textMuted)),
+                                    ]),
+                                    if (note.isNotEmpty) ...[
+                                      const SizedBox(height: 6),
+                                      Text('"$note"',
+                                           style: TextStyle(fontSize: 13, color: theme.textSecondary, fontStyle: FontStyle.italic, height: 1.4)),
+                                    ],
+                                  ])),
                       ]),
                     );
                   },
-                  childCount: habit.checkInDays.length,
+                  childCount: habit.checkInDays.length + habit.nullDays.length,
                 )),
           ],
           SliverToBoxAdapter(child: _deleteSection(context, habit, theme, l10n)),
@@ -192,10 +213,6 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                       const SizedBox(height: 14),
                       GestureDetector(
                         onTap: () {
-                          if (habit.nullDays.contains(DateTime(
-                            DateTime.now().year, DateTime.now().month, DateTime.now().day))) {
-                            return;
-                          }
                           HapticFeedback.mediumImpact();
                           context.read<GroveModel>().toggleCheckIn(habit.id);
                         },
@@ -613,7 +630,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
            Container(
              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
              decoration: BoxDecoration(color: habit.color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(12)),
-             child: Text(l10n.totalCount(habit.checkInDays.length),
+             child: Text(l10n.totalCount(habit.checkInDays.length + habit.nullDays.length),
              style: TextStyle(fontSize: 11, color: habit.color, fontWeight: FontWeight.w500))),
     ]),
   );
