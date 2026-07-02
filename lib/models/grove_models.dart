@@ -66,13 +66,16 @@ class HabitTree {
 
   final Set<DateTime>      _nullDays;
   final Map<DateTime, DateTime> _checkInTimestamps;
+  final Map<DateTime, String>   _checkInNotes;
 
   List<RelapseEvent> get relapses     => _relapses;
   Set<DateTime>      get checkInDays  => _checkInDays;
   Set<DateTime>      get nullDays     => _nullDays;
   Map<DateTime, DateTime> get checkInTimestamps => _checkInTimestamps;
+  Map<DateTime, String>   get checkInNotes      => _checkInNotes;
 
   DateTime checkInTimeFor(DateTime day) => _checkInTimestamps[day] ?? day;
+  String   checkInNoteFor(DateTime day) => _checkInNotes[day] ?? '';
 
   final int  geneticSeed;
   final bool streakFrozen;
@@ -89,6 +92,7 @@ class HabitTree {
     Set<DateTime>? checkInDays,
     Set<DateTime>? nullDays,
     Map<DateTime, DateTime>? checkInTimestamps,
+    Map<DateTime, String>?   checkInNotes,
     this.streakFrozen = false,
   })  : _relapses    = relapses != null ? List<RelapseEvent>.of(relapses) : [],
   _checkInDays = checkInDays != null ? Set<DateTime>.of(checkInDays) : <DateTime>{},
@@ -96,6 +100,9 @@ class HabitTree {
   _checkInTimestamps = checkInTimestamps != null
     ? Map<DateTime, DateTime>.of(checkInTimestamps)
     : <DateTime, DateTime>{},
+  _checkInNotes = checkInNotes != null
+    ? Map<DateTime, String>.of(checkInNotes)
+    : <DateTime, String>{},
   geneticSeed  = geneticSeed ?? id.hashCode;
 
   int get checkInStreak {
@@ -185,6 +192,9 @@ class HabitTree {
     'checkInTimestamps': _checkInTimestamps.map(
       (day, ts) => MapEntry(day.toIso8601String(), ts.toIso8601String()),
     ),
+    'checkInNotes': _checkInNotes.map(
+      (day, note) => MapEntry(day.toIso8601String(), note),
+    ),
     'streakFrozen': streakFrozen,
   };
 
@@ -209,6 +219,8 @@ class HabitTree {
     .toSet(),
     checkInTimestamps: (m['checkInTimestamps'] as Map<String, dynamic>?)
     ?.map((day, ts) => MapEntry(DateTime.parse(day), DateTime.parse(ts as String))),
+    checkInNotes: (m['checkInNotes'] as Map<String, dynamic>?)
+    ?.map((day, note) => MapEntry(DateTime.parse(day), note as String)),
     streakFrozen: m['streakFrozen'] as bool? ?? false,
   );
 
@@ -227,6 +239,7 @@ class HabitTree {
     Set<DateTime>?      checkInDays,
     Set<DateTime>?      nullDays,
     Map<DateTime, DateTime>? checkInTimestamps,
+    Map<DateTime, String>?   checkInNotes,
     bool?               streakFrozen,
   }) =>
   HabitTree(
@@ -241,6 +254,7 @@ class HabitTree {
     checkInDays:  checkInDays  ?? Set<DateTime>.of(_checkInDays),
     nullDays:     nullDays     ?? Set<DateTime>.of(_nullDays),
     checkInTimestamps: checkInTimestamps ?? Map<DateTime, DateTime>.of(_checkInTimestamps),
+    checkInNotes:      checkInNotes      ?? Map<DateTime, String>.of(_checkInNotes),
     streakFrozen: streakFrozen ?? this.streakFrozen,
   );
 }
