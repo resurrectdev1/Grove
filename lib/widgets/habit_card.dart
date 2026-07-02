@@ -75,7 +75,7 @@ class _HabitCardState extends State<HabitCard> {
                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                        decoration: BoxDecoration(
                          color: habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(12)),
-                         child: Text(isCheckIn ? l10n.dayStreak(days) : stageLabelLocalized(stage),
+                         child: Text(stageLabelLocalized(stage),
                          style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: habit.color)),
                      ),
                      const SizedBox(width: 6),
@@ -148,7 +148,7 @@ class _HabitCardState extends State<HabitCard> {
                                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                                           decoration: BoxDecoration(
                                             color: habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(20)),
-                                            child: Text(isCheckIn ? l10n.dayStreak(days) : stageLabelLocalized(stage), style: TextStyle(
+                                            child: Text(stageLabelLocalized(stage), style: TextStyle(
                                               fontSize: 11, fontWeight: FontWeight.w600, color: habit.color, letterSpacing: 0.8)),
                                         ),
                                         const SizedBox(width: 8),
