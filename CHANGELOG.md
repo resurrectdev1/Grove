@@ -29,6 +29,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Fixed check-in buttons not working on excused days in the habit detail view and home screen
 * Fixed 1x1 check-in widget breaking when using it on a allready excused day
 * Fixed l10n typo from |10n to l10n
+* Fixed Daily check-in reminder not prompting notification permissons upon first toggle
 * Added Calendar view button to list view (layout archetecture)
 
 ---
