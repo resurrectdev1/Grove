@@ -118,6 +118,7 @@ class GroveSettings extends ChangeNotifier {
     if (enabled && time != null) {
       await _prefs?.setInt('daily_reminder_hour',   time.hour);
       await _prefs?.setInt('daily_reminder_minute', time.minute);
+      await GroveNotifications.instance.requestPermissions();
       await GroveNotifications.instance.scheduleDailyReminder(time);
     } else {
       await _prefs?.remove('daily_reminder_hour');
