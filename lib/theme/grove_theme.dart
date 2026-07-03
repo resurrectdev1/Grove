@@ -98,9 +98,17 @@ class GroveTheme {
   static const slateGrey  = Color(0xFF6B7A7D);
   static const streakGold = Color(0xFFB8973A);
 
+  static const deepIndigo   = Color(0xFF4A5E9E);
+  static const oliveGreen   = Color(0xFF7A9E3B);
+  static const terracotta   = Color(0xFFC46A4A);
+  static const dustyRose    = Color(0xFFC77B93);
+  static const amberBrown   = Color(0xFF8C6239);
+
   static const List<Color> treePalette = [
-    Color(0xFF4E8B5F), Color(0xFF42A5C8), Color(0xFF9E4C3B),
-    Color(0xFFB8973A), Color(0xFF8B5E9E), Color(0xFF4E8B7A),
-    Color(0xFFB87C3A), Color(0xFF9E3B6B),
+    Color(0xFF9E4C3B), Color(0xFFC46A4A), Color(0xFFB87C3A),
+    Color(0xFF8C6239), Color(0xFFB8973A), Color(0xFF7A9E3B),
+    Color(0xFF4E8B5F), Color(0xFF4E8B7A), Color(0xFF6B7A7D),
+    Color(0xFF42A5C8), Color(0xFF4A5E9E), Color(0xFF8B5E9E),
+    Color(0xFF9E3B6B), Color(0xFFC77B93),
   ];
 }
