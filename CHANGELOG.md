@@ -10,6 +10,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 > Changes staged for the next release go here. Move them down when you cut a tag.
 
+---
+
+## [0.7.2] - 2026-07-03
+
 ### Added
 
 * Full localization of the interactive monthly calendar, including locale-aware weekday headers
