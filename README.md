@@ -13,6 +13,8 @@ Whether you're maintaining sobriety, breaking harmful habits, or building positi
 <img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_4.png">
 <img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_5.png">
 <img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_6.png">
+<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_7.png">
+<img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_8.png">
 </p>
 
 ### How does it work?
