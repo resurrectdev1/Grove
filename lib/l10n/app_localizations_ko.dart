@@ -158,37 +158,43 @@ class AppLocalizationsKo extends AppLocalizations {
   String get onboarding0Title => 'Grove에 오신 것을 환영합니다 🌿';
 
   @override
-  String get onboarding0Body => '나무가 당신의 성장을 나타내는 개인 습관 추적기입니다. 금욕하거나 체크인할수록 나무가 더 생생하고 무성해집니다.';
+  String get onboarding0Body =>
+      '나무가 당신의 성장을 나타내는 개인 습관 추적기입니다. 금욕하거나 체크인할수록 나무가 더 생생하고 무성해집니다.';
 
   @override
   String get onboarding1Title => '나무 심기';
 
   @override
-  String get onboarding1Body => '습관을 만들려면 \"나무 심기\"를 탭하세요. 이름을 주고 색상을 선택하면 Grove가 고유한 나무를 생성합니다.';
+  String get onboarding1Body =>
+      '습관을 만들려면 \"나무 심기\"를 탭하세요. 이름을 주고 색상을 선택하면 Grove가 고유한 나무를 생성합니다.';
 
   @override
   String get onboarding2Title => '성장 지켜보기';
 
   @override
-  String get onboarding2Body => '매일매일이 나무를 5단계로 성숙시킵니다. 작은 씨앗부터 흔들리는 가지와 잎이 있는 완전한 숲 나무까지.';
+  String get onboarding2Body =>
+      '매일매일이 나무를 5단계로 성숙시킵니다. 작은 씨앗부터 흔들리는 가지와 잎이 있는 완전한 숲 나무까지.';
 
   @override
   String get onboarding3Title => '재발 기록하기';
 
   @override
-  String get onboarding3Body => '실수하면 솔직하게 기록하세요. Grove는 가장 긴 연속 기록과 역사를 추적하며 진행 상황은 절대 지워지지 않습니다.';
+  String get onboarding3Body =>
+      '실수하면 솔직하게 기록하세요. Grove는 가장 긴 연속 기록과 역사를 추적하며 진행 상황은 절대 지워지지 않습니다.';
 
   @override
   String get onboarding4Title => '당신의 기록';
 
   @override
-  String get onboarding4Body => '나무를 열어 달력, 마일스톤, 연속 기록 역사 및 장기적 일관성에 대한 통찰력을 탐색하세요.';
+  String get onboarding4Body =>
+      '나무를 열어 달력, 마일스톤, 연속 기록 역사 및 장기적 일관성에 대한 통찰력을 탐색하세요.';
 
   @override
   String get onboarding5Title => '완전한 프라이버시';
 
   @override
-  String get onboarding5Body => '모든 것이 기기에 저장됩니다. 어디에도 전송되지 않습니다. 설정의 내보내기 / 가져오기로 언제든 백업하세요. 이제 성장하세요! 🌱';
+  String get onboarding5Body =>
+      '모든 것이 기기에 저장됩니다. 어디에도 전송되지 않습니다. 설정의 내보내기 / 가져오기로 언제든 백업하세요. 이제 성장하세요! 🌱';
 
   @override
   String get next => '다음';
@@ -269,7 +275,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get restoreGroveBackup => '백업에서 Grove 복원';
 
   @override
-  String get exportImportNote => '내보내기는 선택한 위치에 .json 파일을 저장합니다.\n가져오기는 현재 grove를 교체합니다 • 먼저 백업하세요.';
+  String get exportImportNote =>
+      '내보내기는 선택한 위치에 .json 파일을 저장합니다.\n가져오기는 현재 grove를 교체합니다 • 먼저 백업하세요.';
 
   @override
   String get backupSaved => '✓ 백업 저장됨';
@@ -323,7 +330,8 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove는 나무를 통해 성장을 시각화하는 미니멀리스트 습관 및 금욕 추적기입니다. 매일 금욕하거나 체크인하면 나무가 자랍니다. 무료 오픈 소스.';
+  String get groveDescription =>
+      'Grove는 나무를 통해 성장을 시각화하는 미니멀리스트 습관 및 금욕 추적기입니다. 매일 금욕하거나 체크인하면 나무가 자랍니다. 무료 오픈 소스.';
 
   @override
   String get groveLocked => 'Grove가 잠겨 있습니다';
@@ -413,6 +421,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get renameHabit => '습관 이름 변경';
+
+  @override
+  String get habitOptions => '습관 옵션';
 
   @override
   String get save => '저장';

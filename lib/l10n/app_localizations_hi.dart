@@ -137,7 +137,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get logARelapse => 'पुनरावृत्ति दर्ज करें?';
 
   @override
-  String get relapseMotivation => 'आप उससे ज्यादा मजबूत हैं जितना आप सोचते हैं।';
+  String get relapseMotivation =>
+      'आप उससे ज्यादा मजबूत हैं जितना आप सोचते हैं।';
 
   @override
   String get customTimestamp => 'कस्टम समय';
@@ -146,7 +147,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get loggedReason => 'दर्ज कारण (वैकल्पिक)';
 
   @override
-  String get loggedReasonHint => 'तनाव, चिंता, थकान, साथियों का दबाव, ट्रिगर? आदि';
+  String get loggedReasonHint =>
+      'तनाव, चिंता, थकान, साथियों का दबाव, ट्रिगर? आदि';
 
   @override
   String get confirmLog => 'लॉग पुष्टि करें';
@@ -158,37 +160,43 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboarding0Title => 'Grove में आपका स्वागत है 🌿';
 
   @override
-  String get onboarding0Body => 'एक निजी आदत ट्रैकर जहां पेड़ आपके विकास का प्रतिनिधित्व करते हैं। जितने लंबे समय तक आप संयम बनाए रखेंगे या चेक-इन करेंगे, आपके पेड़ उतने ही जीवंत होते जाएंगे।';
+  String get onboarding0Body =>
+      'एक निजी आदत ट्रैकर जहां पेड़ आपके विकास का प्रतिनिधित्व करते हैं। जितने लंबे समय तक आप संयम बनाए रखेंगे या चेक-इन करेंगे, आपके पेड़ उतने ही जीवंत होते जाएंगे।';
 
   @override
   String get onboarding1Title => 'एक पेड़ लगाएं';
 
   @override
-  String get onboarding1Body => 'एक आदत बनाने के लिए \"एक पेड़ लगाएं\" टैप करें। नाम दें, रंग चुनें, और Grove एक अनूठा पेड़ बनाता है।';
+  String get onboarding1Body =>
+      'एक आदत बनाने के लिए \"एक पेड़ लगाएं\" टैप करें। नाम दें, रंग चुनें, और Grove एक अनूठा पेड़ बनाता है।';
 
   @override
   String get onboarding2Title => 'इसे बढ़ते देखें';
 
   @override
-  String get onboarding2Body => 'हर दिन आपके पेड़ को पांच विकास चरणों से गुजरने में मदद करता है — एक छोटे बीज से लेकर पूर्ण वन वृक्ष तक।';
+  String get onboarding2Body =>
+      'हर दिन आपके पेड़ को पांच विकास चरणों से गुजरने में मदद करता है — एक छोटे बीज से लेकर पूर्ण वन वृक्ष तक।';
 
   @override
   String get onboarding3Title => 'पुनरावृत्ति दर्ज करें';
 
   @override
-  String get onboarding3Body => 'यदि आप फिसल जाएं, तो ईमानदारी से दर्ज करें। Grove आपकी सबसे लंबी श्रृंखलाएं और इतिहास ट्रैक करता है।';
+  String get onboarding3Body =>
+      'यदि आप फिसल जाएं, तो ईमानदारी से दर्ज करें। Grove आपकी सबसे लंबी श्रृंखलाएं और इतिहास ट्रैक करता है।';
 
   @override
   String get onboarding4Title => 'आपका इतिहास';
 
   @override
-  String get onboarding4Body => 'किसी भी पेड़ को खोलें और कैलेंडर, मील के पत्थर, श्रृंखला इतिहास, पुनरावृत्ति नोट्स और आपकी दीर्घकालिक निरंतरता की जानकारी देखें।';
+  String get onboarding4Body =>
+      'किसी भी पेड़ को खोलें और कैलेंडर, मील के पत्थर, श्रृंखला इतिहास, पुनरावृत्ति नोट्स और आपकी दीर्घकालिक निरंतरता की जानकारी देखें।';
 
   @override
   String get onboarding5Title => 'पूरी तरह निजी';
 
   @override
-  String get onboarding5Body => 'सब कुछ आपके डिवाइस पर रहता है। कुछ भी कहीं नहीं भेजा जाता। सेटिंग में Export / Import के जरिए बैकअप लें। अब कुछ बढ़ाएं! 🌱';
+  String get onboarding5Body =>
+      'सब कुछ आपके डिवाइस पर रहता है। कुछ भी कहीं नहीं भेजा जाता। सेटिंग में Export / Import के जरिए बैकअप लें। अब कुछ बढ़ाएं! 🌱';
 
   @override
   String get next => 'आगे';
@@ -254,13 +262,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get milestoneNotifications => 'मील का पत्थर सूचनाएं';
 
   @override
-  String get milestoneNotificationsSubtitle => 'जब पेड़ नए विकास चरण पर पहुंचे तो सूचित हों';
+  String get milestoneNotificationsSubtitle =>
+      'जब पेड़ नए विकास चरण पर पहुंचे तो सूचित हों';
 
   @override
   String get biometricUnlock => 'बायोमेट्रिक अनलॉक';
 
   @override
-  String get biometricUnlockSubtitle => 'Grove खोलने के लिए फिंगरप्रिंट / पिन आवश्यक है';
+  String get biometricUnlockSubtitle =>
+      'Grove खोलने के लिए फिंगरप्रिंट / पिन आवश्यक है';
 
   @override
   String get exportGroveBackup => 'Grove बैकअप निर्यात करें';
@@ -269,7 +279,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get restoreGroveBackup => 'बैकअप से Grove पुनर्स्थापित करें';
 
   @override
-  String get exportImportNote => 'निर्यात एक .json फ़ाइल सहेजता है।\nआयात आपका वर्तमान grove बदल देगा • पहले बैकअप लें।';
+  String get exportImportNote =>
+      'निर्यात एक .json फ़ाइल सहेजता है।\nआयात आपका वर्तमान grove बदल देगा • पहले बैकअप लें।';
 
   @override
   String get backupSaved => '✓ बैकअप सहेजा गया';
@@ -288,7 +299,8 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get invalidBackup => '✗ अमान्य बैकअप — सुनिश्चित करें कि आपने सही फ़ाइल चुनी है';
+  String get invalidBackup =>
+      '✗ अमान्य बैकअप — सुनिश्चित करें कि आपने सही फ़ाइल चुनी है';
 
   @override
   String get language => 'भाषा';
@@ -323,7 +335,8 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove एक न्यूनतम आदत और संयम ट्रैकर है जो पेड़ों के माध्यम से आपके विकास को दर्शाता है। जिस दिन भी आप संयम बनाए रखें या चेक-इन करें, आपका पेड़ बढ़ता है। मुफ्त, ओपन-सोर्स।';
+  String get groveDescription =>
+      'Grove एक न्यूनतम आदत और संयम ट्रैकर है जो पेड़ों के माध्यम से आपके विकास को दर्शाता है। जिस दिन भी आप संयम बनाए रखें या चेक-इन करें, आपका पेड़ बढ़ता है। मुफ्त, ओपन-सोर्स।';
 
   @override
   String get groveLocked => 'Grove लॉक है';
@@ -356,7 +369,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get thisMonth => 'इस महीने';
 
   @override
-  String get logDateBeforeTracking => '← ट्रैकिंग शुरू होने से पहले की तारीख दर्ज करें';
+  String get logDateBeforeTracking =>
+      '← ट्रैकिंग शुरू होने से पहले की तारीख दर्ज करें';
 
   @override
   String get abstinentSinceStart => 'कोई पुनरावृत्ति दर्ज नहीं।';
@@ -415,6 +429,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get renameHabit => 'आदत का नाम बदलें';
 
   @override
+  String get habitOptions => 'आदत विकल्प';
+
+  @override
   String get save => 'सहेजें';
 
   @override
@@ -446,7 +463,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get logEarlierDate => 'पहले की तारीख दर्ज करें';
 
   @override
-  String get extendsHistoryNote => 'यह आपके इतिहास को बढ़ाता है और श्रृंखलाओं की पुनर्गणना करता है';
+  String get extendsHistoryNote =>
+      'यह आपके इतिहास को बढ़ाता है और श्रृंखलाओं की पुनर्गणना करता है';
 
   @override
   String get logEarlierDateTitle => 'पहले की तारीख दर्ज करें';
@@ -455,7 +473,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get beforeTrackingStarted => 'ट्रैकिंग शुरू होने से पहले';
 
   @override
-  String get extendHistoryInfo => 'यह आपके ट्रैकिंग इतिहास को बढ़ाएगा और शीर्ष श्रृंखलाओं की पुनर्गणना करेगा।';
+  String get extendHistoryInfo =>
+      'यह आपके ट्रैकिंग इतिहास को बढ़ाएगा और शीर्ष श्रृंखलाओं की पुनर्गणना करेगा।';
 
   @override
   String get date => 'तारीख';
@@ -464,10 +483,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get time => 'समय';
 
   @override
-  String get logAsRelapseOnDate => 'इस तारीख को पुनरावृत्ति के रूप में दर्ज करें';
+  String get logAsRelapseOnDate =>
+      'इस तारीख को पुनरावृत्ति के रूप में दर्ज करें';
 
   @override
-  String get onlyExtendStartDate => 'केवल प्रारंभ तारीख बढ़ाएं (पुनरावृत्ति नहीं)';
+  String get onlyExtendStartDate =>
+      'केवल प्रारंभ तारीख बढ़ाएं (पुनरावृत्ति नहीं)';
 
   @override
   String get whatHappenedHint => 'उस दिन क्या हुआ…';
@@ -494,7 +515,8 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get notifSaplingBody => 'आपका पेड़ अपने दम पर खड़ा है, देखें आप कितना बढ़े हैं';
+  String get notifSaplingBody =>
+      'आपका पेड़ अपने दम पर खड़ा है, देखें आप कितना बढ़े हैं';
 
   @override
   String notifYoungTreeTitle(String name) {
@@ -537,7 +559,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get dailyReminderSetting => 'दैनिक चेक-इन रिमाइंडर';
 
   @override
-  String get dailyReminderSettingSubtitle => 'अपने वन में चेक-इन करने का एक संकेत';
+  String get dailyReminderSettingSubtitle =>
+      'अपने वन में चेक-इन करने का एक संकेत';
 
   @override
   String get tapToChange => 'बदलने के लिए टैप करें';
@@ -549,7 +572,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get dailyReminderTitle => 'चेक-इन का समय 🌿';
 
   @override
-  String get dailyReminderBody => 'आपका वन प्रतीक्षा कर रहा है। श्रृंखला जीवित रखें।';
+  String get dailyReminderBody =>
+      'आपका वन प्रतीक्षा कर रहा है। श्रृंखला जीवित रखें।';
 
   @override
   String get legendMissed => 'छूटा';
@@ -592,10 +616,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get reasonOptional => 'कारण (वैकल्पिक)';
 
   @override
-  String get reasonHint => 'तनाव, चिंता, थकावट, साथियों का दबाव, ट्रिगर? आदि...';
+  String get reasonHint =>
+      'तनाव, चिंता, थकावट, साथियों का दबाव, ट्रिगर? आदि...';
 
   @override
-  String get excusedStreakPreserved => '❄️ माफ़ किया गया, आपकी लगातार गिनती सुरक्षित है।';
+  String get excusedStreakPreserved =>
+      '❄️ माफ़ किया गया, आपकी लगातार गिनती सुरक्षित है।';
 
   @override
   String get checkedInThisDay => '✅ इस दिन चेक-इन किया गया।';
@@ -637,7 +663,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get noteOptional => 'नोट (वैकल्पिक)';
 
   @override
-  String get noteHint => 'आज का दिन कैसा रहा? याद रखने लायक कोई उपलब्धि या नोट...';
+  String get noteHint =>
+      'आज का दिन कैसा रहा? याद रखने लायक कोई उपलब्धि या नोट...';
 
   @override
   String get streakFrozen => 'लगातार गिनती फ़्रीज़ है';

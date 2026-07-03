@@ -130,6 +130,7 @@
   "noRelapsesRecorded": "没有记录复发。继续成长。",
   "noCheckInsYet": "还没有打卡记录。今天开始！",
   "renameHabit": "重命名习惯",
+  "habitOptions": "习惯选项",
   "save": "保存",
   "dangerZone": "危险区域",
   "deleteHabitPermanently": "永久删除习惯",

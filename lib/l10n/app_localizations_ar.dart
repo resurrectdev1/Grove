@@ -158,37 +158,43 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboarding0Title => 'مرحباً بك في غروف 🌿';
 
   @override
-  String get onboarding0Body => 'متتبع خاص للرصانة والعادات حيث تمثل الأشجار نموك، كلما استمررت في الامتناع أو تسجيل الحضور لفترة أطول، أصبحت أشجارك أكثر إشراقاً وخضرة.';
+  String get onboarding0Body =>
+      'متتبع خاص للرصانة والعادات حيث تمثل الأشجار نموك، كلما استمررت في الامتناع أو تسجيل الحضور لفترة أطول، أصبحت أشجارك أكثر إشراقاً وخضرة.';
 
   @override
   String get onboarding1Title => 'ازرع شجرة';
 
   @override
-  String get onboarding1Body => 'اضغط على \"ازرع شجرة\" لإنشاء عادة. أعطها اسماً، واختر لوناً، وسيُنشئ غروف شجرة فريدة لها. كل شجرة تنمو بشكل مختلف.';
+  String get onboarding1Body =>
+      'اضغط على \"ازرع شجرة\" لإنشاء عادة. أعطها اسماً، واختر لوناً، وسيُنشئ غروف شجرة فريدة لها. كل شجرة تنمو بشكل مختلف.';
 
   @override
   String get onboarding2Title => 'شاهد النمو';
 
   @override
-  String get onboarding2Body => 'كل يوم يساعد شجرتك على النضج عبر خمس مراحل نمو. من بذرة صغيرة وحتى شجرة غابة كاملة بأغصان وأوراق متمايلة.';
+  String get onboarding2Body =>
+      'كل يوم يساعد شجرتك على النضج عبر خمس مراحل نمو. من بذرة صغيرة وحتى شجرة غابة كاملة بأغصان وأوراق متمايلة.';
 
   @override
   String get onboarding3Title => 'تسجيل انتكاسة';
 
   @override
-  String get onboarding3Body => 'إذا انزلقت، سجّل ذلك بصدق. يتتبع غروف أطول سلاسلك وتاريخك، لذا لا يُمحى تقدمك أبداً.';
+  String get onboarding3Body =>
+      'إذا انزلقت، سجّل ذلك بصدق. يتتبع غروف أطول سلاسلك وتاريخك، لذا لا يُمحى تقدمك أبداً.';
 
   @override
   String get onboarding4Title => 'تاريخك';
 
   @override
-  String get onboarding4Body => 'افتح أي شجرة لاستكشاف التقاويم والإنجازات وتاريخ السلاسل وملاحظات الانتكاسة ورؤى حول ثباتك على المدى الطويل.';
+  String get onboarding4Body =>
+      'افتح أي شجرة لاستكشاف التقاويم والإنجازات وتاريخ السلاسل وملاحظات الانتكاسة ورؤى حول ثباتك على المدى الطويل.';
 
   @override
   String get onboarding5Title => 'خاص تماماً';
 
   @override
-  String get onboarding5Body => 'كل شيء يبقى على جهازك. لا يُرسَل شيء لأي مكان. احتفظ بنسخة احتياطية أو انقل غابتك في أي وقت عبر التصدير/الاستيراد في الإعدادات. الآن اذهب وابنِ شيئاً يستحق الحفاظ عليه. 🌱';
+  String get onboarding5Body =>
+      'كل شيء يبقى على جهازك. لا يُرسَل شيء لأي مكان. احتفظ بنسخة احتياطية أو انقل غابتك في أي وقت عبر التصدير/الاستيراد في الإعدادات. الآن اذهب وابنِ شيئاً يستحق الحفاظ عليه. 🌱';
 
   @override
   String get next => 'التالي';
@@ -254,7 +260,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get milestoneNotifications => 'إشعارات الإنجازات';
 
   @override
-  String get milestoneNotificationsSubtitle => 'احصل على إشعار عندما تصل شجرة إلى مرحلة نمو جديدة';
+  String get milestoneNotificationsSubtitle =>
+      'احصل على إشعار عندما تصل شجرة إلى مرحلة نمو جديدة';
 
   @override
   String get biometricUnlock => 'فتح بصمة';
@@ -269,7 +276,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get restoreGroveBackup => 'استعادة الغابة من النسخة الاحتياطية';
 
   @override
-  String get exportImportNote => 'التصدير يحفظ ملف .json في موقع تختاره.\nالاستيراد سيستبدل غابتك الحالية • صدّر نسخة احتياطية أولاً.';
+  String get exportImportNote =>
+      'التصدير يحفظ ملف .json في موقع تختاره.\nالاستيراد سيستبدل غابتك الحالية • صدّر نسخة احتياطية أولاً.';
 
   @override
   String get backupSaved => '✓ تم حفظ النسخة الاحتياطية';
@@ -288,7 +296,8 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get invalidBackup => '✗ نسخة احتياطية غير صالحة — تأكد من اختيار الملف الصحيح';
+  String get invalidBackup =>
+      '✗ نسخة احتياطية غير صالحة — تأكد من اختيار الملف الصحيح';
 
   @override
   String get language => 'اللغة';
@@ -323,7 +332,8 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'غروف متتبع عادات ورصانة بسيط يُصوِّر نموك من خلال الأشجار. كل يوم تمتنع فيه أو تسجل حضورك، تنمو شجرتك. بُني بحب كأداة مجانية مفتوحة المصدر.';
+  String get groveDescription =>
+      'غروف متتبع عادات ورصانة بسيط يُصوِّر نموك من خلال الأشجار. كل يوم تمتنع فيه أو تسجل حضورك، تنمو شجرتك. بُني بحب كأداة مجانية مفتوحة المصدر.';
 
   @override
   String get groveLocked => 'غروف مقفل';
@@ -415,6 +425,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get renameHabit => 'إعادة تسمية العادة';
 
   @override
+  String get habitOptions => 'خيارات العادة';
+
+  @override
   String get save => 'حفظ';
 
   @override
@@ -455,7 +468,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get beforeTrackingStarted => 'قبل بدء التتبع';
 
   @override
-  String get extendHistoryInfo => 'سيمتد هذا إلى تاريخ التتبع السابق ويُعيد حساب أعلى سلاسلك.';
+  String get extendHistoryInfo =>
+      'سيمتد هذا إلى تاريخ التتبع السابق ويُعيد حساب أعلى سلاسلك.';
 
   @override
   String get date => 'التاريخ';

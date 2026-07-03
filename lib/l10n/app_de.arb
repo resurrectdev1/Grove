@@ -172,6 +172,7 @@
   "noRelapsesRecorded": "Keine Rückfälle erfasst. Wachse weiter.",
   "noCheckInsYet": "Noch keine Check-ins. Starte heute!",
   "renameHabit": "Gewohnheit umbenennen",
+  "habitOptions": "Gewohnheitsoptionen",
   "save": "Speichern",
   "dangerZone": "Gefahrenzone",
   "deleteHabitPermanently": "Gewohnheit dauerhaft löschen",

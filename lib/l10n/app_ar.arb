@@ -130,6 +130,7 @@
   "noRelapsesRecorded": "لا انتكاسات مسجلة. واصل النمو.",
   "noCheckInsYet": "لا تسجيلات حضور بعد. ابدأ اليوم!",
   "renameHabit": "إعادة تسمية العادة",
+  "habitOptions": "خيارات العادة",
   "save": "حفظ",
   "dangerZone": "منطقة الخطر",
   "deleteHabitPermanently": "حذف العادة نهائياً",

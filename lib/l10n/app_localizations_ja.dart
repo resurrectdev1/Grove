@@ -158,13 +158,15 @@ class AppLocalizationsJa extends AppLocalizations {
   String get onboarding0Title => 'Groveへようこそ 🌿';
 
   @override
-  String get onboarding0Body => '木があなたの成長を表すプライベートな習慣トラッカーです。禁欲またはチェックインを続ける期間が長いほど、木は生き生きと茂っていきます。';
+  String get onboarding0Body =>
+      '木があなたの成長を表すプライベートな習慣トラッカーです。禁欲またはチェックインを続ける期間が長いほど、木は生き生きと茂っていきます。';
 
   @override
   String get onboarding1Title => '木を植える';
 
   @override
-  String get onboarding1Body => '「木を植える」をタップして習慣を作りましょう。名前をつけ、色を選ぶと、Groveがその習慣だけのユニークな木を生成します。';
+  String get onboarding1Body =>
+      '「木を植える」をタップして習慣を作りましょう。名前をつけ、色を選ぶと、Groveがその習慣だけのユニークな木を生成します。';
 
   @override
   String get onboarding2Title => '成長を見守る';
@@ -176,19 +178,22 @@ class AppLocalizationsJa extends AppLocalizations {
   String get onboarding3Title => '再発を記録する';
 
   @override
-  String get onboarding3Body => 'もし失敗しても、正直に記録してください。Groveはあなたの最長連続記録と履歴を追跡し、進捗は消えません。';
+  String get onboarding3Body =>
+      'もし失敗しても、正直に記録してください。Groveはあなたの最長連続記録と履歴を追跡し、進捗は消えません。';
 
   @override
   String get onboarding4Title => 'あなたの履歴';
 
   @override
-  String get onboarding4Body => '任意の木を開いてカレンダー、マイルストーン、連続記録の履歴、長期的な一貫性の洞察を探りましょう。';
+  String get onboarding4Body =>
+      '任意の木を開いてカレンダー、マイルストーン、連続記録の履歴、長期的な一貫性の洞察を探りましょう。';
 
   @override
   String get onboarding5Title => '完全にプライベート';
 
   @override
-  String get onboarding5Body => 'すべてあなたのデバイスに保存されます。どこにも送信されません。設定のExport / Importでいつでもバックアップできます。さあ、育てよう！ 🌱';
+  String get onboarding5Body =>
+      'すべてあなたのデバイスに保存されます。どこにも送信されません。設定のExport / Importでいつでもバックアップできます。さあ、育てよう！ 🌱';
 
   @override
   String get next => '次へ';
@@ -269,7 +274,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get restoreGroveBackup => 'バックアップからGroveを復元';
 
   @override
-  String get exportImportNote => '書き出しは.jsonファイルを選択した場所に保存します。\n読み込みは現在のgroveを置き換えます • 先にバックアップを。';
+  String get exportImportNote =>
+      '書き出しは.jsonファイルを選択した場所に保存します。\n読み込みは現在のgroveを置き換えます • 先にバックアップを。';
 
   @override
   String get backupSaved => '✓ バックアップを保存しました';
@@ -323,7 +329,8 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Groveは木を通してあなたの成長を視覚化するミニマリストの習慣・禁欲トラッカーです。禁欲またはチェックインした日、木が育ちます。無料・オープンソース。';
+  String get groveDescription =>
+      'Groveは木を通してあなたの成長を視覚化するミニマリストの習慣・禁欲トラッカーです。禁欲またはチェックインした日、木が育ちます。無料・オープンソース。';
 
   @override
   String get groveLocked => 'Groveはロックされています';
@@ -413,6 +420,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get renameHabit => '習慣名を変更';
+
+  @override
+  String get habitOptions => '習慣オプション';
 
   @override
   String get save => '保存';

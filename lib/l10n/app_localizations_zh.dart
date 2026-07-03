@@ -158,13 +158,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onboarding0Title => '欢迎使用 Grove 🌿';
 
   @override
-  String get onboarding0Body => '这是一款私密的戒瘾与习惯追踪应用，用树木代表你的成长。你保持戒断或打卡的时间越长，你的树就越茁壮繁茂。';
+  String get onboarding0Body =>
+      '这是一款私密的戒瘾与习惯追踪应用，用树木代表你的成长。你保持戒断或打卡的时间越长，你的树就越茁壮繁茂。';
 
   @override
   String get onboarding1Title => '种一棵树';
 
   @override
-  String get onboarding1Body => '点击「种一棵树」创建习惯。给它起个名字，选择颜色，Grove 会为它生成一棵独特的树。每棵树的生长方式各不相同。';
+  String get onboarding1Body =>
+      '点击「种一棵树」创建习惯。给它起个名字，选择颜色，Grove 会为它生成一棵独特的树。每棵树的生长方式各不相同。';
 
   @override
   String get onboarding2Title => '看它成长';
@@ -176,7 +178,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onboarding3Title => '记录复发';
 
   @override
-  String get onboarding3Body => '如果你失败了，诚实地记录下来。Grove 会追踪你最长的连续记录和历史，你的进步永远不会被抹去。';
+  String get onboarding3Body =>
+      '如果你失败了，诚实地记录下来。Grove 会追踪你最长的连续记录和历史，你的进步永远不会被抹去。';
 
   @override
   String get onboarding4Title => '你的历史';
@@ -188,7 +191,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onboarding5Title => '完全私密';
 
   @override
-  String get onboarding5Body => '所有内容都保存在你的设备上。任何内容都不会被发送到任何地方。随时通过设置中的导出/导入备份或迁移你的树林。现在去种植值得珍藏的东西吧。🌱';
+  String get onboarding5Body =>
+      '所有内容都保存在你的设备上。任何内容都不会被发送到任何地方。随时通过设置中的导出/导入备份或迁移你的树林。现在去种植值得珍藏的东西吧。🌱';
 
   @override
   String get next => '下一步';
@@ -269,7 +273,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get restoreGroveBackup => '从备份恢复树林';
 
   @override
-  String get exportImportNote => '导出会将 .json 文件保存到你选择的位置。\n导入将替换当前的树林 • 请先导出备份。';
+  String get exportImportNote =>
+      '导出会将 .json 文件保存到你选择的位置。\n导入将替换当前的树林 • 请先导出备份。';
 
   @override
   String get backupSaved => '✓ 备份已保存';
@@ -323,7 +328,8 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove 是一款简约的习惯与戒瘾追踪应用，通过树木将你的成长可视化。每一天你保持戒断或打卡，你的树就会成长。作为一款免费开源工具，用心制作。';
+  String get groveDescription =>
+      'Grove 是一款简约的习惯与戒瘾追踪应用，通过树木将你的成长可视化。每一天你保持戒断或打卡，你的树就会成长。作为一款免费开源工具，用心制作。';
 
   @override
   String get groveLocked => 'Grove 已锁定';
@@ -413,6 +419,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get renameHabit => '重命名习惯';
+
+  @override
+  String get habitOptions => '习惯选项';
 
   @override
   String get save => '保存';
@@ -648,7 +657,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
 class AppLocalizationsZhTw extends AppLocalizationsZh {
-  AppLocalizationsZhTw(): super('zh_TW');
+  AppLocalizationsZhTw() : super('zh_TW');
 
   @override
   String get appTitle => 'Grove';
@@ -800,13 +809,15 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get onboarding0Title => '歡迎使用 Grove 🌿';
 
   @override
-  String get onboarding0Body => '這是一款私密的戒癮與習慣追蹤應用程式，用樹木代表你的成長。你保持戒斷或打卡的時間越長，你的樹就越茁壯繁茂。';
+  String get onboarding0Body =>
+      '這是一款私密的戒癮與習慣追蹤應用程式，用樹木代表你的成長。你保持戒斷或打卡的時間越長，你的樹就越茁壯繁茂。';
 
   @override
   String get onboarding1Title => '種一棵樹';
 
   @override
-  String get onboarding1Body => '點擊「種一棵樹」建立習慣。給它取個名字，選擇顏色，Grove 會為它生成一棵獨特的樹。每棵樹的生長方式各不相同。';
+  String get onboarding1Body =>
+      '點擊「種一棵樹」建立習慣。給它取個名字，選擇顏色，Grove 會為它生成一棵獨特的樹。每棵樹的生長方式各不相同。';
 
   @override
   String get onboarding2Title => '看它成長';
@@ -818,7 +829,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get onboarding3Title => '記錄復發';
 
   @override
-  String get onboarding3Body => '如果你失敗了，誠實地記錄下來。Grove 會追蹤你最長的連續記錄和歷史，你的進步永遠不會被抹去。';
+  String get onboarding3Body =>
+      '如果你失敗了，誠實地記錄下來。Grove 會追蹤你最長的連續記錄和歷史，你的進步永遠不會被抹去。';
 
   @override
   String get onboarding4Title => '你的歷史';
@@ -830,7 +842,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get onboarding5Title => '完全私密';
 
   @override
-  String get onboarding5Body => '所有內容都儲存在你的裝置上。任何內容都不會被傳送到任何地方。隨時透過設定中的匯出/匯入備份或遷移你的樹林。現在去種植值得珍藏的東西吧。🌱';
+  String get onboarding5Body =>
+      '所有內容都儲存在你的裝置上。任何內容都不會被傳送到任何地方。隨時透過設定中的匯出/匯入備份或遷移你的樹林。現在去種植值得珍藏的東西吧。🌱';
 
   @override
   String get next => '下一步';
@@ -911,7 +924,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get restoreGroveBackup => '從備份還原樹林';
 
   @override
-  String get exportImportNote => '匯出會將 .json 檔案儲存到你選擇的位置。\n匯入將取代目前的樹林 • 請先匯出備份。';
+  String get exportImportNote =>
+      '匯出會將 .json 檔案儲存到你選擇的位置。\n匯入將取代目前的樹林 • 請先匯出備份。';
 
   @override
   String get backupSaved => '✓ 備份已儲存';
@@ -965,7 +979,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   }
 
   @override
-  String get groveDescription => 'Grove 是一款簡約的習慣與戒癮追蹤應用程式，透過樹木將你的成長視覺化。每一天你保持戒斷或打卡，你的樹就會成長。作為一款免費開源工具，用心製作。';
+  String get groveDescription =>
+      'Grove 是一款簡約的習慣與戒癮追蹤應用程式，透過樹木將你的成長視覺化。每一天你保持戒斷或打卡，你的樹就會成長。作為一款免費開源工具，用心製作。';
 
   @override
   String get groveLocked => 'Grove 已鎖定';
@@ -1055,6 +1070,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get renameHabit => '重新命名習慣';
+
+  @override
+  String get habitOptions => '習慣選項';
 
   @override
   String get save => '儲存';

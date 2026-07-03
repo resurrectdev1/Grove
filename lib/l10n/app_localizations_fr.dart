@@ -146,7 +146,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get loggedReason => 'MOTIF ENREGISTRÉ (Optionnel)';
 
   @override
-  String get loggedReasonHint => 'Stress, anxiété, épuisement, pression sociale, déclencheur, etc.';
+  String get loggedReasonHint =>
+      'Stress, anxiété, épuisement, pression sociale, déclencheur, etc.';
 
   @override
   String get confirmLog => 'Confirmer';
@@ -158,37 +159,43 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboarding0Title => 'Bienvenue sur Grove 🌿';
 
   @override
-  String get onboarding0Body => 'Un suivi privé de sobriété et d\'habitudes où les arbres représentent votre croissance. Plus vous vous abstenez ou pointez longtemps, plus vos arbres deviennent vibrants et luxuriants.';
+  String get onboarding0Body =>
+      'Un suivi privé de sobriété et d\'habitudes où les arbres représentent votre croissance. Plus vous vous abstenez ou pointez longtemps, plus vos arbres deviennent vibrants et luxuriants.';
 
   @override
   String get onboarding1Title => 'Plantez un arbre';
 
   @override
-  String get onboarding1Body => 'Appuyez sur « Planter un arbre » pour créer une habitude. Donnez-lui un nom, choisissez une couleur, et Grove génère un arbre unique. Chacun grandit différemment.';
+  String get onboarding1Body =>
+      'Appuyez sur « Planter un arbre » pour créer une habitude. Donnez-lui un nom, choisissez une couleur, et Grove génère un arbre unique. Chacun grandit différemment.';
 
   @override
   String get onboarding2Title => 'Regardez-le pousser';
 
   @override
-  String get onboarding2Body => 'Chaque jour aide votre arbre à mûrir à travers cinq stades de croissance, d\'une toute petite graine jusqu\'à un arbre majestueux aux branches balancées par le vent.';
+  String get onboarding2Body =>
+      'Chaque jour aide votre arbre à mûrir à travers cinq stades de croissance, d\'une toute petite graine jusqu\'à un arbre majestueux aux branches balancées par le vent.';
 
   @override
   String get onboarding3Title => 'Enregistrez une rechute';
 
   @override
-  String get onboarding3Body => 'Si vous rechutez, enregistrez-le honnêtement. Grove suit vos plus longues séries et votre historique, afin que votre progrès ne soit jamais effacé.';
+  String get onboarding3Body =>
+      'Si vous rechutez, enregistrez-le honnêtement. Grove suit vos plus longues séries et votre historique, afin que votre progrès ne soit jamais effacé.';
 
   @override
   String get onboarding4Title => 'Votre historique';
 
   @override
-  String get onboarding4Body => 'Ouvrez n\'importe quel arbre pour explorer les calendriers, jalons, historique de séries, notes de rechutes et aperçus de votre constance à long terme.';
+  String get onboarding4Body =>
+      'Ouvrez n\'importe quel arbre pour explorer les calendriers, jalons, historique de séries, notes de rechutes et aperçus de votre constance à long terme.';
 
   @override
   String get onboarding5Title => 'Entièrement privé';
 
   @override
-  String get onboarding5Body => 'Tout reste sur votre appareil. Rien n\'est jamais envoyé nulle part. Sauvegardez ou transférez votre bosquet à tout moment via Exporter / Importer dans les paramètres. Allez maintenant cultiver quelque chose qui en vaut la peine. 🌱';
+  String get onboarding5Body =>
+      'Tout reste sur votre appareil. Rien n\'est jamais envoyé nulle part. Sauvegardez ou transférez votre bosquet à tout moment via Exporter / Importer dans les paramètres. Allez maintenant cultiver quelque chose qui en vaut la peine. 🌱';
 
   @override
   String get next => 'Suivant';
@@ -224,7 +231,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get reorderGrove => 'Réorganiser le bosquet';
 
   @override
-  String get holdDragToReorder => 'Maintenez et faites glisser ≡ pour réorganiser';
+  String get holdDragToReorder =>
+      'Maintenez et faites glisser ≡ pour réorganiser';
 
   @override
   String get layoutWheel => 'Roue';
@@ -254,13 +262,15 @@ class AppLocalizationsFr extends AppLocalizations {
   String get milestoneNotifications => 'Notifications de jalons';
 
   @override
-  String get milestoneNotificationsSubtitle => 'Soyez notifié quand un arbre atteint un nouveau stade de croissance';
+  String get milestoneNotificationsSubtitle =>
+      'Soyez notifié quand un arbre atteint un nouveau stade de croissance';
 
   @override
   String get biometricUnlock => 'Déverrouillage biométrique';
 
   @override
-  String get biometricUnlockSubtitle => 'Requérir empreinte / code PIN pour ouvrir Grove';
+  String get biometricUnlockSubtitle =>
+      'Requérir empreinte / code PIN pour ouvrir Grove';
 
   @override
   String get exportGroveBackup => 'Exporter une sauvegarde';
@@ -269,7 +279,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get restoreGroveBackup => 'Restaurer le bosquet depuis une sauvegarde';
 
   @override
-  String get exportImportNote => 'L\'export sauvegarde un fichier .json à l\'emplacement de votre choix.\nL\'import remplacera votre bosquet actuel • exportez d\'abord une sauvegarde.';
+  String get exportImportNote =>
+      'L\'export sauvegarde un fichier .json à l\'emplacement de votre choix.\nL\'import remplacera votre bosquet actuel • exportez d\'abord une sauvegarde.';
 
   @override
   String get backupSaved => '✓ Sauvegarde enregistrée';
@@ -288,7 +299,8 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get invalidBackup => '✗ Sauvegarde invalide — assurez-vous de sélectionner le bon fichier';
+  String get invalidBackup =>
+      '✗ Sauvegarde invalide — assurez-vous de sélectionner le bon fichier';
 
   @override
   String get language => 'LANGUE';
@@ -312,7 +324,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get buyMeCoffeeSubtitle => 'Soutenir le développement';
 
   @override
-  String get madeWith => 'Fait avec 🌿 • toutes les données restent sur votre appareil.';
+  String get madeWith =>
+      'Fait avec 🌿 • toutes les données restent sur votre appareil.';
 
   @override
   String get openSource => 'Open source';
@@ -323,7 +336,8 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove est un suivi d\'habitudes et de sobriété minimaliste qui visualise votre croissance à travers des arbres. Chaque jour où vous vous abstenez ou pointez, votre arbre grandit. Créé avec amour comme un outil gratuit et open source.';
+  String get groveDescription =>
+      'Grove est un suivi d\'habitudes et de sobriété minimaliste qui visualise votre croissance à travers des arbres. Chaque jour où vous vous abstenez ou pointez, votre arbre grandit. Créé avec amour comme un outil gratuit et open source.';
 
   @override
   String get groveLocked => 'Grove est verrouillé';
@@ -356,7 +370,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get thisMonth => 'Ce mois-ci';
 
   @override
-  String get logDateBeforeTracking => '← Enregistrer une date avant le début du suivi';
+  String get logDateBeforeTracking =>
+      '← Enregistrer une date avant le début du suivi';
 
   @override
   String get abstinentSinceStart => 'Aucune rechute enregistrée.';
@@ -406,13 +421,17 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get noRelapsesRecorded => 'Aucune rechute enregistrée. Continuez à grandir.';
+  String get noRelapsesRecorded =>
+      'Aucune rechute enregistrée. Continuez à grandir.';
 
   @override
   String get noCheckInsYet => 'Aucun pointage encore. Commencez aujourd\'hui !';
 
   @override
   String get renameHabit => 'Renommer l\'habitude';
+
+  @override
+  String get habitOptions => 'Options de lhabitude';
 
   @override
   String get save => 'Enregistrer';
@@ -446,7 +465,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get logEarlierDate => 'Enregistrer une date antérieure';
 
   @override
-  String get extendsHistoryNote => 'Cela étend votre historique et recalcule les séries';
+  String get extendsHistoryNote =>
+      'Cela étend votre historique et recalcule les séries';
 
   @override
   String get logEarlierDateTitle => 'Enregistrer une date antérieure';
@@ -455,7 +475,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get beforeTrackingStarted => 'Avant le début du suivi';
 
   @override
-  String get extendHistoryInfo => 'Cela étendra votre historique de suivi et recalculera vos meilleures séries.';
+  String get extendHistoryInfo =>
+      'Cela étendra votre historique de suivi et recalculera vos meilleures séries.';
 
   @override
   String get date => 'DATE';
@@ -467,7 +488,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get logAsRelapseOnDate => 'Enregistrer comme rechute à cette date';
 
   @override
-  String get onlyExtendStartDate => 'Seulement étendre la date de début (sans rechute)';
+  String get onlyExtendStartDate =>
+      'Seulement étendre la date de début (sans rechute)';
 
   @override
   String get whatHappenedHint => 'Que s\'est-il passé ce jour-là…';
@@ -486,7 +508,8 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get notifSproutBody => 'Les racines de votre arbre sont formées. Continuez à grandir.';
+  String get notifSproutBody =>
+      'Les racines de votre arbre sont formées. Continuez à grandir.';
 
   @override
   String notifSaplingTitle(String name) {
@@ -494,7 +517,8 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get notifSaplingBody => 'Votre arbre tient debout, regardez comme vous avez grandi';
+  String get notifSaplingBody =>
+      'Votre arbre tient debout, regardez comme vous avez grandi';
 
   @override
   String notifYoungTreeTitle(String name) {
@@ -510,7 +534,8 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get notifGroveTreeBody => 'Félicitations !!! Vous êtes devenu la forêt.';
+  String get notifGroveTreeBody =>
+      'Félicitations !!! Vous êtes devenu la forêt.';
 
   @override
   String get saveGroveBackupDialog => 'Enregistrer la sauvegarde';
@@ -525,7 +550,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get customAccentDefault => 'Vert par défaut';
 
   @override
-  String get customAccentSubtitle => 'Appliqué sur les boutons, cartes et badges';
+  String get customAccentSubtitle =>
+      'Appliqué sur les boutons, cartes et badges';
 
   @override
   String get applyAccent => 'Appliquer l\'accent';
@@ -537,7 +563,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get dailyReminderSetting => 'Rappel quotidien de check-in';
 
   @override
-  String get dailyReminderSettingSubtitle => 'Un rappel pour pointer dans votre bosquet';
+  String get dailyReminderSettingSubtitle =>
+      'Un rappel pour pointer dans votre bosquet';
 
   @override
   String get tapToChange => 'Appuyez pour modifier';
@@ -549,7 +576,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get dailyReminderTitle => 'C\'est l\'heure du pointage 🌿';
 
   @override
-  String get dailyReminderBody => 'Votre bosquet vous attend. Gardez la série vivante.';
+  String get dailyReminderBody =>
+      'Votre bosquet vous attend. Gardez la série vivante.';
 
   @override
   String get legendMissed => 'Manqué';
@@ -592,7 +620,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get reasonOptional => 'MOTIF (facultatif)';
 
   @override
-  String get reasonHint => 'Stress, anxiété, épuisement, pression sociale, déclencheur ? etc.';
+  String get reasonHint =>
+      'Stress, anxiété, épuisement, pression sociale, déclencheur ? etc.';
 
   @override
   String get excusedStreakPreserved => '❄️ Excusé, votre série est préservée.';
@@ -637,7 +666,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get noteOptional => 'NOTE (facultatif)';
 
   @override
-  String get noteHint => 'Comment s\'est passée la journée ? Des réussites ou des notes à retenir...';
+  String get noteHint =>
+      'Comment s\'est passée la journée ? Des réussites ou des notes à retenir...';
 
   @override
   String get streakFrozen => 'Série gelée';

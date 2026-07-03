@@ -122,7 +122,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get taglineSeed => 'Ogni grande foresta inizia qui.';
 
   @override
-  String get taglineSprout => 'Le radici si stanno formando sotto la superficie.';
+  String get taglineSprout =>
+      'Le radici si stanno formando sotto la superficie.';
 
   @override
   String get taglineSapling => 'Sempre più forte a ogni alba.';
@@ -146,7 +147,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get loggedReason => 'MOTIVO REGISTRATO (Facoltativo)';
 
   @override
-  String get loggedReasonHint => 'Stress, Ansia, Burnout, Pressione dei pari, Trigger? ecc.';
+  String get loggedReasonHint =>
+      'Stress, Ansia, Burnout, Pressione dei pari, Trigger? ecc.';
 
   @override
   String get confirmLog => 'Conferma registro';
@@ -158,37 +160,43 @@ class AppLocalizationsIt extends AppLocalizations {
   String get onboarding0Title => 'Benvenuto in Grove 🌿';
 
   @override
-  String get onboarding0Body => 'Un tracker delle abitudini privato dove gli alberi rappresentano la tua crescita. Più a lungo ti astieni o registri, più i tuoi alberi diventano rigogliosi.';
+  String get onboarding0Body =>
+      'Un tracker delle abitudini privato dove gli alberi rappresentano la tua crescita. Più a lungo ti astieni o registri, più i tuoi alberi diventano rigogliosi.';
 
   @override
   String get onboarding1Title => 'Pianta un albero';
 
   @override
-  String get onboarding1Body => 'Tocca \"Pianta un albero\" per creare un\'abitudine. Dagli un nome, scegli un colore e Grove genera un albero unico per essa.';
+  String get onboarding1Body =>
+      'Tocca \"Pianta un albero\" per creare un\'abitudine. Dagli un nome, scegli un colore e Grove genera un albero unico per essa.';
 
   @override
   String get onboarding2Title => 'Guardalo crescere';
 
   @override
-  String get onboarding2Body => 'Ogni giorno aiuta il tuo albero a maturare attraverso cinque stadi di crescita, da un piccolo seme fino a un albero del bosco con rami e foglie che ondeggiano.';
+  String get onboarding2Body =>
+      'Ogni giorno aiuta il tuo albero a maturare attraverso cinque stadi di crescita, da un piccolo seme fino a un albero del bosco con rami e foglie che ondeggiano.';
 
   @override
   String get onboarding3Title => 'Registra una ricaduta';
 
   @override
-  String get onboarding3Body => 'Se sbagli, registralo onestamente. Grove tiene traccia delle tue serie più lunghe e della cronologia, i progressi non vengono mai cancellati.';
+  String get onboarding3Body =>
+      'Se sbagli, registralo onestamente. Grove tiene traccia delle tue serie più lunghe e della cronologia, i progressi non vengono mai cancellati.';
 
   @override
   String get onboarding4Title => 'La tua cronologia';
 
   @override
-  String get onboarding4Body => 'Apri qualsiasi albero per esplorare calendari, traguardi, cronologia delle serie e approfondimenti sulla tua coerenza a lungo termine.';
+  String get onboarding4Body =>
+      'Apri qualsiasi albero per esplorare calendari, traguardi, cronologia delle serie e approfondimenti sulla tua coerenza a lungo termine.';
 
   @override
   String get onboarding5Title => 'Completamente privato';
 
   @override
-  String get onboarding5Body => 'Tutto rimane sul tuo dispositivo. Niente viene mai inviato. Esegui il backup o sposta il tuo bosco tramite Esporta / Importa nelle Impostazioni. Ora vai a far crescere qualcosa! 🌱';
+  String get onboarding5Body =>
+      'Tutto rimane sul tuo dispositivo. Niente viene mai inviato. Esegui il backup o sposta il tuo bosco tramite Esporta / Importa nelle Impostazioni. Ora vai a far crescere qualcosa! 🌱';
 
   @override
   String get next => 'Avanti';
@@ -254,13 +262,15 @@ class AppLocalizationsIt extends AppLocalizations {
   String get milestoneNotifications => 'Notifiche traguardi';
 
   @override
-  String get milestoneNotificationsSubtitle => 'Ricevi una notifica quando un albero raggiunge un nuovo stadio di crescita';
+  String get milestoneNotificationsSubtitle =>
+      'Ricevi una notifica quando un albero raggiunge un nuovo stadio di crescita';
 
   @override
   String get biometricUnlock => 'Sblocco biometrico';
 
   @override
-  String get biometricUnlockSubtitle => 'Richiede impronta digitale / PIN per aprire Grove';
+  String get biometricUnlockSubtitle =>
+      'Richiede impronta digitale / PIN per aprire Grove';
 
   @override
   String get exportGroveBackup => 'Esporta backup Grove';
@@ -269,7 +279,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get restoreGroveBackup => 'Ripristina Grove dal backup';
 
   @override
-  String get exportImportNote => 'L\'esportazione salva un file .json in una posizione a tua scelta.\nL\'importazione sostituirà il tuo bosco attuale • esporta prima un backup.';
+  String get exportImportNote =>
+      'L\'esportazione salva un file .json in una posizione a tua scelta.\nL\'importazione sostituirà il tuo bosco attuale • esporta prima un backup.';
 
   @override
   String get backupSaved => '✓ Backup salvato';
@@ -288,7 +299,8 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get invalidBackup => '✗ Backup non valido — assicurati di aver selezionato il file corretto';
+  String get invalidBackup =>
+      '✗ Backup non valido — assicurati di aver selezionato il file corretto';
 
   @override
   String get language => 'LINGUA';
@@ -312,7 +324,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get buyMeCoffeeSubtitle => 'Supporta lo sviluppo';
 
   @override
-  String get madeWith => 'Fatto con 🌿 • tutti i dati rimangono sul tuo dispositivo.';
+  String get madeWith =>
+      'Fatto con 🌿 • tutti i dati rimangono sul tuo dispositivo.';
 
   @override
   String get openSource => 'Open Source';
@@ -323,7 +336,8 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove è un tracker delle abitudini e della sobrietà minimalista che visualizza la tua crescita attraverso alberi. Ogni giorno in cui ti astieni o registri, il tuo albero cresce. Gratuito e open source.';
+  String get groveDescription =>
+      'Grove è un tracker delle abitudini e della sobrietà minimalista che visualizza la tua crescita attraverso alberi. Ogni giorno in cui ti astieni o registri, il tuo albero cresce. Gratuito e open source.';
 
   @override
   String get groveLocked => 'Grove è bloccato';
@@ -356,7 +370,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get thisMonth => 'Questo mese';
 
   @override
-  String get logDateBeforeTracking => '← Registra una data prima dell\'inizio del tracciamento';
+  String get logDateBeforeTracking =>
+      '← Registra una data prima dell\'inizio del tracciamento';
 
   @override
   String get abstinentSinceStart => 'Nessuna ricaduta registrata.';
@@ -406,13 +421,17 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get noRelapsesRecorded => 'Nessuna ricaduta registrata. Continua a crescere.';
+  String get noRelapsesRecorded =>
+      'Nessuna ricaduta registrata. Continua a crescere.';
 
   @override
   String get noCheckInsYet => 'Ancora nessun check-in. Inizia oggi!';
 
   @override
   String get renameHabit => 'Rinomina abitudine';
+
+  @override
+  String get habitOptions => 'Opzioni abitudine';
 
   @override
   String get save => 'Salva';
@@ -446,7 +465,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get logEarlierDate => 'Registra una data precedente';
 
   @override
-  String get extendsHistoryNote => 'Questo estende la tua cronologia e ricalcola le serie';
+  String get extendsHistoryNote =>
+      'Questo estende la tua cronologia e ricalcola le serie';
 
   @override
   String get logEarlierDateTitle => 'Registra data precedente';
@@ -455,7 +475,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get beforeTrackingStarted => 'Prima dell\'inizio del tracciamento';
 
   @override
-  String get extendHistoryInfo => 'Questo estenderà la tua cronologia di tracciamento e ricalcolerà le tue serie record.';
+  String get extendHistoryInfo =>
+      'Questo estenderà la tua cronologia di tracciamento e ricalcolerà le tue serie record.';
 
   @override
   String get date => 'DATA';
@@ -467,7 +488,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get logAsRelapseOnDate => 'Registra come ricaduta in questa data';
 
   @override
-  String get onlyExtendStartDate => 'Solo estendi la data di inizio (nessuna ricaduta)';
+  String get onlyExtendStartDate =>
+      'Solo estendi la data di inizio (nessuna ricaduta)';
 
   @override
   String get whatHappenedHint => 'Cosa è successo quel giorno…';
@@ -486,7 +508,8 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get notifSproutBody => 'Le radici del tuo albero hanno finito di formarsi. Continua a crescere.';
+  String get notifSproutBody =>
+      'Le radici del tuo albero hanno finito di formarsi. Continua a crescere.';
 
   @override
   String notifSaplingTitle(String name) {
@@ -494,7 +517,8 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get notifSaplingBody => 'Il tuo albero regge da solo, guarda quanto sei cresciuto';
+  String get notifSaplingBody =>
+      'Il tuo albero regge da solo, guarda quanto sei cresciuto';
 
   @override
   String notifYoungTreeTitle(String name) {
@@ -502,7 +526,8 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get notifYoungTreeBody => 'La tua chioma sta iniziando a prendere forma, incredibile.';
+  String get notifYoungTreeBody =>
+      'La tua chioma sta iniziando a prendere forma, incredibile.';
 
   @override
   String notifGroveTreeTitle(String name) {
@@ -510,7 +535,8 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get notifGroveTreeBody => 'Congratulazioni!!! Sei diventato la foresta.';
+  String get notifGroveTreeBody =>
+      'Congratulazioni!!! Sei diventato la foresta.';
 
   @override
   String get saveGroveBackupDialog => 'Salva backup Grove';
@@ -537,7 +563,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get dailyReminderSetting => 'Promemoria check-in giornaliero';
 
   @override
-  String get dailyReminderSettingSubtitle => 'Un promemoria per fare il check-in nel tuo bosco';
+  String get dailyReminderSettingSubtitle =>
+      'Un promemoria per fare il check-in nel tuo bosco';
 
   @override
   String get tapToChange => 'Tocca per modificare';
@@ -549,7 +576,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get dailyReminderTitle => 'È ora del check-in 🌿';
 
   @override
-  String get dailyReminderBody => 'Il tuo bosco ti aspetta. Mantieni la serie viva.';
+  String get dailyReminderBody =>
+      'Il tuo bosco ti aspetta. Mantieni la serie viva.';
 
   @override
   String get legendMissed => 'Mancato';
@@ -592,7 +620,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get reasonOptional => 'MOTIVO (facoltativo)';
 
   @override
-  String get reasonHint => 'Stress, ansia, burnout, pressione sociale, fattore scatenante? ecc.';
+  String get reasonHint =>
+      'Stress, ansia, burnout, pressione sociale, fattore scatenante? ecc.';
 
   @override
   String get excusedStreakPreserved => '❄️ Scusato, la tua serie è preservata.';

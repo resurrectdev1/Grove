@@ -172,6 +172,7 @@
   "noRelapsesRecorded": "再発記録なし。成長し続けましょう。",
   "noCheckInsYet": "まだチェックインなし。今日から始めよう！",
   "renameHabit": "習慣名を変更",
+  "habitOptions": "習慣オプション",
   "save": "保存",
   "dangerZone": "危険ゾーン",
   "deleteHabitPermanently": "習慣を完全に削除",

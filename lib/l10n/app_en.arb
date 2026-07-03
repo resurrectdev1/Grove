@@ -172,6 +172,7 @@
   "noRelapsesRecorded": "No relapses recorded. Keep growing.",
   "noCheckInsYet": "No check-ins yet. Start today!",
   "renameHabit": "Rename Habit",
+  "habitOptions": "Habit options",
   "save": "Save",
   "dangerZone": "Danger Zone",
   "deleteHabitPermanently": "Delete Habit Permanently",

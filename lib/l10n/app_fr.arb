@@ -130,6 +130,7 @@
   "noRelapsesRecorded": "Aucune rechute enregistrée. Continuez à grandir.",
   "noCheckInsYet": "Aucun pointage encore. Commencez aujourd'hui !",
   "renameHabit": "Renommer l'habitude",
+  "habitOptions": "Options de lhabitude",
   "save": "Enregistrer",
   "dangerZone": "Zone dangereuse",
   "deleteHabitPermanently": "Supprimer l'habitude définitivement",

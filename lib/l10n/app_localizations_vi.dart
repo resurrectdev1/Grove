@@ -146,7 +146,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get loggedReason => 'LÝ DO GHI LẠI (Tùy chọn)';
 
   @override
-  String get loggedReasonHint => 'Căng thẳng, Lo lắng, Kiệt sức, Áp lực đồng nghiệp…';
+  String get loggedReasonHint =>
+      'Căng thẳng, Lo lắng, Kiệt sức, Áp lực đồng nghiệp…';
 
   @override
   String get confirmLog => 'Xác nhận ghi';
@@ -158,37 +159,43 @@ class AppLocalizationsVi extends AppLocalizations {
   String get onboarding0Title => 'Chào mừng đến Grove 🌿';
 
   @override
-  String get onboarding0Body => 'Công cụ theo dõi thói quen riêng tư, nơi những cái cây đại diện cho sự phát triển của bạn. Bạn kiêng cữ hoặc điểm danh càng lâu, cây càng xanh tươi.';
+  String get onboarding0Body =>
+      'Công cụ theo dõi thói quen riêng tư, nơi những cái cây đại diện cho sự phát triển của bạn. Bạn kiêng cữ hoặc điểm danh càng lâu, cây càng xanh tươi.';
 
   @override
   String get onboarding1Title => 'Trồng một cây';
 
   @override
-  String get onboarding1Body => 'Nhấn \"Trồng một cây\" để tạo thói quen. Đặt tên, chọn màu, và Grove tạo ra một cây riêng biệt. Mỗi cây phát triển khác nhau.';
+  String get onboarding1Body =>
+      'Nhấn \"Trồng một cây\" để tạo thói quen. Đặt tên, chọn màu, và Grove tạo ra một cây riêng biệt. Mỗi cây phát triển khác nhau.';
 
   @override
   String get onboarding2Title => 'Xem cây phát triển';
 
   @override
-  String get onboarding2Body => 'Mỗi ngày giúp cây của bạn trưởng thành qua năm giai đoạn — từ hạt giống nhỏ đến cây rừng đầy đủ với cành lá đung đưa.';
+  String get onboarding2Body =>
+      'Mỗi ngày giúp cây của bạn trưởng thành qua năm giai đoạn — từ hạt giống nhỏ đến cây rừng đầy đủ với cành lá đung đưa.';
 
   @override
   String get onboarding3Title => 'Ghi lại tái phát';
 
   @override
-  String get onboarding3Body => 'Nếu bạn sa ngã, hãy ghi lại trung thực. Grove theo dõi chuỗi dài nhất và lịch sử của bạn, tiến trình không bao giờ bị xóa.';
+  String get onboarding3Body =>
+      'Nếu bạn sa ngã, hãy ghi lại trung thực. Grove theo dõi chuỗi dài nhất và lịch sử của bạn, tiến trình không bao giờ bị xóa.';
 
   @override
   String get onboarding4Title => 'Lịch sử của bạn';
 
   @override
-  String get onboarding4Body => 'Mở bất kỳ cây nào để khám phá lịch, mốc quan trọng, lịch sử chuỗi và thông tin chi tiết về sự nhất quán lâu dài.';
+  String get onboarding4Body =>
+      'Mở bất kỳ cây nào để khám phá lịch, mốc quan trọng, lịch sử chuỗi và thông tin chi tiết về sự nhất quán lâu dài.';
 
   @override
   String get onboarding5Title => 'Hoàn toàn riêng tư';
 
   @override
-  String get onboarding5Body => 'Mọi thứ đều ở trên thiết bị của bạn. Không có gì được gửi đi. Sao lưu hoặc di chuyển grove của bạn qua Xuất / Nhập trong Cài đặt. Hãy bắt đầu phát triển! 🌱';
+  String get onboarding5Body =>
+      'Mọi thứ đều ở trên thiết bị của bạn. Không có gì được gửi đi. Sao lưu hoặc di chuyển grove của bạn qua Xuất / Nhập trong Cài đặt. Hãy bắt đầu phát triển! 🌱';
 
   @override
   String get next => 'Tiếp theo';
@@ -254,7 +261,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get milestoneNotifications => 'Thông báo mốc quan trọng';
 
   @override
-  String get milestoneNotificationsSubtitle => 'Nhận thông báo khi cây đạt giai đoạn phát triển mới';
+  String get milestoneNotificationsSubtitle =>
+      'Nhận thông báo khi cây đạt giai đoạn phát triển mới';
 
   @override
   String get biometricUnlock => 'Mở khóa sinh trắc học';
@@ -269,7 +277,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get restoreGroveBackup => 'Khôi phục từ bản sao lưu';
 
   @override
-  String get exportImportNote => 'Xuất lưu file .json vào vị trí bạn chọn.\nNhập sẽ thay thế grove hiện tại của bạn • xuất bản sao lưu trước.';
+  String get exportImportNote =>
+      'Xuất lưu file .json vào vị trí bạn chọn.\nNhập sẽ thay thế grove hiện tại của bạn • xuất bản sao lưu trước.';
 
   @override
   String get backupSaved => '✓ Đã lưu bản sao lưu';
@@ -288,7 +297,8 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get invalidBackup => '✗ Bản sao lưu không hợp lệ — hãy chắc chắn bạn chọn đúng file';
+  String get invalidBackup =>
+      '✗ Bản sao lưu không hợp lệ — hãy chắc chắn bạn chọn đúng file';
 
   @override
   String get language => 'NGÔN NGỮ';
@@ -312,7 +322,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get buyMeCoffeeSubtitle => 'Hỗ trợ phát triển';
 
   @override
-  String get madeWith => 'Được tạo với 🌿 • tất cả dữ liệu ở trên thiết bị của bạn.';
+  String get madeWith =>
+      'Được tạo với 🌿 • tất cả dữ liệu ở trên thiết bị của bạn.';
 
   @override
   String get openSource => 'Mã nguồn mở';
@@ -323,7 +334,8 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove là ứng dụng theo dõi thói quen và sự tỉnh táo tối giản, trực quan hóa sự phát triển của bạn qua những cái cây. Mỗi ngày bạn kiêng cữ hoặc điểm danh, cây của bạn phát triển. Được xây dựng miễn phí, mã nguồn mở.';
+  String get groveDescription =>
+      'Grove là ứng dụng theo dõi thói quen và sự tỉnh táo tối giản, trực quan hóa sự phát triển của bạn qua những cái cây. Mỗi ngày bạn kiêng cữ hoặc điểm danh, cây của bạn phát triển. Được xây dựng miễn phí, mã nguồn mở.';
 
   @override
   String get groveLocked => 'Grove đã bị khóa';
@@ -415,6 +427,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get renameHabit => 'Đổi tên thói quen';
 
   @override
+  String get habitOptions => 'Tùy chọn thói quen';
+
+  @override
   String get save => 'Lưu';
 
   @override
@@ -446,7 +461,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get logEarlierDate => 'Ghi ngày trước đó';
 
   @override
-  String get extendsHistoryNote => 'Điều này mở rộng lịch sử và tính toán lại chuỗi';
+  String get extendsHistoryNote =>
+      'Điều này mở rộng lịch sử và tính toán lại chuỗi';
 
   @override
   String get logEarlierDateTitle => 'Ghi ngày trước đó';
@@ -455,7 +471,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get beforeTrackingStarted => 'Trước khi bắt đầu theo dõi';
 
   @override
-  String get extendHistoryInfo => 'Điều này sẽ mở rộng lịch sử theo dõi và tính toán lại chuỗi đỉnh cao.';
+  String get extendHistoryInfo =>
+      'Điều này sẽ mở rộng lịch sử theo dõi và tính toán lại chuỗi đỉnh cao.';
 
   @override
   String get date => 'NGÀY';
@@ -486,7 +503,8 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get notifSproutBody => 'Rễ cây của bạn đã hình thành. Tiếp tục phát triển.';
+  String get notifSproutBody =>
+      'Rễ cây của bạn đã hình thành. Tiếp tục phát triển.';
 
   @override
   String notifSaplingTitle(String name) {
@@ -494,7 +512,8 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get notifSaplingBody => 'Cây của bạn đứng vững, hãy xem bạn đã phát triển thế nào';
+  String get notifSaplingBody =>
+      'Cây của bạn đứng vững, hãy xem bạn đã phát triển thế nào';
 
   @override
   String notifYoungTreeTitle(String name) {
@@ -502,7 +521,8 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get notifYoungTreeBody => 'Tán cây của bạn đang thành hình, thật tuyệt vời.';
+  String get notifYoungTreeBody =>
+      'Tán cây của bạn đang thành hình, thật tuyệt vời.';
 
   @override
   String notifGroveTreeTitle(String name) {
@@ -537,7 +557,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get dailyReminderSetting => 'Nhắc nhở điểm danh hàng ngày';
 
   @override
-  String get dailyReminderSettingSubtitle => 'Nhắc nhở bạn điểm danh trong khu rừng của mình';
+  String get dailyReminderSettingSubtitle =>
+      'Nhắc nhở bạn điểm danh trong khu rừng của mình';
 
   @override
   String get tapToChange => 'Nhấn để thay đổi';
@@ -592,10 +613,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get reasonOptional => 'LÝ DO (không bắt buộc)';
 
   @override
-  String get reasonHint => 'Căng thẳng, lo âu, kiệt sức, áp lực bạn bè, tác nhân kích hoạt? v.v...';
+  String get reasonHint =>
+      'Căng thẳng, lo âu, kiệt sức, áp lực bạn bè, tác nhân kích hoạt? v.v...';
 
   @override
-  String get excusedStreakPreserved => '❄️ Được miễn, chuỗi ngày của bạn được giữ nguyên.';
+  String get excusedStreakPreserved =>
+      '❄️ Được miễn, chuỗi ngày của bạn được giữ nguyên.';
 
   @override
   String get checkedInThisDay => '✅ Đã điểm danh vào ngày này.';
@@ -637,7 +660,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get noteOptional => 'GHI CHÚ (không bắt buộc)';
 
   @override
-  String get noteHint => 'Hôm nay thế nào? Có thành công hay ghi chú nào cần nhớ...';
+  String get noteHint =>
+      'Hôm nay thế nào? Có thành công hay ghi chú nào cần nhớ...';
 
   @override
   String get streakFrozen => 'Chuỗi ngày đã đóng băng';

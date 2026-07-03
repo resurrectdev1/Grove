@@ -146,7 +146,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get loggedReason => 'درج وجہ (اختیاری)';
 
   @override
-  String get loggedReasonHint => 'تناؤ، پریشانی، تھکاوٹ، ہم عمروں کا دباؤ وغیرہ';
+  String get loggedReasonHint =>
+      'تناؤ، پریشانی، تھکاوٹ، ہم عمروں کا دباؤ وغیرہ';
 
   @override
   String get confirmLog => 'لاگ تصدیق کریں';
@@ -158,37 +159,43 @@ class AppLocalizationsUr extends AppLocalizations {
   String get onboarding0Title => 'Grove میں خوش آمدید 🌿';
 
   @override
-  String get onboarding0Body => 'ایک نجی عادت ٹریکر جہاں درخت آپ کی ترقی کی نمائندگی کرتے ہیں۔ جتنا لمبا آپ پرہیز کریں گے یا چیک ان کریں گے، آپ کے درخت اتنے ہی سرسبز ہوتے جائیں گے۔';
+  String get onboarding0Body =>
+      'ایک نجی عادت ٹریکر جہاں درخت آپ کی ترقی کی نمائندگی کرتے ہیں۔ جتنا لمبا آپ پرہیز کریں گے یا چیک ان کریں گے، آپ کے درخت اتنے ہی سرسبز ہوتے جائیں گے۔';
 
   @override
   String get onboarding1Title => 'ایک درخت لگائیں';
 
   @override
-  String get onboarding1Body => 'عادت بنانے کے لیے \"ایک درخت لگائیں\" ٹیپ کریں۔ نام دیں، رنگ چنیں، اور Grove ایک منفرد درخت بناتا ہے۔';
+  String get onboarding1Body =>
+      'عادت بنانے کے لیے \"ایک درخت لگائیں\" ٹیپ کریں۔ نام دیں، رنگ چنیں، اور Grove ایک منفرد درخت بناتا ہے۔';
 
   @override
   String get onboarding2Title => 'اسے بڑھتے دیکھیں';
 
   @override
-  String get onboarding2Body => 'ہر دن آپ کے درخت کو پانچ مراحل سے گزرنے میں مدد کرتا ہے — ایک چھوٹے بیج سے لے کر مکمل باغ کے درخت تک۔';
+  String get onboarding2Body =>
+      'ہر دن آپ کے درخت کو پانچ مراحل سے گزرنے میں مدد کرتا ہے — ایک چھوٹے بیج سے لے کر مکمل باغ کے درخت تک۔';
 
   @override
   String get onboarding3Title => 'دوبارہ لگنا درج کریں';
 
   @override
-  String get onboarding3Body => 'اگر آپ پھسل جائیں تو ایمانداری سے درج کریں۔ Grove آپ کی طویل ترین سلسلہ اور تاریخ ٹریک کرتا ہے۔';
+  String get onboarding3Body =>
+      'اگر آپ پھسل جائیں تو ایمانداری سے درج کریں۔ Grove آپ کی طویل ترین سلسلہ اور تاریخ ٹریک کرتا ہے۔';
 
   @override
   String get onboarding4Title => 'آپ کی تاریخ';
 
   @override
-  String get onboarding4Body => 'کوئی بھی درخت کھولیں اور کیلنڈر، سنگ میل، سلسلہ کی تاریخ دیکھیں۔';
+  String get onboarding4Body =>
+      'کوئی بھی درخت کھولیں اور کیلنڈر، سنگ میل، سلسلہ کی تاریخ دیکھیں۔';
 
   @override
   String get onboarding5Title => 'مکمل طور پر نجی';
 
   @override
-  String get onboarding5Body => 'سب کچھ آپ کے آلے پر رہتا ہے۔ کچھ بھی کہیں نہیں بھیجا جاتا۔ ترتیبات میں Export / Import کے ذریعے بیک اپ لیں یا grove منتقل کریں۔ اب کچھ ایسا اگائیں جو رکھنے کے قابل ہو۔ 🌱';
+  String get onboarding5Body =>
+      'سب کچھ آپ کے آلے پر رہتا ہے۔ کچھ بھی کہیں نہیں بھیجا جاتا۔ ترتیبات میں Export / Import کے ذریعے بیک اپ لیں یا grove منتقل کریں۔ اب کچھ ایسا اگائیں جو رکھنے کے قابل ہو۔ 🌱';
 
   @override
   String get next => 'آگے';
@@ -254,13 +261,15 @@ class AppLocalizationsUr extends AppLocalizations {
   String get milestoneNotifications => 'سنگ میل اطلاعات';
 
   @override
-  String get milestoneNotificationsSubtitle => 'جب درخت نئے مرحلے پر پہنچے تو مطلع ہوں';
+  String get milestoneNotificationsSubtitle =>
+      'جب درخت نئے مرحلے پر پہنچے تو مطلع ہوں';
 
   @override
   String get biometricUnlock => 'بائیومیٹرک انلاک';
 
   @override
-  String get biometricUnlockSubtitle => 'Grove کھولنے کے لیے فنگرپرنٹ / پن ضروری ہے';
+  String get biometricUnlockSubtitle =>
+      'Grove کھولنے کے لیے فنگرپرنٹ / پن ضروری ہے';
 
   @override
   String get exportGroveBackup => 'Grove بیک اپ برآمد کریں';
@@ -269,7 +278,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get restoreGroveBackup => 'بیک اپ سے Grove بحال کریں';
 
   @override
-  String get exportImportNote => 'برآمد .json فائل محفوظ کرتا ہے۔\nدرآمد آپ کا موجودہ grove بدل دے گا • پہلے بیک اپ لیں۔';
+  String get exportImportNote =>
+      'برآمد .json فائل محفوظ کرتا ہے۔\nدرآمد آپ کا موجودہ grove بدل دے گا • پہلے بیک اپ لیں۔';
 
   @override
   String get backupSaved => '✓ بیک اپ محفوظ ہو گیا';
@@ -288,7 +298,8 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get invalidBackup => '✗ غلط بیک اپ — یقینی بنائیں کہ آپ نے صحیح فائل منتخب کی ہے';
+  String get invalidBackup =>
+      '✗ غلط بیک اپ — یقینی بنائیں کہ آپ نے صحیح فائل منتخب کی ہے';
 
   @override
   String get language => 'زبان';
@@ -323,7 +334,8 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get groveDescription => 'Grove ایک کم سے کم عادت اور پرہیز ٹریکر ہے جو درختوں کے ذریعے آپ کی ترقی کو دکھاتا ہے۔ جس دن بھی آپ پرہیز کریں یا چیک ان کریں، آپ کا درخت بڑھتا ہے۔ مفت، اوپن سورس۔';
+  String get groveDescription =>
+      'Grove ایک کم سے کم عادت اور پرہیز ٹریکر ہے جو درختوں کے ذریعے آپ کی ترقی کو دکھاتا ہے۔ جس دن بھی آپ پرہیز کریں یا چیک ان کریں، آپ کا درخت بڑھتا ہے۔ مفت، اوپن سورس۔';
 
   @override
   String get groveLocked => 'Grove بند ہے';
@@ -356,7 +368,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get thisMonth => 'اس مہینے';
 
   @override
-  String get logDateBeforeTracking => '← ٹریکنگ شروع ہونے سے پہلے کی تاریخ درج کریں';
+  String get logDateBeforeTracking =>
+      '← ٹریکنگ شروع ہونے سے پہلے کی تاریخ درج کریں';
 
   @override
   String get abstinentSinceStart => 'کوئی دوبارہ لگنا درج نہیں۔';
@@ -415,6 +428,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get renameHabit => 'عادت کا نام بدلیں';
 
   @override
+  String get habitOptions => 'عادت کے اختیارات';
+
+  @override
   String get save => 'محفوظ کریں';
 
   @override
@@ -446,7 +462,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get logEarlierDate => 'پہلے کی تاریخ درج کریں';
 
   @override
-  String get extendsHistoryNote => 'یہ آپ کی تاریخ بڑھاتا ہے اور سلسلہ کا دوبارہ حساب لگاتا ہے';
+  String get extendsHistoryNote =>
+      'یہ آپ کی تاریخ بڑھاتا ہے اور سلسلہ کا دوبارہ حساب لگاتا ہے';
 
   @override
   String get logEarlierDateTitle => 'پہلے کی تاریخ درج کریں';
@@ -455,7 +472,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get beforeTrackingStarted => 'ٹریکنگ شروع ہونے سے پہلے';
 
   @override
-  String get extendHistoryInfo => 'یہ آپ کی ٹریکنگ تاریخ بڑھائے گا اور اعلیٰ سلسلہ کا دوبارہ حساب لگائے گا۔';
+  String get extendHistoryInfo =>
+      'یہ آپ کی ٹریکنگ تاریخ بڑھائے گا اور اعلیٰ سلسلہ کا دوبارہ حساب لگائے گا۔';
 
   @override
   String get date => 'تاریخ';
@@ -467,7 +485,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get logAsRelapseOnDate => 'اس تاریخ کو دوبارہ لگنے کے طور پر درج کریں';
 
   @override
-  String get onlyExtendStartDate => 'صرف شروعاتی تاریخ بڑھائیں (دوبارہ لگنے کے بغیر)';
+  String get onlyExtendStartDate =>
+      'صرف شروعاتی تاریخ بڑھائیں (دوبارہ لگنے کے بغیر)';
 
   @override
   String get whatHappenedHint => 'اس دن کیا ہوا…';
@@ -494,7 +513,8 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get notifSaplingBody => 'آپ کا درخت اپنے دم پر کھڑا ہے، دیکھیں آپ کتنے بڑھے ہیں';
+  String get notifSaplingBody =>
+      'آپ کا درخت اپنے دم پر کھڑا ہے، دیکھیں آپ کتنے بڑھے ہیں';
 
   @override
   String notifYoungTreeTitle(String name) {
@@ -537,7 +557,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get dailyReminderSetting => 'روزانہ چیک-ان یاددہانی';
 
   @override
-  String get dailyReminderSettingSubtitle => 'اپنے باغ میں چیک-ان کرنے کا ایک اشارہ';
+  String get dailyReminderSettingSubtitle =>
+      'اپنے باغ میں چیک-ان کرنے کا ایک اشارہ';
 
   @override
   String get tapToChange => 'تبدیل کرنے کے لیے ٹیپ کریں';
@@ -549,7 +570,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get dailyReminderTitle => 'چیک-ان کا وقت ہے 🌿';
 
   @override
-  String get dailyReminderBody => 'آپ کا باغ انتظار کر رہا ہے۔ سلسلہ زندہ رکھیں۔';
+  String get dailyReminderBody =>
+      'آپ کا باغ انتظار کر رہا ہے۔ سلسلہ زندہ رکھیں۔';
 
   @override
   String get legendMissed => 'چھوٹا ہوا';
@@ -637,7 +659,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get noteOptional => 'نوٹ (اختیاری)';
 
   @override
-  String get noteHint => 'آج کا دن کیسا رہا؟ کوئی کامیابی یا یاد رکھنے والا نوٹ...';
+  String get noteHint =>
+      'آج کا دن کیسا رہا؟ کوئی کامیابی یا یاد رکھنے والا نوٹ...';
 
   @override
   String get streakFrozen => 'تسلسل منجمد';

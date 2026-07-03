@@ -172,6 +172,7 @@
   "noRelapsesRecorded": "कोई पुनरावृत्ति दर्ज नहीं। बढ़ते रहें।",
   "noCheckInsYet": "अभी तक कोई चेक-इन नहीं। आज शुरू करें!",
   "renameHabit": "आदत का नाम बदलें",
+  "habitOptions": "आदत विकल्प",
   "save": "सहेजें",
   "dangerZone": "खतरनाक क्षेत्र",
   "deleteHabitPermanently": "आदत स्थायी रूप से हटाएं",
