@@ -25,6 +25,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * Fixed a bug where excusing a day that already had a check-in could leave the day in a broken combined state
 * Fixed check-in buttons not working on excused days in the habit detail view and home screen
+* Added Calendar view button to list view (layout archetecture)
 
 ---
 
