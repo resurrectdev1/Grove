@@ -134,10 +134,15 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
 
     final original = _habits[i];
     final updatedDays = Set<DateTime>.of(original.checkInDays)..add(today);
+    final updatedNullDays = Set<DateTime>.of(original.nullDays)..remove(today);
     final updatedTimestamps = Map<DateTime, DateTime>.of(original.checkInTimestamps);
     updatedTimestamps[today] = recordedTimestamp;
 
-    _habits[i] = original.copyWith(checkInDays: updatedDays, checkInTimestamps: updatedTimestamps);
+    _habits[i] = original.copyWith(
+      checkInDays: updatedDays,
+      nullDays: updatedNullDays,
+      checkInTimestamps: updatedTimestamps,
+    );
     _persist();
     notifyListeners();
   }
@@ -151,6 +156,7 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
 
     final original = _habits[i];
     final updatedDays = Set<DateTime>.of(original.checkInDays)..add(today);
+    final updatedNullDays = Set<DateTime>.of(original.nullDays)..remove(today);
     final updatedTimestamps = Map<DateTime, DateTime>.of(original.checkInTimestamps);
     updatedTimestamps[today] = recordedTimestamp;
 
@@ -164,6 +170,7 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
 
     _habits[i] = original.copyWith(
       checkInDays: updatedDays,
+      nullDays: updatedNullDays,
       checkInTimestamps: updatedTimestamps,
       checkInNotes: updatedNotes,
     );
