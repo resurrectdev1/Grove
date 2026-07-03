@@ -16,10 +16,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Notes for Check-In Mode, so you can jot down how a check-in or excused day went
 * Excused days now appear in the Check-In history list, marked with a frost icon
 * New ⋮ three-dot menu in habit cards for all views allowing you to rename and delete habits
+* New preset colors: Indigo, Olive, Slate, Terracota, Dusty rose, Amber brown
 
 ### Changed
 
 * Check-In Mode trees now show their growth stage (Seed, Sprout, Sapling, etc.) alongside the day count, matching Abstinence Mode, instead of a redundant day-streak label
+* Rearranged preset colors in rainbow order
 
 ### Fixed
 
