@@ -93,68 +93,70 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
           SliverToBoxAdapter(child: _calendarSection(habit, theme, l10n)),
           if (isCheckIn)
             SliverToBoxAdapter(child: _freezeStreakSection(habit, theme, l10n)),
-          if (!isCheckIn) ...[
-            SliverToBoxAdapter(child: _historyHeader(habit, theme, l10n)),
-            habit.relapses.isEmpty
-            ? SliverToBoxAdapter(child: _noHistory(theme, l10n))
-            : SliverList(delegate: SliverChildBuilderDelegate(
-              (_, i) => RelapseEventTile(event: habit.relapses[i], index: i),
-              childCount: habit.relapses.length)),
-          ] else ...[
-            SliverToBoxAdapter(child: _checkInHistoryHeader(habit, theme, l10n)),
-            if (habit.checkInDays.isEmpty && habit.nullDays.isEmpty)
-              SliverToBoxAdapter(child: _noHistory(theme, l10n, checkIn: true))
-              else
-                SliverList(delegate: SliverChildBuilderDelegate(
-                  (_, i) {
+            if (!isCheckIn) ...[
+              SliverToBoxAdapter(child: _historyHeader(habit, theme, l10n)),
+              habit.relapses.isEmpty
+              ? SliverToBoxAdapter(child: _noHistory(theme, l10n))
+              : SliverList(delegate: SliverChildBuilderDelegate(
+                (_, i) => RelapseEventTile(event: habit.relapses[i], index: i),
+                childCount: habit.relapses.length)),
+            ] else ...[
+              SliverToBoxAdapter(child: _checkInHistoryHeader(habit, theme, l10n)),
+              if (habit.checkInDays.isEmpty && habit.nullDays.isEmpty)
+                SliverToBoxAdapter(child: _noHistory(theme, l10n, checkIn: true))
+                else
+                  Builder(builder: (context) {
                     final sorted = <DateTime>{...habit.checkInDays, ...habit.nullDays}.toList()
                     ..sort((a, b) => b.compareTo(a));
-                    final day = sorted[i];
-                    final isExcused = habit.nullDays.contains(day);
-                    final note = habit.checkInNoteFor(day);
-                    const frostColor = Color(0xFF42A5C8);
-                    return Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                      padding: const EdgeInsets.all(14),
-                      decoration: BoxDecoration(color: theme.surface, borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: theme.surfaceHigh)),
-                      child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Container(width: 28, height: 28,
-                                  decoration: BoxDecoration(
-                                    color: isExcused ? frostColor.withValues(alpha: 0.14) : habit.color.withValues(alpha: 0.12),
-                                    shape: BoxShape.circle),
-                                  alignment: Alignment.center,
-                                  child: isExcused
-                                  ? const Text('❄️', style: TextStyle(fontSize: 13))
-                                  : Icon(Icons.check, size: 14, color: habit.color)),
-                                  const SizedBox(width: 12),
-                                  Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                    Row(children: [
-                                      Expanded(child: Text(
-                                        DateFormat('EEEE, MMMM d, yyyy').format(day),
-                                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: theme.textPrimary),
-                                      )),
-                                      if (isExcused)
-                                        Text(l10n.legendExcused,
-                                             style: TextStyle(fontSize: 11, color: frostColor, fontWeight: FontWeight.w500))
-                                      else
-                                        Text(DateFormat('h:mm a').format(habit.checkInTimeFor(day)),
-                                             style: TextStyle(fontSize: 11, color: theme.textMuted)),
-                                    ]),
-                                    if (note.isNotEmpty) ...[
-                                      const SizedBox(height: 6),
-                                      Text('"$note"',
-                                           style: TextStyle(fontSize: 13, color: theme.textSecondary, fontStyle: FontStyle.italic, height: 1.4)),
-                                    ],
-                                  ])),
-                      ]),
-                    );
-                  },
-                  childCount: habit.checkInDays.length + habit.nullDays.length,
-                )),
-          ],
-          SliverToBoxAdapter(child: _deleteSection(context, habit, theme, l10n)),
-          const SliverToBoxAdapter(child: SizedBox(height: 80)),
+                    return SliverList(delegate: SliverChildBuilderDelegate(
+                      (_, i) {
+                        final day = sorted[i];
+                        final isExcused = habit.nullDays.contains(day);
+                        final note = habit.checkInNoteFor(day);
+                        const frostColor = Color(0xFF42A5C8);
+                        return Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                          padding: const EdgeInsets.all(14),
+                          decoration: BoxDecoration(color: theme.surface, borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: theme.surfaceHigh)),
+                          child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                            Container(width: 28, height: 28,
+                                      decoration: BoxDecoration(
+                                        color: isExcused ? frostColor.withValues(alpha: 0.14) : habit.color.withValues(alpha: 0.12),
+                                        shape: BoxShape.circle),
+                                      alignment: Alignment.center,
+                                      child: isExcused
+                                      ? const Text('❄️', style: TextStyle(fontSize: 13))
+                                      : Icon(Icons.check, size: 14, color: habit.color)),
+                                      const SizedBox(width: 12),
+                                      Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                        Row(children: [
+                                          Expanded(child: Text(
+                                            DateFormat('EEEE, MMMM d, yyyy').format(day),
+                                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: theme.textPrimary),
+                                          )),
+                                          if (isExcused)
+                                            Text(l10n.legendExcused,
+                                                 style: TextStyle(fontSize: 11, color: frostColor, fontWeight: FontWeight.w500))
+                                            else
+                                              Text(DateFormat('h:mm a').format(habit.checkInTimeFor(day)),
+                                              style: TextStyle(fontSize: 11, color: theme.textMuted)),
+                                        ]),
+                                        if (note.isNotEmpty) ...[
+                                          const SizedBox(height: 6),
+                                          Text('"$note"',
+                                               style: TextStyle(fontSize: 13, color: theme.textSecondary, fontStyle: FontStyle.italic, height: 1.4)),
+                                        ],
+                                      ])),
+                          ]),
+                        );
+                      },
+                      childCount: sorted.length,
+                    ));
+                  }),
+            ],
+            SliverToBoxAdapter(child: _deleteSection(context, habit, theme, l10n)),
+            const SliverToBoxAdapter(child: SizedBox(height: 80)),
         ],
       ),
     );
@@ -447,40 +449,40 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
           ),
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
-                habit.streakFrozen ? Icons.ac_unit_rounded : Icons.ac_unit_outlined,
-                size: 15,
+              habit.streakFrozen ? Icons.ac_unit_rounded : Icons.ac_unit_outlined,
+              size: 15,
+              color: habit.streakFrozen
+              ? const Color(0xFF42A5C8)
+              : theme.textMuted,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              habit.streakFrozen ? l10n.streakFrozen : l10n.freezeStreak,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
                 color: habit.streakFrozen
                 ? const Color(0xFF42A5C8)
                 : theme.textMuted,
               ),
-              const SizedBox(width: 8),
-              Text(
-                habit.streakFrozen ? l10n.streakFrozen : l10n.freezeStreak,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: habit.streakFrozen
-                  ? const Color(0xFF42A5C8)
-                  : theme.textMuted,
-                ),
+            ),
+            const SizedBox(width: 10),
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 200),
+              child: Icon(
+                habit.streakFrozen
+                ? Icons.toggle_on_rounded
+                : Icons.toggle_off_rounded,
+                key: ValueKey(habit.streakFrozen),
+                size: 28,
+                color: habit.streakFrozen
+                ? const Color(0xFF42A5C8)
+                : theme.textMuted.withValues(alpha: 0.5),
               ),
-              const SizedBox(width: 10),
-              AnimatedSwitcher(
-                duration: const Duration(milliseconds: 200),
-                child: Icon(
-                  habit.streakFrozen
-                  ? Icons.toggle_on_rounded
-                  : Icons.toggle_off_rounded,
-                  key: ValueKey(habit.streakFrozen),
-                  size: 28,
-                  color: habit.streakFrozen
-                  ? const Color(0xFF42A5C8)
-                  : theme.textMuted.withValues(alpha: 0.5),
-                ),
-              ),
-            ]),
-          ),
+            ),
+          ]),
         ),
+      ),
     );
   }
 
