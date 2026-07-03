@@ -82,7 +82,12 @@ class _HabitCardState extends State<HabitCard> {
                      Text(l10n.dayCount(days), style: TextStyle(fontSize: 12, color: theme.textSecondary)),
                    ]),
             ])),
-            const SizedBox(width: 8),
+            const SizedBox(width: 4),
+            GestureDetector(
+              onTap: () => _goDetail(context),
+              child: Icon(Icons.calendar_month_outlined, size: 20, color: theme.textSecondary),
+            ),
+            const SizedBox(width: 10),
             GestureDetector(
               onTap: () => isCheckIn
               ? _handleCheckIn(context, model, habit)
@@ -96,6 +101,13 @@ class _HabitCardState extends State<HabitCard> {
                 ? (isCheckedIn ? habit.color : theme.textMuted)
                 : GroveTheme.clayRed,
               ),
+            ),
+            const SizedBox(width: 6),
+            _OptionsMenuButton(
+              habit: habit, theme: theme, l10n: l10n,
+              onRename: () => _showRenameDialog(context, habit, theme, l10n),
+              onDelete: () => _showDeleteDialog(context, habit, theme, l10n),
+              iconSize: 18,
             ),
           ]),
         ),
@@ -118,7 +130,19 @@ class _HabitCardState extends State<HabitCard> {
           ? [BoxShadow(color: habit.color.withValues(alpha: 0.18), blurRadius: 32, spreadRadius: 2)]
           : [],
         ),
-        child: Column(
+        child: Stack(
+          children: [
+            Positioned(
+              top: isCompact ? 0 : 6,
+              right: isCompact ? 0 : 6,
+              child: _OptionsMenuButton(
+                habit: habit, theme: theme, l10n: l10n,
+                onRename: () => _showRenameDialog(context, habit, theme, l10n),
+                onDelete: () => _showDeleteDialog(context, habit, theme, l10n),
+                iconSize: isCompact ? 16 : 20,
+              ),
+            ),
+            Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
@@ -208,6 +232,8 @@ class _HabitCardState extends State<HabitCard> {
                                   ],
           ],
         ),
+          ],
+        ),
       ),
     );
   }
@@ -233,6 +259,126 @@ class _HabitCardState extends State<HabitCard> {
         HapticFeedback.mediumImpact();
       },
     ),
+  );
+
+  void _showRenameDialog(BuildContext ctx, HabitTree habit, GroveTheme theme, AppLocalizations l10n) {
+    final ctrl = TextEditingController(text: habit.name);
+    showDialog(
+      context: ctx,
+      builder: (dialogCtx) => AlertDialog(
+        backgroundColor: theme.surfaceHigh,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        title: Text(l10n.renameHabit, style: TextStyle(color: theme.textPrimary, fontWeight: FontWeight.w700)),
+        content: TextField(
+          controller:         ctrl,
+          autofocus:          true,
+          textCapitalization: TextCapitalization.words,
+          style:              TextStyle(color: theme.textPrimary),
+          decoration: InputDecoration(
+            labelText:  l10n.habitName,
+            prefixIcon: Icon(Icons.edit_outlined, size: 18, color: theme.textMuted),
+          ),
+          onSubmitted: (val) {
+            final trimmed = val.trim();
+            if (trimmed.isNotEmpty) {
+              ctx.read<GroveModel>().renameHabit(habit.id, trimmed);
+              HapticFeedback.lightImpact();
+            }
+            Navigator.pop(dialogCtx);
+          },
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogCtx),
+            child: Text(l10n.cancel, style: TextStyle(color: theme.textSecondary)),
+          ),
+          FilledButton(
+            onPressed: () {
+              final trimmed = ctrl.text.trim();
+              if (trimmed.isNotEmpty) {
+                ctx.read<GroveModel>().renameHabit(habit.id, trimmed);
+                HapticFeedback.lightImpact();
+              }
+              Navigator.pop(dialogCtx);
+            },
+            style: FilledButton.styleFrom(
+              backgroundColor: habit.color,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+            child: Text(l10n.save),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showDeleteDialog(BuildContext ctx, HabitTree habit, GroveTheme theme, AppLocalizations l10n) {
+    showDialog(
+      context: ctx,
+      builder: (dialogCtx) => AlertDialog(
+        backgroundColor: theme.surfaceHigh,
+        shape:   RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        title:   Text(l10n.deleteHabit, style: TextStyle(color: theme.textPrimary, fontWeight: FontWeight.w700)),
+        content: Text(l10n.deleteHabitConfirm(habit.name), style: TextStyle(color: theme.textSecondary)),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(dialogCtx),
+                     child: Text(l10n.cancel, style: TextStyle(color: theme.textSecondary))),
+          FilledButton(
+            onPressed: () {
+              Navigator.pop(dialogCtx);
+              ctx.read<GroveModel>().deleteHabit(habit.id);
+              HapticFeedback.heavyImpact();
+            },
+            style: FilledButton.styleFrom(backgroundColor: GroveTheme.clayRed),
+            child: Text(l10n.delete),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _OptionsMenuButton extends StatelessWidget {
+  final HabitTree habit; final GroveTheme theme; final AppLocalizations l10n;
+  final VoidCallback onRename; final VoidCallback onDelete; final double iconSize;
+  const _OptionsMenuButton({
+    required this.habit, required this.theme, required this.l10n,
+    required this.onRename, required this.onDelete, this.iconSize = 20,
+  });
+
+  @override
+  Widget build(BuildContext context) => PopupMenuButton<String>(
+    tooltip: l10n.habitOptions,
+    icon: Icon(Icons.more_vert_rounded, size: iconSize, color: theme.textSecondary),
+    padding: EdgeInsets.zero,
+    constraints: BoxConstraints(minWidth: iconSize + 12, minHeight: iconSize + 12),
+    color: theme.surfaceHigh,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+    onSelected: (value) {
+      HapticFeedback.selectionClick();
+      switch (value) {
+        case 'rename': onRename(); break;
+        case 'delete': onDelete(); break;
+      }
+    },
+    itemBuilder: (ctx) => [
+      PopupMenuItem(
+        value: 'rename',
+        child: Row(children: [
+          Icon(Icons.edit_outlined, size: 18, color: theme.textPrimary),
+          const SizedBox(width: 10),
+          Text(l10n.renameHabit, style: TextStyle(color: theme.textPrimary)),
+        ]),
+      ),
+      PopupMenuItem(
+        value: 'delete',
+        child: Row(children: [
+          const Icon(Icons.delete_outline, size: 18, color: GroveTheme.clayRed),
+          const SizedBox(width: 10),
+          Text(l10n.deleteHabitPermanently, style: const TextStyle(color: GroveTheme.clayRed)),
+        ]),
+      ),
+    ],
   );
 }
 
