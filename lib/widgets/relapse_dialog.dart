@@ -23,7 +23,7 @@ class _RelapseDialogState extends State<RelapseDialog> {
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<GroveSettings>().theme;
-    final l10n  = AppLocalizations.of(context)!;
+    final l10n  = AppLocalizations.of(context);
     return Dialog(
       insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       backgroundColor: theme.surfaceHigh,
