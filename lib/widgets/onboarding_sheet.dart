@@ -63,7 +63,7 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
   @override
   Widget build(BuildContext context) {
     final theme     = context.watch<GroveSettings>().theme;
-    final l10n      = AppLocalizations.of(context)!;
+    final l10n      = AppLocalizations.of(context);
     final steps     = _steps(l10n);
     final bottomPad = MediaQuery.of(context).padding.bottom;
     final step      = steps[_page];
