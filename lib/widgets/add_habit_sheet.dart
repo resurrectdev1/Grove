@@ -30,7 +30,7 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
   @override
   Widget build(BuildContext context) {
     final theme     = context.watch<GroveSettings>().theme;
-    final l10n      = AppLocalizations.of(context)!;
+    final l10n      = AppLocalizations.of(context);
     final bottomPad = math.max(MediaQuery.of(context).viewInsets.bottom, MediaQuery.of(context).padding.bottom);
 
     return Padding(
