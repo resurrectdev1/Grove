@@ -79,6 +79,8 @@ alt="Get it on F-Droid" align="center" height="80" /></a>
 
 🍦 **[Material You App List](https://github.com/nyas1/Material-You-app-list):** Listed under Habit Tracker as an MDY FOSS app.
 
+📱 **[阿呆的博客](https://adaiblog-github-io.vercel.app/posts/androidapp.html):** Included in a curated list of Android apps worth using.
+
 ## Support The App
 
 **Grove** is free forever: no subscriptions, no ads, and no data harvesting. Just you and your trees. If Grove has helped you or someone you know stay clean and build better habits, consider supporting its continued development so it can keep growing.
