@@ -171,7 +171,7 @@ class _BiometricGateState extends State<_BiometricGate> with WidgetsBindingObser
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<GroveSettings>().theme;
-    final l10n  = AppLocalizations.of(context)!;
+    final l10n  = AppLocalizations.of(context);
     if (_unlocked) return widget.child;
 
     return Scaffold(
