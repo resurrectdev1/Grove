@@ -73,6 +73,12 @@ alt="Get it on Obtainium" align="center" height="80" /></a>
 <img src="https://f-droid.org/badge/get-it-on.png"
 alt="Get it on F-Droid" align="center" height="80" /></a>
 
+## Press & Mentions
+
+🗣️ **[少数派 (SSPAI)](https://sspai.com/post/111697):** Featured in a roundup of noteworthy apps, covering both tracking modes, Material You theming, and the drum roll layout.
+
+🍦 **[Material You App List](https://github.com/nyas1/Material-You-app-list):** Listed under Habit Tracker as an MDY FOSS app.
+
 ## Support The App
 
 **Grove** is free forever: no subscriptions, no ads, and no data harvesting. Just you and your trees. If Grove has helped you or someone you know stay clean and build better habits, consider supporting its continued development so it can keep growing.
