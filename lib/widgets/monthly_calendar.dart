@@ -1,5 +1,4 @@
 import 'dart:math' as math;
-import 'package:characters/characters.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -19,7 +18,7 @@ class MonthlyCalendar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme          = context.watch<GroveSettings>().theme;
     final model          = context.read<GroveModel>();
-    final l10n           = AppLocalizations.of(context)!;
+    final l10n           = AppLocalizations.of(context);
     final locale         = Localizations.localeOf(context).toString();
     final now            = DateTime.now();
     final isCheckIn      = habit.mode == HabitMode.checkIn;
@@ -217,7 +216,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
   @override
   Widget build(BuildContext context) {
     final theme     = widget.theme;
-    final l10n      = AppLocalizations.of(context)!;
+    final l10n      = AppLocalizations.of(context);
     final locale    = Localizations.localeOf(context).toString();
     final bottomPad = math.max(
       MediaQuery.of(context).viewInsets.bottom,
