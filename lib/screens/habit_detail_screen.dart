@@ -71,7 +71,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     }
     final habit = context.watch<GroveModel>().habitById(widget.habitId);
     final theme = context.watch<GroveSettings>().theme;
-    final l10n  = AppLocalizations.of(context)!;
+    final l10n  = AppLocalizations.of(context);
     final isCheckIn = habit?.mode == HabitMode.checkIn;
     if (habit == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -489,7 +489,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
   void _showEarlierDatePicker(BuildContext ctx, HabitTree habit) {
     final theme      = ctx.read<GroveSettings>().theme;
     final model      = ctx.read<GroveModel>();
-    final l10n       = AppLocalizations.of(ctx)!;
+    final l10n       = AppLocalizations.of(ctx);
     DateTime selectedDate = habit.startDate.subtract(const Duration(days: 1));
     TimeOfDay selectedTime = TimeOfDay.now();
     final reasonCtrl = TextEditingController();
@@ -660,7 +660,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
   void _confirmDelete(BuildContext ctx, HabitTree habit) {
     final groveModel    = context.read<GroveModel>();
     final settingsTheme = context.read<GroveSettings>().theme;
-    final l10n           = AppLocalizations.of(ctx)!;
+    final l10n           = AppLocalizations.of(ctx);
     showDialog(
       context: ctx,
       builder: (dialogContext) => AlertDialog(
