@@ -37,7 +37,7 @@ class EarlierDateSentinel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 4),
       padding: const EdgeInsets.all(24),
@@ -95,7 +95,7 @@ class RelapseEventTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme   = context.watch<GroveSettings>().theme;
-    final l10n    = AppLocalizations.of(context)!;
+    final l10n    = AppLocalizations.of(context);
     final dateStr = DateFormat('EEE, MMM d yyyy').format(event.timestamp);
     final timeStr = DateFormat('h:mm a').format(event.timestamp);
     return Container(
