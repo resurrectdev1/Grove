@@ -55,7 +55,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     final habits   = context.watch<GroveModel>().habits;
     final settings = context.watch<GroveSettings>();
     final theme    = settings.theme;
-    final l10n     = AppLocalizations.of(context)!;
+    final l10n     = AppLocalizations.of(context);
 
     if (habits.isNotEmpty && _selectedIdx >= habits.length) {
       _selectedIdx = habits.length - 1;
@@ -118,7 +118,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
   void _showAboutSheet(BuildContext ctx) {
     final theme     = ctx.read<GroveSettings>().theme;
     final bottomPad = MediaQuery.of(ctx).padding.bottom;
-    final l10n      = AppLocalizations.of(ctx)!;
+    final l10n      = AppLocalizations.of(ctx);
 
     showModalBottomSheet(
       context:            ctx,
@@ -307,7 +307,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     final settings  = ctx.read<GroveSettings>();
     final theme     = settings.theme;
     final bottomPad = MediaQuery.of(ctx).padding.bottom;
-    final l10n      = AppLocalizations.of(ctx)!;
+    final l10n      = AppLocalizations.of(ctx);
 
     showModalBottomSheet(
       context:            ctx,
@@ -409,7 +409,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
       ),
       builder: (sheetCtx) => Consumer<GroveSettings>(
         builder: (_, settings, _) {
-          final l10n = AppLocalizations.of(sheetCtx)!;
+          final l10n = AppLocalizations.of(sheetCtx);
           return SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(24, 20, 24, 24 + bottomPad),
             child: Column(
@@ -733,7 +733,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
 
   void _showAccentPicker(BuildContext ctx, GroveSettings settings) {
     final theme     = settings.theme;
-    final l10n      = AppLocalizations.of(ctx)!;
+    final l10n      = AppLocalizations.of(ctx);
     final bottomPad = MediaQuery.of(ctx).padding.bottom;
 
     Color  pickedColor = settings.customAccent ?? GroveTheme.mossGreen;
@@ -921,7 +921,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
   Future<void> _showExportSheet(BuildContext ctx, GroveModel model, GroveSettings settings) async {
     final json      = model.exportJson();
     final theme     = settings.theme;
-    final l10n      = AppLocalizations.of(ctx)!;
+    final l10n      = AppLocalizations.of(ctx);
     final fileName  = 'Grove_backup_${DateFormat("yyyy-MM-dd_HH-mm-ss").format(DateTime.now())}.json';
     final bytes     = Uint8List.fromList(json.codeUnits);
     final messenger = ScaffoldMessenger.of(ctx);
@@ -958,7 +958,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
 
   Future<void> _showImportSheet(BuildContext ctx, GroveModel model, GroveSettings settings) async {
     final theme     = settings.theme;
-    final l10n      = AppLocalizations.of(ctx)!;
+    final l10n      = AppLocalizations.of(ctx);
     final messenger = ScaffoldMessenger.of(ctx);
 
     final result = await FilePicker.pickFiles(
