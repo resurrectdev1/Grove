@@ -352,6 +352,14 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     notifyListeners();
   }
 
+  void updateHabitColor(String habitId, Color color) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1) return;
+    _habits[i] = _habits[i].copyWith(color: color);
+    _persist();
+    notifyListeners();
+  }
+
   void reorderHabits(int oldIndex, int newIndex) {
     if (oldIndex == newIndex) return;
     final item = _habits.removeAt(oldIndex);
