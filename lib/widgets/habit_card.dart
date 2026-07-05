@@ -120,7 +120,7 @@ class _HabitCardState extends State<HabitCard> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 350), curve: Curves.easeOutCubic,
         margin:   isCompact ? EdgeInsets.zero : const EdgeInsets.symmetric(horizontal: 26, vertical: 10),
-        padding:  EdgeInsets.all(isCompact ? 12 : 0),
+        padding:  EdgeInsets.all(isCompact ? 10 : 0),
         decoration: BoxDecoration(
           color:        theme.cardBg,
           borderRadius: BorderRadius.circular(isCompact ? 22 : 28),
@@ -155,18 +155,18 @@ class _HabitCardState extends State<HabitCard> {
                     child: Material(
                       color: Colors.transparent,
                       child: SizedBox(
-                        width:  isCompact ? 100 : 175,
-                        height: isCompact ? 100 : 175,
+                        width:  isCompact ? 92 : 175,
+                        height: isCompact ? 92 : 175,
                         child:  AnimatedTreeWidget(habit: habit),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: isCompact ? 8 : 10),
+                SizedBox(height: isCompact ? 4 : 10),
                 Text(habit.name, maxLines: 1, overflow: TextOverflow.ellipsis,
                      style: TextStyle(fontSize: isCompact ? 15 : 22, fontWeight: FontWeight.w700,
                                       color: theme.textPrimary, letterSpacing: 0.3)),
-                                      SizedBox(height: isCompact ? 4 : 6),
+                                      SizedBox(height: isCompact ? 2 : 6),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
@@ -186,6 +186,16 @@ class _HabitCardState extends State<HabitCard> {
                                             color:      theme.textSecondary)),
                                         ],
                                       ),
+                                      if (isCompact) ...[
+                                        const SizedBox(height: 2),
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+                                          decoration: BoxDecoration(
+                                            color: habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(20)),
+                                            child: Text(stageLabelLocalized(stage), style: TextStyle(
+                                              fontSize: 9, fontWeight: FontWeight.w600, color: habit.color, letterSpacing: 0.5)),
+                                        ),
+                                      ],
                                       if (!isCompact) ...[
                                         const SizedBox(height: 4),
                                         Text(isCheckIn
