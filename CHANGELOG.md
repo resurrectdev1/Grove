@@ -14,6 +14,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * Option to change habit color via three dot menu or withing detailed habit view by clicking on the colored dot at the top right of the screen
 * Translation of color change option within three dot menu
+* How many check-ins and excused days next to total in check-in history (to be added soon)
 
 ### Changed
 
