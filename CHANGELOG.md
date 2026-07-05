@@ -22,7 +22,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
-Grid view not having tree stage underneath current day
+* Grid view not having tree stage underneath current day
+* Calendar not showing excused days for check-in mode habits (to be fixed soon)
+* Check-in trees showing 1 when checked in and 0 when not instead of days of tree (to be fixed soon)
 
 ---
 
