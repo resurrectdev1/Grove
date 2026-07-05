@@ -17,7 +17,7 @@ class AddHabitSheet extends StatefulWidget {
 class _AddHabitSheetState extends State<AddHabitSheet> {
   final _nameCtrl = TextEditingController();
   final _hexCtrl  = TextEditingController();
-  Color _color    = GroveTheme.treePalette[6]; // default to green (0xFF4E8B5F); palette order/rainbow layout unchanged
+  Color _color    = GroveTheme.treePalette[6];
   bool  _validHex = true;
   HabitMode _mode = HabitMode.abstain;
 
