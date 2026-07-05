@@ -10,6 +10,20 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 > Changes staged for the next release go here. Move them down when you cut a tag.
 
+### Added
+
+* Option to change habit color via three dot menu or withing detailed habit view by clicking on the colored dot at the top right of the screen
+* Translation of color change option within three dot menu
+
+### Changed
+
+* Made colored dot in top right of detailed habit view bigger
+* Default color when making new habit to green instead of brown
+
+### Fixed
+
+Grid view not having tree stage underneath current day
+
 ---
 
 ## [0.7.2] - 2026-07-03
