@@ -39,7 +39,7 @@ Simply open Grove and click the "Plant a Tree" button then select your tracking 
 
 ❄️ **Streak Freeze & Excused Days:** Take a planned break without losing your progress, freeze a streak or mark a day as excused in Check-In Mode.
 
-🗂️ **Full Habit Management:** Rename, reorder, or delete habits at any time, with undo support if you change your mind.
+🗂️ **Full Habit Management:** Rename, reorder, recolor or delete habits at any time, within the homescreen or detailed habit view.
 
 🪟 **Home Screen Widgets:** Keep your journey visible at a glance with a live tree widget and a calendar widget integrated right into your home screen.
 
