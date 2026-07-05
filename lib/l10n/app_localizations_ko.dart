@@ -423,6 +423,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get renameHabit => '습관 이름 변경';
 
   @override
+  String get changeColor => '색상 변경';
+
+  @override
   String get habitOptions => '습관 옵션';
 
   @override

@@ -430,6 +430,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get renameHabit => 'Renomear hábito';
 
   @override
+  String get changeColor => 'Alterar cor';
+
+  @override
   String get habitOptions => 'Opções do hábito';
 
   @override

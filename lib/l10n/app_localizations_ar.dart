@@ -425,6 +425,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get renameHabit => 'إعادة تسمية العادة';
 
   @override
+  String get changeColor => 'تغيير اللون';
+
+  @override
   String get habitOptions => 'خيارات العادة';
 
   @override

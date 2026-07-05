@@ -421,6 +421,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get renameHabit => '重命名习惯';
 
   @override
+  String get changeColor => '更改颜色';
+
+  @override
   String get habitOptions => '习惯选项';
 
   @override
@@ -1070,6 +1073,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get renameHabit => '重新命名習慣';
+
+  @override
+  String get changeColor => '更改顏色';
 
   @override
   String get habitOptions => '習慣選項';

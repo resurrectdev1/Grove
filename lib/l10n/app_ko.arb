@@ -172,6 +172,7 @@
   "noRelapsesRecorded": "기록된 재발 없음. 계속 성장하세요.",
   "noCheckInsYet": "아직 체크인 없음. 오늘 시작하세요!",
   "renameHabit": "습관 이름 변경",
+  "changeColor": "색상 변경",
   "habitOptions": "습관 옵션",
   "save": "저장",
   "dangerZone": "위험 구역",

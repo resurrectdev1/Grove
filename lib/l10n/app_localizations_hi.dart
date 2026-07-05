@@ -429,6 +429,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get renameHabit => 'आदत का नाम बदलें';
 
   @override
+  String get changeColor => 'रंग बदलें';
+
+  @override
   String get habitOptions => 'आदत विकल्प';
 
   @override

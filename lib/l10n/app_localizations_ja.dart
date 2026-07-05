@@ -422,6 +422,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get renameHabit => '習慣名を変更';
 
   @override
+  String get changeColor => '色を変更';
+
+  @override
   String get habitOptions => '習慣オプション';
 
   @override

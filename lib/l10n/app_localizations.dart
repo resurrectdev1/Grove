@@ -901,6 +901,12 @@ abstract class AppLocalizations {
   /// **'Rename Habit'**
   String get renameHabit;
 
+  /// No description provided for @changeColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Color'**
+  String get changeColor;
+
   /// No description provided for @habitOptions.
   ///
   /// In en, this message translates to:

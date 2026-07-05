@@ -427,6 +427,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get renameHabit => 'Đổi tên thói quen';
 
   @override
+  String get changeColor => 'Đổi màu';
+
+  @override
   String get habitOptions => 'Tùy chọn thói quen';
 
   @override

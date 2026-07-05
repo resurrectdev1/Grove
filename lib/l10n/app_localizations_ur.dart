@@ -428,6 +428,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get renameHabit => 'عادت کا نام بدلیں';
 
   @override
+  String get changeColor => 'رنگ تبدیل کریں';
+
+  @override
   String get habitOptions => 'عادت کے اختیارات';
 
   @override

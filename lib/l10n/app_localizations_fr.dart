@@ -431,6 +431,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get renameHabit => 'Renommer l\'habitude';
 
   @override
+  String get changeColor => 'Changer la couleur';
+
+  @override
   String get habitOptions => 'Options de lhabitude';
 
   @override
