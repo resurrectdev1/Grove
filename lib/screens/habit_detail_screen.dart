@@ -10,6 +10,7 @@ import 'package:grove/providers/grove_model.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/theme/grove_theme.dart';
 import 'package:grove/widgets/animated_tree_widget.dart';
+import 'package:grove/widgets/color_picker_sheet.dart';
 import 'package:grove/widgets/habit_detail_widgets.dart';
 import 'package:grove/widgets/monthly_calendar.dart';
 
@@ -268,12 +269,31 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
         ),
       ),
       actions: [
-        Padding(padding: const EdgeInsets.only(right: 16),
-        child: Container(width: 10, height: 10,
-                         decoration: BoxDecoration(color: habit.color, shape: BoxShape.circle,
-                                                   boxShadow: [BoxShadow(color: habit.color.withValues(alpha: 0.6), blurRadius: 6)]))),
+        Padding(padding: const EdgeInsets.only(right: 4),
+        child: IconButton(
+          onPressed: () => _showColorPicker(ctx, habit, theme, l10n),
+          icon: Container(width: 18, height: 18,
+                           decoration: BoxDecoration(color: habit.color, shape: BoxShape.circle,
+                                                     border: Border.all(color: theme.textMuted.withValues(alpha: 0.3), width: 1.5),
+                                                     boxShadow: [BoxShadow(color: habit.color.withValues(alpha: 0.6), blurRadius: 6)])),
+          tooltip: l10n.changeColor,
+        )),
       ],
   );
+
+  void _showColorPicker(BuildContext ctx, HabitTree habit, GroveTheme theme, AppLocalizations l10n) async {
+    final picked = await showModalBottomSheet<Color>(
+      context: ctx,
+      backgroundColor: theme.surfaceHigh,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      builder: (_) => ColorPickerSheet(initialColor: habit.color, title: l10n.changeColor),
+    );
+    if (picked != null) {
+      ctx.read<GroveModel>().updateHabitColor(habit.id, picked);
+      HapticFeedback.lightImpact();
+    }
+  }
 
   void _showRenameDialog(BuildContext ctx, HabitTree habit, GroveTheme theme, AppLocalizations l10n) {
     final ctrl = TextEditingController(text: habit.name);
