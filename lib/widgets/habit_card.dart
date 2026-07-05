@@ -8,6 +8,7 @@ import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/screens/habit_detail_screen.dart';
 import 'package:grove/theme/grove_theme.dart';
 import 'package:grove/widgets/animated_tree_widget.dart';
+import 'package:grove/widgets/color_picker_sheet.dart';
 import 'package:grove/widgets/relapse_dialog.dart';
 
 class HabitCard extends StatefulWidget {
@@ -106,6 +107,7 @@ class _HabitCardState extends State<HabitCard> {
             _OptionsMenuButton(
               habit: habit, theme: theme, l10n: l10n,
               onRename: () => _showRenameDialog(context, habit, theme, l10n),
+              onChangeColor: () => _showColorPickerSheet(context, habit, theme, l10n),
               onDelete: () => _showDeleteDialog(context, habit, theme, l10n),
               iconSize: 18,
             ),
@@ -138,6 +140,7 @@ class _HabitCardState extends State<HabitCard> {
               child: _OptionsMenuButton(
                 habit: habit, theme: theme, l10n: l10n,
                 onRename: () => _showRenameDialog(context, habit, theme, l10n),
+                onChangeColor: () => _showColorPickerSheet(context, habit, theme, l10n),
                 onDelete: () => _showDeleteDialog(context, habit, theme, l10n),
                 iconSize: isCompact ? 16 : 20,
               ),
@@ -312,6 +315,20 @@ class _HabitCardState extends State<HabitCard> {
     );
   }
 
+  void _showColorPickerSheet(BuildContext ctx, HabitTree habit, GroveTheme theme, AppLocalizations l10n) async {
+    final picked = await showModalBottomSheet<Color>(
+      context: ctx,
+      backgroundColor: theme.surfaceHigh,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      builder: (_) => ColorPickerSheet(initialColor: habit.color, title: l10n.changeColor),
+    );
+    if (picked != null) {
+      ctx.read<GroveModel>().updateHabitColor(habit.id, picked);
+      HapticFeedback.lightImpact();
+    }
+  }
+
   void _showDeleteDialog(BuildContext ctx, HabitTree habit, GroveTheme theme, AppLocalizations l10n) {
     showDialog(
       context: ctx,
@@ -340,10 +357,10 @@ class _HabitCardState extends State<HabitCard> {
 
 class _OptionsMenuButton extends StatelessWidget {
   final HabitTree habit; final GroveTheme theme; final AppLocalizations l10n;
-  final VoidCallback onRename; final VoidCallback onDelete; final double iconSize;
+  final VoidCallback onRename; final VoidCallback onChangeColor; final VoidCallback onDelete; final double iconSize;
   const _OptionsMenuButton({
     required this.habit, required this.theme, required this.l10n,
-    required this.onRename, required this.onDelete, this.iconSize = 20,
+    required this.onRename, required this.onChangeColor, required this.onDelete, this.iconSize = 20,
   });
 
   Future<void> _openMenu(BuildContext context) async {
@@ -370,6 +387,14 @@ class _OptionsMenuButton extends StatelessWidget {
           ]),
         ),
         PopupMenuItem(
+          value: 'color',
+          child: Row(children: [
+            Container(width: 18, height: 18, decoration: BoxDecoration(color: habit.color, shape: BoxShape.circle)),
+            const SizedBox(width: 10),
+            Text(l10n.changeColor, style: TextStyle(color: theme.textPrimary)),
+          ]),
+        ),
+        PopupMenuItem(
           value: 'delete',
           child: Row(children: [
             const Icon(Icons.delete_outline, size: 18, color: GroveTheme.clayRed),
@@ -383,6 +408,7 @@ class _OptionsMenuButton extends StatelessWidget {
     HapticFeedback.selectionClick();
     switch (value) {
       case 'rename': onRename(); break;
+      case 'color': onChangeColor(); break;
       case 'delete': onDelete(); break;
     }
   }
