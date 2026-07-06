@@ -178,6 +178,7 @@ class _CellManagerSheet extends StatefulWidget {
 
 class _CellManagerSheetState extends State<_CellManagerSheet> {
   late final TextEditingController _reasonCtrl;
+  late final TextEditingController _noteCtrl;
   late TimeOfDay _selectedTime;
   late bool _isCheckIn;
 
@@ -185,6 +186,7 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
   void initState() {
     super.initState();
     _reasonCtrl   = TextEditingController();
+    _noteCtrl     = TextEditingController();
     _selectedTime = TimeOfDay.now();
     _isCheckIn    = widget.habit.mode == HabitMode.checkIn;
 
@@ -204,12 +206,14 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
       if (existing != null) {
         _selectedTime = TimeOfDay.fromDateTime(existing);
       }
+      _noteCtrl.text = widget.habit.checkInNoteFor(day);
     }
   }
 
   @override
   void dispose() {
     _reasonCtrl.dispose();
+    _noteCtrl.dispose();
     super.dispose();
   }
 
@@ -269,31 +273,31 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                              ),
                       const SizedBox(height: 16),
                       Text(hasMark ? l10n.editReason : l10n.reasonOptional,
-                      style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
-                      const SizedBox(height: 8),
-                      TextField(
-                        controller: _reasonCtrl,
-                        maxLines:   3,
-                        style:      TextStyle(color: theme.textPrimary, fontSize: 14),
-                        decoration: InputDecoration(
-                          hintText:       l10n.reasonHint,
-                          contentPadding: const EdgeInsets.all(12))),
-                          const SizedBox(height: 24),
+                           style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
+                           const SizedBox(height: 8),
+                           TextField(
+                             controller: _reasonCtrl,
+                             maxLines:   3,
+                             style:      TextStyle(color: theme.textPrimary, fontSize: 14),
+                             decoration: InputDecoration(
+                               hintText:       l10n.reasonHint,
+                               contentPadding: const EdgeInsets.all(12))),
+                               const SizedBox(height: 24),
                       ],
                       if (_isCheckIn) ...[
                         const SizedBox(height: 6),
                         Text(
                           widget.hasNullDay
                           ? l10n.excusedStreakPreserved
-                        : hasMark
-                        ? l10n.checkedInThisDay
-                        : l10n.noCheckInRecorded,
-                        style: TextStyle(
-                          fontSize: 12, fontWeight: FontWeight.w600,
-                          color: widget.hasNullDay
-                          ? const Color(0xFF42A5C8)
-                          : hasMark ? widget.habit.color : theme.textSecondary,
-                        ),
+                          : hasMark
+                          ? l10n.checkedInThisDay
+                          : l10n.noCheckInRecorded,
+                          style: TextStyle(
+                            fontSize: 12, fontWeight: FontWeight.w600,
+                            color: widget.hasNullDay
+                            ? const Color(0xFF42A5C8)
+                            : hasMark ? widget.habit.color : theme.textSecondary,
+                          ),
                         ),
                       const SizedBox(height: 20),
                       if (!widget.hasNullDay) ...[
@@ -311,101 +315,134 @@ class _CellManagerSheetState extends State<_CellManagerSheet> {
                                  foregroundColor: theme.textPrimary,
                                    padding:         const EdgeInsets.symmetric(vertical: 12)),
                              ),
-                        const SizedBox(height: 16),
-                        FilledButton.icon(
-                          onPressed: () {
-                            if (hasMark) {
-                              widget.model.removeCheckInOnDate(widget.habit.id, widget.targetDate);
-                            } else {
-                              widget.model.toggleCheckIn(widget.habit.id, date: widget.targetDate, overrideTime: _selectedTime);
-                            }
-                            HapticFeedback.lightImpact();
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            hasMark ? Icons.clear : Icons.check_circle_outline,
-                            size: 16,
-                            color: hasMark ? theme.textPrimary : Colors.white,
-                          ),
-                          label: Text(hasMark ? l10n.removeCheckIn : l10n.checkInThisDay,
-                                      style: TextStyle(color: hasMark ? theme.textPrimary : Colors.white)),
-                                      style: FilledButton.styleFrom(
-                                        backgroundColor: hasMark ? theme.surfaceHigh : widget.habit.color,
-                                        minimumSize: const Size.fromHeight(48),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(12),
-                                          side: hasMark ? BorderSide(color: theme.textMuted.withValues(alpha: 0.3)) : BorderSide.none,
-                                        ),
+                      const SizedBox(height: 16),
+                      ],
+                      Text(l10n.editNote,
+                           style: TextStyle(color: theme.textMuted, fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w600)),
+                           const SizedBox(height: 8),
+                           TextField(
+                             controller: _noteCtrl,
+                             maxLines:   3,
+                             style:      TextStyle(color: theme.textPrimary, fontSize: 14),
+                             decoration: InputDecoration(
+                               hintText:       l10n.noteHint,
+                               contentPadding: const EdgeInsets.all(12))),
+                               const SizedBox(height: 16),
+                               if (!widget.hasNullDay) ...[
+                                 if (hasMark) ...[
+                                   OutlinedButton.icon(
+                                     onPressed: () {
+                                       widget.model.setCheckInTimeAndNote(
+                                         widget.habit.id, widget.targetDate, _selectedTime, _noteCtrl.text);
+                                       HapticFeedback.lightImpact();
+                                       Navigator.pop(context);
+                                     },
+                                     icon: const Icon(Icons.check, size: 16),
+                                     label: Text(l10n.updateLog),
+                                     style: OutlinedButton.styleFrom(
+                                       foregroundColor: widget.habit.color,
+                                         side: BorderSide(color: widget.habit.color.withValues(alpha: 0.45)),
+                                         minimumSize: const Size.fromHeight(48),
+                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                     ),
+                                   ),
+                      const SizedBox(height: 10),
+                                 ],
+                      FilledButton.icon(
+                        onPressed: () {
+                          if (hasMark) {
+                            widget.model.removeCheckInOnDate(widget.habit.id, widget.targetDate);
+                          } else {
+                            widget.model.setCheckInTimeAndNote(
+                              widget.habit.id, widget.targetDate, _selectedTime, _noteCtrl.text);
+                          }
+                          HapticFeedback.lightImpact();
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          hasMark ? Icons.clear : Icons.check_circle_outline,
+                          size: 16,
+                          color: hasMark ? theme.textPrimary : Colors.white,
+                        ),
+                        label: Text(hasMark ? l10n.removeCheckIn : l10n.checkInThisDay,
+                                    style: TextStyle(color: hasMark ? theme.textPrimary : Colors.white)),
+                                    style: FilledButton.styleFrom(
+                                      backgroundColor: hasMark ? theme.surfaceHigh : widget.habit.color,
+                                      minimumSize: const Size.fromHeight(48),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                        side: hasMark ? BorderSide(color: theme.textMuted.withValues(alpha: 0.3)) : BorderSide.none,
                                       ),
-                        ),
-                        if (hasMark) ...[
-                          const SizedBox(height: 10),
-                          OutlinedButton.icon(
-                            onPressed: () {
-                              widget.model.setCheckInTime(widget.habit.id, widget.targetDate, _selectedTime);
-                              HapticFeedback.lightImpact();
-                              Navigator.pop(context);
-                            },
-                            icon: const Icon(Icons.save_outlined, size: 16),
-                            label: Text(l10n.saveNewTime),
-                            style: OutlinedButton.styleFrom(
-                              foregroundColor: widget.habit.color,
-                              side: BorderSide(color: widget.habit.color.withValues(alpha: 0.45)),
-                              minimumSize: const Size.fromHeight(48),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                            ),
-                          ),
-                        ],
-                        const SizedBox(height: 10),
-                        OutlinedButton.icon(
-                          onPressed: () {
-                            widget.model.toggleNullDay(widget.habit.id, widget.targetDate);
-                            HapticFeedback.lightImpact();
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(Icons.ac_unit_rounded, size: 16),
-                          label: Text(l10n.excuseThisDayInstead),
-                          style: OutlinedButton.styleFrom(
-                            foregroundColor: const Color(0xFF42A5C8),
-                              side: BorderSide(color: const Color(0xFF42A5C8).withValues(alpha: 0.45)),
-                              minimumSize: const Size.fromHeight(48),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                          ),
-                        ),
-                      ] else ...[
-                        FilledButton.icon(
-                          onPressed: () {
-                            widget.model.toggleNullDay(widget.habit.id, widget.targetDate);
-                            widget.model.toggleCheckIn(widget.habit.id, date: widget.targetDate);
-                            HapticFeedback.lightImpact();
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(Icons.check_circle_outline, size: 16),
-                          label: Text(l10n.checkInInstead),
-                          style: FilledButton.styleFrom(
-                            backgroundColor: widget.habit.color,
-                            foregroundColor: Colors.white,
+                                    ),
+                      ),
+                      const SizedBox(height: 10),
+                      OutlinedButton.icon(
+                        onPressed: () {
+                          widget.model.toggleNullDay(widget.habit.id, widget.targetDate);
+                          widget.model.setNullDayNote(widget.habit.id, widget.targetDate, _noteCtrl.text);
+                          HapticFeedback.lightImpact();
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.ac_unit_rounded, size: 16),
+                        label: Text(l10n.excuseThisDayInstead),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: const Color(0xFF42A5C8),
+                            side: BorderSide(color: const Color(0xFF42A5C8).withValues(alpha: 0.45)),
                             minimumSize: const Size.fromHeight(48),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                          ),
                         ),
-                        const SizedBox(height: 10),
-                        OutlinedButton.icon(
-                          onPressed: () {
-                            widget.model.toggleNullDay(widget.habit.id, widget.targetDate);
-                            HapticFeedback.lightImpact();
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(Icons.remove_circle_outline, size: 16),
-                          label: Text(l10n.removeExcuse),
-                          style: OutlinedButton.styleFrom(
-                            foregroundColor: const Color(0xFF42A5C8),
-                              side: BorderSide(color: const Color(0xFF42A5C8).withValues(alpha: 0.45)),
-                              minimumSize: const Size.fromHeight(48),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                          ),
+                      ),
+                               ] else ...[
+                                 OutlinedButton.icon(
+                                   onPressed: () {
+                                     widget.model.setNullDayNote(widget.habit.id, widget.targetDate, _noteCtrl.text);
+                                     HapticFeedback.lightImpact();
+                                     Navigator.pop(context);
+                                   },
+                                   icon: const Icon(Icons.check, size: 16),
+                                   label: Text(l10n.updateLog),
+                                   style: OutlinedButton.styleFrom(
+                                     foregroundColor: const Color(0xFF42A5C8),
+                                       side: BorderSide(color: const Color(0xFF42A5C8).withValues(alpha: 0.45)),
+                                       minimumSize: const Size.fromHeight(48),
+                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                   ),
+                                 ),
+                      const SizedBox(height: 10),
+                      OutlinedButton.icon(
+                        onPressed: () {
+                          widget.model.toggleNullDay(widget.habit.id, widget.targetDate);
+                          HapticFeedback.lightImpact();
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.remove_circle_outline, size: 16),
+                        label: Text(l10n.removeExcuse),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: const Color(0xFF42A5C8),
+                            side: BorderSide(color: const Color(0xFF42A5C8).withValues(alpha: 0.45)),
+                            minimumSize: const Size.fromHeight(48),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                         ),
-                      ],
+                      ),
+                      const SizedBox(height: 10),
+                      FilledButton.icon(
+                        onPressed: () {
+                          widget.model.toggleNullDay(widget.habit.id, widget.targetDate);
+                          widget.model.setCheckInTimeAndNote(
+                            widget.habit.id, widget.targetDate, _selectedTime, _noteCtrl.text);
+                          HapticFeedback.lightImpact();
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.check_circle_outline, size: 16),
+                        label: Text(l10n.checkInInstead),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: widget.habit.color,
+                          foregroundColor: Colors.white,
+                            minimumSize: const Size.fromHeight(48),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        ),
+                      ),
+                               ],
                       ] else if (hasMark) ...[
                         FilledButton.icon(
                           onPressed: () {
