@@ -322,6 +322,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get buyMeCoffeeSubtitle => 'Hỗ trợ phát triển';
 
   @override
+  String get needHelp => 'Bạn cần nói chuyện với ai đó?';
+
+  @override
+  String get needHelpSubtitle => 'Có hỗ trợ miễn phí và bảo mật';
+
+  @override
   String get madeWith =>
       'Được tạo với 🌿 • tất cả dữ liệu ở trên thiết bị của bạn.';
 

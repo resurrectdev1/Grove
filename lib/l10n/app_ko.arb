@@ -125,6 +125,8 @@
   "githubSubtitle": "소스 코드 및 기여",
   "buyMeCoffee": "커피 한 잔 사주세요",
   "buyMeCoffeeSubtitle": "개발 지원",
+  "needHelp": "누군가와 이야기하고 싶으신가요?",
+  "needHelpSubtitle": "무료로 비밀이 보장되는 지원을 받을 수 있어요",
   "madeWith": "🌿로 만들어졌습니다 • 모든 데이터는 기기에 저장됩니다.",
   "openSource": "오픈 소스",
   "versionLabel": "v{version} • 오픈 소스",

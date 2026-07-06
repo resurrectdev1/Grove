@@ -125,6 +125,8 @@
   "githubSubtitle": "ソースコードと貢献",
   "buyMeCoffee": "コーヒーをおごって",
   "buyMeCoffeeSubtitle": "開発をサポート",
+  "needHelp": "誰かに相談したいですか？",
+  "needHelpSubtitle": "無料で秘密が守られるサポートがあります",
   "madeWith": "🌿 で作られました • すべてのデータはデバイスに保存されます。",
   "openSource": "オープンソース",
   "versionLabel": "v{version} • オープンソース",

@@ -97,6 +97,8 @@
   "githubSubtitle": "Code source et contributions",
   "buyMeCoffee": "Offrez-moi un café",
   "buyMeCoffeeSubtitle": "Soutenir le développement",
+  "needHelp": "Besoin de parler à quelqu'un ?",
+  "needHelpSubtitle": "Un soutien gratuit et confidentiel est disponible",
   "madeWith": "Fait avec 🌿 • toutes les données restent sur votre appareil.",
   "openSource": "Open source",
   "versionLabel": "v{version} • Open source",

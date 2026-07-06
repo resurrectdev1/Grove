@@ -321,6 +321,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get buyMeCoffeeSubtitle => 'دعم التطوير';
 
   @override
+  String get needHelp => 'هل تحتاج للتحدث مع أحد؟';
+
+  @override
+  String get needHelpSubtitle => 'دعم مجاني وسري متاح';
+
+  @override
   String get madeWith => 'صُنع بـ 🌿 • جميع البيانات تبقى على جهازك.';
 
   @override

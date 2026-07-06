@@ -317,6 +317,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get buyMeCoffeeSubtitle => '支持开发';
 
   @override
+  String get needHelp => '需要找人聊聊吗？';
+
+  @override
+  String get needHelpSubtitle => '提供免费且保密的支持';
+
+  @override
   String get madeWith => '用 🌿 制作 • 所有数据保存在你的设备上。';
 
   @override
@@ -969,6 +975,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get buyMeCoffeeSubtitle => '支持開發';
+
+  @override
+  String get needHelp => '需要找人聊聊嗎？';
+
+  @override
+  String get needHelpSubtitle => '提供免費且保密的支援';
 
   @override
   String get madeWith => '用 🌿 製作 • 所有資料保存在你的裝置上。';

@@ -324,6 +324,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get buyMeCoffeeSubtitle => 'Entwicklung unterstützen';
 
   @override
+  String get needHelp => 'Möchtest du mit jemandem sprechen?';
+
+  @override
+  String get needHelpSubtitle =>
+      'Kostenlose, vertrauliche Unterstützung ist verfügbar';
+
+  @override
   String get madeWith =>
       'Gemacht mit 🌿 • alle Daten bleiben auf deinem Gerät.';
 

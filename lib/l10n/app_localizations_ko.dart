@@ -319,6 +319,12 @@ class AppLocalizationsKo extends AppLocalizations {
   String get buyMeCoffeeSubtitle => '개발 지원';
 
   @override
+  String get needHelp => '누군가와 이야기하고 싶으신가요?';
+
+  @override
+  String get needHelpSubtitle => '무료로 비밀이 보장되는 지원을 받을 수 있어요';
+
+  @override
   String get madeWith => '🌿로 만들어졌습니다 • 모든 데이터는 기기에 저장됩니다.';
 
   @override

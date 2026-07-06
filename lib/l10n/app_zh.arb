@@ -97,6 +97,8 @@
   "githubSubtitle": "源代码与贡献",
   "buyMeCoffee": "请我喝杯咖啡",
   "buyMeCoffeeSubtitle": "支持开发",
+  "needHelp": "需要找人聊聊吗？",
+  "needHelpSubtitle": "提供免费且保密的支持",
   "madeWith": "用 🌿 制作 • 所有数据保存在你的设备上。",
   "openSource": "开源",
   "versionLabel": "v{version} • 开源",

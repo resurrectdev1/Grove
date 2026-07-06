@@ -703,6 +703,18 @@ abstract class AppLocalizations {
   /// **'Support development'**
   String get buyMeCoffeeSubtitle;
 
+  /// No description provided for @needHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Need to Talk to Someone?'**
+  String get needHelp;
+
+  /// No description provided for @needHelpSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Free, confidential support is available'**
+  String get needHelpSubtitle;
+
   /// No description provided for @madeWith.
   ///
   /// In en, this message translates to:

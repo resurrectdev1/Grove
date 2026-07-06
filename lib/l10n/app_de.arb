@@ -125,6 +125,8 @@
   "githubSubtitle": "Quellcode & Beiträge",
   "buyMeCoffee": "Kauf mir einen Kaffee",
   "buyMeCoffeeSubtitle": "Entwicklung unterstützen",
+  "needHelp": "Möchtest du mit jemandem sprechen?",
+  "needHelpSubtitle": "Kostenlose, vertrauliche Unterstützung ist verfügbar",
   "madeWith": "Gemacht mit 🌿 • alle Daten bleiben auf deinem Gerät.",
   "openSource": "Open Source",
   "versionLabel": "v{version} • Open Source",

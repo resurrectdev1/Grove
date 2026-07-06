@@ -318,6 +318,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get buyMeCoffeeSubtitle => '開発をサポート';
 
   @override
+  String get needHelp => '誰かに相談したいですか？';
+
+  @override
+  String get needHelpSubtitle => '無料で秘密が守られるサポートがあります';
+
+  @override
   String get madeWith => '🌿 で作られました • すべてのデータはデバイスに保存されます。';
 
   @override

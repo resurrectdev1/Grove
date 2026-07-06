@@ -324,6 +324,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get buyMeCoffeeSubtitle => 'विकास का समर्थन करें';
 
   @override
+  String get needHelp => 'किसी से बात करने की ज़रूरत है?';
+
+  @override
+  String get needHelpSubtitle => 'मुफ़्त, गोपनीय सहायता उपलब्ध है';
+
+  @override
   String get madeWith => '🌿 के साथ बनाया • सभी डेटा आपके डिवाइस पर रहता है।';
 
   @override

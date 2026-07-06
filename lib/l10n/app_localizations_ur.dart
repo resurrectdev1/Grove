@@ -323,6 +323,12 @@ class AppLocalizationsUr extends AppLocalizations {
   String get buyMeCoffeeSubtitle => 'ترقی کی حمایت کریں';
 
   @override
+  String get needHelp => 'کیا آپ کسی سے بات کرنا چاہتے ہیں؟';
+
+  @override
+  String get needHelpSubtitle => 'مفت اور خفیہ مدد دستیاب ہے';
+
+  @override
   String get madeWith => '🌿 کے ساتھ بنایا • تمام ڈیٹا آپ کے آلے پر رہتا ہے۔';
 
   @override
