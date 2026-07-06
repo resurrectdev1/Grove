@@ -89,7 +89,13 @@ alt="Get it on F-Droid" align="center" height="80" /></a>
 
 ## Development
 
-**Grove** is built using Flutter, pinned to a specific version (see `flutter` in `pubspec.yaml`) to keep builds consistent. [Install Flutter](https://docs.flutter.dev/get-started/install) at that version, or use [FVM](https://fvm.app/) to manage it (`fvm install <version> && fvm use <version>`). Then clone the repository, enter the project directory, and run `flutter pub get` (or `fvm flutter pub get`), followed by connecting your phone with USB debugging enabled, granting the necessary permissions, and finally running `flutter run --release` (or `fvm flutter run --release`).
+Grove is built using Flutter, pinned to a specific version (see flutter in pubspec.yaml) to keep builds consistent. Install Flutter at that version, or use FVM to manage it (fvm install <version> && fvm use <version>).
+
+Before your first build, make sure you also have:
+
+JDK 21 installed (e.g. Eclipse Temurin 21), with JAVA_HOME pointed at it. This is the most common source of build failures - if Gradle fails with a Java-related error, check this first.
+The Android SDK licenses accepted. Run sdkmanager --licenses (without sudo - see the troubleshooting note in CONTRIBUTING.md if you hit a permissions error here).
+Then clone the repository, enter the project directory, and run flutter pub get (or fvm flutter pub get), followed by connecting your phone with USB debugging enabled, granting the necessary permissions, and finally running flutter run --release (or fvm flutter run --release).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for more on the project structure, code style, and setup details.
 
