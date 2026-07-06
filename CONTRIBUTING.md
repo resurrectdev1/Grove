@@ -192,9 +192,55 @@ Grove pins an exact Flutter version in `pubspec.yaml` (currently `3.41.2`, see t
 
 2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/Grove.git`
 3. Install dependencies: `flutter pub get` (or `fvm flutter pub get` if using FVM)
-4. Run on a connected device or emulator: `flutter run` (or `fvm flutter run`)
+4. Install/select the right JDK - see below, this part seems to trip up more people than the Flutter version does
+5. Accept the Android SDK licenses - see below
+6. Run on a connected device or emulator: `flutter run` (or `fvm flutter run`)
 
 If `pubspec.yaml`'s pinned version is ever bumped, that'll be called out in the PR that does it - if you maintain a fork or long-running branch, it's worth re-checking this section after pulling `main`.
+
+Some of Grove's dependencies report newer versions being available when you run `pub get` (e.g. `flutter pub outdated`). You don't need to act on these yourself, they're usually held back by a constraint (often another package, or a major/minor bump that could break something) and get bumped intentionally once that's sorted out.
+
+### JDK Version
+
+Building the Android app requires **JDK 21** (e.g. [Eclipse Temurin 21](https://adoptium.net/temurin/releases/?version=21)). A mismatched JDK is the single most common build failure, and shows up as a Gradle configuration error rather than anything obviously Java-related, so it's easy to misread.
+
+Once JDK 21 is installed, Gradle needs to actually be pointed at it:
+
+* **Command line**: set `JAVA_HOME` to your JDK 21 install directory before running `flutter run` / `flutter build`.
+* **Android Studio**: `Settings → Build, Execution, Deployment → Build Tools → Gradle → Gradle JDK`, and pick the JDK 21 entry.
+
+After changing this, do a clean build (`flutter clean` then rebuild) rather than an incremental one, stale Gradle caches can otherwise keep using the old JDK.
+
+### Android SDK Licenses
+
+The build will also fail if the required Android SDK/NDK license hasn't been accepted, with an error like:
+
+```
+Failed to install the following Android SDK packages as some licences have not been accepted.
+```
+
+Fix this with:
+
+```bash
+sdkmanager --licenses
+```
+
+**Don't run this with `sudo`** if your SDK install is user-owned, doing so can write the accepted licenses to root's home directory instead of the SDK's `licenses/` folder, so Gradle still won't see them accepted even though `sdkmanager` reported success. If your SDK directory itself is root-owned (common on some Linux package-manager installs) and you can't `chown` it, either:
+
+* run `sdkmanager --licenses --sdk_root=/path/to/your/sdk` explicitly with `sudo`, or
+* switch to a user-owned SDK entirely:
+
+  ```bash
+  mkdir -p ~/Android/Sdk
+  export ANDROID_SDK_ROOT=~/Android/Sdk
+  export ANDROID_HOME=~/Android/Sdk
+  ```
+
+  (add those exports to your shell profile so they persist), then re-run `sdkmanager --licenses`.
+
+### If you're still stuck
+
+If a build still won't succeed locally after checking the above, forking the repo and letting **GitHub Actions** build it is a reliable fallback: push to your fork, let the workflow run, then grab the APK from the build artifacts. You'll need to sign it yourself (optional) afterward with `apksigner`/`jarsigner` before installing it, since CI-built APKs aren't pre-signed.
 
 ---
 
