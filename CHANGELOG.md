@@ -16,6 +16,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Translation of color change option within three dot menu
 * How many check-ins and excused days next to total in check-in history (to be added soon)
 * Add findahelpline.com link in information tab
+* Notes for Check-In Mode, so you can jot down how a check-in or excused day went
 
 ### Changed
 
