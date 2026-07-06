@@ -155,8 +155,8 @@ class _HabitCardState extends State<HabitCard> {
                     child: Material(
                       color: Colors.transparent,
                       child: SizedBox(
-                        width:  isCompact ? 92 : 175,
-                        height: isCompact ? 92 : 175,
+                        width:  isCompact ? 112 : 175,
+                        height: isCompact ? 112 : 175,
                         child:  AnimatedTreeWidget(habit: habit),
                       ),
                     ),
@@ -170,32 +170,21 @@ class _HabitCardState extends State<HabitCard> {
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          if (!isCompact) ...[
-                                            Container(
-                                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                                              decoration: BoxDecoration(
-                                                color: habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(20)),
-                                                child: Text(stageLabelLocalized(stage), style: TextStyle(
-                                                  fontSize: 11, fontWeight: FontWeight.w600, color: habit.color, letterSpacing: 0.8)),
-                                            ),
-                                            const SizedBox(width: 8),
-                                          ],
+                                          Container(
+                                            padding: EdgeInsets.symmetric(horizontal: isCompact ? 8 : 10, vertical: isCompact ? 1 : 3),
+                                            decoration: BoxDecoration(
+                                              color: habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(20)),
+                                              child: Text(stageLabelLocalized(stage), style: TextStyle(
+                                                fontSize: isCompact ? 9 : 11, fontWeight: FontWeight.w600, color: habit.color,
+                                                letterSpacing: isCompact ? 0.5 : 0.8)),
+                                          ),
+                                          SizedBox(width: isCompact ? 6 : 8),
                                           Text(l10n.dayCount(days), style: TextStyle(
                                             fontSize:   isCompact ? 11 : 13,
                                             fontWeight: isCompact ? FontWeight.w600 : FontWeight.normal,
                                             color:      theme.textSecondary)),
                                         ],
                                       ),
-                                      if (isCompact) ...[
-                                        const SizedBox(height: 2),
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
-                                          decoration: BoxDecoration(
-                                            color: habit.color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(20)),
-                                            child: Text(stageLabelLocalized(stage), style: TextStyle(
-                                              fontSize: 9, fontWeight: FontWeight.w600, color: habit.color, letterSpacing: 0.5)),
-                                        ),
-                                      ],
                                       if (!isCompact) ...[
                                         const SizedBox(height: 4),
                                         Text(isCheckIn
