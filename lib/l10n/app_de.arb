@@ -175,6 +175,8 @@
   "noCheckInsYet": "Noch keine Check-ins. Starte heute!",
   "renameHabit": "Gewohnheit umbenennen",
   "changeColor": "Farbe ändern",
+  "rerollTreeShape": "Baumform neu würfeln",
+  "rerollTreeShapeConfirm": "Dies erzeugt eine neue zufällige Form für diesen Baum. Deine Serie und dein Verlauf bleiben unverändert.",
   "habitOptions": "Gewohnheitsoptionen",
   "save": "Speichern",
   "dangerZone": "Gefahrenzone",

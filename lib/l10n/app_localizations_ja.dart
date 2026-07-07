@@ -431,6 +431,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get changeColor => '色を変更';
 
   @override
+  String get rerollTreeShape => '木の形を再生成';
+
+  @override
+  String get rerollTreeShapeConfirm => 'この木に新しいランダムな形状を生成します。連続記録と履歴は変更されません。';
+
+  @override
   String get habitOptions => '習慣オプション';
 
   @override

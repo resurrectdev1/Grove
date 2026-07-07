@@ -436,6 +436,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get changeColor => 'Đổi màu';
 
   @override
+  String get rerollTreeShape => 'Tạo lại hình dạng cây';
+
+  @override
+  String get rerollTreeShapeConfirm =>
+      'Thao tác này sẽ tạo ra một hình dạng ngẫu nhiên mới cho cây này. Chuỗi ngày và lịch sử của bạn sẽ không thay đổi.';
+
+  @override
   String get habitOptions => 'Tùy chọn thói quen';
 
   @override

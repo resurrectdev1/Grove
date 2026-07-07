@@ -437,6 +437,13 @@ class AppLocalizationsUr extends AppLocalizations {
   String get changeColor => 'رنگ تبدیل کریں';
 
   @override
+  String get rerollTreeShape => 'درخت کی شکل دوبارہ بنائیں';
+
+  @override
+  String get rerollTreeShapeConfirm =>
+      'اس سے اس درخت کے لیے ایک نئی بے ترتیب شکل بنے گی۔ آپ کی سٹریک اور تاریخ تبدیل نہیں ہوگی۔';
+
+  @override
   String get habitOptions => 'عادت کے اختیارات';
 
   @override

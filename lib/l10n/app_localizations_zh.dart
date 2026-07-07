@@ -430,6 +430,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get changeColor => '更改颜色';
 
   @override
+  String get rerollTreeShape => '重新生成树形';
+
+  @override
+  String get rerollTreeShapeConfirm => '这将为这棵树生成一个新的随机形状。你的连续记录和历史不会改变。';
+
+  @override
   String get habitOptions => '习惯选项';
 
   @override
@@ -1094,6 +1100,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get changeColor => '更改顏色';
+
+  @override
+  String get rerollTreeShape => '重新產生樹形';
+
+  @override
+  String get rerollTreeShapeConfirm => '這將為這棵樹產生一個新的隨機形狀。你的連續記錄和歷史不會改變。';
 
   @override
   String get habitOptions => '習慣選項';

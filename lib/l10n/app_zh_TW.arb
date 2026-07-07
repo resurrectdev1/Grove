@@ -133,6 +133,8 @@
   "noCheckInsYet": "還沒有打卡記錄。今天開始！",
   "renameHabit": "重新命名習慣",
   "changeColor": "更改顏色",
+  "rerollTreeShape": "重新產生樹形",
+  "rerollTreeShapeConfirm": "這將為這棵樹產生一個新的隨機形狀。你的連續記錄和歷史不會改變。",
   "habitOptions": "習慣選項",
   "save": "儲存",
   "dangerZone": "危險區域",

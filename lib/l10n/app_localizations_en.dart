@@ -436,6 +436,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get changeColor => 'Change Color';
 
   @override
+  String get rerollTreeShape => 'Reroll Tree Shape';
+
+  @override
+  String get rerollTreeShapeConfirm =>
+      'This will generate a new random shape for this tree. Your streak and history will not change.';
+
+  @override
   String get habitOptions => 'Habit options';
 
   @override

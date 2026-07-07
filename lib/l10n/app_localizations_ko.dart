@@ -432,6 +432,13 @@ class AppLocalizationsKo extends AppLocalizations {
   String get changeColor => '색상 변경';
 
   @override
+  String get rerollTreeShape => '나무 모양 다시 생성';
+
+  @override
+  String get rerollTreeShapeConfirm =>
+      '이 나무의 새로운 무작위 모양을 생성합니다. 연속 기록과 히스토리는 변경되지 않습니다.';
+
+  @override
   String get habitOptions => '습관 옵션';
 
   @override

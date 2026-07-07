@@ -175,6 +175,8 @@
   "noCheckInsYet": "Chưa có điểm danh. Bắt đầu hôm nay!",
   "renameHabit": "Đổi tên thói quen",
   "changeColor": "Đổi màu",
+  "rerollTreeShape": "Tạo lại hình dạng cây",
+  "rerollTreeShapeConfirm": "Thao tác này sẽ tạo ra một hình dạng ngẫu nhiên mới cho cây này. Chuỗi ngày và lịch sử của bạn sẽ không thay đổi.",
   "habitOptions": "Tùy chọn thói quen",
   "save": "Lưu",
   "dangerZone": "Vùng nguy hiểm",

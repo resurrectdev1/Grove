@@ -440,6 +440,13 @@ class AppLocalizationsIt extends AppLocalizations {
   String get changeColor => 'Cambia colore';
 
   @override
+  String get rerollTreeShape => 'Rigenera forma dell\'albero';
+
+  @override
+  String get rerollTreeShapeConfirm =>
+      'Questo genererà una nuova forma casuale per questo albero. La tua serie e la cronologia non cambieranno.';
+
+  @override
   String get habitOptions => 'Opzioni abitudine';
 
   @override

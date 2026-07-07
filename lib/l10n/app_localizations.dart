@@ -919,6 +919,18 @@ abstract class AppLocalizations {
   /// **'Change Color'**
   String get changeColor;
 
+  /// No description provided for @rerollTreeShape.
+  ///
+  /// In en, this message translates to:
+  /// **'Reroll Tree Shape'**
+  String get rerollTreeShape;
+
+  /// No description provided for @rerollTreeShapeConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'This will generate a new random shape for this tree. Your streak and history will not change.'**
+  String get rerollTreeShapeConfirm;
+
   /// No description provided for @habitOptions.
   ///
   /// In en, this message translates to:

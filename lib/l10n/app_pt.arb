@@ -175,6 +175,8 @@
   "noCheckInsYet": "Ainda sem check-ins. Comece hoje!",
   "renameHabit": "Renomear hábito",
   "changeColor": "Alterar cor",
+  "rerollTreeShape": "Gerar nova forma da árvore",
+  "rerollTreeShapeConfirm": "Isso irá gerar uma nova forma aleatória para esta árvore. Sua sequência e histórico não serão alterados.",
   "habitOptions": "Opções do hábito",
   "save": "Salvar",
   "dangerZone": "Zona de perigo",

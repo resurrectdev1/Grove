@@ -434,6 +434,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get changeColor => 'تغيير اللون';
 
   @override
+  String get rerollTreeShape => 'إعادة تشكيل الشجرة';
+
+  @override
+  String get rerollTreeShapeConfirm =>
+      'سيؤدي هذا إلى إنشاء شكل عشوائي جديد لهذه الشجرة. لن يتغير تتابعك وسجلك.';
+
+  @override
   String get habitOptions => 'خيارات العادة';
 
   @override

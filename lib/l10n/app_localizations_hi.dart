@@ -438,6 +438,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get changeColor => 'रंग बदलें';
 
   @override
+  String get rerollTreeShape => 'पेड़ का आकार बदलें';
+
+  @override
+  String get rerollTreeShapeConfirm =>
+      'इससे इस पेड़ के लिए एक नया यादृच्छिक आकार बनेगा। आपकी स्ट्रीक और इतिहास नहीं बदलेगा।';
+
+  @override
   String get habitOptions => 'आदत विकल्प';
 
   @override

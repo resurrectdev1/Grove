@@ -133,6 +133,8 @@
   "noCheckInsYet": "Aucun pointage encore. Commencez aujourd'hui !",
   "renameHabit": "Renommer l'habitude",
   "changeColor": "Changer la couleur",
+  "rerollTreeShape": "Régénérer la forme de l'arbre",
+  "rerollTreeShapeConfirm": "Cela générera une nouvelle forme aléatoire pour cet arbre. Votre série et votre historique ne changeront pas.",
   "habitOptions": "Options de lhabitude",
   "save": "Enregistrer",
   "dangerZone": "Zone dangereuse",

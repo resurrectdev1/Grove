@@ -440,6 +440,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get changeColor => 'Alterar cor';
 
   @override
+  String get rerollTreeShape => 'Gerar nova forma da árvore';
+
+  @override
+  String get rerollTreeShapeConfirm =>
+      'Isso irá gerar uma nova forma aleatória para esta árvore. Sua sequência e histórico não serão alterados.';
+
+  @override
   String get habitOptions => 'Opções do hábito';
 
   @override

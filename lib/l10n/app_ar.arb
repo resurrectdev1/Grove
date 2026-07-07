@@ -133,6 +133,8 @@
   "noCheckInsYet": "لا تسجيلات حضور بعد. ابدأ اليوم!",
   "renameHabit": "إعادة تسمية العادة",
   "changeColor": "تغيير اللون",
+  "rerollTreeShape": "إعادة تشكيل الشجرة",
+  "rerollTreeShapeConfirm": "سيؤدي هذا إلى إنشاء شكل عشوائي جديد لهذه الشجرة. لن يتغير تتابعك وسجلك.",
   "habitOptions": "خيارات العادة",
   "save": "حفظ",
   "dangerZone": "منطقة الخطر",

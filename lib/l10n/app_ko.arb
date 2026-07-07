@@ -175,6 +175,8 @@
   "noCheckInsYet": "아직 체크인 없음. 오늘 시작하세요!",
   "renameHabit": "습관 이름 변경",
   "changeColor": "색상 변경",
+  "rerollTreeShape": "나무 모양 다시 생성",
+  "rerollTreeShapeConfirm": "이 나무의 새로운 무작위 모양을 생성합니다. 연속 기록과 히스토리는 변경되지 않습니다.",
   "habitOptions": "습관 옵션",
   "save": "저장",
   "dangerZone": "위험 구역",

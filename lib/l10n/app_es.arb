@@ -133,6 +133,8 @@
   "noCheckInsYet": "Sin registros aún. ¡Empieza hoy!",
   "renameHabit": "Renombrar hábito",
   "changeColor": "Cambiar color",
+  "rerollTreeShape": "Rehacer forma del árbol",
+  "rerollTreeShapeConfirm": "Esto generará una nueva forma aleatoria para este árbol. Tu racha e historial no cambiarán.",
   "habitOptions": "Opciones del hábito",
   "save": "Guardar",
   "dangerZone": "Zona de peligro",

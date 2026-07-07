@@ -175,6 +175,8 @@
   "noCheckInsYet": "まだチェックインなし。今日から始めよう！",
   "renameHabit": "習慣名を変更",
   "changeColor": "色を変更",
+  "rerollTreeShape": "木の形を再生成",
+  "rerollTreeShapeConfirm": "この木に新しいランダムな形状を生成します。連続記録と履歴は変更されません。",
   "habitOptions": "習慣オプション",
   "save": "保存",
   "dangerZone": "危険ゾーン",

@@ -175,6 +175,8 @@
   "noCheckInsYet": "No check-ins yet. Start today!",
   "renameHabit": "Rename Habit",
   "changeColor": "Change Color",
+  "rerollTreeShape": "Reroll Tree Shape",
+  "rerollTreeShapeConfirm": "This will generate a new random shape for this tree. Your streak and history will not change.",
   "habitOptions": "Habit options",
   "save": "Save",
   "dangerZone": "Danger Zone",
