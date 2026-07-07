@@ -344,6 +344,16 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     notifyListeners();
   }
 
+  void toggleExcusedDaysCountTowardsStreak(String habitId) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1) return;
+    _habits[i] = _habits[i].copyWith(
+      excusedDaysCountTowardsStreak: !_habits[i].excusedDaysCountTowardsStreak,
+    );
+    _persist();
+    notifyListeners();
+  }
+
   void renameHabit(String habitId, String newName) {
     final i = _habits.indexWhere((h) => h.id == habitId);
     if (i == -1) return;
