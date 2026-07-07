@@ -295,5 +295,7 @@
   "noteOptional": "NOTIZ (optional)",
   "noteHint": "Wie lief dein Tag? Erfolge oder Notizen, die du festhalten möchtest...",
   "streakFrozen": "Serie eingefroren",
-  "freezeStreak": "Serie einfrieren"
+  "freezeStreak": "Serie einfrieren",
+  "excusedDaysCount": "Entschuldigte Tage zählen mit",
+  "excuseStreakToggle": "Entschuldigte Tage zählen lassen"
 }

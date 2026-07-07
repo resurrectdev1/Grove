@@ -204,5 +204,7 @@
   "noteOptional": "NOTA (opcional)",
   "noteHint": "¿Cómo te fue hoy? ¿Algún logro o nota que quieras recordar?",
   "streakFrozen": "Racha congelada",
-  "freezeStreak": "Congelar racha"
+  "freezeStreak": "Congelar racha",
+  "excusedDaysCount": "Los días justificados cuentan",
+  "excuseStreakToggle": "Contar días justificados"
 }

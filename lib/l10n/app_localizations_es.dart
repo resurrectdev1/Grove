@@ -680,4 +680,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get freezeStreak => 'Congelar racha';
+
+  @override
+  String get excusedDaysCount => 'Los días justificados cuentan';
+
+  @override
+  String get excuseStreakToggle => 'Contar días justificados';
 }

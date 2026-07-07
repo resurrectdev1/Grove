@@ -295,5 +295,7 @@
   "noteOptional": "نوٹ (اختیاری)",
   "noteHint": "آج کا دن کیسا رہا؟ کوئی کامیابی یا یاد رکھنے والا نوٹ...",
   "streakFrozen": "تسلسل منجمد",
-  "freezeStreak": "تسلسل منجمد کریں"
+  "freezeStreak": "تسلسل منجمد کریں",
+  "excusedDaysCount": "معاف شدہ دن شمار ہوں گے",
+  "excuseStreakToggle": "معاف شدہ دن شمار کریں"
 }

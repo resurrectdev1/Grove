@@ -1350,6 +1350,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Freeze streak'**
   String get freezeStreak;
+
+  /// No description provided for @excusedDaysCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Excused days count'**
+  String get excusedDaysCount;
+
+  /// No description provided for @excuseStreakToggle.
+  ///
+  /// In en, this message translates to:
+  /// **'Count excused days'**
+  String get excuseStreakToggle;
 }
 
 class _AppLocalizationsDelegate

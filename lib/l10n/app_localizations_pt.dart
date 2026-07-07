@@ -683,4 +683,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get freezeStreak => 'Congelar sequência';
+
+  @override
+  String get excusedDaysCount => 'Dias justificados contam';
+
+  @override
+  String get excuseStreakToggle => 'Contar dias justificados';
 }

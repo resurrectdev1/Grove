@@ -295,5 +295,7 @@
   "noteOptional": "NOTA (opcional)",
   "noteHint": "Como foi o dia hoje? Alguma conquista ou nota para lembrar...",
   "streakFrozen": "Sequência congelada",
-  "freezeStreak": "Congelar sequência"
+  "freezeStreak": "Congelar sequência",
+  "excusedDaysCount": "Dias justificados contam",
+  "excuseStreakToggle": "Contar dias justificados"
 }

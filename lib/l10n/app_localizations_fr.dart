@@ -684,4 +684,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get freezeStreak => 'Geler la série';
+
+  @override
+  String get excusedDaysCount => 'Les jours excusés comptent';
+
+  @override
+  String get excuseStreakToggle => 'Compter les jours excusés';
 }

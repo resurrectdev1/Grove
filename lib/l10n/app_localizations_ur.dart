@@ -676,4 +676,10 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get freezeStreak => 'تسلسل منجمد کریں';
+
+  @override
+  String get excusedDaysCount => 'معاف شدہ دن شمار ہوں گے';
+
+  @override
+  String get excuseStreakToggle => 'معاف شدہ دن شمار کریں';
 }

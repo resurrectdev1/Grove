@@ -667,4 +667,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get freezeStreak => 'تجميد السلسلة';
+
+  @override
+  String get excusedDaysCount => 'الأيام المعفاة تُحتسب';
+
+  @override
+  String get excuseStreakToggle => 'احتساب الأيام المعفاة';
 }

@@ -680,4 +680,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get freezeStreak => 'लगातार गिनती फ़्रीज़ करें';
+
+  @override
+  String get excusedDaysCount => 'माफ़ किए गए दिन गिने जाते हैं';
+
+  @override
+  String get excuseStreakToggle => 'माफ़ किए गए दिन गिनें';
 }

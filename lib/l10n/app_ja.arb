@@ -295,5 +295,7 @@
   "noteOptional": "メモ（任意）",
   "noteHint": "今日はどうでしたか？覚えておきたい成果やメモなど…",
   "streakFrozen": "連続記録を凍結中",
-  "freezeStreak": "連続記録を凍結"
+  "freezeStreak": "連続記録を凍結",
+  "excusedDaysCount": "免除日をカウント",
+  "excuseStreakToggle": "免除日をカウントする"
 }

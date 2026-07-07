@@ -204,5 +204,7 @@
   "noteOptional": "備註（可選）",
   "noteHint": "今天過得怎麼樣？有什麼值得記住的小勝利或備註……",
   "streakFrozen": "連續記錄已凍結",
-  "freezeStreak": "凍結連續記錄"
+  "freezeStreak": "凍結連續記錄",
+  "excusedDaysCount": "免除日計入連勝",
+  "excuseStreakToggle": "計入免除日"
 }

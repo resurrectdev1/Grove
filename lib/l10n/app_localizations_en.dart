@@ -679,4 +679,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get freezeStreak => 'Freeze streak';
+
+  @override
+  String get excusedDaysCount => 'Excused days count';
+
+  @override
+  String get excuseStreakToggle => 'Count excused days';
 }

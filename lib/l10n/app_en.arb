@@ -309,5 +309,7 @@
   "noteOptional": "NOTE (optional)",
   "noteHint": "How did it go today? Any wins or notes to remember...",
   "streakFrozen": "Streak frozen",
-  "freezeStreak": "Freeze streak"
+  "freezeStreak": "Freeze streak",
+  "excusedDaysCount": "Excused days count",
+  "excuseStreakToggle": "Count excused days"
 }

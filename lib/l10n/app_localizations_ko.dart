@@ -664,4 +664,10 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get freezeStreak => '연속 기록 동결';
+
+  @override
+  String get excusedDaysCount => '제외된 날 포함';
+
+  @override
+  String get excuseStreakToggle => '제외된 날 포함하기';
 }

@@ -295,5 +295,7 @@
   "noteOptional": "NOTA (facoltativo)",
   "noteHint": "Com'è andata oggi? Successi o note da ricordare...",
   "streakFrozen": "Serie congelata",
-  "freezeStreak": "Congela la serie"
+  "freezeStreak": "Congela la serie",
+  "excusedDaysCount": "I giorni giustificati contano",
+  "excuseStreakToggle": "Conta i giorni giustificati"
 }

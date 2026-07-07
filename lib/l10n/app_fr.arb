@@ -204,5 +204,7 @@
   "noteOptional": "NOTE (facultatif)",
   "noteHint": "Comment s'est passée la journée ? Des réussites ou des notes à retenir...",
   "streakFrozen": "Série gelée",
-  "freezeStreak": "Geler la série"
+  "freezeStreak": "Geler la série",
+  "excusedDaysCount": "Les jours excusés comptent",
+  "excuseStreakToggle": "Compter les jours excusés"
 }

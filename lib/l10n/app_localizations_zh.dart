@@ -662,6 +662,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get freezeStreak => '冻结连续记录';
+
+  @override
+  String get excusedDaysCount => '免除日计入连胜';
+
+  @override
+  String get excuseStreakToggle => '计入免除日';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -1322,4 +1328,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get freezeStreak => '凍結連續記錄';
+
+  @override
+  String get excusedDaysCount => '免除日計入連勝';
+
+  @override
+  String get excuseStreakToggle => '計入免除日';
 }

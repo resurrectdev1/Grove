@@ -663,4 +663,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get freezeStreak => '連続記録を凍結';
+
+  @override
+  String get excusedDaysCount => '免除日をカウント';
+
+  @override
+  String get excuseStreakToggle => '免除日をカウントする';
 }

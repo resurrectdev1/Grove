@@ -677,4 +677,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get freezeStreak => 'Đóng băng chuỗi ngày';
+
+  @override
+  String get excusedDaysCount => 'Ngày miễn trừ được tính';
+
+  @override
+  String get excuseStreakToggle => 'Tính ngày miễn trừ';
 }

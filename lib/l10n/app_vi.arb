@@ -295,5 +295,7 @@
   "noteOptional": "GHI CHÚ (không bắt buộc)",
   "noteHint": "Hôm nay thế nào? Có thành công hay ghi chú nào cần nhớ...",
   "streakFrozen": "Chuỗi ngày đã đóng băng",
-  "freezeStreak": "Đóng băng chuỗi ngày"
+  "freezeStreak": "Đóng băng chuỗi ngày",
+  "excusedDaysCount": "Ngày miễn trừ được tính",
+  "excuseStreakToggle": "Tính ngày miễn trừ"
 }

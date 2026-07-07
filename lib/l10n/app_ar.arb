@@ -204,5 +204,7 @@
   "noteOptional": "ملاحظة (اختياري)",
   "noteHint": "كيف كان يومك؟ أي إنجازات أو ملاحظات تريد تذكرها...",
   "streakFrozen": "السلسلة مجمدة",
-  "freezeStreak": "تجميد السلسلة"
+  "freezeStreak": "تجميد السلسلة",
+  "excusedDaysCount": "الأيام المعفاة تُحتسب",
+  "excuseStreakToggle": "احتساب الأيام المعفاة"
 }
