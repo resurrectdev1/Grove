@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:grove/models/grove_models.dart';
@@ -366,6 +367,15 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     final i = _habits.indexWhere((h) => h.id == habitId);
     if (i == -1) return;
     _habits[i] = _habits[i].copyWith(color: color);
+    _persist();
+    notifyListeners();
+  }
+
+  void rerollGeneticSeed(String habitId) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1) return;
+    final newSeed = math.Random().nextInt(1 << 31);
+    _habits[i] = _habits[i].copyWith(geneticSeed: newSeed);
     _persist();
     notifyListeners();
   }
