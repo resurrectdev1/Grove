@@ -79,6 +79,7 @@ class HabitTree {
 
   final int  geneticSeed;
   final bool streakFrozen;
+  final bool excusedDaysCountTowardsStreak;
 
   HabitTree({
     required this.id,
@@ -94,6 +95,7 @@ class HabitTree {
     Map<DateTime, DateTime>? checkInTimestamps,
     Map<DateTime, String>?   checkInNotes,
     this.streakFrozen = false,
+    this.excusedDaysCountTowardsStreak = false,
   })  : _relapses    = relapses != null ? List<RelapseEvent>.of(relapses) : [],
   _checkInDays = checkInDays != null ? Set<DateTime>.of(checkInDays) : <DateTime>{},
   _nullDays    = nullDays    != null ? Set<DateTime>.of(nullDays)    : <DateTime>{},
@@ -119,14 +121,24 @@ class HabitTree {
       if (gap > 1) return 0;
     }
 
-    int streak = 1;
+    if (excusedDaysCountTowardsStreak) {
+      int streak = 1;
+      for (int i = 1; i < allDays.length; i++) {
+        final gap = allDays[i - 1].difference(allDays[i]).inDays;
+        if (gap == 1) {
+          streak++;
+        } else {
+          break;
+        }
+      }
+      return streak;
+    }
+
+    int streak = _checkInDays.contains(allDays.first) ? 1 : 0;
     for (int i = 1; i < allDays.length; i++) {
       final gap = allDays[i - 1].difference(allDays[i]).inDays;
-      if (gap == 1) {
-        streak++;
-      } else {
-        break;
-      }
+      if (gap != 1) break;
+      if (_checkInDays.contains(allDays[i])) streak++;
     }
     return streak;
   }
@@ -148,15 +160,30 @@ class HabitTree {
     if (mode == HabitMode.checkIn) {
       final allDays = <DateTime>{..._checkInDays, ..._nullDays}.toList()..sort();
       if (allDays.isEmpty) return 0;
-      int maxRun = 1;
-      int current = 1;
+
+      if (excusedDaysCountTowardsStreak) {
+        int maxRun = 1;
+        int current = 1;
+        for (int i = 1; i < allDays.length; i++) {
+          if (allDays[i].difference(allDays[i - 1]).inDays == 1) {
+            current++;
+            if (current > maxRun) maxRun = current;
+          } else {
+            current = 1;
+          }
+        }
+        return math.max(maxRun, checkInStreak);
+      }
+
+      int maxRun = _checkInDays.contains(allDays[0]) ? 1 : 0;
+      int current = maxRun;
       for (int i = 1; i < allDays.length; i++) {
         if (allDays[i].difference(allDays[i - 1]).inDays == 1) {
-          current++;
-          if (current > maxRun) maxRun = current;
+          if (_checkInDays.contains(allDays[i])) current++;
         } else {
-          current = 1;
+          current = _checkInDays.contains(allDays[i]) ? 1 : 0;
         }
+        if (current > maxRun) maxRun = current;
       }
       return math.max(maxRun, checkInStreak);
     }
@@ -196,6 +223,7 @@ class HabitTree {
       (day, note) => MapEntry(day.toIso8601String(), note),
     ),
     'streakFrozen': streakFrozen,
+    'excusedDaysCountTowardsStreak': excusedDaysCountTowardsStreak,
   };
 
   String toJson() => jsonEncode(toMap());
@@ -222,6 +250,7 @@ class HabitTree {
     checkInNotes: (m['checkInNotes'] as Map<String, dynamic>?)
     ?.map((day, note) => MapEntry(DateTime.parse(day), note as String)),
     streakFrozen: m['streakFrozen'] as bool? ?? false,
+    excusedDaysCountTowardsStreak: m['excusedDaysCountTowardsStreak'] as bool? ?? false,
   );
 
   factory HabitTree.fromJson(String s) =>
@@ -241,6 +270,7 @@ class HabitTree {
     Map<DateTime, DateTime>? checkInTimestamps,
     Map<DateTime, String>?   checkInNotes,
     bool?               streakFrozen,
+    bool?               excusedDaysCountTowardsStreak,
   }) =>
   HabitTree(
     id:           id           ?? this.id,
@@ -256,5 +286,7 @@ class HabitTree {
     checkInTimestamps: checkInTimestamps ?? Map<DateTime, DateTime>.of(_checkInTimestamps),
     checkInNotes:      checkInNotes      ?? Map<DateTime, String>.of(_checkInNotes),
     streakFrozen: streakFrozen ?? this.streakFrozen,
+    excusedDaysCountTowardsStreak:
+        excusedDaysCountTowardsStreak ?? this.excusedDaysCountTowardsStreak,
   );
 }
