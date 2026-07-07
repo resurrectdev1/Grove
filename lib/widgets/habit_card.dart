@@ -109,6 +109,8 @@ class _HabitCardState extends State<HabitCard> {
               onRename: () => _showRenameDialog(context, habit, theme, l10n),
               onChangeColor: () => _showColorPickerSheet(context, habit, theme, l10n),
               onDelete: () => _showDeleteDialog(context, habit, theme, l10n),
+              onToggleExcusedDaysCount: () =>
+                  context.read<GroveModel>().toggleExcusedDaysCountTowardsStreak(habit.id),
               iconSize: 18,
             ),
           ]),
@@ -142,6 +144,8 @@ class _HabitCardState extends State<HabitCard> {
                 onRename: () => _showRenameDialog(context, habit, theme, l10n),
                 onChangeColor: () => _showColorPickerSheet(context, habit, theme, l10n),
                 onDelete: () => _showDeleteDialog(context, habit, theme, l10n),
+                onToggleExcusedDaysCount: () =>
+                    context.read<GroveModel>().toggleExcusedDaysCountTowardsStreak(habit.id),
                 iconSize: isCompact ? 16 : 20,
               ),
             ),
@@ -356,10 +360,12 @@ class _HabitCardState extends State<HabitCard> {
 
 class _OptionsMenuButton extends StatelessWidget {
   final HabitTree habit; final GroveTheme theme; final AppLocalizations l10n;
-  final VoidCallback onRename; final VoidCallback onChangeColor; final VoidCallback onDelete; final double iconSize;
+  final VoidCallback onRename; final VoidCallback onChangeColor; final VoidCallback onDelete;
+  final VoidCallback? onToggleExcusedDaysCount; final double iconSize;
   const _OptionsMenuButton({
     required this.habit, required this.theme, required this.l10n,
-    required this.onRename, required this.onChangeColor, required this.onDelete, this.iconSize = 20,
+    required this.onRename, required this.onChangeColor, required this.onDelete,
+    this.onToggleExcusedDaysCount, this.iconSize = 20,
   });
 
   Future<void> _openMenu(BuildContext context) async {
@@ -393,6 +399,26 @@ class _OptionsMenuButton extends StatelessWidget {
             Text(l10n.changeColor, style: TextStyle(color: theme.textPrimary)),
           ]),
         ),
+        if (habit.mode == HabitMode.checkIn)
+          PopupMenuItem(
+            value: 'excusedDaysCount',
+            child: Row(children: [
+              Icon(
+                habit.excusedDaysCountTowardsStreak
+                ? Icons.event_available_rounded
+                : Icons.event_busy_outlined,
+                size: 18,
+                color: theme.textPrimary,
+              ),
+              const SizedBox(width: 10),
+              Text(
+                habit.excusedDaysCountTowardsStreak
+                ? l10n.excusedDaysCount
+                : l10n.excuseStreakToggle,
+                style: TextStyle(color: theme.textPrimary),
+              ),
+            ]),
+          ),
         PopupMenuItem(
           value: 'delete',
           child: Row(children: [
@@ -408,6 +434,7 @@ class _OptionsMenuButton extends StatelessWidget {
     switch (value) {
       case 'rename': onRename(); break;
       case 'color': onChangeColor(); break;
+      case 'excusedDaysCount': onToggleExcusedDaysCount?.call(); break;
       case 'delete': onDelete(); break;
     }
   }
