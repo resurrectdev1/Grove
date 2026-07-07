@@ -111,6 +111,7 @@ class _HabitCardState extends State<HabitCard> {
               onDelete: () => _showDeleteDialog(context, habit, theme, l10n),
               onToggleExcusedDaysCount: () =>
                   context.read<GroveModel>().toggleExcusedDaysCountTowardsStreak(habit.id),
+              onRerollTreeShape: () => _showRerollTreeShapeDialog(context, habit, theme, l10n),
               iconSize: 18,
             ),
           ]),
@@ -146,6 +147,7 @@ class _HabitCardState extends State<HabitCard> {
                 onDelete: () => _showDeleteDialog(context, habit, theme, l10n),
                 onToggleExcusedDaysCount: () =>
                     context.read<GroveModel>().toggleExcusedDaysCountTowardsStreak(habit.id),
+                onRerollTreeShape: () => _showRerollTreeShapeDialog(context, habit, theme, l10n),
                 iconSize: isCompact ? 16 : 20,
               ),
             ),
@@ -332,6 +334,36 @@ class _HabitCardState extends State<HabitCard> {
     }
   }
 
+  void _showRerollTreeShapeDialog(BuildContext ctx, HabitTree habit, GroveTheme theme, AppLocalizations l10n) {
+    showDialog(
+      context: ctx,
+      builder: (dialogCtx) => AlertDialog(
+        backgroundColor: theme.surfaceHigh,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        title: Text(l10n.rerollTreeShape, style: TextStyle(color: theme.textPrimary, fontWeight: FontWeight.w700)),
+        content: Text(l10n.rerollTreeShapeConfirm, style: TextStyle(color: theme.textSecondary)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogCtx),
+            child: Text(l10n.cancel, style: TextStyle(color: theme.textSecondary)),
+          ),
+          FilledButton(
+            onPressed: () {
+              Navigator.pop(dialogCtx);
+              ctx.read<GroveModel>().rerollGeneticSeed(habit.id);
+              HapticFeedback.mediumImpact();
+            },
+            style: FilledButton.styleFrom(
+              backgroundColor: habit.color,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+            child: Text(l10n.rerollTreeShape),
+          ),
+        ],
+      ),
+    );
+  }
+
   void _showDeleteDialog(BuildContext ctx, HabitTree habit, GroveTheme theme, AppLocalizations l10n) {
     showDialog(
       context: ctx,
@@ -361,11 +393,12 @@ class _HabitCardState extends State<HabitCard> {
 class _OptionsMenuButton extends StatelessWidget {
   final HabitTree habit; final GroveTheme theme; final AppLocalizations l10n;
   final VoidCallback onRename; final VoidCallback onChangeColor; final VoidCallback onDelete;
-  final VoidCallback? onToggleExcusedDaysCount; final double iconSize;
+  final VoidCallback? onToggleExcusedDaysCount; final VoidCallback? onRerollTreeShape;
+  final double iconSize;
   const _OptionsMenuButton({
     required this.habit, required this.theme, required this.l10n,
     required this.onRename, required this.onChangeColor, required this.onDelete,
-    this.onToggleExcusedDaysCount, this.iconSize = 20,
+    this.onToggleExcusedDaysCount, this.onRerollTreeShape, this.iconSize = 20,
   });
 
   Future<void> _openMenu(BuildContext context) async {
@@ -420,6 +453,14 @@ class _OptionsMenuButton extends StatelessWidget {
             ]),
           ),
         PopupMenuItem(
+          value: 'rerollTreeShape',
+          child: Row(children: [
+            Icon(Icons.eco_outlined, size: 18, color: theme.textPrimary),
+            const SizedBox(width: 10),
+            Text(l10n.rerollTreeShape, style: TextStyle(color: theme.textPrimary)),
+          ]),
+        ),
+        PopupMenuItem(
           value: 'delete',
           child: Row(children: [
             const Icon(Icons.delete_outline, size: 18, color: GroveTheme.clayRed),
@@ -435,6 +476,7 @@ class _OptionsMenuButton extends StatelessWidget {
       case 'rename': onRename(); break;
       case 'color': onChangeColor(); break;
       case 'excusedDaysCount': onToggleExcusedDaysCount?.call(); break;
+      case 'rerollTreeShape': onRerollTreeShape?.call(); break;
       case 'delete': onDelete(); break;
     }
   }
