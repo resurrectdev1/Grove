@@ -10,11 +10,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 > Changes staged for the next release go here. Move them down when you cut a tag.
 
+---
+
+## [0.7.4] - 2026-07-09
+
 ### Added
 
 * Option to change habit color via three dot menu or withing detailed habit view by clicking on the colored dot at the top right of the screen
 * Translation of color change option within three dot menu
-* How many check-ins and excused days next to total in check-in history (to be added soon)
+* ~~How many check-ins and excused days next to total in check-in history~~
 * Add findahelpline.com link in information tab
 * Notes for Check-In Mode, so you can jot down how a check-in or excused day went
 * Option to let excused days count or not twoards your streak in the three dot menu (check-in mode only)
