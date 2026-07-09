@@ -167,19 +167,33 @@ class CheckInWidgetProvider : AppWidgetProvider() {
     }
 
     private fun computeCheckInStreak(habit: JSONObject): Int {
-        val arr = habit.optJSONArray("checkInDays") ?: return 0
-        if (arr.length() == 0) return 0
+        val checkInArr = habit.optJSONArray("checkInDays")
+        val nullArr    = habit.optJSONArray("nullDays")
 
-            val days = mutableSetOf<String>()
-            for (i in 0 until arr.length()) {
-                val iso = arr.optString(i, "")
+        val days = mutableSetOf<String>()
+        checkInArr?.let {
+            for (i in 0 until it.length()) {
+                val iso = it.optString(i, "")
                 if (iso.length >= 10) days.add(iso.substring(0, 10))
             }
+        }
+        nullArr?.let {
+            for (i in 0 until it.length()) {
+                val iso = it.optString(i, "")
+                if (iso.length >= 10) days.add(iso.substring(0, 10))
+            }
+        }
+        if (days.isEmpty()) return 0
 
-            val cal    = Calendar.getInstance()
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+            val cal = Calendar.getInstance()
+
+            if (!days.contains(sdf.format(cal.time))) {
+                cal.add(Calendar.DAY_OF_YEAR, -1)
+                if (!days.contains(sdf.format(cal.time))) return 0
+            }
+
             var streak = 0
-            val sdf    = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-
             while (true) {
                 val key = sdf.format(cal.time)
                 if (days.contains(key)) {
