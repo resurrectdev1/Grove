@@ -110,6 +110,19 @@ class CalendarWidgetProvider : AppWidgetProvider() {
                 }
             }
 
+            val excusedDays = mutableSetOf<Int>()
+            habit?.optJSONArray("nullDays")?.let { arr ->
+                for (i in 0 until arr.length()) {
+                    val iso = arr.optString(i, "")
+                    if (iso.length >= 10) {
+                        val y = iso.substring(0, 4).toIntOrNull() ?: continue
+                        val m = iso.substring(5, 7).toIntOrNull() ?: continue
+                        val d = iso.substring(8, 10).toIntOrNull() ?: continue
+                        if (y == year && m == month) excusedDays.add(d)
+                    }
+                }
+            }
+
             val cal         = GregorianCalendar(year, month - 1, 1)
             val firstDow    = (cal.get(Calendar.DAY_OF_WEEK) - Calendar.MONDAY + 7) % 7
             val daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
@@ -145,11 +158,13 @@ class CalendarWidgetProvider : AppWidgetProvider() {
                         val isToday   = year == todayYear && month == todayMonth && day == todayDay
                         val isRelapse = !isCheckIn && relapseDays.contains(day)
                         val isCheckInDay = isCheckIn && checkInDays.contains(day)
+                        val isExcusedDay = isCheckIn && excusedDays.contains(day)
                         val isFuture  = year > todayYear ||
                         (year == todayYear && month > todayMonth) ||
                         (year == todayYear && month == todayMonth && day > todayDay)
                         val bgRes = when {
                             isRelapse    -> R.drawable.cal_cell_relapse
+                            isExcusedDay -> R.drawable.cal_cell_excused
                             isCheckInDay -> R.drawable.cal_cell_checkin
                             isToday      -> R.drawable.cal_cell_today
                             isFuture     -> R.drawable.cal_cell_future
