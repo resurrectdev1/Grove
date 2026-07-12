@@ -10,6 +10,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 > Changes staged for the next release go here. Move them down when you cut a tag.
 
+### Added
+
+* Custom auto backups (to be worked on)
+* Shareable trees snapshot (to be worked on)
+
 ---
 
 ## [0.7.4] - 2026-07-09
