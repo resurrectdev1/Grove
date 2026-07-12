@@ -13,7 +13,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 * Custom auto backups (to be worked on)
-* Shareable trees snapshot (to be worked on)
+* Shareable trees snapshot/animated gif (to be worked on)
+* Banner in releases section for better RSS reader support
 
 ---
 
