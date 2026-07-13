@@ -16,6 +16,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Shareable trees snapshot/animated gif (to be worked on)
 * Banner in releases section for better RSS reader support
 
+### Changed
+
+* Github workflow file to include formatting and analysis
+* Formatted all code with flutter format
+
+### Fixed
+
+* Code cleanup (e.g. `curly_braces_in_flow_control_structures` and other analyzer warnings)
+
 ---
 
 ## [0.7.4] - 2026-07-09
