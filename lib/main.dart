@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:grove/providers/grove_model.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/services/grove_notifications.dart';
+import 'package:grove/painters/fractal_tree_painter.dart';
 import 'app.dart';
 
 void main() async {
