@@ -15,12 +15,12 @@ class GroveNotifications {
 
   final _plugin = FlutterLocalNotificationsPlugin();
 
-  static const _channelId        = 'grove_milestones';
-  static const _channelName      = 'Tree Milestones';
-  static const _prefsKey         = 'grove_notified_milestones';
-  static const _dailyChannelId   = 'grove_daily_reminder';
+  static const _channelId = 'grove_milestones';
+  static const _channelName = 'Tree Milestones';
+  static const _prefsKey = 'grove_notified_milestones';
+  static const _dailyChannelId = 'grove_daily_reminder';
   static const _dailyChannelName = 'Daily Check-in Reminder';
-  static const _dailyNotifId     = 99999;
+  static const _dailyNotifId = 99999;
 
   int _notifId(String habitId) => habitId.hashCode.abs() % 100000;
 
@@ -38,28 +38,37 @@ class GroveNotifications {
       tz.setLocalLocation(tz.UTC);
     }
 
-    const androidSettings = AndroidInitializationSettings('@mipmap/launcher_icon');
-    const iosSettings     = DarwinInitializationSettings(
+    const androidSettings = AndroidInitializationSettings(
+      '@mipmap/launcher_icon',
+    );
+    const iosSettings = DarwinInitializationSettings(
       requestAlertPermission: false,
       requestBadgePermission: false,
       requestSoundPermission: false,
     );
     await _plugin.initialize(
-      settings: const InitializationSettings(android: androidSettings, iOS: iosSettings),
+      settings: const InitializationSettings(
+        android: androidSettings,
+        iOS: iosSettings,
+      ),
       onDidReceiveNotificationResponse: (_) {},
     );
 
-    _prefs   = await SharedPreferences.getInstance();
+    _prefs = await SharedPreferences.getInstance();
     _notified = (_prefs!.getStringList(_prefsKey) ?? []).toSet();
   }
 
   Future<void> requestPermissions() async {
     final androidPlugin = _plugin
-    .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >();
     await androidPlugin?.requestNotificationsPermission();
 
     final iosPlugin = _plugin
-    .resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>();
+        .resolvePlatformSpecificImplementation<
+          IOSFlutterLocalNotificationsPlugin
+        >();
     await iosPlugin?.requestPermissions(alert: true, badge: true, sound: true);
   }
 
@@ -93,8 +102,8 @@ class GroveNotifications {
         _channelName,
         channelDescription: 'Celebrate your tree growth milestones',
         importance: Importance.high,
-        priority:   Priority.high,
-        icon:       '@drawable/ic_grove_notif',
+        priority: Priority.high,
+        icon: '@drawable/ic_grove_notif',
       ),
       iOS: DarwinNotificationDetails(
         presentAlert: true,
@@ -104,9 +113,9 @@ class GroveNotifications {
     );
 
     await _plugin.show(
-      id:                  _notifId(habit.id + habit.stage.index.toString()),
-      title:               title,
-      body:                body,
+      id: _notifId(habit.id + habit.stage.index.toString()),
+      title: title,
+      body: body,
       notificationDetails: details,
     );
 
@@ -117,7 +126,9 @@ class GroveNotifications {
     final tag = _prefs?.getString('locale_language_tag');
     if (tag != null && tag.isNotEmpty) {
       final parts = tag.split('_');
-      final locale = parts.length >= 2 ? Locale(parts[0], parts[1]) : Locale(parts[0]);
+      final locale = parts.length >= 2
+          ? Locale(parts[0], parts[1])
+          : Locale(parts[0]);
       if (AppLocalizations.supportedLocales.contains(locale)) {
         return locale;
       }
@@ -125,7 +136,7 @@ class GroveNotifications {
     final deviceLocale = PlatformDispatcher.instance.locale;
     for (final s in AppLocalizations.supportedLocales) {
       if (s.languageCode == deviceLocale.languageCode &&
-        s.countryCode  == deviceLocale.countryCode) {
+          s.countryCode == deviceLocale.countryCode) {
         return s;
       }
     }
@@ -137,7 +148,7 @@ class GroveNotifications {
 
   Future<(String, String)> _copy(String name, GrowthStage stage) async {
     final locale = await _resolveLocale();
-    final l10n   = await AppLocalizations.delegate.load(locale);
+    final l10n = await AppLocalizations.delegate.load(locale);
 
     switch (stage) {
       case GrowthStage.sprout:
@@ -156,13 +167,18 @@ class GroveNotifications {
   Future<void> scheduleDailyReminder(TimeOfDay time) async {
     try {
       final locale = await _resolveLocale();
-      final l10n   = await AppLocalizations.delegate.load(locale);
+      final l10n = await AppLocalizations.delegate.load(locale);
 
       await _plugin.cancel(id: _dailyNotifId);
 
-      final now      = tz.TZDateTime.now(tz.local);
-      var   scheduled = tz.TZDateTime(
-        tz.local, now.year, now.month, now.day, time.hour, time.minute,
+      final now = tz.TZDateTime.now(tz.local);
+      var scheduled = tz.TZDateTime(
+        tz.local,
+        now.year,
+        now.month,
+        now.day,
+        time.hour,
+        time.minute,
       );
       if (scheduled.isBefore(now)) {
         scheduled = scheduled.add(const Duration(days: 1));
@@ -174,8 +190,8 @@ class GroveNotifications {
           _dailyChannelName,
           channelDescription: 'Daily reminder to check in on your habits',
           importance: Importance.high,
-          priority:   Priority.high,
-          icon:       '@drawable/ic_grove_notif',
+          priority: Priority.high,
+          icon: '@drawable/ic_grove_notif',
         ),
         iOS: DarwinNotificationDetails(
           presentAlert: true,
@@ -190,11 +206,13 @@ class GroveNotifications {
         body: l10n.dailyReminderSettingSubtitle,
         scheduledDate: scheduled,
         notificationDetails: details,
-        androidScheduleMode:      AndroidScheduleMode.exactAllowWhileIdle,
-        matchDateTimeComponents:  DateTimeComponents.time,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+        matchDateTimeComponents: DateTimeComponents.time,
       );
 
-      debugPrint('Grove: daily reminder scheduled at ${time.hour}:${time.minute.toString().padLeft(2, '0')}');
+      debugPrint(
+        'Grove: daily reminder scheduled at ${time.hour}:${time.minute.toString().padLeft(2, '0')}',
+      );
     } catch (e) {
       debugPrint('Grove: scheduleDailyReminder error: $e');
     }
