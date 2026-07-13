@@ -102,8 +102,9 @@ class _RelapseDialogState extends State<RelapseDialog> {
                         firstDate: DateTime(2010),
                         lastDate: DateTime.now(),
                       );
-                      if (picked != null)
+                      if (picked != null) {
                         setState(() => _selectedDate = picked);
+                      }
                     },
                     icon: const Icon(Icons.calendar_today, size: 14),
                     label: Text(
@@ -112,7 +113,7 @@ class _RelapseDialogState extends State<RelapseDialog> {
                     ),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: theme.textPrimary,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),
                 ),
@@ -124,8 +125,9 @@ class _RelapseDialogState extends State<RelapseDialog> {
                         context: context,
                         initialTime: _selectedTime,
                       );
-                      if (picked != null)
+                      if (picked != null) {
                         setState(() => _selectedTime = picked);
+                      }
                     },
                     icon: const Icon(Icons.access_time, size: 14),
                     label: Text(
@@ -134,7 +136,7 @@ class _RelapseDialogState extends State<RelapseDialog> {
                     ),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: theme.textPrimary,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),
                 ),
