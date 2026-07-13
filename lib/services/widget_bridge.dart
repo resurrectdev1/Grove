@@ -21,10 +21,12 @@ class GroveWidgetBridge {
 
             await _channel.invokeMethod<void>('saveTreeImage', {
               'habitId': habit.id,
-              'bytes':   bytes,
+              'bytes': bytes,
             });
           } catch (e) {
-            debugPrint('GroveWidgetBridge: failed to render habit ${habit.id}: $e');
+            debugPrint(
+              'GroveWidgetBridge: failed to render habit ${habit.id}: $e',
+            );
           }
         }
       }
@@ -48,21 +50,24 @@ class GroveWidgetBridge {
       const size = Size(400, 400);
 
       final recorder = ui.PictureRecorder();
-      final canvas   = Canvas(recorder, Offset.zero & size);
+      final canvas = Canvas(recorder, Offset.zero & size);
 
       final painter = FractalTreePainter(
-        stage:       habit.stage,
-        baseColor:   habit.color,
-        progress:    habit.stageProgress,
-        windPhase:   0,
+        stage: habit.stage,
+        baseColor: habit.color,
+        progress: habit.stageProgress,
+        windPhase: 0,
         daysElapsed: habit.daysElapsed,
         geneticSeed: habit.geneticSeed,
       );
 
       painter.paint(canvas, size);
 
-      final picture  = recorder.endRecording();
-      final image    = await picture.toImage(size.width.toInt(), size.height.toInt());
+      final picture = recorder.endRecording();
+      final image = await picture.toImage(
+        size.width.toInt(),
+        size.height.toInt(),
+      );
       final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
       return byteData?.buffer.asUint8List();
     } catch (e) {
