@@ -38,7 +38,10 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
   Widget build(BuildContext context) {
     final theme = context.watch<GroveSettings>().theme;
     final l10n = AppLocalizations.of(context);
-    final bottomPad = math.max(MediaQuery.of(context).viewInsets.bottom, MediaQuery.of(context).padding.bottom);
+    final bottomPad = math.max(
+      MediaQuery.of(context).viewInsets.bottom,
+      MediaQuery.of(context).padding.bottom,
+    );
 
     return Padding(
       padding: EdgeInsets.fromLTRB(24, 20, 24, 24 + bottomPad),
@@ -51,17 +54,31 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
               child: Container(
                 width: 36,
                 height: 4,
-                decoration: BoxDecoration(color: theme.textMuted.withValues(alpha: 0.4), borderRadius: BorderRadius.circular(2)),
+                decoration: BoxDecoration(
+                  color: theme.textMuted.withValues(alpha: 0.4),
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
             ),
             const SizedBox(height: 20),
             Text(
               widget.title ?? l10n.changeColor,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: theme.textPrimary),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: theme.textPrimary,
+              ),
             ),
             const SizedBox(height: 20),
-            Text(l10n.presetColors, style: TextStyle(fontSize: 11, color: theme.textSecondary, letterSpacing: 1.0)),
+            Text(
+              l10n.presetColors,
+              style: TextStyle(
+                fontSize: 11,
+                color: theme.textSecondary,
+                letterSpacing: 1.0,
+              ),
+            ),
             const SizedBox(height: 12),
             Wrap(
               spacing: 12,
@@ -81,16 +98,35 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                     decoration: BoxDecoration(
                       color: c,
                       shape: BoxShape.circle,
-                      border: Border.all(color: sel ? GroveTheme.dewWhite : Colors.transparent, width: 2.5),
-                      boxShadow: sel ? [BoxShadow(color: c.withValues(alpha: 0.6), blurRadius: 10)] : [],
+                      border: Border.all(
+                        color: sel ? GroveTheme.dewWhite : Colors.transparent,
+                        width: 2.5,
+                      ),
+                      boxShadow: sel
+                          ? [
+                              BoxShadow(
+                                color: c.withValues(alpha: 0.6),
+                                blurRadius: 10,
+                              ),
+                            ]
+                          : [],
                     ),
-                    child: sel ? const Icon(Icons.check, color: Colors.white, size: 18) : null,
+                    child: sel
+                        ? const Icon(Icons.check, color: Colors.white, size: 18)
+                        : null,
                   ),
                 );
               }).toList(),
             ),
             const SizedBox(height: 20),
-            Text(l10n.customHexCode, style: TextStyle(fontSize: 11, color: theme.textSecondary, letterSpacing: 1.0)),
+            Text(
+              l10n.customHexCode,
+              style: TextStyle(
+                fontSize: 11,
+                color: theme.textSecondary,
+                letterSpacing: 1.0,
+              ),
+            ),
             const SizedBox(height: 12),
             Row(
               children: [
@@ -106,7 +142,11 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                       prefixText: '#',
                       prefixStyle: TextStyle(color: theme.textSecondary),
                       hintText: '4E8B5F',
-                      prefixIcon: Icon(Icons.palette_outlined, size: 18, color: theme.textMuted),
+                      prefixIcon: Icon(
+                        Icons.palette_outlined,
+                        size: 18,
+                        color: theme.textMuted,
+                      ),
                       errorText: _validHex ? null : l10n.invalidHex,
                       counterText: '',
                     ),
@@ -120,8 +160,17 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                   decoration: BoxDecoration(
                     color: _color,
                     shape: BoxShape.circle,
-                    border: Border.all(color: theme.textMuted.withValues(alpha: 0.3), width: 2),
-                    boxShadow: [BoxShadow(color: _color.withValues(alpha: 0.4), blurRadius: 8, offset: const Offset(0, 2))],
+                    border: Border.all(
+                      color: theme.textMuted.withValues(alpha: 0.3),
+                      width: 2,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: _color.withValues(alpha: 0.4),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -132,7 +181,10 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                 Expanded(
                   child: TextButton(
                     onPressed: () => Navigator.pop(context),
-                    child: Text(l10n.cancel, style: TextStyle(color: theme.textSecondary)),
+                    child: Text(
+                      l10n.cancel,
+                      style: TextStyle(color: theme.textSecondary),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -149,9 +201,17 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                       backgroundColor: _color,
                       foregroundColor: Colors.white,
                       minimumSize: const Size.fromHeight(52),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                     ),
-                    child: Text(l10n.save, style: const TextStyle(fontWeight: FontWeight.w600, letterSpacing: 0.5)),
+                    child: Text(
+                      l10n.save,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
                   ),
                 ),
               ],

@@ -9,7 +9,8 @@ import 'package:grove/models/grove_models.dart';
 
 class OnboardingSheet extends StatefulWidget {
   const OnboardingSheet({super.key});
-  @override State<OnboardingSheet> createState() => _OnboardingSheetState();
+  @override
+  State<OnboardingSheet> createState() => _OnboardingSheetState();
 }
 
 class _OnboardingSheetState extends State<OnboardingSheet> {
@@ -17,44 +18,44 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
 
   List<_OnboardingStep> _steps(AppLocalizations l10n) => [
     _OnboardingStep(
-      icon:      Icons.waving_hand_rounded,
-      title:     l10n.onboarding0Title,
-      body:      l10n.onboarding0Body,
+      icon: Icons.waving_hand_rounded,
+      title: l10n.onboarding0Title,
+      body: l10n.onboarding0Body,
       treeStage: GrowthStage.seed,
       treeColor: GroveTheme.mossGreen,
     ),
     _OnboardingStep(
-      icon:      Icons.forest_rounded,
-      title:     l10n.onboarding1Title,
-      body:      l10n.onboarding1Body,
+      icon: Icons.forest_rounded,
+      title: l10n.onboarding1Title,
+      body: l10n.onboarding1Body,
       treeStage: GrowthStage.sprout,
       treeColor: GroveTheme.mossGreen,
     ),
     _OnboardingStep(
-      icon:      Icons.show_chart_rounded,
-      title:     l10n.onboarding2Title,
-      body:      l10n.onboarding2Body,
+      icon: Icons.show_chart_rounded,
+      title: l10n.onboarding2Title,
+      body: l10n.onboarding2Body,
       treeStage: GrowthStage.sapling,
       treeColor: GroveTheme.mossGreen,
     ),
     _OnboardingStep(
-      icon:      Icons.refresh_rounded,
-      title:     l10n.onboarding3Title,
-      body:      l10n.onboarding3Body,
+      icon: Icons.refresh_rounded,
+      title: l10n.onboarding3Title,
+      body: l10n.onboarding3Body,
       treeStage: GrowthStage.youngTree,
       treeColor: GroveTheme.clayRed,
     ),
     _OnboardingStep(
-      icon:      Icons.calendar_month_outlined,
-      title:     l10n.onboarding4Title,
-      body:      l10n.onboarding4Body,
+      icon: Icons.calendar_month_outlined,
+      title: l10n.onboarding4Title,
+      body: l10n.onboarding4Body,
       treeStage: GrowthStage.groveTree,
       treeColor: GroveTheme.mossGreen,
     ),
     _OnboardingStep(
-      icon:      Icons.lock_outline_rounded,
-      title:     l10n.onboarding5Title,
-      body:      l10n.onboarding5Body,
+      icon: Icons.lock_outline_rounded,
+      title: l10n.onboarding5Title,
+      body: l10n.onboarding5Body,
       treeStage: GrowthStage.groveTree,
       treeColor: GroveTheme.mossGreen,
     ),
@@ -62,16 +63,16 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
 
   @override
   Widget build(BuildContext context) {
-    final theme     = context.watch<GroveSettings>().theme;
-    final l10n      = AppLocalizations.of(context);
-    final steps     = _steps(l10n);
+    final theme = context.watch<GroveSettings>().theme;
+    final l10n = AppLocalizations.of(context);
+    final steps = _steps(l10n);
     final bottomPad = MediaQuery.of(context).padding.bottom;
-    final step      = steps[_page];
-    final isLast    = _page == steps.length - 1;
+    final step = steps[_page];
+    final isLast = _page == steps.length - 1;
 
     return Container(
       decoration: BoxDecoration(
-        color:        theme.surfaceHigh,
+        color: theme.surfaceHigh,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
       ),
       padding: EdgeInsets.fromLTRB(28, 28, 28, 28 + bottomPad),
@@ -79,9 +80,10 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 36, height: 4,
+            width: 36,
+            height: 4,
             decoration: BoxDecoration(
-              color:        theme.textMuted.withValues(alpha: 0.4),
+              color: theme.textMuted.withValues(alpha: 0.4),
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -89,31 +91,45 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
           if (_page != 0) ...[
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 500),
-              transitionBuilder: (child, anim) => FadeTransition(opacity: anim, child: child),
+              transitionBuilder: (child, anim) =>
+                  FadeTransition(opacity: anim, child: child),
               child: SizedBox(
                 key: ValueKey(_page),
-                width: 120, height: 120,
+                width: 120,
+                height: 120,
                 child: AnimatedTreeWidget(
                   habit: HabitTree(
-                    id:          'onboarding_preview_$_page',
-                    name:        'preview',
-                    color:       step.treeColor,
-                    startDate:   DateTime.now().subtract(Duration(days: _treeDaysForStage(step.treeStage))),
-                    lastReset:   DateTime.now().subtract(Duration(days: _treeDaysForStage(step.treeStage))),
-                    geneticSeed: _page == 4 ? 2 * 137 : _page == 5 ? 4 * 137 : _page * 137,
+                    id: 'onboarding_preview_$_page',
+                    name: 'preview',
+                    color: step.treeColor,
+                    startDate: DateTime.now().subtract(
+                      Duration(days: _treeDaysForStage(step.treeStage)),
+                    ),
+                    lastReset: DateTime.now().subtract(
+                      Duration(days: _treeDaysForStage(step.treeStage)),
+                    ),
+                    geneticSeed: _page == 4
+                        ? 2 * 137
+                        : _page == 5
+                        ? 4 * 137
+                        : _page * 137,
                   ),
                 ),
               ),
             ),
             const SizedBox(height: 20),
           ] else
-          const SizedBox(height: 8),
+            const SizedBox(height: 8),
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 300),
             child: Text(
               step.title,
-              key:       ValueKey('title_$_page'),
-              style:     TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: theme.textPrimary),
+              key: ValueKey('title_$_page'),
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w800,
+                color: theme.textPrimary,
+              ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -122,23 +138,33 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
             duration: const Duration(milliseconds: 300),
             child: Text(
               step.body,
-              key:       ValueKey('body_$_page'),
-              style:     TextStyle(fontSize: 14, color: theme.textSecondary, height: 1.65),
+              key: ValueKey('body_$_page'),
+              style: TextStyle(
+                fontSize: 14,
+                color: theme.textSecondary,
+                height: 1.65,
+              ),
               textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(height: 28),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(steps.length, (i) => AnimatedContainer(
-              duration: const Duration(milliseconds: 250),
-              margin:   const EdgeInsets.symmetric(horizontal: 3),
-              width:    i == _page ? 18 : 6, height: 6,
-              decoration: BoxDecoration(
-                color:        i == _page ? theme.primary : theme.textMuted.withValues(alpha: 0.4),
-                borderRadius: BorderRadius.circular(3),
+            children: List.generate(
+              steps.length,
+              (i) => AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
+                margin: const EdgeInsets.symmetric(horizontal: 3),
+                width: i == _page ? 18 : 6,
+                height: 6,
+                decoration: BoxDecoration(
+                  color: i == _page
+                      ? theme.primary
+                      : theme.textMuted.withValues(alpha: 0.4),
+                  borderRadius: BorderRadius.circular(3),
+                ),
               ),
-            )),
+            ),
           ),
           const SizedBox(height: 24),
           Row(
@@ -149,9 +175,13 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
                     onPressed: () => setState(() => _page--),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: theme.textSecondary,
-                        side:            BorderSide(color: theme.textMuted.withValues(alpha: 0.4)),
-                        minimumSize:     const Size.fromHeight(50),
-                        shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                      side: BorderSide(
+                        color: theme.textMuted.withValues(alpha: 0.4),
+                      ),
+                      minimumSize: const Size.fromHeight(50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
                     ),
                     child: Text(l10n.back),
                   ),
@@ -170,13 +200,20 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
                     }
                   },
                   style: FilledButton.styleFrom(
-                    backgroundColor: isLast ? GroveTheme.mossGreen : theme.primary,
-                    minimumSize:     const Size.fromHeight(50),
-                    shape:           RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    backgroundColor: isLast
+                        ? GroveTheme.mossGreen
+                        : theme.primary,
+                    minimumSize: const Size.fromHeight(50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                   ),
                   child: Text(
                     isLast ? l10n.startGrowing : l10n.next,
-                    style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 15,
+                    ),
                   ),
                 ),
               ),
@@ -189,23 +226,31 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
 
   int _treeDaysForStage(GrowthStage s) {
     switch (s) {
-      case GrowthStage.seed:      return 0;
-      case GrowthStage.sprout:    return 4;
-      case GrowthStage.sapling:   return 15;
-      case GrowthStage.youngTree: return 60;
-      case GrowthStage.groveTree: return 120;
+      case GrowthStage.seed:
+        return 0;
+      case GrowthStage.sprout:
+        return 4;
+      case GrowthStage.sapling:
+        return 15;
+      case GrowthStage.youngTree:
+        return 60;
+      case GrowthStage.groveTree:
+        return 120;
     }
   }
 }
 
 class _OnboardingStep {
-  final IconData    icon;
-  final String      title;
-  final String      body;
+  final IconData icon;
+  final String title;
+  final String body;
   final GrowthStage treeStage;
-  final Color       treeColor;
+  final Color treeColor;
   const _OnboardingStep({
-    required this.icon, required this.title, required this.body,
-    required this.treeStage, required this.treeColor,
+    required this.icon,
+    required this.title,
+    required this.body,
+    required this.treeStage,
+    required this.treeColor,
   });
 }
