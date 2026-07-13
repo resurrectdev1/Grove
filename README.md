@@ -79,7 +79,7 @@ alt="Get it on F-Droid" align="center" height="80" /></a>
 
 🍦 **[Material You App List](https://github.com/nyas1/Material-You-app-list):** Listed under Habit Tracker as an MDY FOSS app.
 
-📈 **[Trendshift](https://trendshift.io/weekly/2026/27?language=Dart):** Ranked among the week's trending Dart repositories (Jun 29 – Jul 5, 2026), debuting on the list as a new entry.
+📈 **[Trendshift](https://trendshift.io/repositories/63479):** Ranked among the week's trending Dart repositories (Jun 29 – Jul 5, 2026), debuting on the list as a new entry & ranked #18 repository of the day June 30th.
 
 📱 **[阿呆的博客](https://adaiblog-github-io.vercel.app/posts/androidapp.html):** Included in a curated list of Android apps worth using.
 
