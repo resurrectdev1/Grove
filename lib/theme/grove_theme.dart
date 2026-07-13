@@ -63,8 +63,9 @@ class GroveTheme {
   }
 
   Color get primary {
-    if (customAccent != null && mode != GroveThemeMode.materialYou)
+    if (customAccent != null && mode != GroveThemeMode.materialYou) {
       return customAccent!;
+    }
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF4E8B5F);
