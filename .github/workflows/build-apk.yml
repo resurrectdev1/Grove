@@ -19,17 +19,18 @@ jobs:
         with:
           flutter-version: "3.41.2"
           channel: "stable"
+          cache: true
 
       - name: Install dependencies
         run: flutter pub get
 
       - name: Analyze
         run: flutter analyze
-        continue-on-error: true
 
   build:
     needs: [analyze]
     runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -45,6 +46,7 @@ jobs:
         with:
           flutter-version: "3.41.2"
           channel: "stable"
+          cache: true
 
       - name: Accept Android licenses
         run: yes | flutter doctor --android-licenses
