@@ -8,7 +8,7 @@ class GroveBiometrics {
 
   Future<bool> get isAvailable async {
     try {
-      final canCheck    = await _auth.canCheckBiometrics;
+      final canCheck = await _auth.canCheckBiometrics;
       final isSupported = await _auth.isDeviceSupported();
       return canCheck && isSupported;
     } catch (_) {
@@ -18,9 +18,7 @@ class GroveBiometrics {
 
   Future<bool> authenticate() async {
     try {
-      return await _auth.authenticate(
-        localizedReason: 'Unlock your Grove',
-      );
+      return await _auth.authenticate(localizedReason: 'Unlock your Grove');
     } catch (_) {
       return false;
     }
