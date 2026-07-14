@@ -11,12 +11,11 @@
   }
 
   _flutter.loader.load({
-    config: {
-      hostElement: hostEl,
-    },
     onEntrypointLoaded: async function (engineInitializer) {
       setStatus("Initializing engine…");
-      var appRunner = await engineInitializer.initializeEngine();
+      var appRunner = await engineInitializer.initializeEngine({
+        hostElement: hostEl,
+      });
       setStatus("Almost there…");
       await appRunner.runApp();
       if (loadingEl) {
