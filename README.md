@@ -19,7 +19,7 @@ Whether you're maintaining sobriety, breaking harmful habits, or building positi
 
 ### LIVE DEMO!
 
-Try the live web demo here: https://resurrectdev1.github.io/Grove/ Please note that some features are limited in the browser preview. For the best experience, it's highly recommend to open the link on a mobile device since **Grove** is designed specifically for phone screens and does not currently support desktop displays.
+Try the live web demo here: https://resurrectdev1.github.io/Grove/
 
 ### How does it work?
 
