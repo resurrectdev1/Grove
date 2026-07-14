@@ -5,6 +5,7 @@
   var statusEl = document.getElementById("flutter-loading-status");
   var loadingEl = document.getElementById("flutter-loading");
   var hostEl = document.getElementById("flutter_host");
+  var isDesktop = window.matchMedia("(min-width: 900px)").matches;
 
   function setStatus(text) {
     if (statusEl) statusEl.textContent = text;
@@ -13,9 +14,9 @@
   _flutter.loader.load({
     onEntrypointLoaded: async function (engineInitializer) {
       setStatus("Initializing engine…");
-      var appRunner = await engineInitializer.initializeEngine({
-        hostElement: hostEl,
-      });
+      var appRunner = await engineInitializer.initializeEngine(
+        isDesktop ? { hostElement: hostEl } : {}
+      );
       setStatus("Almost there…");
       await appRunner.runApp();
       if (loadingEl) {
