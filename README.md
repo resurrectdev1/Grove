@@ -19,7 +19,9 @@ Whether you're maintaining sobriety, breaking harmful habits, or building positi
 
 ### LIVE DEMO!
 
-Try the live web demo here: https://resurrectdev1.github.io/Grove/
+<a href="https://resurrectdev1.github.io/Grove/">
+<img src="https://github.com/resurrectdev1/Grove/blob/main/assets/badges/Demo_Badge.png"
+alt="Grove Demo badge" align="center" height="120" /></a>
 
 ### How does it work?
 
