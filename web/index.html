@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <!--
     If you are serving your web app in a path other than the root, change the
@@ -17,21 +17,226 @@
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta name="description" content="Visualize your growth.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Grove — visualize your growth. Track streaks, break habits, and grow a forest of fractal trees as you build a better routine.">
+    <meta name="theme-color" content="#0A0F0B">
+    <link rel="canonical" href="https://resurrectdev1.github.io/Grove/">
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Grove">
+    <meta property="og:title" content="Grove — Visualize your growth.">
+    <meta property="og:description" content="Track streaks, break habits, and grow a forest of procedurally generated fractal trees as you build a better routine. Free, offline, and privacy-focused.">
+    <meta property="og:url" content="https://resurrectdev1.github.io/Grove/">
+    <meta property="og:image" content="https://resurrectdev1.github.io/Grove/social-banner.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Grove — Visualize your growth.">
+    <meta name="twitter:description" content="Track streaks, break habits, and grow a forest of fractal trees as you build a better routine.">
+    <meta name="twitter:image" content="https://resurrectdev1.github.io/Grove/social-banner.png">
 
     <!-- iOS meta tags & icons -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Grove">
     <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png"/>
 
-    <title>Grove</title>
+    <title>Grove — Visualize your growth.</title>
     <link rel="manifest" href="manifest.json">
+
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        background: #0A0F0B;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      #app-shell {
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+
+      /* Flutter renders into this element (see flutter_bootstrap.js). On phones
+         it simply fills the viewport; on wide viewports it gets constrained
+         into a phone-frame mockup below. */
+      #flutter_host {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+      }
+
+      /* Branded loading state, shown until Flutter takes over #flutter_host */
+      #flutter-loading {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        background: #0A0F0B;
+        color: #EAF5EC;
+        z-index: 2;
+        transition: opacity 0.35s ease;
+      }
+      #flutter-loading img {
+        width: 72px;
+        height: 72px;
+        border-radius: 18px;
+        opacity: 0.95;
+      }
+      #flutter-loading .spinner {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 3px solid rgba(234, 245, 236, 0.15);
+        border-top-color: #4CAF6E;
+        animation: flutter-spin 0.9s linear infinite;
+      }
+      #flutter-loading .status {
+        font-size: 13px;
+        letter-spacing: 0.02em;
+        color: rgba(234, 245, 236, 0.55);
+      }
+      @keyframes flutter-spin {
+        to { transform: rotate(360deg); }
+      }
+      #flutter-loading.done {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .desktop-aside { display: none; }
+
+      /* Desktop / wide-viewport presentation: Grove is a phone-first app, so
+         rather than stretching the layout, show it inside a phone frame with
+         context alongside instead of a broken full-bleed layout. */
+      @media (min-width: 900px) {
+        #app-shell {
+          flex-direction: row;
+          gap: 72px;
+          padding: 40px;
+        }
+
+        .phone-frame {
+          width: 390px;
+          height: 844px;
+          flex: none;
+          padding: 14px;
+          border-radius: 46px;
+          background: linear-gradient(160deg, #1b2a20, #05080a);
+          box-shadow:
+            0 40px 90px rgba(0, 0, 0, 0.55),
+            0 0 0 2px rgba(234, 245, 236, 0.06) inset;
+          position: relative;
+        }
+        .phone-frame::before {
+          content: "";
+          position: absolute;
+          top: 14px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 120px;
+          height: 22px;
+          background: #05080a;
+          border-radius: 12px;
+          z-index: 3;
+        }
+        .phone-frame #flutter_host {
+          width: 100%;
+          height: 100%;
+          border-radius: 32px;
+          overflow: hidden;
+        }
+
+        .desktop-aside {
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+          max-width: 340px;
+          color: #EAF5EC;
+        }
+        .desktop-aside img.logo {
+          width: 56px;
+          height: 56px;
+          border-radius: 14px;
+        }
+        .desktop-aside h1 {
+          font-size: 28px;
+          margin: 0;
+          font-weight: 700;
+        }
+        .desktop-aside p {
+          margin: 0;
+          font-size: 15px;
+          line-height: 1.5;
+          color: rgba(234, 245, 236, 0.72);
+        }
+        .desktop-aside .qr-row {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          margin-top: 8px;
+          padding: 14px;
+          background: rgba(234, 245, 236, 0.05);
+          border-radius: 16px;
+        }
+        .desktop-aside .qr-row img {
+          width: 84px;
+          height: 84px;
+          border-radius: 8px;
+        }
+        .desktop-aside .qr-row span {
+          font-size: 13px;
+          color: rgba(234, 245, 236, 0.65);
+          line-height: 1.4;
+        }
+        .desktop-aside a {
+          color: #6FCF97;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 13px;
+        }
+        .desktop-aside a:hover { text-decoration: underline; }
+      }
+    </style>
 </head>
 <body>
+    <div id="app-shell">
+      <aside class="desktop-aside">
+        <img class="logo" src="icons/Icon-192.png" alt="Grove logo">
+        <h1>Grove</h1>
+        <p>Grove is designed for phone screens — you're viewing a live preview in a phone frame. For the full experience, scan the code to open it on your mobile device.</p>
+        <div class="qr-row">
+          <img src="qr-code.png" alt="QR code linking to this page">
+          <span>Scan with your phone's camera to open this page on mobile.</span>
+        </div>
+        <a href="https://github.com/resurrectdev1/Grove/releases/latest" target="_blank" rel="noopener">Get the Android app on GitHub →</a>
+      </aside>
+
+      <div class="phone-frame">
+        <div id="flutter_host">
+          <div id="flutter-loading">
+            <img src="icons/Icon-192.png" alt="Grove">
+            <div class="spinner"></div>
+            <div class="status" id="flutter-loading-status">Loading Grove…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader

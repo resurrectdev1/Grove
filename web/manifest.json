@@ -1,4 +1,5 @@
 {
+    "id": "/Grove/",
     "name": "Grove",
     "short_name": "Grove",
     "start_url": ".",
@@ -9,6 +10,23 @@
     "description": "Visualize your growth.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
+    "categories": ["health", "lifestyle", "productivity"],
+    "screenshots": [
+        {
+            "src": "screenshots/screenshot-1.png",
+            "sizes": "1096x2466",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Your forest of habit trees"
+        },
+        {
+            "src": "screenshots/screenshot-2.png",
+            "sizes": "1096x2466",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Track streaks and milestones"
+        }
+    ],
     "icons": [
         {
             "src": "icons/Icon-192.png",
