@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: deploy-web-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -25,8 +29,12 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build web
-        run: flutter build web --release --base-href /Grove/
+      - name: Build web (WASM)
+        run: |
+          flutter build web --release --wasm \
+            --base-href /Grove/ \
+            --tree-shake-icons \
+            --pwa-strategy=offline-first
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -34,3 +42,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/web
           publish_branch: gh-pages
+          force_orphan: true
