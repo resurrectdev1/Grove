@@ -17,7 +17,7 @@ Whether you're maintaining sobriety, breaking harmful habits, or building positi
 <img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_8.png">
 </p>
 
-### LIVE DEMO
+### LIVE DEMO!
 
 Try the live web demo here: https://resurrectdev1.github.io/Grove/ Please note that some features are limited in the browser preview. For the best experience, it's highly recommend to open the link on a mobile device since **Grove** is designed specifically for phone screens and does not currently support desktop displays.
 
@@ -39,7 +39,7 @@ Simply open **Grove** and click the "Plant a Tree" button then select your track
 
 🎨 **Customizability:** A tree hex color picker and a built-in theme engine supporting custom accent themes and Android 12+ Material You, allowing you to adjust your app's palette to your exact liking.
 
-📈 **Analytics:** Beyond simple streaks, **Grove** tracks your peak record, total relapses, and time you've spent clean since your last relapse as well as the reasons why logged across an interactive monthly calendar.
+📈 **Analytics:** Beyond simple streaks, Grove tracks your peak record, total relapses, and time you've spent clean since your last relapse as well as the reasons why logged across an interactive monthly calendar.
 
 ❄️ **Streak Freeze & Excused Days:** Take a planned break without losing your progress, freeze a streak or mark a day as excused in Check-In Mode.
 
@@ -53,7 +53,7 @@ Simply open **Grove** and click the "Plant a Tree" button then select your track
 
 🌐 **Fully Offline:** Fully functional without an internet connection. No cloud, no tracking. Your data stays where it belongs: solely on your device.
 
-🌎 **Localization:** **Grove** is available in 14 languages being: English, Arabic, German, Spanish, French, Hindi, Italian, Japanese, Korean, Portuguese, Urdu, Vietnamese, and Chinese (Simplified & Traditional) aswell as automatically adapting to your device's current language settings.
+🌎 **Localization:** Grove is available in 14 languages being: English, Arabic, German, Spanish, French, Hindi, Italian, Japanese, Korean, Portuguese, Urdu, Vietnamese, and Chinese (Simplified & Traditional) aswell as automatically adapting to your device's current language settings.
 
 ## What's New
 
