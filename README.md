@@ -17,9 +17,13 @@ Whether you're maintaining sobriety, breaking harmful habits, or building positi
 <img width="200" src="https://github.com/resurrectdev1/Grove/blob/main/assets/screenshot_8.png">
 </p>
 
+### LIVE DEMO
+
+Try the live web demo here: https://resurrectdev1.github.io/Grove/ Please note that some features are limited in the browser preview. For the best experience, it's highly recommend to open the link on a mobile device since **Grove** is designed specifically for phone screens and does not currently support desktop displays.
+
 ### How does it work?
 
-Simply open Grove and click the "Plant a Tree" button then select your tracking mode, color & name of your habit! Once you give your tree a name and color, click "Plant Tree" to see it come to life on your home screen :) You can then click on any habit to open a menu showing you your total relapses (or check-ins), your best record, and your current streak. There is also additional information, such as a "time since last relapse" or "check-in details) tracker and an interactive calendar where you can report a relapse (or check-in), add notes, and even edit past or present times. Just under that, you will find a full history of your recorded relapses (or check-ins) along with the reasons why!
+Simply open **Grove** and click the "Plant a Tree" button then select your tracking mode, color & name of your habit! Once you give your tree a name and color, click "Plant Tree" to see it come to life on your home screen :) You can then click on any habit to open a menu showing you your total relapses (or check-ins), your best record, and your current streak. There is also additional information, such as a "time since last relapse" or "check-in details) tracker and an interactive calendar where you can report a relapse (or check-in), add notes, and even edit past or present times. Just under that, you will find a full history of your recorded relapses (or check-ins) along with the reasons why!
 
 ### Tracking Modes
 
@@ -35,7 +39,7 @@ Simply open Grove and click the "Plant a Tree" button then select your tracking 
 
 🎨 **Customizability:** A tree hex color picker and a built-in theme engine supporting custom accent themes and Android 12+ Material You, allowing you to adjust your app's palette to your exact liking.
 
-📈 **Analytics:** Beyond simple streaks, Grove tracks your peak record, total relapses, and time you've spent clean since your last relapse as well as the reasons why logged across an interactive monthly calendar.
+📈 **Analytics:** Beyond simple streaks, **Grove** tracks your peak record, total relapses, and time you've spent clean since your last relapse as well as the reasons why logged across an interactive monthly calendar.
 
 ❄️ **Streak Freeze & Excused Days:** Take a planned break without losing your progress, freeze a streak or mark a day as excused in Check-In Mode.
 
@@ -49,11 +53,11 @@ Simply open Grove and click the "Plant a Tree" button then select your tracking 
 
 🌐 **Fully Offline:** Fully functional without an internet connection. No cloud, no tracking. Your data stays where it belongs: solely on your device.
 
-🌎 **Localization:** Grove is available in 14 languages being: English, Arabic, German, Spanish, French, Hindi, Italian, Japanese, Korean, Portuguese, Urdu, Vietnamese, and Chinese (Simplified & Traditional) aswell as automatically adapting to your device's current language settings.
+🌎 **Localization:** **Grove** is available in 14 languages being: English, Arabic, German, Spanish, French, Hindi, Italian, Japanese, Korean, Portuguese, Urdu, Vietnamese, and Chinese (Simplified & Traditional) aswell as automatically adapting to your device's current language settings.
 
 ## What's New
 
-Grove is under active development. See [CHANGELOG.md](CHANGELOG.md) for the full release history.
+**Grove** is under active development. See [CHANGELOG.md](CHANGELOG.md) for the full release history.
 
 ## Download 
 
@@ -85,13 +89,13 @@ alt="Get it on F-Droid" align="center" height="80" /></a>
 
 ## Support The App
 
-**Grove** is free forever: no subscriptions, no ads, and no data harvesting. Just you and your trees. If Grove has helped you or someone you know stay clean and build better habits, consider supporting its continued development so it can keep growing.
+**Grove** is free forever: no subscriptions, no ads, and no data harvesting. Just you and your trees. If **Grove** has helped you or someone you know stay clean and build better habits, consider supporting its continued development so it can keep growing.
 
 [<img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" width="auto" height="100" alt="Buy me a Coffee">](https://buymeacoffee.com/resurrect)
 
 ## Development
 
-Grove is built using Flutter, pinned to a specific version (see flutter in pubspec.yaml) to keep builds consistent. Install Flutter at that version, or use FVM to manage it (fvm install <version> && fvm use <version>).
+**Grove** is built using Flutter, pinned to a specific version (see flutter in pubspec.yaml) to keep builds consistent. Install Flutter at that version, or use FVM to manage it (fvm install <version> && fvm use <version>).
 
 Before your first build, make sure you also have:
 
