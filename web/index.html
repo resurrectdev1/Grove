@@ -68,16 +68,12 @@
         box-sizing: border-box;
       }
 
-      /* Flutter renders into this element (see flutter_bootstrap.js). On phones
-         it simply fills the viewport; on wide viewports it gets constrained
-         into a phone-frame mockup below. */
       #flutter_host {
         width: 100%;
         height: 100vh;
         position: relative;
       }
 
-      /* Branded loading state, shown until Flutter takes over #flutter_host */
       #flutter-loading {
         position: absolute;
         inset: 0;
@@ -120,9 +116,6 @@
 
       .desktop-aside { display: none; }
 
-      /* Desktop / wide-viewport presentation: Grove is a phone-first app, so
-         rather than stretching the layout, show it inside a phone frame with
-         context alongside instead of a broken full-bleed layout. */
       @media (min-width: 900px) {
         #app-shell {
           flex-direction: row;
@@ -218,7 +211,7 @@
       <aside class="desktop-aside">
         <img class="logo" src="icons/Icon-192.png" alt="Grove logo">
         <h1>Grove</h1>
-        <p>Grove is designed for phone screens — you're viewing a live preview in a phone frame. For the full experience, scan the code to open it on your mobile device.</p>
+        <p>Grove is designed for phone screens, you're currently viewing a live preview in a phone frame. For the full experience, scan the code to open it on your mobile device.</p>
         <div class="qr-row">
           <img src="qr-code.png" alt="QR code linking to this page">
           <span>Scan with your phone's camera to open this page on mobile.</span>
