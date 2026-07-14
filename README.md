@@ -61,6 +61,8 @@ Simply open **Grove** and click the "Plant a Tree" button then select your track
 
 ## Download 
 
+[![Downloads](https://img.shields.io/github/downloads/resurrectdev1/Grove/total)](https://github.com/resurrectdev1/Grove/releases)
+
 <a href="https://github.com/resurrectdev1/Grove/releases/latest">
 <img src="https://user-images.githubusercontent.com/69304392/148696068-0cfea65d-b18f-4685-82b5-329a330b1c0d.png"
 alt="Get it on GitHub" align="center" height="80" /></a>
