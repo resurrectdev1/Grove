@@ -13,18 +13,18 @@
     "categories": ["health", "lifestyle", "productivity"],
     "screenshots": [
         {
-            "src": "screenshots/screenshot-1.png",
+            "src": "screenshots/screenshot_1.png",
             "sizes": "1096x2466",
             "type": "image/png",
             "form_factor": "narrow",
-            "label": "Your forest of habit trees"
+            "label": "Empty homescreen"
         },
         {
-            "src": "screenshots/screenshot-2.png",
+            "src": "screenshots/screenshot_2.png",
             "sizes": "1096x2466",
             "type": "image/png",
             "form_factor": "narrow",
-            "label": "Track streaks and milestones"
+            "label": "Populated view of homescreen"
         }
     ],
     "icons": [
