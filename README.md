@@ -23,6 +23,8 @@ Whether you're maintaining sobriety, breaking harmful habits, or building positi
 <img src="https://github.com/resurrectdev1/Grove/blob/main/assets/badges/Grove_Demo_Badge.png"
 alt="Grove Demo badge" align="center" height="120" /></a>
 
+Click badge above to be taken to demo!
+
 ### How does it work?
 
 Simply open **Grove** and click the "Plant a Tree" button then select your tracking mode, color & name of your habit! Once you give your tree a name and color, click "Plant Tree" to see it come to life on your home screen :) You can then click on any habit to open a menu showing you your total relapses (or check-ins), your best record, and your current streak. There is also additional information, such as a "time since last relapse" or "check-in details) tracker and an interactive calendar where you can report a relapse (or check-in), add notes, and even edit past or present times. Just under that, you will find a full history of your recorded relapses (or check-ins) along with the reasons why!
