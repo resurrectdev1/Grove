@@ -43,8 +43,6 @@ Simply open **Grove** and click the "Plant a Tree" button then select your track
 
 🎨 **Customizability:** A tree hex color picker and a built-in theme engine supporting custom accent themes and Android 12+ Material You, allowing you to adjust your app's palette to your exact liking.
 
-📈 **Analytics:** Beyond simple streaks, Grove tracks your peak record, total relapses, and time you've spent clean since your last relapse as well as the reasons why logged across an interactive monthly calendar.
-
 ❄️ **Streak Freeze & Excused Days:** Take a planned break without losing your progress, freeze a streak or mark a day as excused in Check-In Mode.
 
 🗂️ **Full Habit Management:** Rename, reorder, recolor or delete habits at any time, within the homescreen or detailed habit view.
