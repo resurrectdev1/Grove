@@ -40,7 +40,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-* Made colored dot in top right of detailed habit view bigger
+* Made colored dot in top right of detailed habit view bigger & interactive
 * Default color when making new habit to green instead of brown
 * More room for trees in grid view
 
