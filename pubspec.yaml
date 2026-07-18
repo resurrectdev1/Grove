@@ -28,7 +28,7 @@ dependencies:
 
   # UI & Theming
   dynamic_color: ^1.7.0
-  package_info_plus: ^10.2.0
+  package_info_plus: ^10.2.1
 
 dev_dependencies:
   flutter_test:
