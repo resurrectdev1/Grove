@@ -14,6 +14,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * Custom auto backups (to be worked on)
 * Shareable trees snapshot/animated gif (to be worked on)
+* Option to export tree to .csv (to be worked on)
 * Banner in releases section for better RSS reader support
 * App live demo at https://resurrectdev1.github.io/Grove/
 
