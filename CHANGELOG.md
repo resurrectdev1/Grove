@@ -26,6 +26,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 * Code cleanup (e.g. `curly_braces_in_flow_control_structures` and other analyzer warnings)
+* Better web suppourt (to be worked on)
 
 ---
 
