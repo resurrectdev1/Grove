@@ -68,7 +68,9 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
       for (final h in _habits) {
         await _prefs!.setString(h.id, h.toJson());
       }
-      await GroveWidgetBridge.instance.renderAndUpdate(_habits);
+      if (!kIsWeb) {
+        await GroveWidgetBridge.instance.renderAndUpdate(_habits);
+      }
       if (!skipNotifications) {
         final enabled = _prefs?.getBool('milestone_notifications') ?? false;
         if (enabled) {
