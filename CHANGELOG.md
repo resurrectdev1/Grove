@@ -27,7 +27,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * Code cleanup (e.g. `curly_braces_in_flow_control_structures` and other analyzer warnings)
 * Fixed backup/restore corrupting non-English tree names (e.g. Arabic, emoji) due to incorrect UTF-8 encoding/decoding
-* Better web suppourt (to be worked on)
+* Fixed crash when exporting or importing backups on web (was calling platform file APIs not supported in browsers)
 
 ---
 
