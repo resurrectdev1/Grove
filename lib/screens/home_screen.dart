@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -1361,7 +1362,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     );
 
     if (outputPath != null) {
-      if (!Platform.isAndroid && !Platform.isIOS) {
+      if (!kIsWeb && !Platform.isAndroid && !Platform.isIOS) {
         try {
           await File(outputPath).writeAsString(json);
         } catch (e) {
@@ -1407,7 +1408,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
 
     String raw;
     try {
-      if (filePath != null) {
+      if (!kIsWeb && filePath != null) {
         final fileBytes = await File(filePath).readAsBytes();
         raw = utf8.decode(fileBytes, allowMalformed: true);
       } else {
