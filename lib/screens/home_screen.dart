@@ -310,9 +310,13 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
       animation: _carouselCtrl,
       builder: (ctx, child) {
         double value = 1.0;
-        if (_carouselCtrl.position.haveDimensions) {
-          value = _carouselCtrl.page! - i;
-          value = (1 - (value.abs() * 0.15)).clamp(0.0, 1.0);
+        if (_carouselCtrl.hasClients &&
+            _carouselCtrl.position.haveDimensions) {
+          final page = _carouselCtrl.page;
+          if (page != null) {
+            value = page - i;
+            value = (1 - (value.abs() * 0.15)).clamp(0.0, 1.0);
+          }
         }
         return Center(
           child: SizedBox(
