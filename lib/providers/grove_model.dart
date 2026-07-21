@@ -484,6 +484,9 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     Future<bool> importFromJson(String raw) async {
       try {
         if (raw.trim().isEmpty) return false;
+        if (raw.isNotEmpty && raw.codeUnitAt(0) == 0xFEFF) {
+          raw = raw.substring(1);
+        }
         final decoded = jsonDecode(raw);
         final List<dynamic> entries;
         if (decoded is Map<String, dynamic> && decoded['trees'] is List) {
