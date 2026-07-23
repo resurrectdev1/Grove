@@ -41,7 +41,7 @@ class GroveSettings extends ChangeNotifier {
     _onboardingDone = _prefs!.getBool('onboarding_done') ?? false;
     _biometricUnlock = _prefs!.getBool('biometric_unlock') ?? false;
     _milestoneNotifications =
-    _prefs!.getBool('milestone_notifications') ?? false;
+        _prefs!.getBool('milestone_notifications') ?? false;
     _dailyReminder = _prefs!.getBool('daily_reminder') ?? false;
 
     final reminderHour = _prefs!.getInt('daily_reminder_hour');
@@ -67,8 +67,8 @@ class GroveSettings extends ChangeNotifier {
     if (savedLangTag != null && savedLangTag.isNotEmpty) {
       final parts = savedLangTag.split('_');
       _locale = parts.length >= 2
-      ? Locale(parts[0], parts[1])
-      : Locale(parts[0]);
+          ? Locale(parts[0], parts[1])
+          : Locale(parts[0]);
     }
 
     _dynamicScheme = dynamicDark;
@@ -146,8 +146,8 @@ class GroveSettings extends ChangeNotifier {
       await _prefs?.remove('locale_language_tag');
     } else {
       final tag = locale.countryCode != null
-      ? '${locale.languageCode}_${locale.countryCode}'
-      : locale.languageCode;
+          ? '${locale.languageCode}_${locale.countryCode}'
+          : locale.languageCode;
       await _prefs?.setString('locale_language_tag', tag);
     }
     notifyListeners();
