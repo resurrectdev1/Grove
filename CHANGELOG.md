@@ -10,6 +10,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 > Changes staged for the next release go here. Move them down when you cut a tag.
 
+---
+
+## [0.7.6] - 2026-07-23
+
 ### Added
 
 * Shareable tree snapshot in detailed habit view in the bottom right
