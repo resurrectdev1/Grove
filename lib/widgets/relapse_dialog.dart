@@ -113,7 +113,7 @@ class _RelapseDialogState extends State<RelapseDialog> {
                     ),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: theme.textPrimary,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),
                 ),
@@ -136,7 +136,7 @@ class _RelapseDialogState extends State<RelapseDialog> {
                     ),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: theme.textPrimary,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),
                 ),
