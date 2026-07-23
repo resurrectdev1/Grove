@@ -39,12 +39,12 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     PackageInfo.fromPlatform().then((info) {
       if (mounted) setState(() => _appVersion = info.version);
     });
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        final settings = context.read<GroveSettings>();
-        if (!settings.onboardingDone) {
-          _showOnboarding();
-        }
-      });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final settings = context.read<GroveSettings>();
+      if (!settings.onboardingDone) {
+        _showOnboarding();
+      }
+    });
   }
 
   @override
@@ -107,8 +107,8 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
         ],
       ),
       body: habits.isEmpty
-      ? _emptyState(theme, l10n)
-      : _buildLayoutEngine(habits, settings.layoutMode, theme),
+          ? _emptyState(theme, l10n)
+          : _buildLayoutEngine(habits, settings.layoutMode, theme),
       floatingActionButton: _fab(context, theme, l10n),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
@@ -298,82 +298,82 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
   );
 
   Widget _buildHorizontalCarousel(List<HabitTree> habits, GroveTheme theme) =>
-  PageView.builder(
-    controller: _carouselCtrl,
-    physics: const BouncingScrollPhysics(),
-    onPageChanged: (i) {
-      setState(() => _selectedIdx = i);
-      HapticFeedback.selectionClick();
-    },
-    itemCount: habits.length,
-    itemBuilder: (ctx, i) => AnimatedBuilder(
-      animation: _carouselCtrl,
-      builder: (ctx, child) {
-        double value = 1.0;
-        if (_carouselCtrl.hasClients &&
-            _carouselCtrl.position.haveDimensions) {
-          final page = _carouselCtrl.page;
-          if (page != null) {
-            value = page - i;
-            value = (1 - (value.abs() * 0.15)).clamp(0.0, 1.0);
-          }
-        }
-        return Center(
-          child: SizedBox(
-            height: Curves.easeOut.transform(value) * 440,
-            child: child,
+      PageView.builder(
+        controller: _carouselCtrl,
+        physics: const BouncingScrollPhysics(),
+        onPageChanged: (i) {
+          setState(() => _selectedIdx = i);
+          HapticFeedback.selectionClick();
+        },
+        itemCount: habits.length,
+        itemBuilder: (ctx, i) => AnimatedBuilder(
+          animation: _carouselCtrl,
+          builder: (ctx, child) {
+            double value = 1.0;
+            if (_carouselCtrl.hasClients &&
+                _carouselCtrl.position.haveDimensions) {
+              final page = _carouselCtrl.page;
+              if (page != null) {
+                value = page - i;
+                value = (1 - (value.abs() * 0.15)).clamp(0.0, 1.0);
+              }
+            }
+            return Center(
+              child: SizedBox(
+                height: Curves.easeOut.transform(value) * 440,
+                child: child,
+              ),
+            );
+          },
+          child: HabitCard(
+            habit: habits[i],
+            isSelected: i == _selectedIdx,
+            layoutMode: LayoutMode.horizontalCarousel,
           ),
-        );
-      },
-      child: HabitCard(
-        habit: habits[i],
-        isSelected: i == _selectedIdx,
-        layoutMode: LayoutMode.horizontalCarousel,
-      ),
-    ),
-  );
+        ),
+      );
 
   Widget _buildCompactGrid(List<HabitTree> habits, GroveTheme theme) =>
-  SafeArea(
-    bottom: false,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: GridView.builder(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.only(top: 16, bottom: 120),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 0.72,
-          crossAxisSpacing: 12,
-          mainAxisSpacing: 12,
+      SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: GridView.builder(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.only(top: 16, bottom: 120),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 0.72,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+            ),
+            itemCount: habits.length,
+            itemBuilder: (ctx, i) => HabitCard(
+              habit: habits[i],
+              isSelected: true,
+              layoutMode: LayoutMode.compactGrid,
+            ),
+          ),
         ),
-        itemCount: habits.length,
-        itemBuilder: (ctx, i) => HabitCard(
-          habit: habits[i],
-          isSelected: true,
-          layoutMode: LayoutMode.compactGrid,
-        ),
-      ),
-    ),
-  );
+      );
 
   Widget _buildCompactList(List<HabitTree> habits, GroveTheme theme) =>
-  SafeArea(
-    bottom: false,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.only(top: 16, bottom: 120),
-        itemCount: habits.length,
-        itemBuilder: (ctx, i) => HabitCard(
-          habit: habits[i],
-          isSelected: true,
-          layoutMode: LayoutMode.compactList,
+      SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.only(top: 16, bottom: 120),
+            itemCount: habits.length,
+            itemBuilder: (ctx, i) => HabitCard(
+              habit: habits[i],
+              isSelected: true,
+              layoutMode: LayoutMode.compactList,
+            ),
+          ),
         ),
-      ),
-    ),
-  );
+      );
 
   void _showReorderSheet(BuildContext ctx) {
     final model = ctx.read<GroveModel>();
@@ -573,7 +573,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                       label: l10n.layoutWheel,
                       icon: Icons.view_day,
                       isSelected:
-                      settings.layoutMode == LayoutMode.verticalWheel,
+                          settings.layoutMode == LayoutMode.verticalWheel,
                       theme: settings.theme,
                       onTap: () {
                         settings.setLayoutMode(LayoutMode.verticalWheel);
@@ -586,7 +586,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                       label: l10n.layoutCarousel,
                       icon: Icons.view_carousel,
                       isSelected:
-                      settings.layoutMode == LayoutMode.horizontalCarousel,
+                          settings.layoutMode == LayoutMode.horizontalCarousel,
                       theme: settings.theme,
                       onTap: () {
                         settings.setLayoutMode(LayoutMode.horizontalCarousel);
@@ -738,12 +738,12 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                               ),
                               Text(
                                 settings.customAccent != null
-                                ? '#${settings.customAccent!.toARGB32().toRadixString(16).substring(2).toUpperCase()}'
-                              : l10n.customAccentDefault,
-                              style: TextStyle(
-                                fontSize: 11,
-                                color: settings.theme.textMuted,
-                              ),
+                                    ? '#${settings.customAccent!.toARGB32().toRadixString(16).substring(2).toUpperCase()}'
+                                    : l10n.customAccentDefault,
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: settings.theme.textMuted,
+                                ),
                               ),
                             ],
                           ),
@@ -817,8 +817,8 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                       final picked = await showTimePicker(
                         context: sheetCtx,
                         initialTime:
-                        settings.dailyReminderTime ??
-                        const TimeOfDay(hour: 9, minute: 0),
+                            settings.dailyReminderTime ??
+                            const TimeOfDay(hour: 9, minute: 0),
                       );
                       if (picked != null) {
                         await settings.setDailyReminder(true, picked);
@@ -829,7 +829,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                   },
                 ),
                 if (settings.dailyReminder &&
-                  settings.dailyReminderTime != null)
+                    settings.dailyReminderTime != null)
                   Padding(
                     padding: const EdgeInsets.only(left: 16, bottom: 4),
                     child: GestureDetector(
@@ -887,138 +887,138 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                     ),
                   ),
 
-                  FutureBuilder<bool>(
-                    future: GroveBiometrics.instance.isAvailable,
-                    builder: (_, snap) {
-                      final available = snap.data ?? false;
-                      if (!available) return const SizedBox.shrink();
-                      return SwitchListTile(
-                        contentPadding: EdgeInsets.zero,
-                        title: Text(
-                          l10n.biometricUnlock,
-                          style: TextStyle(
-                            color: settings.theme.textPrimary,
-                            fontSize: 14,
-                          ),
+                FutureBuilder<bool>(
+                  future: GroveBiometrics.instance.isAvailable,
+                  builder: (_, snap) {
+                    final available = snap.data ?? false;
+                    if (!available) return const SizedBox.shrink();
+                    return SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(
+                        l10n.biometricUnlock,
+                        style: TextStyle(
+                          color: settings.theme.textPrimary,
+                          fontSize: 14,
                         ),
-                        subtitle: Text(
-                          l10n.biometricUnlockSubtitle,
-                          style: TextStyle(
-                            color: settings.theme.textMuted,
-                            fontSize: 11,
-                          ),
+                      ),
+                      subtitle: Text(
+                        l10n.biometricUnlockSubtitle,
+                        style: TextStyle(
+                          color: settings.theme.textMuted,
+                          fontSize: 11,
                         ),
-                        activeThumbColor: settings.theme.primary,
-                        value: settings.biometricUnlock,
-                        onChanged: (val) async {
-                          unawaited(HapticFeedback.selectionClick());
-                          await settings.setBiometricUnlock(val);
-                        },
-                      );
-                    },
+                      ),
+                      activeThumbColor: settings.theme.primary,
+                      value: settings.biometricUnlock,
+                      onChanged: (val) async {
+                        unawaited(HapticFeedback.selectionClick());
+                        await settings.setBiometricUnlock(val);
+                      },
+                    );
+                  },
+                ),
+
+                const Divider(height: 32),
+
+                Text(
+                  l10n.languageSection,
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    color: settings.theme.textSecondary,
+                    letterSpacing: 1.0,
                   ),
-
-                  const Divider(height: 32),
-
-                  Text(
-                    l10n.languageSection,
+                ),
+                const SizedBox(height: 4),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: Container(
+                    width: 38,
+                    height: 38,
+                    decoration: BoxDecoration(
+                      color: settings.theme.primary.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Icon(
+                      Icons.language_rounded,
+                      color: settings.theme.primary,
+                      size: 20,
+                    ),
+                  ),
+                  title: Text(
+                    l10n.languageLabel,
                     style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      color: settings.theme.textSecondary,
-                      letterSpacing: 1.0,
+                      color: settings.theme.textPrimary,
+                      fontSize: 14,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    leading: Container(
-                      width: 38,
-                      height: 38,
-                      decoration: BoxDecoration(
-                        color: settings.theme.primary.withValues(alpha: 0.12),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Icon(
-                        Icons.language_rounded,
-                        color: settings.theme.primary,
-                        size: 20,
-                      ),
-                    ),
-                    title: Text(
-                      l10n.languageLabel,
-                      style: TextStyle(
-                        color: settings.theme.textPrimary,
-                        fontSize: 14,
-                      ),
-                    ),
-                    subtitle: Text(
-                      _localeName(settings.locale),
-                      style: TextStyle(
-                        color: settings.theme.textMuted,
-                        fontSize: 11,
-                      ),
-                    ),
-                    trailing: Icon(
-                      Icons.chevron_right_rounded,
+                  subtitle: Text(
+                    _localeName(settings.locale),
+                    style: TextStyle(
                       color: settings.theme.textMuted,
-                    ),
-                    onTap: () => _showLanguagePicker(sheetCtx, settings, l10n),
-                  ),
-
-                  const Divider(height: 32),
-
-                  Text(
-                    l10n.dataManagement,
-                    style: TextStyle(
                       fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      color: settings.theme.textSecondary,
-                      letterSpacing: 1.0,
                     ),
                   ),
-                  const SizedBox(height: 12),
-                  OutlinedButton.icon(
-                    onPressed: () => _showExportSheet(ctx, model, settings),
-                    icon: const Icon(Icons.upload_outlined, size: 16),
-                    label: Text(l10n.exportGroveBackup),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: settings.theme.textPrimary,
-                        side: BorderSide(
-                          color: settings.theme.textMuted.withValues(alpha: 0.4),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                  trailing: Icon(
+                    Icons.chevron_right_rounded,
+                    color: settings.theme.textMuted,
+                  ),
+                  onTap: () => _showLanguagePicker(sheetCtx, settings, l10n),
+                ),
+
+                const Divider(height: 32),
+
+                Text(
+                  l10n.dataManagement,
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    color: settings.theme.textSecondary,
+                    letterSpacing: 1.0,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                OutlinedButton.icon(
+                  onPressed: () => _showExportSheet(ctx, model, settings),
+                  icon: const Icon(Icons.upload_outlined, size: 16),
+                  label: Text(l10n.exportGroveBackup),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: settings.theme.textPrimary,
+                    side: BorderSide(
+                      color: settings.theme.textMuted.withValues(alpha: 0.4),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  OutlinedButton.icon(
-                    onPressed: () => _showImportSheet(ctx, model, settings),
-                    icon: const Icon(Icons.download_outlined, size: 16),
-                    label: Text(l10n.restoreGroveBackup),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: settings.theme.textPrimary,
-                        side: BorderSide(
-                          color: settings.theme.textMuted.withValues(alpha: 0.4),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                ),
+                const SizedBox(height: 10),
+                OutlinedButton.icon(
+                  onPressed: () => _showImportSheet(ctx, model, settings),
+                  icon: const Icon(Icons.download_outlined, size: 16),
+                  label: Text(l10n.restoreGroveBackup),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: settings.theme.textPrimary,
+                    side: BorderSide(
+                      color: settings.theme.textMuted.withValues(alpha: 0.4),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    l10n.exportImportNote,
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: settings.theme.textMuted,
-                      height: 1.5,
-                    ),
-                    textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  l10n.exportImportNote,
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: settings.theme.textMuted,
+                    height: 1.5,
                   ),
+                  textAlign: TextAlign.center,
+                ),
               ],
             ),
           );
@@ -1144,10 +1144,10 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                         onTap: () => setSheet(() {
                           pickedColor = c;
                           hexCtrl.text = c
-                          .toARGB32()
-                          .toRadixString(16)
-                          .substring(2)
-                          .toUpperCase();
+                              .toARGB32()
+                              .toRadixString(16)
+                              .substring(2)
+                              .toUpperCase();
                           validHex = true;
                         }),
                         child: AnimatedContainer(
@@ -1159,26 +1159,26 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                             shape: BoxShape.circle,
                             border: Border.all(
                               color: sel
-                              ? GroveTheme.dewWhite
-                              : Colors.transparent,
+                                  ? GroveTheme.dewWhite
+                                  : Colors.transparent,
                               width: 2.5,
                             ),
                             boxShadow: sel
-                            ? [
-                              BoxShadow(
-                                color: c.withValues(alpha: 0.6),
-                                blurRadius: 10,
-                              ),
-                            ]
-                            : [],
+                                ? [
+                                    BoxShadow(
+                                      color: c.withValues(alpha: 0.6),
+                                      blurRadius: 10,
+                                    ),
+                                  ]
+                                : [],
                           ),
                           child: sel
-                          ? const Icon(
-                            Icons.check,
-                            color: Colors.white,
-                            size: 18,
-                          )
-                          : null,
+                              ? const Icon(
+                                  Icons.check,
+                                  color: Colors.white,
+                                  size: 18,
+                                )
+                              : null,
                         ),
                       );
                     }).toList(),
@@ -1245,23 +1245,23 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
 
                   FilledButton(
                     onPressed: validHex
-                    ? () async {
-                      unawaited(HapticFeedback.lightImpact());
-                      Navigator.pop(sheetCtx);
-                      await Future.delayed(
-                        const Duration(milliseconds: 300),
-                      );
-                      unawaited(settings.setCustomAccent(pickedColor));
-                      if (ctx.mounted) Navigator.pop(ctx);
-                    }
-                    : null,
+                        ? () async {
+                            unawaited(HapticFeedback.lightImpact());
+                            Navigator.pop(sheetCtx);
+                            await Future.delayed(
+                              const Duration(milliseconds: 300),
+                            );
+                            unawaited(settings.setCustomAccent(pickedColor));
+                            if (ctx.mounted) Navigator.pop(ctx);
+                          }
+                        : null,
                     style: FilledButton.styleFrom(
                       backgroundColor: pickedColor,
                       foregroundColor: Colors.white,
-                        minimumSize: const Size.fromHeight(52),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
+                      minimumSize: const Size.fromHeight(52),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                     ),
                     child: Text(
                       l10n.applyAccent,
@@ -1330,8 +1330,8 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                 ),
               ),
               trailing: isSelected
-              ? Icon(Icons.check_rounded, color: theme.primary, size: 18)
-              : null,
+                  ? Icon(Icons.check_rounded, color: theme.primary, size: 18)
+                  : null,
               onTap: () async {
                 unawaited(HapticFeedback.selectionClick());
                 await settings.setLocale(entry.value);
@@ -1353,7 +1353,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     final theme = settings.theme;
     final l10n = AppLocalizations.of(ctx);
     final fileName =
-    'Grove_backup_${DateFormat("yyyy-MM-dd_HH-mm-ss").format(DateTime.now())}.json';
+        'Grove_backup_${DateFormat("yyyy-MM-dd_HH-mm-ss").format(DateTime.now())}.json';
     final bytes = Uint8List.fromList(utf8.encode(json));
     final messenger = ScaffoldMessenger.of(ctx);
 
@@ -1447,8 +1447,8 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
       SnackBar(
         content: Text(
           success
-          ? l10n.groveRestored(model.habits.length)
-          : l10n.invalidBackup,
+              ? l10n.groveRestored(model.habits.length)
+              : l10n.invalidBackup,
         ),
         backgroundColor: success ? theme.primary : GroveTheme.clayRed,
         behavior: SnackBarBehavior.floating,
@@ -1514,33 +1514,33 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
   );
 
   Widget _fab(BuildContext context, GroveTheme theme, AppLocalizations l10n) =>
-  Padding(
-    padding: const EdgeInsets.only(bottom: 8),
-    child: FloatingActionButton.extended(
-      onPressed: () => showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        backgroundColor: theme.surfaceHigh,
-        useSafeArea: true,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
-        ),
-        builder: (_) => const AddHabitSheet(),
-      ),
-      backgroundColor: theme.primary,
-      foregroundColor: theme.brightness == Brightness.light
-        ? Colors.white
-        : GroveTheme.dewWhite,
-        icon: const Icon(Icons.forest_rounded),
-        label: Text(
-          l10n.plantATree,
-          style: const TextStyle(
-            fontWeight: FontWeight.w600,
-            letterSpacing: 0.5,
+      Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: FloatingActionButton.extended(
+          onPressed: () => showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: theme.surfaceHigh,
+            useSafeArea: true,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+            ),
+            builder: (_) => const AddHabitSheet(),
+          ),
+          backgroundColor: theme.primary,
+          foregroundColor: theme.brightness == Brightness.light
+              ? Colors.white
+              : GroveTheme.dewWhite,
+          icon: const Icon(Icons.forest_rounded),
+          label: Text(
+            l10n.plantATree,
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.5,
+            ),
           ),
         ),
-    ),
-  );
+      );
 }
 
 class _AboutLinkTile extends StatelessWidget {
@@ -1647,8 +1647,8 @@ class _LayoutButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isSelected
-              ? theme.primary
-              : theme.textMuted.withValues(alpha: 0.3),
+                  ? theme.primary
+                  : theme.textMuted.withValues(alpha: 0.3),
             ),
           ),
           child: Column(
