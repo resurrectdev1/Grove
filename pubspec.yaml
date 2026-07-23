@@ -1,7 +1,7 @@
 name: grove
 description: "Visualize your growth."
 publish_to: 'none'
-version: 0.7.4+11
+version: 0.7.6+12
 
 environment:
   sdk: ">=3.11.0 <4.0.0"
@@ -25,6 +25,8 @@ dependencies:
   local_auth: ^3.0.2
   flutter_timezone: ^5.0.2
   file_picker: ^12.0.0-beta.7
+  share_plus: ^13.2.1
+  path_provider: ^2.1.5
 
   # UI & Theming
   dynamic_color: ^1.7.0
