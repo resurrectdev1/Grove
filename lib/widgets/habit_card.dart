@@ -140,18 +140,18 @@ class _HabitCardState extends State<HabitCard> {
               const SizedBox(width: 10),
               GestureDetector(
                 onTap: () => isCheckIn
-                ? _handleCheckIn(context, model, habit)
-                : _showRelapseDialog(context, model),
+                    ? _handleCheckIn(context, model, habit)
+                    : _showRelapseDialog(context, model),
                 child: Icon(
                   isCheckIn
-                  ? (isCheckedIn
-                  ? Icons.check_circle
-                  : Icons.check_circle_outline)
-                  : Icons.refresh_rounded,
+                      ? (isCheckedIn
+                            ? Icons.check_circle
+                            : Icons.check_circle_outline)
+                      : Icons.refresh_rounded,
                   size: 20,
                   color: isCheckIn
-                  ? (isCheckedIn ? habit.color : theme.textMuted)
-                  : GroveTheme.clayRed,
+                      ? (isCheckedIn ? habit.color : theme.textMuted)
+                      : GroveTheme.clayRed,
                 ),
               ),
               const SizedBox(width: 6),
@@ -161,13 +161,13 @@ class _HabitCardState extends State<HabitCard> {
                 l10n: l10n,
                 onRename: () => _showRenameDialog(context, habit, theme, l10n),
                 onChangeColor: () =>
-                _showColorPickerSheet(context, habit, theme, l10n),
+                    _showColorPickerSheet(context, habit, theme, l10n),
                 onDelete: () => _showDeleteDialog(context, habit, theme, l10n),
                 onToggleExcusedDaysCount: () => context
-                .read<GroveModel>()
-                .toggleExcusedDaysCountTowardsStreak(habit.id),
+                    .read<GroveModel>()
+                    .toggleExcusedDaysCountTowardsStreak(habit.id),
                 onRerollTreeShape: () =>
-                _showRerollTreeShapeDialog(context, habit, theme, l10n),
+                    _showRerollTreeShapeDialog(context, habit, theme, l10n),
                 iconSize: 18,
               ),
             ],
@@ -181,27 +181,27 @@ class _HabitCardState extends State<HabitCard> {
         duration: const Duration(milliseconds: 350),
         curve: Curves.easeOutCubic,
         margin: isCompact
-        ? EdgeInsets.zero
-        : const EdgeInsets.symmetric(horizontal: 26, vertical: 10),
+            ? EdgeInsets.zero
+            : const EdgeInsets.symmetric(horizontal: 26, vertical: 10),
         padding: EdgeInsets.all(isCompact ? 10 : 0),
         decoration: BoxDecoration(
           color: theme.cardBg,
           borderRadius: BorderRadius.circular(isCompact ? 22 : 28),
           border: Border.all(
             color: widget.isSelected
-            ? habit.color.withValues(alpha: 0.45)
-            : theme.surfaceHigh,
+                ? habit.color.withValues(alpha: 0.45)
+                : theme.surfaceHigh,
             width: widget.isSelected ? 1.5 : 1.0,
           ),
           boxShadow: widget.isSelected && !isCompact
-          ? [
-            BoxShadow(
-              color: habit.color.withValues(alpha: 0.18),
-              blurRadius: 32,
-              spreadRadius: 2,
-            ),
-          ]
-          : [],
+              ? [
+                  BoxShadow(
+                    color: habit.color.withValues(alpha: 0.18),
+                    blurRadius: 32,
+                    spreadRadius: 2,
+                  ),
+                ]
+              : [],
         ),
         child: Stack(
           children: [
@@ -214,13 +214,13 @@ class _HabitCardState extends State<HabitCard> {
                 l10n: l10n,
                 onRename: () => _showRenameDialog(context, habit, theme, l10n),
                 onChangeColor: () =>
-                _showColorPickerSheet(context, habit, theme, l10n),
+                    _showColorPickerSheet(context, habit, theme, l10n),
                 onDelete: () => _showDeleteDialog(context, habit, theme, l10n),
                 onToggleExcusedDaysCount: () => context
-                .read<GroveModel>()
-                .toggleExcusedDaysCountTowardsStreak(habit.id),
+                    .read<GroveModel>()
+                    .toggleExcusedDaysCountTowardsStreak(habit.id),
                 onRerollTreeShape: () =>
-                _showRerollTreeShapeDialog(context, habit, theme, l10n),
+                    _showRerollTreeShapeDialog(context, habit, theme, l10n),
                 iconSize: isCompact ? 16 : 20,
               ),
             ),
@@ -282,8 +282,8 @@ class _HabitCardState extends State<HabitCard> {
                       style: TextStyle(
                         fontSize: isCompact ? 11 : 13,
                         fontWeight: isCompact
-                        ? FontWeight.w600
-                        : FontWeight.normal,
+                            ? FontWeight.w600
+                            : FontWeight.normal,
                         color: theme.textSecondary,
                       ),
                     ),
@@ -293,10 +293,10 @@ class _HabitCardState extends State<HabitCard> {
                   const SizedBox(height: 4),
                   Text(
                     isCheckIn
-                    ? isCheckedIn
-                    ? l10n.alreadyCheckedInToday
-                    : l10n.tapBelowToCheckIn
-                    : stageTaglineLocalized(stage),
+                        ? isCheckedIn
+                              ? l10n.alreadyCheckedInToday
+                              : l10n.tapBelowToCheckIn
+                        : stageTaglineLocalized(stage),
                     style: TextStyle(
                       fontSize: 11,
                       color: theme.textMuted,
@@ -311,10 +311,10 @@ class _HabitCardState extends State<HabitCard> {
                       _OutlineAction(
                         icon: Icons.calendar_month_outlined,
                         label: isCheckIn
-                        ? l10n.historyCount(habit.checkInDays.length)
-                        : (relapseCount > 0
-                        ? l10n.historyCount(relapseCount)
-                        : l10n.history),
+                            ? l10n.historyCount(habit.checkInDays.length)
+                            : (relapseCount > 0
+                                  ? l10n.historyCount(relapseCount)
+                                  : l10n.history),
                         color: theme.textSecondary,
                         onTap: () => _goDetail(context),
                       ),
@@ -322,19 +322,19 @@ class _HabitCardState extends State<HabitCard> {
                       if (isCheckIn)
                         _OutlineAction(
                           icon: isCheckedIn
-                          ? Icons.check_circle
-                          : Icons.check_circle_outline,
+                              ? Icons.check_circle
+                              : Icons.check_circle_outline,
                           label: isCheckedIn ? l10n.checkedIn : l10n.checkIn,
                           color: isCheckedIn ? habit.color : habit.color,
                           onTap: () => _handleCheckIn(context, model, habit),
                         )
-                        else
-                          _OutlineAction(
-                            icon: Icons.refresh_rounded,
-                            label: l10n.relapse,
-                            color: GroveTheme.clayRed,
-                            onTap: () => _showRelapseDialog(context, model),
-                          ),
+                      else
+                        _OutlineAction(
+                          icon: Icons.refresh_rounded,
+                          label: l10n.relapse,
+                          color: GroveTheme.clayRed,
+                          onTap: () => _showRelapseDialog(context, model),
+                        ),
                     ],
                   ),
                 ] else ...[
@@ -356,27 +356,27 @@ class _HabitCardState extends State<HabitCard> {
                         IconButton(
                           icon: Icon(
                             isCheckedIn
-                            ? Icons.check_circle
-                            : Icons.check_circle_outline,
+                                ? Icons.check_circle
+                                : Icons.check_circle_outline,
                             size: 16,
                             color: isCheckedIn ? habit.color : theme.textMuted,
                           ),
                           onPressed: () =>
-                          _handleCheckIn(context, model, habit),
+                              _handleCheckIn(context, model, habit),
                           padding: EdgeInsets.zero,
                           constraints: const BoxConstraints(),
                         )
-                        else
-                          IconButton(
-                            icon: const Icon(
-                              Icons.refresh_rounded,
-                              size: 16,
-                              color: GroveTheme.clayRed,
-                            ),
-                            onPressed: () => _showRelapseDialog(context, model),
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(),
+                      else
+                        IconButton(
+                          icon: const Icon(
+                            Icons.refresh_rounded,
+                            size: 16,
+                            color: GroveTheme.clayRed,
                           ),
+                          onPressed: () => _showRelapseDialog(context, model),
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
+                        ),
                     ],
                   ),
                 ],
@@ -500,7 +500,7 @@ class _HabitCardState extends State<HabitCard> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (_) =>
-      ColorPickerSheet(initialColor: habit.color, title: l10n.changeColor),
+          ColorPickerSheet(initialColor: habit.color, title: l10n.changeColor),
     );
     if (!ctx.mounted) return;
     if (picked != null) {
@@ -628,7 +628,7 @@ class _OptionsMenuButton extends StatelessWidget {
   Future<void> _openMenu(BuildContext context) async {
     final RenderBox button = context.findRenderObject() as RenderBox;
     final RenderBox overlay =
-    Overlay.of(context).context.findRenderObject() as RenderBox;
+        Overlay.of(context).context.findRenderObject() as RenderBox;
     final Offset topLeft = button.localToGlobal(Offset.zero, ancestor: overlay);
     final RelativeRect position = RelativeRect.fromLTRB(
       topLeft.dx,
@@ -682,51 +682,51 @@ class _OptionsMenuButton extends StatelessWidget {
               children: [
                 Icon(
                   habit.excusedDaysCountTowardsStreak
-                  ? Icons.event_available_rounded
-                  : Icons.event_busy_outlined,
+                      ? Icons.event_available_rounded
+                      : Icons.event_busy_outlined,
                   size: 18,
                   color: theme.textPrimary,
                 ),
                 const SizedBox(width: 10),
                 Text(
                   habit.excusedDaysCountTowardsStreak
-                  ? l10n.excusedDaysCount
-                  : l10n.excuseStreakToggle,
+                      ? l10n.excusedDaysCount
+                      : l10n.excuseStreakToggle,
                   style: TextStyle(color: theme.textPrimary),
                 ),
               ],
             ),
           ),
-          PopupMenuItem(
-            value: 'rerollTreeShape',
-            child: Row(
-              children: [
-                Icon(Icons.eco_outlined, size: 18, color: theme.textPrimary),
-                const SizedBox(width: 10),
-                Text(
-                  l10n.rerollTreeShape,
-                  style: TextStyle(color: theme.textPrimary),
-                ),
-              ],
-            ),
+        PopupMenuItem(
+          value: 'rerollTreeShape',
+          child: Row(
+            children: [
+              Icon(Icons.eco_outlined, size: 18, color: theme.textPrimary),
+              const SizedBox(width: 10),
+              Text(
+                l10n.rerollTreeShape,
+                style: TextStyle(color: theme.textPrimary),
+              ),
+            ],
           ),
-          PopupMenuItem(
-            value: 'delete',
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.delete_outline,
-                  size: 18,
-                  color: GroveTheme.clayRed,
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  l10n.deleteHabitPermanently,
-                  style: const TextStyle(color: GroveTheme.clayRed),
-                ),
-              ],
-            ),
+        ),
+        PopupMenuItem(
+          value: 'delete',
+          child: Row(
+            children: [
+              const Icon(
+                Icons.delete_outline,
+                size: 18,
+                color: GroveTheme.clayRed,
+              ),
+              const SizedBox(width: 10),
+              Text(
+                l10n.deleteHabitPermanently,
+                style: const TextStyle(color: GroveTheme.clayRed),
+              ),
+            ],
           ),
+        ),
       ],
     );
     if (value == null) return;
