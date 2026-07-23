@@ -75,7 +75,7 @@ class _TreeShareSheetState extends State<_TreeShareSheet> {
     await SharePlus.instance.share(
       ShareParams(
         files: [XFile(file.path)],
-        text: '${widget.habit.name} - ${widget.habit.daysElapsed} days',
+        text: '${widget.habit.name} - ${widget.habit.daysElapsed} days 🌱',
       ),
     );
   }
