@@ -36,6 +36,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Fixed backup/restore corrupting non-English tree names (e.g. Arabic, emoji) due to incorrect UTF-8 encoding/decoding
 * Fixed crash when exporting or importing backups on web (was calling platform file APIs not supported in browsers)
 * Fixed crash when deleting a tree in wheel view on web
+* Added dependency override to work around [dart-lang/native#3263](https://github.com/dart-lang/native/issues/3263)
 
 ---
 
