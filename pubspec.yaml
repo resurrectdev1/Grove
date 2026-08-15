@@ -28,7 +28,7 @@ dependencies:
   share_plus: ^13.3.0
 
   # UI & Theming
-  dynamic_color: ^1.7.0
+  dynamic_color: ^1.9.0
   package_info_plus: ^10.2.1
 
 dev_dependencies:
