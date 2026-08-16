@@ -18,6 +18,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * Translated shareable trees widgets
 
+### Changed
+
+* Gradle bump to 9.5.1
+
 ---
 
 ## [0.7.6] - 2026-07-23
