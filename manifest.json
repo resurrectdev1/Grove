@@ -1,0 +1,54 @@
+{
+    "id": "/Grove/",
+    "name": "Grove",
+    "short_name": "Grove",
+    "start_url": ".",
+    "scope": "/Grove/",
+    "display": "standalone",
+    "background_color": "#0A0F0B",
+    "theme_color": "#0A0F0B",
+    "description": "Visualize your growth.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "categories": ["health", "lifestyle", "productivity"],
+    "screenshots": [
+        {
+            "src": "screenshots/screenshot_1.png",
+            "sizes": "1096x2466",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Empty homescreen"
+        },
+        {
+            "src": "screenshots/screenshot_2.png",
+            "sizes": "1096x2466",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Populated view of homescreen"
+        }
+    ],
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
