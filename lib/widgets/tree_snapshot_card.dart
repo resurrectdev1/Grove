@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grove/l10n/app_localizations.dart';
 import 'package:grove/models/grove_models.dart';
 import 'package:grove/painters/fractal_tree_painter.dart';
 import 'package:grove/theme/grove_theme.dart';
@@ -15,6 +16,14 @@ class TreeSnapshotCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final streak = habit.daysElapsed;
+    final l10n = AppLocalizations.of(context);
+    String stageLabelLocalized(GrowthStage s) => switch (s) {
+      GrowthStage.seed => l10n.stageSeed,
+      GrowthStage.sprout => l10n.stageSprout,
+      GrowthStage.sapling => l10n.stageSapling,
+      GrowthStage.youngTree => l10n.stageYoungTree,
+      GrowthStage.groveTree => l10n.stageGroveTree,
+    };
     return Container(
       width: width,
       height: height,
@@ -70,7 +79,7 @@ class TreeSnapshotCard extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            stageLabel(habit.stage),
+            stageLabelLocalized(habit.stage),
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w500,
@@ -89,7 +98,7 @@ class TreeSnapshotCard extends StatelessWidget {
             ),
           ),
           Text(
-            streak == 1 ? 'DAY' : 'DAYS',
+            streak == 1 ? l10n.daySingularCaps : l10n.days,
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w600,
