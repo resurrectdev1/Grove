@@ -752,12 +752,19 @@ class _OptionsMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Builder(
-    builder: (ctx) => GestureDetector(
-      onTap: () => _openMenu(ctx),
-      child: Icon(
-        Icons.more_vert_rounded,
-        size: iconSize,
-        color: theme.textSecondary,
+    builder: (ctx) => Material(
+      type: MaterialType.transparency,
+      child: InkResponse(
+        onTap: () => _openMenu(ctx),
+        radius: iconSize,
+        splashColor: theme.textSecondary.withValues(alpha: 0.18),
+        highlightColor: theme.textSecondary.withValues(alpha: 0.10),
+        containedInkWell: false,
+        child: Icon(
+          Icons.more_vert_rounded,
+          size: iconSize,
+          color: theme.textSecondary,
+        ),
       ),
     ),
   );
