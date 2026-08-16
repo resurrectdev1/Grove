@@ -690,4 +690,27 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get excuseStreakToggle => 'Tính ngày miễn trừ';
+
+  @override
+  String get shareYourTree => 'Chia sẻ cây của bạn';
+
+  @override
+  String get share => 'Chia sẻ';
+
+  @override
+  String get snapshotSaved => '✓ Đã lưu ảnh chụp nhanh';
+
+  @override
+  String get couldNotCreateSnapshot => 'Không thể tạo ảnh chụp nhanh';
+
+  @override
+  String get saveTreeSnapshotDialog => 'Lưu ảnh chụp nhanh của cây';
+
+  @override
+  String shareTreeText(String name, int days) {
+    return '$name - $days ngày 🌱';
+  }
+
+  @override
+  String get daySingularCaps => 'NGÀY';
 }

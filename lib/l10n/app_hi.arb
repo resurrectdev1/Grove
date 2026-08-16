@@ -299,5 +299,22 @@
   "streakFrozen": "लगातार गिनती फ़्रीज़ है",
   "freezeStreak": "लगातार गिनती फ़्रीज़ करें",
   "excusedDaysCount": "माफ़ किए गए दिन गिने जाते हैं",
-  "excuseStreakToggle": "माफ़ किए गए दिन गिनें"
+  "excuseStreakToggle": "माफ़ किए गए दिन गिनें",
+  "shareYourTree": "अपना पेड़ साझा करें",
+  "share": "साझा करें",
+  "snapshotSaved": "✓ स्नैपशॉट सहेजा गया",
+  "couldNotCreateSnapshot": "स्नैपशॉट नहीं बनाया जा सका",
+  "saveTreeSnapshotDialog": "पेड़ का स्नैपशॉट सहेजें",
+  "shareTreeText": "{name} - {days} दिन 🌱",
+  "@shareTreeText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "daySingularCaps": "दिन"
 }

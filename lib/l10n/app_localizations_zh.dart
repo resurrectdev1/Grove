@@ -674,6 +674,29 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get excuseStreakToggle => '计入免除日';
+
+  @override
+  String get shareYourTree => '分享你的树';
+
+  @override
+  String get share => '分享';
+
+  @override
+  String get snapshotSaved => '✓ 快照已保存';
+
+  @override
+  String get couldNotCreateSnapshot => '无法创建快照';
+
+  @override
+  String get saveTreeSnapshotDialog => '保存树木快照';
+
+  @override
+  String shareTreeText(String name, int days) {
+    return '$name - $days天 🌱';
+  }
+
+  @override
+  String get daySingularCaps => '天';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -1346,4 +1369,27 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get excuseStreakToggle => '計入免除日';
+
+  @override
+  String get shareYourTree => '分享你的樹';
+
+  @override
+  String get share => '分享';
+
+  @override
+  String get snapshotSaved => '✓ 快照已儲存';
+
+  @override
+  String get couldNotCreateSnapshot => '無法建立快照';
+
+  @override
+  String get saveTreeSnapshotDialog => '儲存樹木快照';
+
+  @override
+  String shareTreeText(String name, int days) {
+    return '$name - $days天 🌱';
+  }
+
+  @override
+  String get daySingularCaps => '天';
 }

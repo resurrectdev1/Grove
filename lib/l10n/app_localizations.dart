@@ -1374,6 +1374,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Count excused days'**
   String get excuseStreakToggle;
+
+  /// No description provided for @shareYourTree.
+  ///
+  /// In en, this message translates to:
+  /// **'Share Your Tree'**
+  String get shareYourTree;
+
+  /// No description provided for @share.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get share;
+
+  /// No description provided for @snapshotSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'✓ Snapshot saved'**
+  String get snapshotSaved;
+
+  /// No description provided for @couldNotCreateSnapshot.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not create snapshot'**
+  String get couldNotCreateSnapshot;
+
+  /// No description provided for @saveTreeSnapshotDialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Tree Snapshot'**
+  String get saveTreeSnapshotDialog;
+
+  /// No description provided for @shareTreeText.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} - {days} days 🌱'**
+  String shareTreeText(String name, int days);
+
+  /// No description provided for @daySingularCaps.
+  ///
+  /// In en, this message translates to:
+  /// **'DAY'**
+  String get daySingularCaps;
 }
 
 class _AppLocalizationsDelegate

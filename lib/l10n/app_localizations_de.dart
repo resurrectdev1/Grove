@@ -698,4 +698,28 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get excuseStreakToggle => 'Entschuldigte Tage zählen lassen';
+
+  @override
+  String get shareYourTree => 'Teile deinen Baum';
+
+  @override
+  String get share => 'Teilen';
+
+  @override
+  String get snapshotSaved => '✓ Schnappschuss gespeichert';
+
+  @override
+  String get couldNotCreateSnapshot =>
+      'Schnappschuss konnte nicht erstellt werden';
+
+  @override
+  String get saveTreeSnapshotDialog => 'Baum-Schnappschuss speichern';
+
+  @override
+  String shareTreeText(String name, int days) {
+    return '$name – $days Tage 🌱';
+  }
+
+  @override
+  String get daySingularCaps => 'TAG';
 }

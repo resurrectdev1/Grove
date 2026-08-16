@@ -313,5 +313,22 @@
   "streakFrozen": "Streak frozen",
   "freezeStreak": "Freeze streak",
   "excusedDaysCount": "Excused days count",
-  "excuseStreakToggle": "Count excused days"
+  "excuseStreakToggle": "Count excused days",
+  "shareYourTree": "Share Your Tree",
+  "share": "Share",
+  "snapshotSaved": "✓ Snapshot saved",
+  "couldNotCreateSnapshot": "Could not create snapshot",
+  "saveTreeSnapshotDialog": "Save Tree Snapshot",
+  "shareTreeText": "{name} - {days} days 🌱",
+  "@shareTreeText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "daySingularCaps": "DAY"
 }

@@ -689,4 +689,27 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get excuseStreakToggle => 'معاف شدہ دن شمار کریں';
+
+  @override
+  String get shareYourTree => 'اپنا درخت شیئر کریں';
+
+  @override
+  String get share => 'شیئر کریں';
+
+  @override
+  String get snapshotSaved => '✓ اسنیپ شاٹ محفوظ ہو گیا';
+
+  @override
+  String get couldNotCreateSnapshot => 'اسنیپ شاٹ نہیں بنایا جا سکا';
+
+  @override
+  String get saveTreeSnapshotDialog => 'درخت کا اسنیپ شاٹ محفوظ کریں';
+
+  @override
+  String shareTreeText(String name, int days) {
+    return '$name - $days دن 🌱';
+  }
+
+  @override
+  String get daySingularCaps => 'دن';
 }

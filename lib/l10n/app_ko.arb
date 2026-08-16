@@ -299,5 +299,22 @@
   "streakFrozen": "연속 기록 동결됨",
   "freezeStreak": "연속 기록 동결",
   "excusedDaysCount": "제외된 날 포함",
-  "excuseStreakToggle": "제외된 날 포함하기"
+  "excuseStreakToggle": "제외된 날 포함하기",
+  "shareYourTree": "나무 공유하기",
+  "share": "공유",
+  "snapshotSaved": "✓ 스냅샷 저장됨",
+  "couldNotCreateSnapshot": "스냅샷을 만들 수 없습니다",
+  "saveTreeSnapshotDialog": "나무 스냅샷 저장",
+  "shareTreeText": "{name} - {days}일 🌱",
+  "@shareTreeText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "daySingularCaps": "일"
 }

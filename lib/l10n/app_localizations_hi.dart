@@ -693,4 +693,27 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get excuseStreakToggle => 'माफ़ किए गए दिन गिनें';
+
+  @override
+  String get shareYourTree => 'अपना पेड़ साझा करें';
+
+  @override
+  String get share => 'साझा करें';
+
+  @override
+  String get snapshotSaved => '✓ स्नैपशॉट सहेजा गया';
+
+  @override
+  String get couldNotCreateSnapshot => 'स्नैपशॉट नहीं बनाया जा सका';
+
+  @override
+  String get saveTreeSnapshotDialog => 'पेड़ का स्नैपशॉट सहेजें';
+
+  @override
+  String shareTreeText(String name, int days) {
+    return '$name - $days दिन 🌱';
+  }
+
+  @override
+  String get daySingularCaps => 'दिन';
 }

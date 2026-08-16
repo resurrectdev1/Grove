@@ -675,4 +675,27 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get excuseStreakToggle => '免除日をカウントする';
+
+  @override
+  String get shareYourTree => '木をシェア';
+
+  @override
+  String get share => 'シェア';
+
+  @override
+  String get snapshotSaved => '✓ スナップショットを保存しました';
+
+  @override
+  String get couldNotCreateSnapshot => 'スナップショットを作成できませんでした';
+
+  @override
+  String get saveTreeSnapshotDialog => '木のスナップショットを保存';
+
+  @override
+  String shareTreeText(String name, int days) {
+    return '$name - $days日 🌱';
+  }
+
+  @override
+  String get daySingularCaps => '日';
 }

@@ -693,4 +693,27 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get excuseStreakToggle => 'Contar días justificados';
+
+  @override
+  String get shareYourTree => 'Comparte tu árbol';
+
+  @override
+  String get share => 'Compartir';
+
+  @override
+  String get snapshotSaved => '✓ Instantánea guardada';
+
+  @override
+  String get couldNotCreateSnapshot => 'No se pudo crear la instantánea';
+
+  @override
+  String get saveTreeSnapshotDialog => 'Guardar instantánea del árbol';
+
+  @override
+  String shareTreeText(String name, int days) {
+    return '$name - $days días 🌱';
+  }
+
+  @override
+  String get daySingularCaps => 'DÍA';
 }

@@ -697,4 +697,27 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get excuseStreakToggle => 'Compter les jours excusés';
+
+  @override
+  String get shareYourTree => 'Partage ton arbre';
+
+  @override
+  String get share => 'Partager';
+
+  @override
+  String get snapshotSaved => '✓ Instantané enregistré';
+
+  @override
+  String get couldNotCreateSnapshot => 'Impossible de créer l\'instantané';
+
+  @override
+  String get saveTreeSnapshotDialog => 'Enregistrer l\'instantané de l\'arbre';
+
+  @override
+  String shareTreeText(String name, int days) {
+    return '$name - $days jours 🌱';
+  }
+
+  @override
+  String get daySingularCaps => 'JOUR';
 }

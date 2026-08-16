@@ -299,5 +299,22 @@
   "streakFrozen": "Serie eingefroren",
   "freezeStreak": "Serie einfrieren",
   "excusedDaysCount": "Entschuldigte Tage zählen mit",
-  "excuseStreakToggle": "Entschuldigte Tage zählen lassen"
+  "excuseStreakToggle": "Entschuldigte Tage zählen lassen",
+  "shareYourTree": "Teile deinen Baum",
+  "share": "Teilen",
+  "snapshotSaved": "✓ Schnappschuss gespeichert",
+  "couldNotCreateSnapshot": "Schnappschuss konnte nicht erstellt werden",
+  "saveTreeSnapshotDialog": "Baum-Schnappschuss speichern",
+  "shareTreeText": "{name} – {days} Tage 🌱",
+  "@shareTreeText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "daySingularCaps": "TAG"
 }

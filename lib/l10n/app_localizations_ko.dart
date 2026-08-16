@@ -677,4 +677,27 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get excuseStreakToggle => '제외된 날 포함하기';
+
+  @override
+  String get shareYourTree => '나무 공유하기';
+
+  @override
+  String get share => '공유';
+
+  @override
+  String get snapshotSaved => '✓ 스냅샷 저장됨';
+
+  @override
+  String get couldNotCreateSnapshot => '스냅샷을 만들 수 없습니다';
+
+  @override
+  String get saveTreeSnapshotDialog => '나무 스냅샷 저장';
+
+  @override
+  String shareTreeText(String name, int days) {
+    return '$name - $days일 🌱';
+  }
+
+  @override
+  String get daySingularCaps => '일';
 }

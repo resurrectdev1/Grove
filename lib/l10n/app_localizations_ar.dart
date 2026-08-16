@@ -680,4 +680,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get excuseStreakToggle => 'احتساب الأيام المعفاة';
+
+  @override
+  String get shareYourTree => 'شارك شجرتك';
+
+  @override
+  String get share => 'مشاركة';
+
+  @override
+  String get snapshotSaved => '✓ تم حفظ اللقطة';
+
+  @override
+  String get couldNotCreateSnapshot => 'تعذر إنشاء اللقطة';
+
+  @override
+  String get saveTreeSnapshotDialog => 'حفظ لقطة الشجرة';
+
+  @override
+  String shareTreeText(String name, int days) {
+    return '$name - $days يوم 🌱';
+  }
+
+  @override
+  String get daySingularCaps => 'يوم';
 }

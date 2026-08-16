@@ -299,5 +299,22 @@
   "streakFrozen": "تسلسل منجمد",
   "freezeStreak": "تسلسل منجمد کریں",
   "excusedDaysCount": "معاف شدہ دن شمار ہوں گے",
-  "excuseStreakToggle": "معاف شدہ دن شمار کریں"
+  "excuseStreakToggle": "معاف شدہ دن شمار کریں",
+  "shareYourTree": "اپنا درخت شیئر کریں",
+  "share": "شیئر کریں",
+  "snapshotSaved": "✓ اسنیپ شاٹ محفوظ ہو گیا",
+  "couldNotCreateSnapshot": "اسنیپ شاٹ نہیں بنایا جا سکا",
+  "saveTreeSnapshotDialog": "درخت کا اسنیپ شاٹ محفوظ کریں",
+  "shareTreeText": "{name} - {days} دن 🌱",
+  "@shareTreeText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "daySingularCaps": "دن"
 }

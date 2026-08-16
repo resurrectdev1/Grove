@@ -208,5 +208,22 @@
   "streakFrozen": "Série gelée",
   "freezeStreak": "Geler la série",
   "excusedDaysCount": "Les jours excusés comptent",
-  "excuseStreakToggle": "Compter les jours excusés"
+  "excuseStreakToggle": "Compter les jours excusés",
+  "shareYourTree": "Partage ton arbre",
+  "share": "Partager",
+  "snapshotSaved": "✓ Instantané enregistré",
+  "couldNotCreateSnapshot": "Impossible de créer l'instantané",
+  "saveTreeSnapshotDialog": "Enregistrer l'instantané de l'arbre",
+  "shareTreeText": "{name} - {days} jours 🌱",
+  "@shareTreeText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "daySingularCaps": "JOUR"
 }

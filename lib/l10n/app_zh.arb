@@ -208,5 +208,22 @@
   "streakFrozen": "连续记录已冻结",
   "freezeStreak": "冻结连续记录",
   "excusedDaysCount": "免除日计入连胜",
-  "excuseStreakToggle": "计入免除日"
+  "excuseStreakToggle": "计入免除日",
+  "shareYourTree": "分享你的树",
+  "share": "分享",
+  "snapshotSaved": "✓ 快照已保存",
+  "couldNotCreateSnapshot": "无法创建快照",
+  "saveTreeSnapshotDialog": "保存树木快照",
+  "shareTreeText": "{name} - {days}天 🌱",
+  "@shareTreeText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "daySingularCaps": "天"
 }

@@ -299,5 +299,22 @@
   "streakFrozen": "連続記録を凍結中",
   "freezeStreak": "連続記録を凍結",
   "excusedDaysCount": "免除日をカウント",
-  "excuseStreakToggle": "免除日をカウントする"
+  "excuseStreakToggle": "免除日をカウントする",
+  "shareYourTree": "木をシェア",
+  "share": "シェア",
+  "snapshotSaved": "✓ スナップショットを保存しました",
+  "couldNotCreateSnapshot": "スナップショットを作成できませんでした",
+  "saveTreeSnapshotDialog": "木のスナップショットを保存",
+  "shareTreeText": "{name} - {days}日 🌱",
+  "@shareTreeText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "daySingularCaps": "日"
 }

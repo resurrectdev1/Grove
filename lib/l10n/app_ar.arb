@@ -208,5 +208,22 @@
   "streakFrozen": "السلسلة مجمدة",
   "freezeStreak": "تجميد السلسلة",
   "excusedDaysCount": "الأيام المعفاة تُحتسب",
-  "excuseStreakToggle": "احتساب الأيام المعفاة"
+  "excuseStreakToggle": "احتساب الأيام المعفاة",
+  "shareYourTree": "شارك شجرتك",
+  "share": "مشاركة",
+  "snapshotSaved": "✓ تم حفظ اللقطة",
+  "couldNotCreateSnapshot": "تعذر إنشاء اللقطة",
+  "saveTreeSnapshotDialog": "حفظ لقطة الشجرة",
+  "shareTreeText": "{name} - {days} يوم 🌱",
+  "@shareTreeText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "daySingularCaps": "يوم"
 }
