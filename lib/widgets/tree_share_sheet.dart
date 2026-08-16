@@ -11,6 +11,7 @@ import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
+import 'package:grove/l10n/app_localizations.dart';
 import 'package:grove/models/grove_models.dart';
 import 'package:grove/theme/grove_theme.dart';
 import 'package:grove/widgets/tree_snapshot_card.dart';
@@ -71,11 +72,12 @@ class _TreeShareSheetState extends State<_TreeShareSheet> {
     );
     await file.writeAsBytes(bytes);
     if (!mounted) return;
+    final l10n = AppLocalizations.of(context);
     unawaited(HapticFeedback.lightImpact());
     await SharePlus.instance.share(
       ShareParams(
         files: [XFile(file.path)],
-        text: '${widget.habit.name} - ${widget.habit.daysElapsed} days 🌱',
+        text: l10n.shareTreeText(widget.habit.name, widget.habit.daysElapsed),
       ),
     );
   }
@@ -89,11 +91,12 @@ class _TreeShareSheetState extends State<_TreeShareSheet> {
       _showError();
       return;
     }
+    final l10n = AppLocalizations.of(context);
     final safeName = widget.habit.name.replaceAll(RegExp(r'[\\/:*?"<>|]'), '_');
     final fileName =
         'Grove_${safeName}_${DateFormat("yyyy-MM-dd").format(DateTime.now())}.png';
     final outputPath = await FilePicker.saveFile(
-      dialogTitle: 'Save Tree Snapshot',
+      dialogTitle: l10n.saveTreeSnapshotDialog,
       fileName: fileName,
       type: FileType.custom,
       allowedExtensions: ['png'],
@@ -109,7 +112,7 @@ class _TreeShareSheetState extends State<_TreeShareSheet> {
     unawaited(HapticFeedback.lightImpact());
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: const Text('✓ Snapshot saved'),
+        content: Text(l10n.snapshotSaved),
         backgroundColor: widget.theme.primary,
         behavior: SnackBarBehavior.floating,
       ),
@@ -117,9 +120,10 @@ class _TreeShareSheetState extends State<_TreeShareSheet> {
   }
 
   void _showError() {
+    final l10n = AppLocalizations.of(context);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: const Text('Could not create snapshot'),
+        content: Text(l10n.couldNotCreateSnapshot),
         backgroundColor: GroveTheme.clayRed,
         behavior: SnackBarBehavior.floating,
       ),
@@ -129,6 +133,7 @@ class _TreeShareSheetState extends State<_TreeShareSheet> {
   @override
   Widget build(BuildContext context) {
     final theme = widget.theme;
+    final l10n = AppLocalizations.of(context);
     return SafeArea(
       child: Container(
         margin: const EdgeInsets.all(16),
@@ -141,7 +146,7 @@ class _TreeShareSheetState extends State<_TreeShareSheet> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Share Your Tree',
+              l10n.shareYourTree,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
@@ -163,7 +168,7 @@ class _TreeShareSheetState extends State<_TreeShareSheet> {
                   child: OutlinedButton.icon(
                     onPressed: _busy ? null : _saveAsFile,
                     icon: const Icon(Icons.download_rounded, size: 18),
-                    label: const Text('Save'),
+                    label: Text(l10n.save),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: theme.textPrimary,
                       side: BorderSide(
@@ -190,7 +195,7 @@ class _TreeShareSheetState extends State<_TreeShareSheet> {
                             ),
                           )
                         : const Icon(Icons.ios_share_rounded, size: 18),
-                    label: const Text('Share'),
+                    label: Text(l10n.share),
                     style: FilledButton.styleFrom(
                       backgroundColor: widget.habit.color,
                       padding: const EdgeInsets.symmetric(vertical: 14),
