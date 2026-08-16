@@ -95,18 +95,18 @@ class _TreeShareSheetState extends State<_TreeShareSheet> {
     final safeName = widget.habit.name.replaceAll(RegExp(r'[\\/:*?"<>|]'), '_');
     final fileName =
         'Grove_${safeName}_${DateFormat("yyyy-MM-dd").format(DateTime.now())}.png';
-    final outputPath = await FilePicker.saveFile(
+    final outputUri = await FilePicker.saveFile(
       dialogTitle: l10n.saveTreeSnapshotDialog,
       fileName: fileName,
       type: FileType.custom,
       allowedExtensions: ['png'],
       bytes: bytes,
     );
-    if (outputPath != null &&
+    if (outputUri != null &&
         !kIsWeb &&
         !Platform.isAndroid &&
         !Platform.isIOS) {
-      await File(outputPath).writeAsBytes(bytes);
+      await File.fromUri(outputUri).writeAsBytes(bytes);
     }
     if (!mounted) return;
     unawaited(HapticFeedback.lightImpact());
