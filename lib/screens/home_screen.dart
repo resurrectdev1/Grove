@@ -1357,7 +1357,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     final bytes = Uint8List.fromList(utf8.encode(json));
     final messenger = ScaffoldMessenger.of(ctx);
 
-    final String? outputPath = await FilePicker.saveFile(
+    final Uri? outputUri = await FilePicker.saveFile(
       dialogTitle: l10n.saveGroveBackupDialog,
       fileName: fileName,
       type: FileType.custom,
@@ -1365,10 +1365,10 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
       bytes: bytes,
     );
 
-    if (outputPath != null) {
+    if (outputUri != null) {
       if (!kIsWeb && !Platform.isAndroid && !Platform.isIOS) {
         try {
-          await File(outputPath).writeAsString(json);
+          await File.fromUri(outputUri).writeAsString(json);
         } catch (e) {
           messenger.showSnackBar(
             SnackBar(
@@ -1400,15 +1400,15 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     final l10n = AppLocalizations.of(ctx);
     final messenger = ScaffoldMessenger.of(ctx);
 
-    final result = await FilePicker.pickFiles(
+    final files = await FilePicker.pickFiles(
       dialogTitle: l10n.selectGroveBackupDialog,
       type: FileType.custom,
       allowedExtensions: ['json'],
     );
 
-    if (result == null || result.files.isEmpty) return;
+    if (files.isEmpty) return;
 
-    final filePath = result.files.first.path;
+    final filePath = files.first.path;
 
     String raw;
     try {
@@ -1416,7 +1416,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
         final fileBytes = await File(filePath).readAsBytes();
         raw = utf8.decode(fileBytes, allowMalformed: true);
       } else {
-        final fileBytes = await result.files.first.readAsBytes();
+        final fileBytes = await files.first.xFile.readAsBytes();
         raw = utf8.decode(fileBytes, allowMalformed: true);
       }
     } catch (e) {
