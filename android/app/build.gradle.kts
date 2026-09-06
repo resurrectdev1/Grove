@@ -1,4 +1,4 @@
-import com.android.build.api.variant.FilterConfiguration.FilterType.ABI
+import com.android.build.gradle.internal.api.ApkVariantOutputImpl
 import java.util.Properties
 import java.io.FileInputStream
 
@@ -61,15 +61,12 @@ android {
     }
 }
 
-androidComponents {
-    onVariants { variant ->
-        variant.outputs.forEach { output ->
-            val abiName = output.filters.find { it.filterType == ABI }?.identifier
-            val abiVersionCode = abiCodes[abiName]
-            if (abiVersionCode != null) {
-                val baseVersionCode = output.versionCode.get()
-                output.versionCode.set(baseVersionCode * 10 + abiVersionCode)
-            }
+android.applicationVariants.configureEach {
+    val variant = this
+    variant.outputs.forEach { output ->
+        val abiVersionCode = abiCodes[output.filters.find { it.filterType == "ABI" }?.identifier]
+        if (abiVersionCode != null) {
+            (output as ApkVariantOutputImpl).versionCodeOverride = variant.versionCode * 10 + abiVersionCode
         }
     }
 }
