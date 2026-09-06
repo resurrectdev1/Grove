@@ -26,8 +26,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_21
     }
 
-    // Replaces the old kotlinOptions { jvmTarget = ... } block, which no longer
-    // exists now that Kotlin support is built into AGP 9+.
     kotlin {
         compilerOptions {
             jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
