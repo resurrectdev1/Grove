@@ -21,6 +21,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 * Gradle bump to 9.5.1
+* Migration from dynamic colors package (To be done)
 
 ---
 
