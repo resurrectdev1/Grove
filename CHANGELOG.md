@@ -17,6 +17,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 * Translated shareable trees widgets
+* Growth milestone notifications not firing when a tree advances a stage purely from time passing (e.g. app reopened after a day with no check-in)
 
 ### Changed
 
