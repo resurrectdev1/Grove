@@ -19,6 +19,7 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
       _prefs = await SharedPreferences.getInstance();
       _load();
       WidgetsBinding.instance.addObserver(this);
+      await _checkMilestonesNow();
     } catch (e) {
       debugPrint('GroveModel init error: $e');
     }
@@ -41,6 +42,14 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     if (_prefs == null) return;
     await _prefs!.reload();
     _load();
+    await _checkMilestonesNow();
+  }
+
+  Future<void> _checkMilestonesNow() async {
+    final enabled = _prefs?.getBool('milestone_notifications') ?? false;
+    if (enabled) {
+      await GroveNotifications.instance.checkAndNotifyMilestones(_habits);
+    }
   }
 
   void _load() {
