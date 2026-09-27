@@ -25,7 +25,7 @@ class HabitDetailScreen extends StatefulWidget {
 class _HabitDetailScreenState extends State<HabitDetailScreen> {
   late PageController _calendarPageController;
   int _currentMonthOffset = 0;
-  static const _initialPageIndex = 12;
+  static const _initialPageIndex = 24;
   bool _isDeleting = false;
 
   Timer? _ticker;
