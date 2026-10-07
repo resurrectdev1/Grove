@@ -517,229 +517,374 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
 
   void _showSettingsHub(BuildContext ctx) {
     final model = ctx.read<GroveModel>();
-    final settings = ctx.read<GroveSettings>();
     final bottomPad = MediaQuery.of(ctx).padding.bottom;
 
     showModalBottomSheet(
       context: ctx,
-      backgroundColor: settings.theme.surfaceHigh,
+      backgroundColor: Colors.transparent,
       isScrollControlled: true,
       useSafeArea: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
-      ),
       builder: (sheetCtx) => Consumer<GroveSettings>(
         builder: (_, settings, _) {
           final l10n = AppLocalizations.of(sheetCtx);
-          return SingleChildScrollView(
-            padding: EdgeInsets.fromLTRB(24, 20, 24, 24 + bottomPad),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Center(
-                  child: Container(
-                    width: 36,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: settings.theme.textMuted.withValues(alpha: 0.4),
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  l10n.settingsHub,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: settings.theme.textPrimary,
-                  ),
-                ),
-                const SizedBox(height: 24),
-
-                Text(
-                  l10n.layoutArchitecture,
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    color: settings.theme.textSecondary,
-                    letterSpacing: 1.0,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  children: [
-                    _LayoutButton(
-                      label: l10n.layoutWheel,
-                      icon: Icons.view_day,
-                      isSelected:
-                          settings.layoutMode == LayoutMode.verticalWheel,
-                      theme: settings.theme,
-                      onTap: () {
-                        settings.setLayoutMode(LayoutMode.verticalWheel);
-                        HapticFeedback.selectionClick();
-                        Navigator.pop(sheetCtx);
-                      },
-                    ),
-                    const SizedBox(width: 8),
-                    _LayoutButton(
-                      label: l10n.layoutCarousel,
-                      icon: Icons.view_carousel,
-                      isSelected:
-                          settings.layoutMode == LayoutMode.horizontalCarousel,
-                      theme: settings.theme,
-                      onTap: () {
-                        settings.setLayoutMode(LayoutMode.horizontalCarousel);
-                        HapticFeedback.selectionClick();
-                        Navigator.pop(sheetCtx);
-                      },
-                    ),
-                    const SizedBox(width: 8),
-                    _LayoutButton(
-                      label: l10n.layoutGrid,
-                      icon: Icons.grid_view,
-                      isSelected: settings.layoutMode == LayoutMode.compactGrid,
-                      theme: settings.theme,
-                      onTap: () {
-                        settings.setLayoutMode(LayoutMode.compactGrid);
-                        HapticFeedback.selectionClick();
-                        Navigator.pop(sheetCtx);
-                      },
-                    ),
-                    const SizedBox(width: 8),
-                    _LayoutButton(
-                      label: l10n.layoutList,
-                      icon: Icons.list,
-                      isSelected: settings.layoutMode == LayoutMode.compactList,
-                      theme: settings.theme,
-                      onTap: () {
-                        settings.setLayoutMode(LayoutMode.compactList);
-                        HapticFeedback.selectionClick();
-                        Navigator.pop(sheetCtx);
-                      },
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                OutlinedButton.icon(
-                  onPressed: () {
-                    Navigator.pop(sheetCtx);
-                    _showReorderSheet(ctx);
-                  },
-                  icon: Icon(
-                    Icons.swap_vert_rounded,
-                    size: 16,
-                    color: settings.theme.textSecondary,
-                  ),
-                  label: Text(
-                    l10n.reorderGrove,
-                    style: TextStyle(color: settings.theme.textPrimary),
-                  ),
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    side: BorderSide(
-                      color: settings.theme.textMuted.withValues(alpha: 0.4),
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 28),
-
-                Text(
-                  l10n.renderThemes,
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    color: settings.theme.textSecondary,
-                    letterSpacing: 1.0,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                RadioGroup<GroveThemeMode>(
-                  groupValue: settings.themeMode,
-                  onChanged: (val) {
-                    if (val != null) settings.setThemeMode(val);
-                    HapticFeedback.selectionClick();
-                    Navigator.pop(sheetCtx);
-                  },
-                  child: Column(
-                    children: GroveThemeMode.values.map((mode) {
-                      final labels = {
-                        GroveThemeMode.forestDark: l10n.themeForestDark,
-                        GroveThemeMode.amoledBlack: l10n.themeAmoledBlack,
-                        GroveThemeMode.materialYou: l10n.themeMaterialYou,
-                        GroveThemeMode.whiteMinimal: l10n.themeWhiteMinimal,
-                      };
-                      return RadioListTile<GroveThemeMode>(
-                        value: mode,
-                        activeColor: settings.theme.primary,
-                        contentPadding: EdgeInsets.zero,
-                        title: Text(
-                          labels[mode]!,
-                          style: TextStyle(color: settings.theme.textPrimary),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ),
-
-                const SizedBox(height: 8),
-                GestureDetector(
-                  onTap: () => _showAccentPicker(sheetCtx, settings),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 13,
-                    ),
-                    decoration: BoxDecoration(
-                      color: settings.theme.surface,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(
-                        color: settings.theme.textMuted.withValues(alpha: 0.25),
+          return Container(
+            decoration: BoxDecoration(
+              color: settings.theme.surfaceHigh,
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(28),
+              ),
+            ),
+            child: SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(24, 20, 24, 24 + bottomPad),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Center(
+                    child: Container(
+                      width: 36,
+                      height: 4,
+                      decoration: BoxDecoration(
+                        color: settings.theme.textMuted.withValues(alpha: 0.4),
+                        borderRadius: BorderRadius.circular(2),
                       ),
                     ),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 28,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: settings.theme.primary,
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: settings.theme.textMuted.withValues(
-                                alpha: 0.3,
-                              ),
-                              width: 1.5,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: settings.theme.primary.withValues(
-                                  alpha: 0.45,
-                                ),
-                                blurRadius: 8,
-                              ),
-                            ],
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    l10n.settingsHub,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: settings.theme.textPrimary,
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+
+                  Text(
+                    l10n.layoutArchitecture,
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: settings.theme.textSecondary,
+                      letterSpacing: 1.0,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      _LayoutButton(
+                        label: l10n.layoutWheel,
+                        icon: Icons.view_day,
+                        isSelected:
+                            settings.layoutMode == LayoutMode.verticalWheel,
+                        theme: settings.theme,
+                        onTap: () {
+                          settings.setLayoutMode(LayoutMode.verticalWheel);
+                          HapticFeedback.selectionClick();
+                          Navigator.pop(sheetCtx);
+                        },
+                      ),
+                      const SizedBox(width: 8),
+                      _LayoutButton(
+                        label: l10n.layoutCarousel,
+                        icon: Icons.view_carousel,
+                        isSelected:
+                            settings.layoutMode ==
+                            LayoutMode.horizontalCarousel,
+                        theme: settings.theme,
+                        onTap: () {
+                          settings.setLayoutMode(LayoutMode.horizontalCarousel);
+                          HapticFeedback.selectionClick();
+                          Navigator.pop(sheetCtx);
+                        },
+                      ),
+                      const SizedBox(width: 8),
+                      _LayoutButton(
+                        label: l10n.layoutGrid,
+                        icon: Icons.grid_view,
+                        isSelected:
+                            settings.layoutMode == LayoutMode.compactGrid,
+                        theme: settings.theme,
+                        onTap: () {
+                          settings.setLayoutMode(LayoutMode.compactGrid);
+                          HapticFeedback.selectionClick();
+                          Navigator.pop(sheetCtx);
+                        },
+                      ),
+                      const SizedBox(width: 8),
+                      _LayoutButton(
+                        label: l10n.layoutList,
+                        icon: Icons.list,
+                        isSelected:
+                            settings.layoutMode == LayoutMode.compactList,
+                        theme: settings.theme,
+                        onTap: () {
+                          settings.setLayoutMode(LayoutMode.compactList);
+                          HapticFeedback.selectionClick();
+                          Navigator.pop(sheetCtx);
+                        },
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  OutlinedButton.icon(
+                    onPressed: () {
+                      Navigator.pop(sheetCtx);
+                      _showReorderSheet(ctx);
+                    },
+                    icon: Icon(
+                      Icons.swap_vert_rounded,
+                      size: 16,
+                      color: settings.theme.textSecondary,
+                    ),
+                    label: Text(
+                      l10n.reorderGrove,
+                      style: TextStyle(color: settings.theme.textPrimary),
+                    ),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      side: BorderSide(
+                        color: settings.theme.textMuted.withValues(alpha: 0.4),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 28),
+
+                  Text(
+                    l10n.renderThemes,
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: settings.theme.textSecondary,
+                      letterSpacing: 1.0,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  RadioGroup<GroveThemeMode>(
+                    groupValue: settings.themeMode,
+                    onChanged: (val) {
+                      if (val != null) settings.setThemeMode(val);
+                      HapticFeedback.selectionClick();
+                    },
+                    child: Column(
+                      children: GroveThemeMode.values.map((mode) {
+                        final labels = {
+                          GroveThemeMode.forestDark: l10n.themeForestDark,
+                          GroveThemeMode.amoledBlack: l10n.themeAmoledBlack,
+                          GroveThemeMode.materialYou: l10n.themeMaterialYou,
+                          GroveThemeMode.whiteMinimal: l10n.themeWhiteMinimal,
+                        };
+                        return RadioListTile<GroveThemeMode>(
+                          value: mode,
+                          activeColor: settings.theme.primary,
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(
+                            labels[mode]!,
+                            style: TextStyle(color: settings.theme.textPrimary),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+
+                  const SizedBox(height: 8),
+                  GestureDetector(
+                    onTap: () => _showAccentPicker(sheetCtx, settings),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 13,
+                      ),
+                      decoration: BoxDecoration(
+                        color: settings.theme.surface,
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(
+                          color: settings.theme.textMuted.withValues(
+                            alpha: 0.25,
                           ),
                         ),
-                        const SizedBox(width: 14),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 28,
+                            height: 28,
+                            decoration: BoxDecoration(
+                              color: settings.theme.primary,
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: settings.theme.textMuted.withValues(
+                                  alpha: 0.3,
+                                ),
+                                width: 1.5,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: settings.theme.primary.withValues(
+                                    alpha: 0.45,
+                                  ),
+                                  blurRadius: 8,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 14),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  l10n.customAccentColor,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: settings.theme.textPrimary,
+                                  ),
+                                ),
+                                Text(
+                                  settings.customAccent != null
+                                      ? '#${settings.customAccent!.toARGB32().toRadixString(16).substring(2).toUpperCase()}'
+                                      : l10n.customAccentDefault,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: settings.theme.textMuted,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Icon(
+                            Icons.chevron_right_rounded,
+                            color: settings.theme.textMuted,
+                            size: 18,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  const Divider(height: 32),
+
+                  Text(
+                    l10n.privacyNotifications,
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: settings.theme.textSecondary,
+                      letterSpacing: 1.0,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  SwitchListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(
+                      l10n.milestoneNotifications,
+                      style: TextStyle(
+                        color: settings.theme.textPrimary,
+                        fontSize: 14,
+                      ),
+                    ),
+                    subtitle: Text(
+                      l10n.milestoneNotificationsSubtitle,
+                      style: TextStyle(
+                        color: settings.theme.textMuted,
+                        fontSize: 11,
+                      ),
+                    ),
+                    activeThumbColor: settings.theme.primary,
+                    value: settings.milestoneNotifications,
+                    onChanged: (val) async {
+                      unawaited(HapticFeedback.selectionClick());
+                      await settings.setMilestoneNotifications(val);
+                    },
+                  ),
+                  SwitchListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(
+                      l10n.dailyReminderSetting,
+                      style: TextStyle(
+                        color: settings.theme.textPrimary,
+                        fontSize: 14,
+                      ),
+                    ),
+                    subtitle: Text(
+                      l10n.dailyReminderSettingSubtitle,
+                      style: TextStyle(
+                        color: settings.theme.textMuted,
+                        fontSize: 11,
+                      ),
+                    ),
+                    activeThumbColor: settings.theme.primary,
+                    value: settings.dailyReminder,
+                    onChanged: (val) async {
+                      unawaited(HapticFeedback.selectionClick());
+                      if (val) {
+                        final picked = await showTimePicker(
+                          context: sheetCtx,
+                          initialTime:
+                              settings.dailyReminderTime ??
+                              const TimeOfDay(hour: 9, minute: 0),
+                        );
+                        if (picked != null) {
+                          await settings.setDailyReminder(true, picked);
+                        }
+                      } else {
+                        await settings.setDailyReminder(false, null);
+                      }
+                    },
+                  ),
+                  if (settings.dailyReminder &&
+                      settings.dailyReminderTime != null)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16, bottom: 4),
+                      child: GestureDetector(
+                        onTap: () async {
+                          final picked = await showTimePicker(
+                            context: sheetCtx,
+                            initialTime: settings.dailyReminderTime!,
+                          );
+                          if (picked != null) {
+                            unawaited(HapticFeedback.selectionClick());
+                            await settings.setDailyReminder(true, picked);
+                          }
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 14,
+                            vertical: 11,
+                          ),
+                          decoration: BoxDecoration(
+                            color: settings.theme.primary.withValues(
+                              alpha: 0.08,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: settings.theme.primary.withValues(
+                                alpha: 0.25,
+                              ),
+                            ),
+                          ),
+                          child: Row(
                             children: [
+                              Icon(
+                                Icons.access_time_rounded,
+                                size: 15,
+                                color: settings.theme.primary,
+                              ),
+                              const SizedBox(width: 8),
                               Text(
-                                l10n.customAccentColor,
+                                settings.dailyReminderTime!.format(sheetCtx),
                                 style: TextStyle(
-                                  fontSize: 14,
-                                  color: settings.theme.textPrimary,
+                                  fontSize: 13,
+                                  color: settings.theme.primary,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
+                              const SizedBox(width: 6),
                               Text(
-                                settings.customAccent != null
-                                    ? '#${settings.customAccent!.toARGB32().toRadixString(16).substring(2).toUpperCase()}'
-                                    : l10n.customAccentDefault,
+                                l10n.tapToChange,
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: settings.theme.textMuted,
@@ -748,278 +893,143 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                             ],
                           ),
                         ),
-                        Icon(
-                          Icons.chevron_right_rounded,
-                          color: settings.theme.textMuted,
-                          size: 18,
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
 
-                const Divider(height: 32),
-
-                Text(
-                  l10n.privacyNotifications,
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    color: settings.theme.textSecondary,
-                    letterSpacing: 1.0,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                SwitchListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(
-                    l10n.milestoneNotifications,
-                    style: TextStyle(
-                      color: settings.theme.textPrimary,
-                      fontSize: 14,
-                    ),
-                  ),
-                  subtitle: Text(
-                    l10n.milestoneNotificationsSubtitle,
-                    style: TextStyle(
-                      color: settings.theme.textMuted,
-                      fontSize: 11,
-                    ),
-                  ),
-                  activeThumbColor: settings.theme.primary,
-                  value: settings.milestoneNotifications,
-                  onChanged: (val) async {
-                    unawaited(HapticFeedback.selectionClick());
-                    await settings.setMilestoneNotifications(val);
-                  },
-                ),
-                SwitchListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(
-                    l10n.dailyReminderSetting,
-                    style: TextStyle(
-                      color: settings.theme.textPrimary,
-                      fontSize: 14,
-                    ),
-                  ),
-                  subtitle: Text(
-                    l10n.dailyReminderSettingSubtitle,
-                    style: TextStyle(
-                      color: settings.theme.textMuted,
-                      fontSize: 11,
-                    ),
-                  ),
-                  activeThumbColor: settings.theme.primary,
-                  value: settings.dailyReminder,
-                  onChanged: (val) async {
-                    unawaited(HapticFeedback.selectionClick());
-                    if (val) {
-                      final picked = await showTimePicker(
-                        context: sheetCtx,
-                        initialTime:
-                            settings.dailyReminderTime ??
-                            const TimeOfDay(hour: 9, minute: 0),
-                      );
-                      if (picked != null) {
-                        await settings.setDailyReminder(true, picked);
-                      }
-                    } else {
-                      await settings.setDailyReminder(false, null);
-                    }
-                  },
-                ),
-                if (settings.dailyReminder &&
-                    settings.dailyReminderTime != null)
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16, bottom: 4),
-                    child: GestureDetector(
-                      onTap: () async {
-                        final picked = await showTimePicker(
-                          context: sheetCtx,
-                          initialTime: settings.dailyReminderTime!,
-                        );
-                        if (picked != null) {
-                          unawaited(HapticFeedback.selectionClick());
-                          await settings.setDailyReminder(true, picked);
-                        }
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 14,
-                          vertical: 11,
-                        ),
-                        decoration: BoxDecoration(
-                          color: settings.theme.primary.withValues(alpha: 0.08),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: settings.theme.primary.withValues(
-                              alpha: 0.25,
-                            ),
+                  FutureBuilder<bool>(
+                    future: GroveBiometrics.instance.isAvailable,
+                    builder: (_, snap) {
+                      final available = snap.data ?? false;
+                      if (!available) return const SizedBox.shrink();
+                      return SwitchListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(
+                          l10n.biometricUnlock,
+                          style: TextStyle(
+                            color: settings.theme.textPrimary,
+                            fontSize: 14,
                           ),
                         ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.access_time_rounded,
-                              size: 15,
-                              color: settings.theme.primary,
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              settings.dailyReminderTime!.format(sheetCtx),
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: settings.theme.primary,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            const SizedBox(width: 6),
-                            Text(
-                              l10n.tapToChange,
-                              style: TextStyle(
-                                fontSize: 11,
-                                color: settings.theme.textMuted,
-                              ),
-                            ),
-                          ],
+                        subtitle: Text(
+                          l10n.biometricUnlockSubtitle,
+                          style: TextStyle(
+                            color: settings.theme.textMuted,
+                            fontSize: 11,
+                          ),
                         ),
-                      ),
-                    ),
+                        activeThumbColor: settings.theme.primary,
+                        value: settings.biometricUnlock,
+                        onChanged: (val) async {
+                          unawaited(HapticFeedback.selectionClick());
+                          await settings.setBiometricUnlock(val);
+                        },
+                      );
+                    },
                   ),
 
-                FutureBuilder<bool>(
-                  future: GroveBiometrics.instance.isAvailable,
-                  builder: (_, snap) {
-                    final available = snap.data ?? false;
-                    if (!available) return const SizedBox.shrink();
-                    return SwitchListTile(
-                      contentPadding: EdgeInsets.zero,
-                      title: Text(
-                        l10n.biometricUnlock,
-                        style: TextStyle(
-                          color: settings.theme.textPrimary,
-                          fontSize: 14,
-                        ),
-                      ),
-                      subtitle: Text(
-                        l10n.biometricUnlockSubtitle,
-                        style: TextStyle(
-                          color: settings.theme.textMuted,
-                          fontSize: 11,
-                        ),
-                      ),
-                      activeThumbColor: settings.theme.primary,
-                      value: settings.biometricUnlock,
-                      onChanged: (val) async {
-                        unawaited(HapticFeedback.selectionClick());
-                        await settings.setBiometricUnlock(val);
-                      },
-                    );
-                  },
-                ),
+                  const Divider(height: 32),
 
-                const Divider(height: 32),
-
-                Text(
-                  l10n.languageSection,
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    color: settings.theme.textSecondary,
-                    letterSpacing: 1.0,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: Container(
-                    width: 38,
-                    height: 38,
-                    decoration: BoxDecoration(
-                      color: settings.theme.primary.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Icon(
-                      Icons.language_rounded,
-                      color: settings.theme.primary,
-                      size: 20,
-                    ),
-                  ),
-                  title: Text(
-                    l10n.languageLabel,
+                  Text(
+                    l10n.languageSection,
                     style: TextStyle(
-                      color: settings.theme.textPrimary,
-                      fontSize: 14,
-                    ),
-                  ),
-                  subtitle: Text(
-                    _localeName(settings.locale),
-                    style: TextStyle(
-                      color: settings.theme.textMuted,
                       fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: settings.theme.textSecondary,
+                      letterSpacing: 1.0,
                     ),
                   ),
-                  trailing: Icon(
-                    Icons.chevron_right_rounded,
-                    color: settings.theme.textMuted,
+                  const SizedBox(height: 4),
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    leading: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: settings.theme.primary.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        Icons.language_rounded,
+                        color: settings.theme.primary,
+                        size: 20,
+                      ),
+                    ),
+                    title: Text(
+                      l10n.languageLabel,
+                      style: TextStyle(
+                        color: settings.theme.textPrimary,
+                        fontSize: 14,
+                      ),
+                    ),
+                    subtitle: Text(
+                      _localeName(settings.locale),
+                      style: TextStyle(
+                        color: settings.theme.textMuted,
+                        fontSize: 11,
+                      ),
+                    ),
+                    trailing: Icon(
+                      Icons.chevron_right_rounded,
+                      color: settings.theme.textMuted,
+                    ),
+                    onTap: () => _showLanguagePicker(sheetCtx, settings, l10n),
                   ),
-                  onTap: () => _showLanguagePicker(sheetCtx, settings, l10n),
-                ),
 
-                const Divider(height: 32),
+                  const Divider(height: 32),
 
-                Text(
-                  l10n.dataManagement,
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    color: settings.theme.textSecondary,
-                    letterSpacing: 1.0,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                OutlinedButton.icon(
-                  onPressed: () => _showExportSheet(ctx, model, settings),
-                  icon: const Icon(Icons.upload_outlined, size: 16),
-                  label: Text(l10n.exportGroveBackup),
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: settings.theme.textPrimary,
-                    side: BorderSide(
-                      color: settings.theme.textMuted.withValues(alpha: 0.4),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                  Text(
+                    l10n.dataManagement,
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: settings.theme.textSecondary,
+                      letterSpacing: 1.0,
                     ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                OutlinedButton.icon(
-                  onPressed: () => _showImportSheet(ctx, model, settings),
-                  icon: const Icon(Icons.download_outlined, size: 16),
-                  label: Text(l10n.restoreGroveBackup),
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: settings.theme.textPrimary,
-                    side: BorderSide(
-                      color: settings.theme.textMuted.withValues(alpha: 0.4),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                  const SizedBox(height: 12),
+                  OutlinedButton.icon(
+                    onPressed: () => _showExportSheet(ctx, model, settings),
+                    icon: const Icon(Icons.upload_outlined, size: 16),
+                    label: Text(l10n.exportGroveBackup),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: settings.theme.textPrimary,
+                      side: BorderSide(
+                        color: settings.theme.textMuted.withValues(alpha: 0.4),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  l10n.exportImportNote,
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: settings.theme.textMuted,
-                    height: 1.5,
+                  const SizedBox(height: 10),
+                  OutlinedButton.icon(
+                    onPressed: () => _showImportSheet(ctx, model, settings),
+                    icon: const Icon(Icons.download_outlined, size: 16),
+                    label: Text(l10n.restoreGroveBackup),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: settings.theme.textPrimary,
+                      side: BorderSide(
+                        color: settings.theme.textMuted.withValues(alpha: 0.4),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
                   ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
+                  const SizedBox(height: 8),
+                  Text(
+                    l10n.exportImportNote,
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: settings.theme.textMuted,
+                      height: 1.5,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
           );
         },
