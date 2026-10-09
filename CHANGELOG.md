@@ -10,11 +10,16 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 > Changes staged for the next release go here. Move them down when you cut a tag.
 
+### Added
+
+* More animations within the app (to be done)
+
 ### Changed
 
 * Settings hub no longer closes when changing render themes
 * Material you now grays out custom accent instead of letting you chose
 * Custom accent picker's apply button and selected check mark now adapt to light colors for readability
+* Made all animations consistent (to be done)
 
 ---
 
