@@ -25,6 +25,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Improved app icon (Made a proper gradient using digital tools instead of a hacky airbrush implementation of a gradient)
 * Info page using app_icon_info to just use app_icon
 * All animation durations and curves now use the shared motion settings, so sheets, dialogs and pickers feel consistent
+* Material you into a toggle so it can be used alongside other themes
 * Web app icons also updated (to be done)
 
 ---
