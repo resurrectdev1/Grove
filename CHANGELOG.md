@@ -22,6 +22,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Improved app icon (Made a proper gradient using digital tools instead of a hacky airbrush implementation of a gradient)
 * Info page using app_icon_info to just use app_icon
 * Made all animations consistent (to be done)
+* Web app icons also updated (to be done)
 
 ---
 
