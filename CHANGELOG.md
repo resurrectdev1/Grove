@@ -16,6 +16,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Check-in and relapse buttons now animate when their state changes
 * Dialogs scale in, and the habit detail screen has a new fade and scale transition
 * Shared motion settings in `lib/theme/motion.dart` so all animations use the same timing and easing
+* Monochrome icon suppourt
 
 ### Changed
 
