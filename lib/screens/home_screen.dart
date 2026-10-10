@@ -16,10 +16,14 @@ import 'package:grove/providers/grove_model.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/services/grove_biometrics.dart';
 import 'package:grove/theme/grove_theme.dart';
+import 'package:grove/theme/motion.dart';
+import 'package:grove/theme/transitions.dart';
 import 'package:grove/widgets/accent_picker_sheet.dart';
 import 'package:grove/widgets/add_habit_sheet.dart';
 import 'package:grove/widgets/habit_card.dart';
 import 'package:grove/widgets/onboarding_sheet.dart';
+import 'package:grove/widgets/press_scale.dart';
+import 'package:grove/widgets/reveal.dart';
 
 class GroveHomeScreen extends StatefulWidget {
   const GroveHomeScreen({super.key});
@@ -28,6 +32,9 @@ class GroveHomeScreen extends StatefulWidget {
 }
 
 class _GroveHomeScreenState extends State<GroveHomeScreen> {
+  final EntranceTracker _entrance = EntranceTracker();
+  LayoutMode? _lastLayoutMode;
+
   final _scrollCtrl = FixedExtentScrollController();
   late PageController _carouselCtrl;
   int _selectedIdx = 0;
@@ -65,6 +72,12 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     if (habits.isNotEmpty && _selectedIdx >= habits.length) {
       _selectedIdx = habits.length - 1;
     }
+
+    if (_lastLayoutMode != settings.layoutMode) {
+      _lastLayoutMode = settings.layoutMode;
+      _entrance.reset();
+    }
+    _entrance.sync(habits.map((h) => h.id));
 
     return Scaffold(
       backgroundColor: theme.bg,
@@ -118,6 +131,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
   void _showOnboarding() {
     final settingsProvider = context.read<GroveSettings>();
     showModalBottomSheet(
+      sheetAnimationStyle: Motion.sheet,
       context: context,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
@@ -136,6 +150,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     final l10n = AppLocalizations.of(ctx);
 
     showModalBottomSheet(
+      sheetAnimationStyle: Motion.sheet,
       context: ctx,
       backgroundColor: theme.surfaceHigh,
       isScrollControlled: true,
@@ -286,10 +301,14 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
         },
         childDelegate: ListWheelChildBuilderDelegate(
           childCount: habits.length,
-          builder: (ctx, i) => HabitCard(
-            habit: habits[i],
-            isSelected: i == _selectedIdx,
-            layoutMode: LayoutMode.verticalWheel,
+          builder: (ctx, i) => StaggeredEntrance(
+            tracker: _entrance,
+            id: habits[i].id,
+            child: HabitCard(
+              habit: habits[i],
+              isSelected: i == _selectedIdx,
+              layoutMode: LayoutMode.verticalWheel,
+            ),
           ),
         ),
       ),
@@ -326,10 +345,14 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
               ),
             );
           },
-          child: HabitCard(
-            habit: habits[i],
-            isSelected: i == _selectedIdx,
-            layoutMode: LayoutMode.horizontalCarousel,
+          child: StaggeredEntrance(
+            tracker: _entrance,
+            id: habits[i].id,
+            child: HabitCard(
+              habit: habits[i],
+              isSelected: i == _selectedIdx,
+              layoutMode: LayoutMode.horizontalCarousel,
+            ),
           ),
         ),
       );
@@ -349,10 +372,14 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
               mainAxisSpacing: 12,
             ),
             itemCount: habits.length,
-            itemBuilder: (ctx, i) => HabitCard(
-              habit: habits[i],
-              isSelected: true,
-              layoutMode: LayoutMode.compactGrid,
+            itemBuilder: (ctx, i) => StaggeredEntrance(
+              tracker: _entrance,
+              id: habits[i].id,
+              child: HabitCard(
+                habit: habits[i],
+                isSelected: true,
+                layoutMode: LayoutMode.compactGrid,
+              ),
             ),
           ),
         ),
@@ -367,10 +394,14 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
             physics: const BouncingScrollPhysics(),
             padding: const EdgeInsets.only(top: 16, bottom: 120),
             itemCount: habits.length,
-            itemBuilder: (ctx, i) => HabitCard(
-              habit: habits[i],
-              isSelected: true,
-              layoutMode: LayoutMode.compactList,
+            itemBuilder: (ctx, i) => StaggeredEntrance(
+              tracker: _entrance,
+              id: habits[i].id,
+              child: HabitCard(
+                habit: habits[i],
+                isSelected: true,
+                layoutMode: LayoutMode.compactList,
+              ),
             ),
           ),
         ),
@@ -384,6 +415,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     final l10n = AppLocalizations.of(ctx);
 
     showModalBottomSheet(
+      sheetAnimationStyle: Motion.sheet,
       context: ctx,
       backgroundColor: theme.surfaceHigh,
       isScrollControlled: true,
@@ -521,6 +553,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     final bottomPad = MediaQuery.of(ctx).padding.bottom;
 
     showModalBottomSheet(
+      sheetAnimationStyle: Motion.sheet,
       context: ctx,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
@@ -1093,7 +1126,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     AppLocalizations l10n,
   ) {
     final theme = settings.theme;
-    showDialog(
+    showGroveDialog(
       context: ctx,
       builder: (dialogCtx) => AlertDialog(
         scrollable: true,
@@ -1307,27 +1340,31 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
   Widget _fab(BuildContext context, GroveTheme theme, AppLocalizations l10n) =>
       Padding(
         padding: const EdgeInsets.only(bottom: 8),
-        child: FloatingActionButton.extended(
-          onPressed: () => showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            backgroundColor: theme.surfaceHigh,
-            useSafeArea: true,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+        child: PressScale(
+          scale: 0.95,
+          child: FloatingActionButton.extended(
+            onPressed: () => showModalBottomSheet(
+              sheetAnimationStyle: Motion.sheet,
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: theme.surfaceHigh,
+              useSafeArea: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+              ),
+              builder: (_) => const AddHabitSheet(),
             ),
-            builder: (_) => const AddHabitSheet(),
-          ),
-          backgroundColor: theme.primary,
-          foregroundColor: theme.brightness == Brightness.light
-              ? Colors.white
-              : GroveTheme.dewWhite,
-          icon: const Icon(Icons.forest_rounded),
-          label: Text(
-            l10n.plantATree,
-            style: const TextStyle(
-              fontWeight: FontWeight.w600,
-              letterSpacing: 0.5,
+            backgroundColor: theme.primary,
+            foregroundColor: theme.brightness == Brightness.light
+                ? Colors.white
+                : GroveTheme.dewWhite,
+            icon: const Icon(Icons.forest_rounded),
+            label: Text(
+              l10n.plantATree,
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.5,
+              ),
             ),
           ),
         ),
@@ -1425,41 +1462,45 @@ class _LayoutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Expanded(
-    child: Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          decoration: BoxDecoration(
-            color: isSelected ? theme.primary : theme.surface,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: isSelected
-                  ? theme.primary
-                  : theme.textMuted.withValues(alpha: 0.3),
+    child: PressScale(
+      scale: 0.95,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(12),
+          child: AnimatedContainer(
+            duration: Motion.base,
+            curve: Motion.standard,
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            decoration: BoxDecoration(
+              color: isSelected ? theme.primary : theme.surface,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: isSelected
+                    ? theme.primary
+                    : theme.textMuted.withValues(alpha: 0.3),
+              ),
             ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                icon,
-                size: 18,
-                color: isSelected ? Colors.white : theme.textSecondary,
-              ),
-              const SizedBox(height: 5),
-              Text(
-                label,
-                style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w600,
-                  color: isSelected ? Colors.white : theme.textPrimary,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  icon,
+                  size: 18,
+                  color: isSelected ? Colors.white : theme.textSecondary,
                 ),
-              ),
-            ],
+                const SizedBox(height: 5),
+                Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    color: isSelected ? Colors.white : theme.textPrimary,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
