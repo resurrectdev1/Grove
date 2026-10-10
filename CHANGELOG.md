@@ -20,6 +20,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Material you now grays out custom accent instead of letting you chose
 * Custom accent picker's apply button and selected check mark now adapt to light colors for readability
 * Improved app icon (Made a proper gradient using digital tools instead of a hacky airbrush implementation of a gradient)
+* Info page using app_icon_info to just use app_icon
 * Made all animations consistent (to be done)
 
 ---
