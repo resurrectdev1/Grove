@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:grove/l10n/app_localizations.dart';
+import 'package:grove/models/grove_models.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/theme/grove_theme.dart';
+import 'package:grove/theme/motion.dart';
 import 'package:grove/widgets/animated_tree_widget.dart';
-import 'package:grove/models/grove_models.dart';
 
 class OnboardingSheet extends StatefulWidget {
   const OnboardingSheet({super.key});
@@ -90,7 +91,9 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
           const SizedBox(height: 28),
           if (_page != 0) ...[
             AnimatedSwitcher(
-              duration: const Duration(milliseconds: 500),
+              duration: Motion.emphasized,
+              switchInCurve: Motion.standard,
+              switchOutCurve: Motion.exit,
               transitionBuilder: (child, anim) =>
                   FadeTransition(opacity: anim, child: child),
               child: SizedBox(
@@ -121,7 +124,9 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
           ] else
             const SizedBox(height: 8),
           AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
+            duration: Motion.slow,
+            switchInCurve: Motion.standard,
+            switchOutCurve: Motion.exit,
             child: Text(
               step.title,
               key: ValueKey('title_$_page'),
@@ -135,7 +140,9 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
           ),
           const SizedBox(height: 12),
           AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
+            duration: Motion.slow,
+            switchInCurve: Motion.standard,
+            switchOutCurve: Motion.exit,
             child: Text(
               step.body,
               key: ValueKey('body_$_page'),
@@ -153,7 +160,8 @@ class _OnboardingSheetState extends State<OnboardingSheet> {
             children: List.generate(
               steps.length,
               (i) => AnimatedContainer(
-                duration: const Duration(milliseconds: 250),
+                duration: Motion.base,
+                curve: Motion.standard,
                 margin: const EdgeInsets.symmetric(horizontal: 3),
                 width: i == _page ? 18 : 6,
                 height: 6,
