@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:grove/l10n/app_localizations.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/theme/grove_theme.dart';
+import 'package:grove/theme/motion.dart';
 
 class AccentPickerResult {
   final Color? color;
@@ -139,7 +140,8 @@ class _AccentPickerSheetState extends State<AccentPickerSheet> {
                 return GestureDetector(
                   onTap: () => _selectPreset(c),
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
+                    duration: Motion.base,
+                    curve: Motion.standard,
                     width: 38,
                     height: 38,
                     decoration: BoxDecoration(
@@ -204,7 +206,8 @@ class _AccentPickerSheetState extends State<AccentPickerSheet> {
                 ),
                 const SizedBox(width: 12),
                 AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
+                  duration: Motion.base,
+                  curve: Motion.standard,
                   width: 56,
                   height: 56,
                   decoration: BoxDecoration(
@@ -274,6 +277,7 @@ Future<AccentPickerResult?> showAccentPickerSheet(
   GroveSettings settings,
 ) {
   return showModalBottomSheet<AccentPickerResult>(
+    sheetAnimationStyle: Motion.sheet,
     context: context,
     backgroundColor: settings.theme.surfaceHigh,
     isScrollControlled: true,
