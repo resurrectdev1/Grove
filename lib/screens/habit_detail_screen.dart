@@ -9,10 +9,14 @@ import 'package:grove/models/grove_models.dart';
 import 'package:grove/providers/grove_model.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/theme/grove_theme.dart';
+import 'package:grove/theme/motion.dart';
+import 'package:grove/theme/transitions.dart';
 import 'package:grove/widgets/animated_tree_widget.dart';
 import 'package:grove/widgets/color_picker_sheet.dart';
 import 'package:grove/widgets/habit_detail_widgets.dart';
 import 'package:grove/widgets/monthly_calendar.dart';
+import 'package:grove/widgets/press_scale.dart';
+import 'package:grove/widgets/reveal.dart';
 import 'package:grove/widgets/tree_share_sheet.dart';
 
 class HabitDetailScreen extends StatefulWidget {
@@ -91,19 +95,25 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
         slivers: [
           _appBar(context, habit, theme, l10n),
           SliverToBoxAdapter(child: _treeHero(habit)),
-          SliverToBoxAdapter(child: _stats(habit, theme, l10n)),
+          SliverToBoxAdapter(child: _reveal(0, _stats(habit, theme, l10n))),
           isCheckIn
               ? SliverToBoxAdapter(
-                  child: _checkInStreakCard(habit, theme, l10n),
+                  child: _reveal(1, _checkInStreakCard(habit, theme, l10n)),
                 )
               : SliverToBoxAdapter(
-                  child: _timeSinceRelapseCard(habit, theme, l10n),
+                  child: _reveal(1, _timeSinceRelapseCard(habit, theme, l10n)),
                 ),
-          SliverToBoxAdapter(child: _calendarSection(habit, theme, l10n)),
+          SliverToBoxAdapter(
+            child: _reveal(2, _calendarSection(habit, theme, l10n)),
+          ),
           if (isCheckIn)
-            SliverToBoxAdapter(child: _freezeStreakSection(habit, theme, l10n)),
+            SliverToBoxAdapter(
+              child: _reveal(3, _freezeStreakSection(habit, theme, l10n)),
+            ),
           if (!isCheckIn) ...[
-            SliverToBoxAdapter(child: _historyHeader(habit, theme, l10n)),
+            SliverToBoxAdapter(
+              child: _reveal(3, _historyHeader(habit, theme, l10n)),
+            ),
             habit.relapses.isEmpty
                 ? SliverToBoxAdapter(child: _noHistory(theme, l10n))
                 : SliverList(
@@ -432,6 +442,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     AppLocalizations l10n,
   ) async {
     final picked = await showModalBottomSheet<Color>(
+      sheetAnimationStyle: Motion.sheet,
       context: ctx,
       backgroundColor: theme.surfaceHigh,
       isScrollControlled: true,
@@ -455,7 +466,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     AppLocalizations l10n,
   ) {
     final ctrl = TextEditingController(text: habit.name);
-    showDialog(
+    showGroveDialog(
       context: ctx,
       builder: (dialogCtx) => AlertDialog(
         backgroundColor: theme.surfaceHigh,
@@ -519,6 +530,11 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     );
   }
 
+  Widget _reveal(int order, Widget child) => Reveal(
+    delay: Duration(milliseconds: 100 + 50 * order),
+    child: child,
+  );
+
   Widget _treeHero(HabitTree habit) {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -578,19 +594,22 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     required VoidCallback onTap,
   }) => Tooltip(
     message: tooltip,
-    child: Material(
-      color: theme.surface.withValues(alpha: 0.85),
-      shape: const CircleBorder(),
-      elevation: 1,
-      child: InkWell(
-        customBorder: const CircleBorder(),
-        onTap: () {
-          HapticFeedback.selectionClick();
-          onTap();
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(9),
-          child: Icon(icon, size: 17, color: theme.textSecondary),
+    child: PressScale(
+      scale: 0.9,
+      child: Material(
+        color: theme.surface.withValues(alpha: 0.85),
+        shape: const CircleBorder(),
+        elevation: 1,
+        child: InkWell(
+          customBorder: const CircleBorder(),
+          onTap: () {
+            HapticFeedback.selectionClick();
+            onTap();
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(9),
+            child: Icon(icon, size: 17, color: theme.textSecondary),
+          ),
         ),
       ),
     ),
@@ -714,65 +733,71 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
   ) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: GestureDetector(
-        onTap: () {
-          HapticFeedback.mediumImpact();
-          context.read<GroveModel>().toggleStreakFreeze(habit.id);
-        },
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 220),
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: habit.streakFrozen
-                ? const Color(0xFF42A5C8).withValues(alpha: 0.15)
-                : theme.surfaceHigh,
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(
+      child: PressScale(
+        scale: 0.98,
+        child: GestureDetector(
+          onTap: () {
+            HapticFeedback.mediumImpact();
+            context.read<GroveModel>().toggleStreakFreeze(habit.id);
+          },
+          child: AnimatedContainer(
+            duration: Motion.base,
+            curve: Motion.standard,
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
               color: habit.streakFrozen
-                  ? const Color(0xFF42A5C8).withValues(alpha: 0.5)
-                  : theme.textMuted.withValues(alpha: 0.25),
-              width: habit.streakFrozen ? 1.5 : 1,
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                habit.streakFrozen
-                    ? Icons.ac_unit_rounded
-                    : Icons.ac_unit_outlined,
-                size: 15,
+                  ? const Color(0xFF42A5C8).withValues(alpha: 0.15)
+                  : theme.surfaceHigh,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(
                 color: habit.streakFrozen
-                    ? const Color(0xFF42A5C8)
-                    : theme.textMuted,
+                    ? const Color(0xFF42A5C8).withValues(alpha: 0.5)
+                    : theme.textMuted.withValues(alpha: 0.25),
+                width: habit.streakFrozen ? 1.5 : 1,
               ),
-              const SizedBox(width: 8),
-              Text(
-                habit.streakFrozen ? l10n.streakFrozen : l10n.freezeStreak,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  habit.streakFrozen
+                      ? Icons.ac_unit_rounded
+                      : Icons.ac_unit_outlined,
+                  size: 15,
                   color: habit.streakFrozen
                       ? const Color(0xFF42A5C8)
                       : theme.textMuted,
                 ),
-              ),
-              const SizedBox(width: 10),
-              AnimatedSwitcher(
-                duration: const Duration(milliseconds: 200),
-                child: Icon(
-                  habit.streakFrozen
-                      ? Icons.toggle_on_rounded
-                      : Icons.toggle_off_rounded,
-                  key: ValueKey(habit.streakFrozen),
-                  size: 28,
-                  color: habit.streakFrozen
-                      ? const Color(0xFF42A5C8)
-                      : theme.textMuted.withValues(alpha: 0.5),
+                const SizedBox(width: 8),
+                Text(
+                  habit.streakFrozen ? l10n.streakFrozen : l10n.freezeStreak,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: habit.streakFrozen
+                        ? const Color(0xFF42A5C8)
+                        : theme.textMuted,
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(width: 10),
+                AnimatedSwitcher(
+                  duration: Motion.base,
+                  switchInCurve: Motion.standard,
+                  switchOutCurve: Motion.exit,
+                  child: Icon(
+                    habit.streakFrozen
+                        ? Icons.toggle_on_rounded
+                        : Icons.toggle_off_rounded,
+                    key: ValueKey(habit.streakFrozen),
+                    size: 28,
+                    color: habit.streakFrozen
+                        ? const Color(0xFF42A5C8)
+                        : theme.textMuted.withValues(alpha: 0.5),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -788,6 +813,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     final reasonCtrl = TextEditingController();
 
     showModalBottomSheet(
+      sheetAnimationStyle: Motion.sheet,
       context: ctx,
       backgroundColor: theme.surfaceHigh,
       isScrollControlled: true,
@@ -1181,7 +1207,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     final groveModel = context.read<GroveModel>();
     final settingsTheme = context.read<GroveSettings>().theme;
     final l10n = AppLocalizations.of(ctx);
-    showDialog(
+    showGroveDialog(
       context: ctx,
       builder: (dialogContext) => AlertDialog(
         title: Text(l10n.deleteHabit),
