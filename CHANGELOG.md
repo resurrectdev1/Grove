@@ -12,7 +12,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-* More animations within the app (to be done)
+* Animations across the app, e.g. habit cards fade in one after another (and replay when you switch layouts), detail screen sections reveal as it opens, and buttons, the tree and calendar days give subtle press feedback
+* Check-in and relapse buttons now animate when their state changes
+* Dialogs scale in, and the habit detail screen has a new fade and scale transition
+* Shared motion settings in `lib/theme/motion.dart` so all animations use the same timing and easing
 
 ### Changed
 
@@ -21,7 +24,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Custom accent picker's apply button and selected check mark now adapt to light colors for readability
 * Improved app icon (Made a proper gradient using digital tools instead of a hacky airbrush implementation of a gradient)
 * Info page using app_icon_info to just use app_icon
-* Made all animations consistent (to be done)
+* All animation durations and curves now use the shared motion settings, so sheets, dialogs and pickers feel consistent
 * Web app icons also updated (to be done)
 
 ---
