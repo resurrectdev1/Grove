@@ -9,9 +9,13 @@ import 'package:grove/providers/grove_model.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/screens/habit_detail_screen.dart';
 import 'package:grove/theme/grove_theme.dart';
+import 'package:grove/theme/motion.dart';
+import 'package:grove/theme/transitions.dart';
 import 'package:grove/widgets/animated_tree_widget.dart';
 import 'package:grove/widgets/color_picker_sheet.dart';
+import 'package:grove/widgets/press_scale.dart';
 import 'package:grove/widgets/relapse_dialog.dart';
+import 'package:grove/widgets/swap_icon.dart';
 
 class HabitCard extends StatefulWidget {
   final HabitTree habit;
@@ -71,12 +75,15 @@ class _HabitCardState extends State<HabitCard> {
           ),
           child: Row(
             children: [
-              GestureDetector(
-                onTap: () => _goDetail(context),
-                child: SizedBox(
-                  width: 60,
-                  height: 60,
-                  child: AnimatedTreeWidget(habit: habit),
+              PressScale(
+                scale: 0.92,
+                child: GestureDetector(
+                  onTap: () => _goDetail(context),
+                  child: SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: AnimatedTreeWidget(habit: habit),
+                  ),
                 ),
               ),
               const SizedBox(width: 12),
@@ -178,8 +185,8 @@ class _HabitCardState extends State<HabitCard> {
 
     return GestureDetector(
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 350),
-        curve: Curves.easeOutCubic,
+        duration: Motion.slow,
+        curve: Motion.standard,
         margin: isCompact
             ? EdgeInsets.zero
             : const EdgeInsets.symmetric(horizontal: 26, vertical: 10),
@@ -227,16 +234,19 @@ class _HabitCardState extends State<HabitCard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GestureDetector(
-                  onTap: () => _goDetail(context),
-                  child: Hero(
-                    tag: 'tree_${habit.id}',
-                    child: Material(
-                      color: Colors.transparent,
-                      child: SizedBox(
-                        width: isCompact ? 112 : 175,
-                        height: isCompact ? 112 : 175,
-                        child: AnimatedTreeWidget(habit: habit),
+                PressScale(
+                  scale: 0.95,
+                  child: GestureDetector(
+                    onTap: () => _goDetail(context),
+                    child: Hero(
+                      tag: 'tree_${habit.id}',
+                      child: Material(
+                        color: Colors.transparent,
+                        child: SizedBox(
+                          width: isCompact ? 112 : 175,
+                          height: isCompact ? 112 : 175,
+                          child: AnimatedTreeWidget(habit: habit),
+                        ),
                       ),
                     ),
                   ),
@@ -354,7 +364,7 @@ class _HabitCardState extends State<HabitCard> {
                       ),
                       if (isCheckIn)
                         IconButton(
-                          icon: Icon(
+                          icon: SwapIcon(
                             isCheckedIn
                                 ? Icons.check_circle
                                 : Icons.check_circle_outline,
@@ -395,25 +405,22 @@ class _HabitCardState extends State<HabitCard> {
 
   void _goDetail(BuildContext ctx) => Navigator.push(
     ctx,
-    PageRouteBuilder(
-      pageBuilder: (_, anim, _) => FadeTransition(
-        opacity: anim,
-        child: HabitDetailScreen(habitId: widget.habit.id),
-      ),
-      transitionDuration: const Duration(milliseconds: 400),
+    GroveRoute<void>(
+      builder: (_) => HabitDetailScreen(habitId: widget.habit.id),
     ),
   );
 
-  void _showRelapseDialog(BuildContext ctx, GroveModel model) => showDialog(
-    context: ctx,
-    builder: (_) => RelapseDialog(
-      habitName: widget.habit.name,
-      onCustomRelapseConfirm: (reason, date) {
-        model.recordCustomRelapse(widget.habit.id, reason, date);
-        HapticFeedback.mediumImpact();
-      },
-    ),
-  );
+  void _showRelapseDialog(BuildContext ctx, GroveModel model) =>
+      showGroveDialog(
+        context: ctx,
+        builder: (_) => RelapseDialog(
+          habitName: widget.habit.name,
+          onCustomRelapseConfirm: (reason, date) {
+            model.recordCustomRelapse(widget.habit.id, reason, date);
+            HapticFeedback.mediumImpact();
+          },
+        ),
+      );
 
   void _showRenameDialog(
     BuildContext ctx,
@@ -422,7 +429,7 @@ class _HabitCardState extends State<HabitCard> {
     AppLocalizations l10n,
   ) {
     final ctrl = TextEditingController(text: habit.name);
-    showDialog(
+    showGroveDialog(
       context: ctx,
       builder: (dialogCtx) => AlertDialog(
         backgroundColor: theme.surfaceHigh,
@@ -493,6 +500,7 @@ class _HabitCardState extends State<HabitCard> {
     AppLocalizations l10n,
   ) async {
     final picked = await showModalBottomSheet<Color>(
+      sheetAnimationStyle: Motion.sheet,
       context: ctx,
       backgroundColor: theme.surfaceHigh,
       isScrollControlled: true,
@@ -515,7 +523,7 @@ class _HabitCardState extends State<HabitCard> {
     GroveTheme theme,
     AppLocalizations l10n,
   ) {
-    showDialog(
+    showGroveDialog(
       context: ctx,
       builder: (dialogCtx) => AlertDialog(
         backgroundColor: theme.surfaceHigh,
@@ -564,7 +572,7 @@ class _HabitCardState extends State<HabitCard> {
     GroveTheme theme,
     AppLocalizations l10n,
   ) {
-    showDialog(
+    showGroveDialog(
       context: ctx,
       builder: (dialogCtx) => AlertDialog(
         backgroundColor: theme.surfaceHigh,
@@ -783,28 +791,36 @@ class _OutlineAction extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => GestureDetector(
-    onTap: onTap,
-    child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
-      decoration: BoxDecoration(
-        border: Border.all(color: color.withValues(alpha: 0.35)),
-        borderRadius: BorderRadius.circular(22),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 14, color: color),
-          const SizedBox(width: 6),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              color: color,
-              fontWeight: FontWeight.w500,
+  Widget build(BuildContext context) => PressScale(
+    child: GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+        decoration: BoxDecoration(
+          border: Border.all(color: color.withValues(alpha: 0.35)),
+          borderRadius: BorderRadius.circular(22),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SwapIcon(icon, size: 14, color: color),
+            const SizedBox(width: 6),
+            AnimatedSwitcher(
+              duration: Motion.base,
+              switchInCurve: Motion.standard,
+              switchOutCurve: Motion.exit,
+              child: Text(
+                label,
+                key: ValueKey(label),
+                style: TextStyle(
+                  fontSize: 12,
+                  color: color,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ),
   );
