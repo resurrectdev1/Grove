@@ -1,16 +1,33 @@
 import 'package:flutter/material.dart';
 
-enum GroveThemeMode { forestDark, amoledBlack, materialYou, whiteMinimal }
+enum GroveThemeMode { forestDark, amoledBlack, whiteMinimal }
 
 enum LayoutMode { verticalWheel, horizontalCarousel, compactGrid, compactList }
 
 class GroveTheme {
   final GroveThemeMode mode;
-  final ColorScheme? dynamicScheme;
+
+  final bool materialYou;
+  final ColorScheme? dynamicLight;
+  final ColorScheme? dynamicDark;
   final Color? customAccent;
-  const GroveTheme({required this.mode, this.dynamicScheme, this.customAccent});
+  const GroveTheme({
+    required this.mode,
+    this.materialYou = false,
+    this.dynamicLight,
+    this.dynamicDark,
+    this.customAccent,
+  });
+
+  ColorScheme? get _dyn {
+    if (!materialYou) return null;
+    return brightness == Brightness.light ? dynamicLight : dynamicDark;
+  }
+
+  bool get _dynSurfaces => _dyn != null && mode != GroveThemeMode.amoledBlack;
 
   Color get bg {
+    if (_dynSurfaces) return _dyn!.surface;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF0A0F0B);
@@ -18,12 +35,11 @@ class GroveTheme {
         return const Color(0xFF000000);
       case GroveThemeMode.whiteMinimal:
         return const Color(0xFFF5F5F5);
-      case GroveThemeMode.materialYou:
-        return dynamicScheme?.surface ?? const Color(0xFF0A0F0B);
     }
   }
 
   Color get surface {
+    if (_dynSurfaces) return _dyn!.surfaceContainerLow;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF111A13);
@@ -31,12 +47,11 @@ class GroveTheme {
         return const Color(0xFF0A0A0A);
       case GroveThemeMode.whiteMinimal:
         return const Color(0xFFFFFFFF);
-      case GroveThemeMode.materialYou:
-        return dynamicScheme?.surfaceContainerLow ?? const Color(0xFF111A13);
     }
   }
 
   Color get surfaceHigh {
+    if (_dynSurfaces) return _dyn!.surfaceContainerHigh;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF182117);
@@ -44,12 +59,11 @@ class GroveTheme {
         return const Color(0xFF121212);
       case GroveThemeMode.whiteMinimal:
         return const Color(0xFFE8E8E8);
-      case GroveThemeMode.materialYou:
-        return dynamicScheme?.surfaceContainerHigh ?? const Color(0xFF182117);
     }
   }
 
   Color get cardBg {
+    if (_dynSurfaces) return _dyn!.surfaceContainer;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF0E1610);
@@ -57,28 +71,23 @@ class GroveTheme {
         return const Color(0xFF000000);
       case GroveThemeMode.whiteMinimal:
         return const Color(0xFFFAFAFA);
-      case GroveThemeMode.materialYou:
-        return dynamicScheme?.surfaceContainer ?? const Color(0xFF0E1610);
     }
   }
 
   Color get primary {
-    if (customAccent != null && mode != GroveThemeMode.materialYou) {
-      return customAccent!;
-    }
+    if (_dyn != null) return _dyn!.primary;
+    if (customAccent != null) return customAccent!;
     switch (mode) {
       case GroveThemeMode.forestDark:
-        return const Color(0xFF4E8B5F);
       case GroveThemeMode.amoledBlack:
         return const Color(0xFF4E8B5F);
       case GroveThemeMode.whiteMinimal:
         return const Color(0xFF2E7D4E);
-      case GroveThemeMode.materialYou:
-        return dynamicScheme?.primary ?? const Color(0xFF4E8B5F);
     }
   }
 
   Color get textPrimary {
+    if (_dynSurfaces) return _dyn!.onSurface;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFFE0EBE0);
@@ -86,12 +95,11 @@ class GroveTheme {
         return const Color(0xFFFFFFFF);
       case GroveThemeMode.whiteMinimal:
         return const Color(0xFF1A1A1A);
-      case GroveThemeMode.materialYou:
-        return dynamicScheme?.onSurface ?? const Color(0xFFE0EBE0);
     }
   }
 
   Color get textSecondary {
+    if (_dynSurfaces) return _dyn!.onSurfaceVariant;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF8AA88C);
@@ -99,12 +107,11 @@ class GroveTheme {
         return const Color(0xFFAAAAAA);
       case GroveThemeMode.whiteMinimal:
         return const Color(0xFF666666);
-      case GroveThemeMode.materialYou:
-        return dynamicScheme?.onSurfaceVariant ?? const Color(0xFF8AA88C);
     }
   }
 
   Color get textMuted {
+    if (_dynSurfaces) return _dyn!.outline;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF4A5E4C);
@@ -112,8 +119,6 @@ class GroveTheme {
         return const Color(0xFF555555);
       case GroveThemeMode.whiteMinimal:
         return const Color(0xFF999999);
-      case GroveThemeMode.materialYou:
-        return dynamicScheme?.outline ?? const Color(0xFF4A5E4C);
     }
   }
 
