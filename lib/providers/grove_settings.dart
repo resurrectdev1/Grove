@@ -6,7 +6,9 @@ import 'package:grove/services/grove_notifications.dart';
 class GroveSettings extends ChangeNotifier {
   GroveThemeMode _themeMode = GroveThemeMode.forestDark;
   LayoutMode _layoutMode = LayoutMode.verticalWheel;
-  ColorScheme? _dynamicScheme;
+  bool _materialYou = false;
+  ColorScheme? _dynamicLight;
+  ColorScheme? _dynamicDark;
   bool _onboardingDone = false;
   bool _biometricUnlock = false;
   bool _milestoneNotifications = false;
@@ -18,6 +20,8 @@ class GroveSettings extends ChangeNotifier {
   SharedPreferences? _prefs;
 
   GroveThemeMode get themeMode => _themeMode;
+  bool get materialYou => _materialYou;
+  bool get hasDynamicColors => _dynamicLight != null || _dynamicDark != null;
   LayoutMode get layoutMode => _layoutMode;
   bool get onboardingDone => _onboardingDone;
   bool get biometricUnlock => _biometricUnlock;
@@ -27,7 +31,9 @@ class GroveSettings extends ChangeNotifier {
   Color? get customAccent => _customAccent;
   GroveTheme get theme => GroveTheme(
     mode: _themeMode,
-    dynamicScheme: _dynamicScheme,
+    materialYou: _materialYou,
+    dynamicLight: _dynamicLight,
+    dynamicDark: _dynamicDark,
     customAccent: _customAccent,
   );
 
@@ -36,7 +42,6 @@ class GroveSettings extends ChangeNotifier {
   Future<void> init(ColorScheme? dynamicLight, ColorScheme? dynamicDark) async {
     _prefs = await SharedPreferences.getInstance();
 
-    final savedTheme = _prefs!.getInt('theme_mode') ?? 0;
     final savedLayout = _prefs!.getInt('layout_mode') ?? 0;
     _onboardingDone = _prefs!.getBool('onboarding_done') ?? false;
     _biometricUnlock = _prefs!.getBool('biometric_unlock') ?? false;
@@ -56,8 +61,24 @@ class GroveSettings extends ChangeNotifier {
     final accentInt = _prefs!.getInt('custom_accent');
     if (accentInt != null) _customAccent = Color(accentInt);
 
-    if (savedTheme < GroveThemeMode.values.length) {
-      _themeMode = GroveThemeMode.values[savedTheme];
+    final savedBase = _prefs!.getInt('theme_base');
+    if (savedBase != null) {
+      if (savedBase >= 0 && savedBase < GroveThemeMode.values.length) {
+        _themeMode = GroveThemeMode.values[savedBase];
+      }
+      _materialYou = _prefs!.getBool('material_you') ?? false;
+    } else {
+      switch (_prefs!.getInt('theme_mode') ?? 0) {
+        case 1:
+          _themeMode = GroveThemeMode.amoledBlack;
+        case 2:
+          _themeMode = GroveThemeMode.forestDark;
+          _materialYou = true;
+        case 3:
+          _themeMode = GroveThemeMode.whiteMinimal;
+        default:
+          _themeMode = GroveThemeMode.forestDark;
+      }
     }
     if (savedLayout < LayoutMode.values.length) {
       _layoutMode = LayoutMode.values[savedLayout];
@@ -71,12 +92,14 @@ class GroveSettings extends ChangeNotifier {
           : Locale(parts[0]);
     }
 
-    _dynamicScheme = dynamicDark;
+    _dynamicLight = dynamicLight;
+    _dynamicDark = dynamicDark;
     notifyListeners();
   }
 
   void applyDynamicColors(ColorScheme? light, ColorScheme? dark) {
-    _dynamicScheme = dark ?? light;
+    _dynamicLight = light;
+    _dynamicDark = dark;
     notifyListeners();
   }
 
@@ -103,7 +126,15 @@ class GroveSettings extends ChangeNotifier {
 
   Future<void> setThemeMode(GroveThemeMode mode) async {
     _themeMode = mode;
-    await _prefs?.setInt('theme_mode', mode.index);
+    await _prefs?.setInt('theme_base', mode.index);
+    await _prefs?.setBool('material_you', _materialYou);
+    notifyListeners();
+  }
+
+  Future<void> setMaterialYou(bool value) async {
+    _materialYou = value;
+    await _prefs?.setBool('material_you', value);
+    await _prefs?.setInt('theme_base', _themeMode.index);
     notifyListeners();
   }
 
