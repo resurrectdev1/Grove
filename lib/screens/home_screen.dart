@@ -708,7 +708,6 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                         final labels = {
                           GroveThemeMode.forestDark: l10n.themeForestDark,
                           GroveThemeMode.amoledBlack: l10n.themeAmoledBlack,
-                          GroveThemeMode.materialYou: l10n.themeMaterialYou,
                           GroveThemeMode.whiteMinimal: l10n.themeWhiteMinimal,
                         };
                         return RadioListTile<GroveThemeMode>(
@@ -724,13 +723,26 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                     ),
                   ),
 
+                  if (settings.hasDynamicColors || settings.materialYou)
+                    SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(
+                        l10n.themeMaterialYou,
+                        style: TextStyle(color: settings.theme.textPrimary),
+                      ),
+                      activeThumbColor: settings.theme.primary,
+                      value: settings.materialYou,
+                      onChanged: (val) {
+                        HapticFeedback.selectionClick();
+                        settings.setMaterialYou(val);
+                      },
+                    ),
+
                   const SizedBox(height: 8),
                   Opacity(
-                    opacity: (settings.themeMode == GroveThemeMode.materialYou)
-                        ? 0.5
-                        : 1,
+                    opacity: settings.materialYou ? 0.5 : 1,
                     child: GestureDetector(
-                      onTap: (settings.themeMode == GroveThemeMode.materialYou)
+                      onTap: settings.materialYou
                           ? null
                           : () => _showAccentPicker(sheetCtx, settings),
                       behavior: HitTestBehavior.opaque,
@@ -785,8 +797,7 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                                     ),
                                   ),
                                   Text(
-                                    (settings.themeMode ==
-                                            GroveThemeMode.materialYou)
+                                    settings.materialYou
                                         ? l10n.themeMaterialYou
                                         : settings.customAccent != null
                                         ? '#${settings.customAccent!.toARGB32().toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}'
