@@ -8,6 +8,8 @@ import 'package:grove/models/grove_models.dart';
 import 'package:grove/providers/grove_model.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/theme/grove_theme.dart';
+import 'package:grove/theme/motion.dart';
+import 'package:grove/widgets/press_scale.dart';
 
 class MonthlyCalendar extends StatelessWidget {
   final HabitTree habit;
@@ -163,30 +165,34 @@ class MonthlyCalendar extends StatelessWidget {
                                     theme,
                                   );
                                 },
-                          child: Container(
-                            margin: const EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              color: cellColor,
-                              borderRadius: BorderRadius.circular(8),
-                              border: isToday
-                                  ? Border.all(color: habit.color, width: 2)
-                                  : null,
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              '$day',
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: isToday
-                                    ? FontWeight.w700
-                                    : FontWeight.w500,
-                                color: hasNullDay
-                                    ? const Color(0xFF42A5C8)
-                                    : hasMark
-                                    ? GroveTheme.dewWhite
-                                    : isFuture
-                                    ? theme.textMuted.withValues(alpha: 0.5)
-                                    : theme.textSecondary,
+                          child: PressScale(
+                            scale: 0.9,
+                            enabled: !isFuture,
+                            child: Container(
+                              margin: const EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                color: cellColor,
+                                borderRadius: BorderRadius.circular(8),
+                                border: isToday
+                                    ? Border.all(color: habit.color, width: 2)
+                                    : null,
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(
+                                '$day',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: isToday
+                                      ? FontWeight.w700
+                                      : FontWeight.w500,
+                                  color: hasNullDay
+                                      ? const Color(0xFF42A5C8)
+                                      : hasMark
+                                      ? GroveTheme.dewWhite
+                                      : isFuture
+                                      ? theme.textMuted.withValues(alpha: 0.5)
+                                      : theme.textSecondary,
+                                ),
                               ),
                             ),
                           ),
@@ -244,6 +250,7 @@ class MonthlyCalendar extends StatelessWidget {
     GroveTheme theme,
   ) {
     showModalBottomSheet(
+      sheetAnimationStyle: Motion.sheet,
       context: ctx,
       backgroundColor: theme.surfaceHigh,
       isScrollControlled: true,
