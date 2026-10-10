@@ -26,6 +26,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Info page using app_icon_info to just use app_icon
 * All animation durations and curves now use the shared motion settings, so sheets, dialogs and pickers feel consistent
 * Material you into a toggle so it can be used alongside other themes
+* Locked app to portrait mode
 * Web app icons also updated (to be done)
 
 ---
