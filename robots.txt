@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://resurrectdev1.github.io/Grove/sitemap.xml
