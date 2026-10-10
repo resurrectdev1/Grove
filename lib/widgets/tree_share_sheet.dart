@@ -14,6 +14,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:grove/l10n/app_localizations.dart';
 import 'package:grove/models/grove_models.dart';
 import 'package:grove/theme/grove_theme.dart';
+import 'package:grove/theme/motion.dart';
 import 'package:grove/widgets/tree_snapshot_card.dart';
 
 Future<void> showTreeShareSheet(
@@ -22,6 +23,7 @@ Future<void> showTreeShareSheet(
   required GroveTheme theme,
 }) {
   return showModalBottomSheet(
+    sheetAnimationStyle: Motion.sheet,
     context: context,
     backgroundColor: Colors.transparent,
     isScrollControlled: true,
