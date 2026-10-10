@@ -8,6 +8,7 @@ import 'package:grove/painters/fractal_tree_painter.dart';
 import 'package:grove/providers/grove_model.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/theme/grove_theme.dart';
+import 'package:grove/theme/motion.dart';
 
 class AddHabitSheet extends StatefulWidget {
   const AddHabitSheet({super.key});
@@ -119,7 +120,8 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
                   child: GestureDetector(
                     onTap: () => setState(() => _mode = HabitMode.abstain),
                     child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
+                      duration: Motion.base,
+                      curve: Motion.standard,
                       padding: const EdgeInsets.symmetric(
                         vertical: 14,
                         horizontal: 10,
@@ -182,7 +184,8 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
                   child: GestureDetector(
                     onTap: () => setState(() => _mode = HabitMode.checkIn),
                     child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
+                      duration: Motion.base,
+                      curve: Motion.standard,
                       padding: const EdgeInsets.symmetric(
                         vertical: 14,
                         horizontal: 10,
@@ -264,7 +267,8 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
                     _validHex = true;
                   }),
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
+                    duration: Motion.base,
+                    curve: Motion.standard,
                     width: 38,
                     height: 38,
                     decoration: BoxDecoration(
@@ -326,7 +330,8 @@ class _AddHabitSheetState extends State<AddHabitSheet> {
                 ),
                 const SizedBox(width: 12),
                 AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
+                  duration: Motion.base,
+                  curve: Motion.standard,
                   width: 56,
                   height: 56,
                   decoration: BoxDecoration(
