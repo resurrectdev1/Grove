@@ -10,6 +10,14 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 > Changes staged for the next release go here. Move them down when you cut a tag.
 
+### Changed
+
+* Web app icons also updated (to be done)
+  
+---
+
+## [0.8.0] - 2026-10-11
+
 ### Added
 
 * Animations across the app, e.g. habit cards fade in one after another (and replay when you switch layouts), detail screen sections reveal as it opens, and buttons, the tree and calendar days give subtle press feedback
@@ -28,7 +36,6 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * All animation durations and curves now use the shared motion settings, so sheets, dialogs and pickers feel consistent
 * Material you into a toggle so it can be used alongside other themes
 * Locked app to portrait mode
-* Web app icons also updated (to be done)
 
 ---
 
