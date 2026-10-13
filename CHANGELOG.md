@@ -13,6 +13,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 * Web app icons also updated (to be done)
+
+### Fixed
+
+* Notifications not working on some devices (to be done
   
 ---
 
