@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The notification icon is referenced only by name from Dart
+  ('@drawable/ic_grove_notif'), so release builds' resource shrinker would
+  otherwise strip it and every notification would fail with "invalid_icon".
+-->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/ic_grove_notif,@mipmap/launcher_icon"
+    tools:shrinkMode="safe" />
