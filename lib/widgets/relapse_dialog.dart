@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:grove/l10n/app_localizations.dart';
+import 'package:grove/models/grove_models.dart';
 import 'package:grove/providers/grove_settings.dart';
 import 'package:grove/theme/grove_theme.dart';
 
@@ -9,19 +10,34 @@ class RelapseDialog extends StatefulWidget {
   final String habitName;
   final void Function(String reason, DateTime customTimestamp)
   onCustomRelapseConfirm;
+  final RelapseEvent? existing;
   const RelapseDialog({
     super.key,
     required this.habitName,
     required this.onCustomRelapseConfirm,
+    this.existing,
   });
   @override
   State<RelapseDialog> createState() => _RelapseDialogState();
 }
 
 class _RelapseDialogState extends State<RelapseDialog> {
-  final _ctrl = TextEditingController();
-  DateTime _selectedDate = DateTime.now();
-  TimeOfDay _selectedTime = TimeOfDay.now();
+  late final TextEditingController _ctrl;
+  late DateTime _selectedDate;
+  late TimeOfDay _selectedTime;
+
+  bool get _isEditing => widget.existing != null;
+
+  @override
+  void initState() {
+    super.initState();
+    final e = widget.existing;
+    _ctrl = TextEditingController(text: e?.reason ?? '');
+    _selectedDate = e?.timestamp ?? DateTime.now();
+    _selectedTime = e != null
+        ? TimeOfDay.fromDateTime(e.timestamp)
+        : TimeOfDay.now();
+  }
 
   @override
   void dispose() {
@@ -61,7 +77,7 @@ class _RelapseDialogState extends State<RelapseDialog> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    l10n.logARelapse,
+                    _isEditing ? l10n.updateLog : l10n.logARelapse,
                     style: TextStyle(
                       color: theme.textPrimary,
                       fontSize: 18,
@@ -72,15 +88,17 @@ class _RelapseDialogState extends State<RelapseDialog> {
               ],
             ),
             const SizedBox(height: 16),
-            Text(
-              l10n.relapseMotivation,
-              style: TextStyle(
-                color: theme.textSecondary,
-                fontSize: 13,
-                height: 1.5,
+            if (!_isEditing) ...[
+              Text(
+                l10n.relapseMotivation,
+                style: TextStyle(
+                  color: theme.textSecondary,
+                  fontSize: 13,
+                  height: 1.5,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
+              const SizedBox(height: 20),
+            ],
             Text(
               l10n.customTimestamp,
               style: TextStyle(
@@ -192,7 +210,7 @@ class _RelapseDialogState extends State<RelapseDialog> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: Text(l10n.confirmLog),
+                  child: Text(_isEditing ? l10n.save : l10n.confirmLog),
                 ),
               ],
             ),
