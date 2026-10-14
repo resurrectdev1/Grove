@@ -19,6 +19,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Web app icons also updated (to be done)
 * Order of relapse timeline sweep from largest number to smallest (e.g. your 12 relapse is 12 not 1) (to be done)
 * Material You now only changes the accent color (taken from your wallpaper) instead of replacing the whole theme, so Forest Dark, AMOLED Black and White Minimal keep their own surfaces
+* Applying custom accent doesn't close settings sheet anymore
 
 ### Fixed
 
