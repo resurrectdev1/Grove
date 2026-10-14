@@ -24,10 +24,7 @@ class GroveTheme {
     return brightness == Brightness.light ? dynamicLight : dynamicDark;
   }
 
-  bool get _dynSurfaces => _dyn != null && mode != GroveThemeMode.amoledBlack;
-
   Color get bg {
-    if (_dynSurfaces) return _dyn!.surface;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF0A0F0B);
@@ -39,7 +36,6 @@ class GroveTheme {
   }
 
   Color get surface {
-    if (_dynSurfaces) return _dyn!.surfaceContainerLow;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF111A13);
@@ -51,7 +47,6 @@ class GroveTheme {
   }
 
   Color get surfaceHigh {
-    if (_dynSurfaces) return _dyn!.surfaceContainerHigh;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF182117);
@@ -63,7 +58,6 @@ class GroveTheme {
   }
 
   Color get cardBg {
-    if (_dynSurfaces) return _dyn!.surfaceContainer;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF0E1610);
@@ -87,7 +81,6 @@ class GroveTheme {
   }
 
   Color get textPrimary {
-    if (_dynSurfaces) return _dyn!.onSurface;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFFE0EBE0);
@@ -99,7 +92,6 @@ class GroveTheme {
   }
 
   Color get textSecondary {
-    if (_dynSurfaces) return _dyn!.onSurfaceVariant;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF8AA88C);
@@ -111,7 +103,6 @@ class GroveTheme {
   }
 
   Color get textMuted {
-    if (_dynSurfaces) return _dyn!.outline;
     switch (mode) {
       case GroveThemeMode.forestDark:
         return const Color(0xFF4A5E4C);
@@ -121,6 +112,10 @@ class GroveTheme {
         return const Color(0xFF999999);
     }
   }
+
+  Color get onAccent => primary.computeLuminance() > 0.55
+      ? const Color(0xFF1B1B1F)
+      : Colors.white;
 
   Brightness get brightness {
     switch (mode) {
