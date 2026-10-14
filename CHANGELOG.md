@@ -12,12 +12,13 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-* Pencil edit icon in relapse timeline sweep for quick edits (to be done)
+* Pencil edit icon on relapse timeline entries for quick edits of the date, time and reason
+* Pencil edit icon on check-in history entries for quick edits of the check-in time and note (excused days: note only)
 
 ### Changed
 
 * Web app icons also updated (to be done)
-* Order of relapse timeline sweep from largest number to smallest (e.g. your 12 relapse is 12 not 1) (to be done)
+* Relapse timeline is now numbered from largest to smallest, so your 12th relapse shows as 12 instead of 1
 * Material You now only changes the accent color (taken from your wallpaper) instead of replacing the whole theme, so Forest Dark, AMOLED Black and White Minimal keep their own surfaces
 * Applying custom accent doesn't close settings sheet anymore
 
