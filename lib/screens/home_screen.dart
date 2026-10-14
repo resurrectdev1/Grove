@@ -1131,7 +1131,6 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
     final result = await showAccentPickerSheet(ctx, settings);
     if (result == null) return;
     unawaited(settings.setCustomAccent(result.color));
-    if (ctx.mounted) Navigator.pop(ctx);
   }
 
   void _showLanguagePicker(
