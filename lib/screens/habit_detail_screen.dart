@@ -12,10 +12,12 @@ import 'package:grove/theme/grove_theme.dart';
 import 'package:grove/theme/motion.dart';
 import 'package:grove/theme/transitions.dart';
 import 'package:grove/widgets/animated_tree_widget.dart';
+import 'package:grove/widgets/check_in_edit_dialog.dart';
 import 'package:grove/widgets/color_picker_sheet.dart';
 import 'package:grove/widgets/habit_detail_widgets.dart';
 import 'package:grove/widgets/monthly_calendar.dart';
 import 'package:grove/widgets/press_scale.dart';
+import 'package:grove/widgets/relapse_dialog.dart';
 import 'package:grove/widgets/reveal.dart';
 import 'package:grove/widgets/tree_share_sheet.dart';
 
@@ -118,8 +120,12 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                 ? SliverToBoxAdapter(child: _noHistory(theme, l10n))
                 : SliverList(
                     delegate: SliverChildBuilderDelegate(
-                      (_, i) =>
-                          RelapseEventTile(event: habit.relapses[i], index: i),
+                      (ctx, i) => RelapseEventTile(
+                        event: habit.relapses[i],
+                        number: habit.relapses.length - i,
+                        onEdit: () =>
+                            _editRelapse(ctx, habit, habit.relapses[i]),
+                      ),
                       childCount: habit.relapses.length,
                     ),
                   ),
@@ -215,6 +221,21 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                                             color: theme.textMuted,
                                           ),
                                         ),
+                                      const SizedBox(width: 6),
+                                      InkResponse(
+                                        onTap: () => _editCheckIn(
+                                          context,
+                                          habit,
+                                          day,
+                                          isExcused,
+                                        ),
+                                        radius: 18,
+                                        child: Icon(
+                                          Icons.edit_outlined,
+                                          size: 16,
+                                          color: theme.textMuted,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                   if (note.isNotEmpty) ...[
@@ -1067,6 +1088,48 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
               ),
             ),
           );
+        },
+      ),
+    );
+  }
+
+  void _editCheckIn(
+    BuildContext ctx,
+    HabitTree habit,
+    DateTime day,
+    bool isExcused,
+  ) {
+    final model = ctx.read<GroveModel>();
+    showGroveDialog(
+      context: ctx,
+      builder: (_) => CheckInEditDialog(
+        day: day,
+        isExcused: isExcused,
+        accent: habit.color,
+        initialTime: habit.checkInTimeFor(day),
+        initialNote: habit.checkInNoteFor(day),
+        onSave: (time, note) {
+          if (isExcused) {
+            model.setNullDayNote(habit.id, day, note);
+          } else {
+            model.setCheckInTimeAndNote(habit.id, day, time, note);
+          }
+          HapticFeedback.lightImpact();
+        },
+      ),
+    );
+  }
+
+  void _editRelapse(BuildContext ctx, HabitTree habit, RelapseEvent event) {
+    final model = ctx.read<GroveModel>();
+    showGroveDialog(
+      context: ctx,
+      builder: (_) => RelapseDialog(
+        habitName: habit.name,
+        existing: event,
+        onCustomRelapseConfirm: (reason, date) {
+          model.updateRelapse(habit.id, event, reason, date);
+          HapticFeedback.lightImpact();
         },
       ),
     );
