@@ -191,8 +191,15 @@ class StatChip extends StatelessWidget {
 
 class RelapseEventTile extends StatelessWidget {
   final RelapseEvent event;
-  final int index;
-  const RelapseEventTile({super.key, required this.event, required this.index});
+
+  final int number;
+  final VoidCallback? onEdit;
+  const RelapseEventTile({
+    super.key,
+    required this.event,
+    required this.number,
+    this.onEdit,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -220,7 +227,7 @@ class RelapseEventTile extends StatelessWidget {
             ),
             alignment: Alignment.center,
             child: Text(
-              '${index + 1}',
+              '$number',
               style: const TextStyle(
                 fontSize: 11,
                 color: GroveTheme.clayRed,
@@ -248,6 +255,18 @@ class RelapseEventTile extends StatelessWidget {
                       timeStr,
                       style: TextStyle(fontSize: 11, color: theme.textMuted),
                     ),
+                    if (onEdit != null) ...[
+                      const SizedBox(width: 6),
+                      InkResponse(
+                        onTap: onEdit,
+                        radius: 18,
+                        child: Icon(
+                          Icons.edit_outlined,
+                          size: 16,
+                          color: theme.textMuted,
+                        ),
+                      ),
+                    ],
                   ],
                 ),
                 if (event.peakDays > 0) ...[
