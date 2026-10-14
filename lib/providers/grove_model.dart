@@ -294,6 +294,37 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     notifyListeners();
   }
 
+  void updateRelapse(
+    String habitId,
+    RelapseEvent original,
+    String reason,
+    DateTime newDate,
+  ) {
+    final i = _habits.indexWhere((h) => h.id == habitId);
+    if (i == -1) return;
+
+    final target = _habits[i];
+    final updatedRelapses = List<RelapseEvent>.of(target.relapses)
+      ..removeWhere((r) => r.timestamp == original.timestamp)
+      ..removeWhere(
+        (r) =>
+            r.timestamp.year == newDate.year &&
+            r.timestamp.month == newDate.month &&
+            r.timestamp.day == newDate.day,
+      )
+      ..add(RelapseEvent(timestamp: newDate, reason: reason))
+      ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
+
+    DateTime newLastReset = updatedRelapses.first.timestamp;
+    if (newLastReset.isAfter(DateTime.now())) newLastReset = DateTime.now();
+
+    _habits[i] = _sweepPeaks(
+      target.copyWith(relapses: updatedRelapses, lastReset: newLastReset),
+    );
+    _persist();
+    notifyListeners();
+  }
+
   void removeRelapseOnDate(String habitId, DateTime date) {
     final i = _habits.indexWhere((h) => h.id == habitId);
     if (i == -1) return;
