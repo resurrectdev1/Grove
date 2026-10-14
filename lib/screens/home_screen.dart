@@ -740,9 +740,11 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
 
                   const SizedBox(height: 8),
                   Opacity(
-                    opacity: settings.materialYou ? 0.5 : 1,
+                    opacity: (settings.materialYou && settings.hasDynamicColors)
+                        ? 0.5
+                        : 1,
                     child: GestureDetector(
-                      onTap: settings.materialYou
+                      onTap: (settings.materialYou && settings.hasDynamicColors)
                           ? null
                           : () => _showAccentPicker(sheetCtx, settings),
                       behavior: HitTestBehavior.opaque,
@@ -797,7 +799,8 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
                                     ),
                                   ),
                                   Text(
-                                    settings.materialYou
+                                    (settings.materialYou &&
+                                            settings.hasDynamicColors)
                                         ? l10n.themeMaterialYou
                                         : settings.customAccent != null
                                         ? '#${settings.customAccent!.toARGB32().toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}'
