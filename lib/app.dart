@@ -109,9 +109,7 @@ class GroveApp extends StatelessWidget {
           secondary: GroveTheme.barkBrown,
           error: GroveTheme.clayRed,
           onSurface: gt.textPrimary,
-          onPrimary: gt.brightness == Brightness.light
-              ? Colors.white
-              : GroveTheme.dewWhite,
+          onPrimary: gt.onAccent,
         );
     return ThemeData(
       useMaterial3: true,
