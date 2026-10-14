@@ -79,8 +79,14 @@ class GroveNotifications {
       final key = '${habit.id}_${habit.stage.index}';
       if (_notified.contains(key)) continue;
 
-      await _fireNotification(habit);
-      _notified.add(key);
+      try {
+        await _fireNotification(habit);
+        _notified.add(key);
+      } catch (e) {
+        debugPrint(
+          'Grove: milestone notification failed for ${habit.name}: $e',
+        );
+      }
     }
     await _prefs?.setStringList(_prefsKey, _notified.toList());
   }
@@ -200,15 +206,45 @@ class GroveNotifications {
         ),
       );
 
-      await _plugin.zonedSchedule(
-        id: _dailyNotifId,
-        title: l10n.dailyReminderSetting,
-        body: l10n.dailyReminderSettingSubtitle,
-        scheduledDate: scheduled,
-        notificationDetails: details,
-        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-        matchDateTimeComponents: DateTimeComponents.time,
-      );
+      final androidPlugin = _plugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >();
+      var scheduleMode = AndroidScheduleMode.exactAllowWhileIdle;
+      if (androidPlugin != null) {
+        final canExact = await androidPlugin.canScheduleExactNotifications();
+        if (canExact != true) {
+          scheduleMode = AndroidScheduleMode.inexactAllowWhileIdle;
+          debugPrint('Grove: exact alarms unavailable, using inexact schedule');
+        }
+      }
+
+      try {
+        await _plugin.zonedSchedule(
+          id: _dailyNotifId,
+          title: l10n.dailyReminderSetting,
+          body: l10n.dailyReminderSettingSubtitle,
+          scheduledDate: scheduled,
+          notificationDetails: details,
+          androidScheduleMode: scheduleMode,
+          matchDateTimeComponents: DateTimeComponents.time,
+        );
+      } catch (e) {
+        if (scheduleMode == AndroidScheduleMode.exactAllowWhileIdle) {
+          debugPrint('Grove: exact schedule failed ($e), retrying inexact');
+          await _plugin.zonedSchedule(
+            id: _dailyNotifId,
+            title: l10n.dailyReminderSetting,
+            body: l10n.dailyReminderSettingSubtitle,
+            scheduledDate: scheduled,
+            notificationDetails: details,
+            androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+            matchDateTimeComponents: DateTimeComponents.time,
+          );
+        } else {
+          rethrow;
+        }
+      }
 
       debugPrint(
         'Grove: daily reminder scheduled at ${time.hour}:${time.minute.toString().padLeft(2, '0')}',
