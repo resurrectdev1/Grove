@@ -10,6 +10,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 > Changes staged for the next release go here. Move them down when you cut a tag.
 
+---
+
+## [0.8.2] - 2026-10-18
+
 ### Added
 
 * Pencil edit icon on relapse timeline entries for quick edits of the date, time and reason.
@@ -27,7 +31,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * Notifications not working in release builds: the notification icon was being stripped by resource shrinking (and was an oversized 2016×2016 image); it now ships in proper per-density sizes with a keep rule
 * Daily reminder now falls back to an inexact alarm when exact alarms are denied, instead of silently never firing
-  
+
 ---
 
 ## [0.8.0] - 2026-10-11
