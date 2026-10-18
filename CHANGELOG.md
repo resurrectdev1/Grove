@@ -29,8 +29,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
-* Notifications not working in release builds: the notification icon was being stripped by resource shrinking (and was an oversized 2016×2016 image); it now ships in proper per-density sizes with a keep rule
-* Daily reminder now falls back to an inexact alarm when exact alarms are denied, instead of silently never firing
+* Notifications not working in release builds: the notification icon was being stripped by resource shrinking (and was an oversized 2016×2016 image); it now ships in proper per-density sizes with a keep rule.
+* Daily reminder now falls back to an inexact alarm when exact alarms are denied, instead of silently never firing.
 
 ---
 
