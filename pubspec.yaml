@@ -37,6 +37,8 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   flutter_launcher_icons: ^0.14.4
 
+# Pin to the pre-JNI implementation so the jni package (and its
+# natively built libdartjni.so, which isn't reproducible) is not pulled in.
 dependency_overrides:
   path_provider_android: 2.2.15
 
