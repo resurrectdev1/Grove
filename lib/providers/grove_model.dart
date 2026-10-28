@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:math' as math;
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -18,6 +19,8 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     try {
       _prefs = await SharedPreferences.getInstance();
       _load();
+      await _syncFrozenDays();
+      _scheduleMidnightSync();
       WidgetsBinding.instance.addObserver(this);
       await _checkMilestonesNow();
     } catch (e) {
@@ -27,6 +30,7 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
 
   @override
   void dispose() {
+    _midnightTimer?.cancel();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -42,7 +46,36 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     if (_prefs == null) return;
     await _prefs!.reload();
     _load();
+    await _syncFrozenDays();
+    _scheduleMidnightSync();
     await _checkMilestonesNow();
+  }
+
+  Timer? _midnightTimer;
+
+  void _scheduleMidnightSync() {
+    _midnightTimer?.cancel();
+    final now = DateTime.now();
+    final next = DateTime(now.year, now.month, now.day + 1, 0, 0, 5);
+    _midnightTimer = Timer(next.difference(now), () async {
+      await _syncFrozenDays();
+      _scheduleMidnightSync();
+    });
+  }
+
+  Future<void> _syncFrozenDays() async {
+    var changed = false;
+    for (var i = 0; i < _habits.length; i++) {
+      final synced = _habits[i].withFrozenDaysExcused();
+      if (!identical(synced, _habits[i])) {
+        _habits[i] = synced;
+        changed = true;
+      }
+    }
+    if (changed) {
+      await _persist(skipNotifications: true);
+      notifyListeners();
+    }
   }
 
   Future<void> _checkMilestonesNow() async {
@@ -446,7 +479,17 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
   void toggleStreakFreeze(String habitId) {
     final i = _habits.indexWhere((h) => h.id == habitId);
     if (i == -1) return;
-    _habits[i] = _habits[i].copyWith(streakFrozen: !_habits[i].streakFrozen);
+    final habit = _habits[i];
+    if (habit.streakFrozen) {
+      _habits[i] = habit.copyWith(
+        streakFrozen: false,
+        clearFreezeSyncedThrough: true,
+      );
+    } else {
+      _habits[i] = habit
+          .copyWith(streakFrozen: true, clearFreezeSyncedThrough: true)
+          .withFrozenDaysExcused();
+    }
     _persist();
     notifyListeners();
   }
