@@ -10,6 +10,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 > Changes staged for the next release go here. Move them down when you cut a tag.
 
+### Changed
+
+* Streak freeze now automatically excuses the current day and all future days while it's on.
+
 ---
 
 ## [0.8.2] - 2026-10-18
