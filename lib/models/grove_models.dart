@@ -79,6 +79,8 @@ class HabitTree {
 
   final int geneticSeed;
   final bool streakFrozen;
+
+  final DateTime? freezeSyncedThrough;
   final bool excusedDaysCountTowardsStreak;
 
   HabitTree({
@@ -95,6 +97,7 @@ class HabitTree {
     Map<DateTime, DateTime>? checkInTimestamps,
     Map<DateTime, String>? checkInNotes,
     this.streakFrozen = false,
+    this.freezeSyncedThrough,
     this.excusedDaysCountTowardsStreak = false,
   }) : _relapses = relapses != null ? List<RelapseEvent>.of(relapses) : [],
        _checkInDays = checkInDays != null
@@ -108,6 +111,27 @@ class HabitTree {
            ? Map<DateTime, String>.of(checkInNotes)
            : <DateTime, String>{},
        geneticSeed = geneticSeed ?? id.hashCode;
+
+  HabitTree withFrozenDaysExcused([DateTime? now]) {
+    if (!streakFrozen || mode != HabitMode.checkIn) return this;
+
+    final n = now ?? DateTime.now();
+    final today = DateTime(n.year, n.month, n.day);
+    final synced = freezeSyncedThrough;
+    if (synced != null && !synced.isBefore(today)) return this;
+
+    var day = synced == null
+        ? today
+        : DateTime(synced.year, synced.month, synced.day + 1);
+
+    final updatedNullDays = Set<DateTime>.of(_nullDays);
+    while (!day.isAfter(today)) {
+      if (!_checkInDays.contains(day)) updatedNullDays.add(day);
+      day = DateTime(day.year, day.month, day.day + 1);
+    }
+
+    return copyWith(nullDays: updatedNullDays, freezeSyncedThrough: today);
+  }
 
   int get checkInStreak {
     final allDays = <DateTime>{..._checkInDays, ..._nullDays}.toList()
@@ -231,6 +255,7 @@ class HabitTree {
       (day, note) => MapEntry(day.toIso8601String(), note),
     ),
     'streakFrozen': streakFrozen,
+    'freezeSyncedThrough': freezeSyncedThrough?.toIso8601String(),
     'excusedDaysCountTowardsStreak': excusedDaysCountTowardsStreak,
   };
 
@@ -262,6 +287,9 @@ class HabitTree {
       (day, note) => MapEntry(DateTime.parse(day), note as String),
     ),
     streakFrozen: m['streakFrozen'] as bool? ?? false,
+    freezeSyncedThrough: m['freezeSyncedThrough'] != null
+        ? DateTime.parse(m['freezeSyncedThrough'] as String)
+        : null,
     excusedDaysCountTowardsStreak:
         m['excusedDaysCountTowardsStreak'] as bool? ?? false,
   );
@@ -283,6 +311,8 @@ class HabitTree {
     Map<DateTime, DateTime>? checkInTimestamps,
     Map<DateTime, String>? checkInNotes,
     bool? streakFrozen,
+    DateTime? freezeSyncedThrough,
+    bool clearFreezeSyncedThrough = false,
     bool? excusedDaysCountTowardsStreak,
   }) => HabitTree(
     id: id ?? this.id,
@@ -299,6 +329,9 @@ class HabitTree {
         checkInTimestamps ?? Map<DateTime, DateTime>.of(_checkInTimestamps),
     checkInNotes: checkInNotes ?? Map<DateTime, String>.of(_checkInNotes),
     streakFrozen: streakFrozen ?? this.streakFrozen,
+    freezeSyncedThrough: clearFreezeSyncedThrough
+        ? null
+        : (freezeSyncedThrough ?? this.freezeSyncedThrough),
     excusedDaysCountTowardsStreak:
         excusedDaysCountTowardsStreak ?? this.excusedDaysCountTowardsStreak,
   );
