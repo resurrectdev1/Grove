@@ -64,6 +64,7 @@ Simply open **Grove** and click the "Plant a Tree" button then select your track
 ## Download 
 
 [![Downloads](https://img.shields.io/github/downloads/resurrectdev1/Grove/total)](https://github.com/resurrectdev1/Grove/releases)
+![Android](https://img.shields.io/badge/Android-7--16-228B22?logo=android&logoColor=white)
 [![Reproducibility](https://img.shields.io/badge/Reproducible%20Build-F--Droid-blue)](https://verification.f-droid.org/packages/com.resurrect.grove/)
 
 <a href="https://github.com/resurrectdev1/Grove/releases/latest">
