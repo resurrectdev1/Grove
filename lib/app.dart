@@ -171,9 +171,27 @@ class _BiometricGateState extends State<_BiometricGate>
     super.dispose();
   }
 
+  static const _relockAfter = Duration(seconds: 30);
+  DateTime? _pausedAt;
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed && !_unlocked && !_userDismissed) {
+    if (state == AppLifecycleState.paused) {
+      if (_unlocked) _pausedAt = DateTime.now();
+      return;
+    }
+    if (state != AppLifecycleState.resumed) return;
+
+    final pausedAt = _pausedAt;
+    _pausedAt = null;
+    if (_unlocked &&
+        pausedAt != null &&
+        DateTime.now().difference(pausedAt) > _relockAfter) {
+      setState(() => _unlocked = false);
+      _prompt();
+      return;
+    }
+    if (!_unlocked && !_userDismissed) {
       _prompt();
     }
   }
