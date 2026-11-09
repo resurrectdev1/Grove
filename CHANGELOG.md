@@ -10,9 +10,17 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 > Changes staged for the next release go here. Move them down when you cut a tag.
 
+### Fixed
+
+* Streaks and growth stages now refresh at midnight if the app is left open.
+* Restoring a backup no longer leaves behind data from the trees it replaced.
+* The share button tooltip is now translated instead of always showing English.
+
 ### Changed
 
 * Streak freeze now automatically excuses the current day and all future days while it's on.
+* Restoring a backup now asks for confirmation before replacing your current grove.
+* With biometric unlock on, Grove now locks again after 30 seconds in the background.
 
 ---
 
