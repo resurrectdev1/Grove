@@ -1278,6 +1278,40 @@ class _GroveHomeScreenState extends State<GroveHomeScreen> {
       return;
     }
 
+    if (model.habits.isNotEmpty) {
+      if (!ctx.mounted) return;
+      final confirmed = await showDialog<bool>(
+        context: ctx,
+        builder: (dialogContext) => AlertDialog(
+          title: Text(
+            l10n.restoreGroveBackup,
+            style: TextStyle(color: theme.textPrimary),
+          ),
+          content: Text(
+            l10n.exportImportNote,
+            style: TextStyle(color: theme.textSecondary),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(dialogContext, false),
+              child: Text(
+                l10n.cancel,
+                style: TextStyle(color: theme.textSecondary),
+              ),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(dialogContext, true),
+              style: FilledButton.styleFrom(
+                backgroundColor: GroveTheme.clayRed,
+              ),
+              child: Text(l10n.restoreGroveBackup),
+            ),
+          ],
+        ),
+      );
+      if (confirmed != true) return;
+    }
+
     final success = await model.importFromJson(raw);
 
     messenger.showSnackBar(
