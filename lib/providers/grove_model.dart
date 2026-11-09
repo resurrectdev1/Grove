@@ -59,6 +59,7 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
     final next = DateTime(now.year, now.month, now.day + 1, 0, 0, 5);
     _midnightTimer = Timer(next.difference(now), () async {
       await _syncFrozenDays();
+      notifyListeners();
       _scheduleMidnightSync();
     });
   }
@@ -589,6 +590,13 @@ class GroveModel extends ChangeNotifier with WidgetsBindingObserver {
         }
       }
       if (imported.isEmpty) return false;
+      final keptIds = imported.map((h) => h.id).toSet();
+      for (final old in _habits) {
+        if (!keptIds.contains(old.id)) {
+          await _prefs?.remove(old.id);
+          await GroveNotifications.instance.clearHabitMilestones(old.id);
+        }
+      }
       _habits = imported;
       await _persist(skipNotifications: true);
       await GroveNotifications.instance.markStagesSeen(_habits);
