@@ -602,7 +602,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     final theme = context.watch<GroveSettings>().theme;
     return _treeActionButton(
       icon: Icons.ios_share_rounded,
-      tooltip: 'Share snapshot',
+      tooltip: AppLocalizations.of(context).shareYourTree,
       theme: theme,
       onTap: () => showTreeShareSheet(context, habit: habit, theme: theme),
     );
